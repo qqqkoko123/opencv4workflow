@@ -10,3 +10,6 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 
 # 新增海康工业摄像头
 对接海康工业摄像头MVS4.5.1.2，请从海康开放平台下载对应sdk
+
+# 新增对接汇川PLC
+下载并编译libmodbus库3.1.11，将lib文件引入到项目中，将dll文件放至debug/release下
