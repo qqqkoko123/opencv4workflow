@@ -182,7 +182,7 @@ int frmClassifier::RunToolPro()
 		{
 			std::string modelpath = ui.txtLoadModel->text().QString::toStdString();
 			std::string labelpath = ui.txtLabels->text().QString::toStdString();
-			GetYoloV13(modelpath, labelpath, srcImage, false);
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = GetYoloV13(modelpath, labelpath, srcImage, false);
 		}
 		
 		return 0;

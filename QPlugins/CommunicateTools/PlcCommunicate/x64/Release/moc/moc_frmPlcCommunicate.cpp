@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_frmPlcCommunicate_t {
-    QByteArrayData data[40];
-    char stringdata0[653];
+    QByteArrayData data[42];
+    char stringdata0[677];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -58,20 +58,22 @@ QT_MOC_LITERAL(22, 327, 33), // "on_btnLinkMitRegisterData_cli..."
 QT_MOC_LITERAL(23, 361, 36), // "on_btnDelLinkMitRegisterData_..."
 QT_MOC_LITERAL(24, 398, 21), // "on_btnMitSave_clicked"
 QT_MOC_LITERAL(25, 420, 21), // "on_btnMitBack_clicked"
-QT_MOC_LITERAL(26, 442, 36), // "on_comboCommName_currentIndex..."
-QT_MOC_LITERAL(27, 479, 5), // "index"
-QT_MOC_LITERAL(28, 485, 21), // "slot_PlcDoubleClicked"
-QT_MOC_LITERAL(29, 507, 12), // "onRadioClick"
-QT_MOC_LITERAL(30, 520, 23), // "slot_MitRegisterAddress"
-QT_MOC_LITERAL(31, 544, 4), // "text"
-QT_MOC_LITERAL(32, 549, 12), // "AsciiWrite1D"
-QT_MOC_LITERAL(33, 562, 11), // "AsciiRead1D"
-QT_MOC_LITERAL(34, 574, 12), // "AsciiWrite2D"
-QT_MOC_LITERAL(35, 587, 11), // "AsciiRead2D"
-QT_MOC_LITERAL(36, 599, 13), // "BinaryWrite1D"
-QT_MOC_LITERAL(37, 613, 13), // "BinaryWrite2D"
-QT_MOC_LITERAL(38, 627, 12), // "BinaryRead1D"
-QT_MOC_LITERAL(39, 640, 12) // "BinaryRead2D"
+QT_MOC_LITERAL(26, 442, 19), // "InovancePLC_connect"
+QT_MOC_LITERAL(27, 462, 3), // "key"
+QT_MOC_LITERAL(28, 466, 36), // "on_comboCommName_currentIndex..."
+QT_MOC_LITERAL(29, 503, 5), // "index"
+QT_MOC_LITERAL(30, 509, 21), // "slot_PlcDoubleClicked"
+QT_MOC_LITERAL(31, 531, 12), // "onRadioClick"
+QT_MOC_LITERAL(32, 544, 23), // "slot_MitRegisterAddress"
+QT_MOC_LITERAL(33, 568, 4), // "text"
+QT_MOC_LITERAL(34, 573, 12), // "AsciiWrite1D"
+QT_MOC_LITERAL(35, 586, 11), // "AsciiRead1D"
+QT_MOC_LITERAL(36, 598, 12), // "AsciiWrite2D"
+QT_MOC_LITERAL(37, 611, 11), // "AsciiRead2D"
+QT_MOC_LITERAL(38, 623, 13), // "BinaryWrite1D"
+QT_MOC_LITERAL(39, 637, 13), // "BinaryWrite2D"
+QT_MOC_LITERAL(40, 651, 12), // "BinaryRead1D"
+QT_MOC_LITERAL(41, 664, 12) // "BinaryRead2D"
 
     },
     "frmPlcCommunicate\0sig_AsciiWrite1D\0\0"
@@ -86,6 +88,7 @@ QT_MOC_LITERAL(39, 640, 12) // "BinaryRead2D"
     "on_btnLinkMitRegisterData_clicked\0"
     "on_btnDelLinkMitRegisterData_clicked\0"
     "on_btnMitSave_clicked\0on_btnMitBack_clicked\0"
+    "InovancePLC_connect\0key\0"
     "on_comboCommName_currentIndexChanged\0"
     "index\0slot_PlcDoubleClicked\0onRadioClick\0"
     "slot_MitRegisterAddress\0text\0AsciiWrite1D\0"
@@ -101,7 +104,7 @@ static const uint qt_meta_data_frmPlcCommunicate[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      29,   14, // methods
+      30,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -109,37 +112,38 @@ static const uint qt_meta_data_frmPlcCommunicate[] = {
        8,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    3,  159,    2, 0x06 /* Public */,
-       7,    3,  166,    2, 0x06 /* Public */,
-       9,    3,  173,    2, 0x06 /* Public */,
-      10,    3,  180,    2, 0x06 /* Public */,
-      12,    3,  187,    2, 0x06 /* Public */,
-      14,    3,  194,    2, 0x06 /* Public */,
-      15,    3,  201,    2, 0x06 /* Public */,
-      16,    3,  208,    2, 0x06 /* Public */,
+       1,    3,  164,    2, 0x06 /* Public */,
+       7,    3,  171,    2, 0x06 /* Public */,
+       9,    3,  178,    2, 0x06 /* Public */,
+      10,    3,  185,    2, 0x06 /* Public */,
+      12,    3,  192,    2, 0x06 /* Public */,
+      14,    3,  199,    2, 0x06 /* Public */,
+      15,    3,  206,    2, 0x06 /* Public */,
+      16,    3,  213,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      17,    0,  215,    2, 0x08 /* Private */,
-      18,    0,  216,    2, 0x08 /* Private */,
-      19,    0,  217,    2, 0x08 /* Private */,
-      20,    0,  218,    2, 0x08 /* Private */,
-      21,    0,  219,    2, 0x08 /* Private */,
-      22,    0,  220,    2, 0x08 /* Private */,
-      23,    0,  221,    2, 0x08 /* Private */,
-      24,    0,  222,    2, 0x08 /* Private */,
-      25,    0,  223,    2, 0x08 /* Private */,
-      26,    1,  224,    2, 0x08 /* Private */,
-      28,    2,  227,    2, 0x08 /* Private */,
-      29,    0,  232,    2, 0x08 /* Private */,
-      30,    1,  233,    2, 0x08 /* Private */,
-      32,    3,  236,    2, 0x08 /* Private */,
-      33,    3,  243,    2, 0x08 /* Private */,
-      34,    3,  250,    2, 0x08 /* Private */,
-      35,    3,  257,    2, 0x08 /* Private */,
-      36,    3,  264,    2, 0x08 /* Private */,
-      37,    3,  271,    2, 0x08 /* Private */,
-      38,    3,  278,    2, 0x08 /* Private */,
-      39,    3,  285,    2, 0x08 /* Private */,
+      17,    0,  220,    2, 0x08 /* Private */,
+      18,    0,  221,    2, 0x08 /* Private */,
+      19,    0,  222,    2, 0x08 /* Private */,
+      20,    0,  223,    2, 0x08 /* Private */,
+      21,    0,  224,    2, 0x08 /* Private */,
+      22,    0,  225,    2, 0x08 /* Private */,
+      23,    0,  226,    2, 0x08 /* Private */,
+      24,    0,  227,    2, 0x08 /* Private */,
+      25,    0,  228,    2, 0x08 /* Private */,
+      26,    1,  229,    2, 0x08 /* Private */,
+      28,    1,  232,    2, 0x08 /* Private */,
+      30,    2,  235,    2, 0x08 /* Private */,
+      31,    0,  240,    2, 0x08 /* Private */,
+      32,    1,  241,    2, 0x08 /* Private */,
+      34,    3,  244,    2, 0x08 /* Private */,
+      35,    3,  251,    2, 0x08 /* Private */,
+      36,    3,  258,    2, 0x08 /* Private */,
+      37,    3,  265,    2, 0x08 /* Private */,
+      38,    3,  272,    2, 0x08 /* Private */,
+      39,    3,  279,    2, 0x08 /* Private */,
+      40,    3,  286,    2, 0x08 /* Private */,
+      41,    3,  293,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Bool, 0x80000000 | 3, QMetaType::QString, QMetaType::Short,    4,    5,    6,
@@ -161,10 +165,11 @@ static const uint qt_meta_data_frmPlcCommunicate[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   27,
+    QMetaType::Bool, QMetaType::QString,   27,
+    QMetaType::Void, QMetaType::Int,   29,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   31,
+    QMetaType::Void, QMetaType::QString,   33,
     QMetaType::Bool, 0x80000000 | 3, QMetaType::QString, QMetaType::Short,    4,    5,    6,
     QMetaType::Bool, 0x80000000 | 3, QMetaType::QString, 0x80000000 | 8,    4,    5,    6,
     QMetaType::Bool, 0x80000000 | 3, QMetaType::QString, QMetaType::Int,    4,    5,    6,
@@ -208,25 +213,27 @@ void frmPlcCommunicate::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 14: _t->on_btnDelLinkMitRegisterData_clicked(); break;
         case 15: _t->on_btnMitSave_clicked(); break;
         case 16: _t->on_btnMitBack_clicked(); break;
-        case 17: _t->on_comboCommName_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 18: _t->slot_PlcDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 19: _t->onRadioClick(); break;
-        case 20: _t->slot_MitRegisterAddress((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 21: { bool _r = _t->AsciiWrite1D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< short(*)>(_a[3])));
+        case 17: { bool _r = _t->InovancePLC_connect((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 22: { bool _r = _t->AsciiRead1D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< short(*)>(_a[3])));
+        case 18: _t->on_comboCommName_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 19: _t->slot_PlcDoubleClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 20: _t->onRadioClick(); break;
+        case 21: _t->slot_MitRegisterAddress((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 22: { bool _r = _t->AsciiWrite1D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< short(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 23: { bool _r = _t->AsciiWrite2D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
+        case 23: { bool _r = _t->AsciiRead1D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< short(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 24: { bool _r = _t->AsciiRead2D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
+        case 24: { bool _r = _t->AsciiWrite2D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 25: { bool _r = _t->BinaryWrite1D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< short(*)>(_a[3])));
+        case 25: { bool _r = _t->AsciiRead2D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 26: { bool _r = _t->BinaryWrite2D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
+        case 26: { bool _r = _t->BinaryWrite1D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< short(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 27: { bool _r = _t->BinaryRead1D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< short(*)>(_a[3])));
+        case 27: { bool _r = _t->BinaryWrite2D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 28: { bool _r = _t->BinaryRead2D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
+        case 28: { bool _r = _t->BinaryRead1D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< short(*)>(_a[3])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 29: { bool _r = _t->BinaryRead2D((*reinterpret_cast< QTcpSocket*(*)>(_a[1])),(*reinterpret_cast< string(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -289,13 +296,6 @@ void frmPlcCommunicate::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QTcpSocket* >(); break;
             }
             break;
-        case 21:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-            case 0:
-                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QTcpSocket* >(); break;
-            }
-            break;
         case 22:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
@@ -339,6 +339,13 @@ void frmPlcCommunicate::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
             }
             break;
         case 28:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QTcpSocket* >(); break;
+            }
+            break;
+        case 29:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -436,13 +443,13 @@ int frmPlcCommunicate::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 29)
+        if (_id < 30)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 29;
+        _id -= 30;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 29)
+        if (_id < 30)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 29;
+        _id -= 30;
     }
     return _id;
 }

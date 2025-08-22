@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_frmInstrumentation_t {
     QByteArrayData data[41];
-    char stringdata0[671];
+    char stringdata0[672];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -52,27 +52,27 @@ QT_MOC_LITERAL(16, 281, 10), // "port_value"
 QT_MOC_LITERAL(17, 292, 15), // "over_time_value"
 QT_MOC_LITERAL(18, 308, 14), // "InitPlcConnect"
 QT_MOC_LITERAL(19, 323, 13), // "plc_key_value"
-QT_MOC_LITERAL(20, 337, 18), // "InvoicePLC_connect"
-QT_MOC_LITERAL(21, 356, 2), // "IP"
-QT_MOC_LITERAL(22, 359, 4), // "Port"
-QT_MOC_LITERAL(23, 364, 21), // "InitSerialportConnect"
-QT_MOC_LITERAL(24, 386, 20), // "serialport_key_value"
-QT_MOC_LITERAL(25, 407, 14), // "portname_value"
-QT_MOC_LITERAL(26, 422, 14), // "baudrate_value"
-QT_MOC_LITERAL(27, 437, 12), // "parity_value"
-QT_MOC_LITERAL(28, 450, 14), // "databits_value"
-QT_MOC_LITERAL(29, 465, 14), // "stopbits_value"
-QT_MOC_LITERAL(30, 480, 17), // "flowcontrol_value"
-QT_MOC_LITERAL(31, 498, 17), // "InitServerConnect"
-QT_MOC_LITERAL(32, 516, 16), // "server_key_value"
-QT_MOC_LITERAL(33, 533, 17), // "InitClientConnect"
-QT_MOC_LITERAL(34, 551, 16), // "client_key_value"
-QT_MOC_LITERAL(35, 568, 13), // "onIoConnected"
-QT_MOC_LITERAL(36, 582, 16), // "onIoDisconnected"
-QT_MOC_LITERAL(37, 599, 17), // "onMitPlcConnected"
-QT_MOC_LITERAL(38, 617, 20), // "onMitPlcDisconnected"
-QT_MOC_LITERAL(39, 638, 14), // "onTcpConnected"
-QT_MOC_LITERAL(40, 653, 17) // "onTcpDisconnected"
+QT_MOC_LITERAL(20, 337, 19), // "InovancePLC_connect"
+QT_MOC_LITERAL(21, 357, 2), // "IP"
+QT_MOC_LITERAL(22, 360, 4), // "Port"
+QT_MOC_LITERAL(23, 365, 21), // "InitSerialportConnect"
+QT_MOC_LITERAL(24, 387, 20), // "serialport_key_value"
+QT_MOC_LITERAL(25, 408, 14), // "portname_value"
+QT_MOC_LITERAL(26, 423, 14), // "baudrate_value"
+QT_MOC_LITERAL(27, 438, 12), // "parity_value"
+QT_MOC_LITERAL(28, 451, 14), // "databits_value"
+QT_MOC_LITERAL(29, 466, 14), // "stopbits_value"
+QT_MOC_LITERAL(30, 481, 17), // "flowcontrol_value"
+QT_MOC_LITERAL(31, 499, 17), // "InitServerConnect"
+QT_MOC_LITERAL(32, 517, 16), // "server_key_value"
+QT_MOC_LITERAL(33, 534, 17), // "InitClientConnect"
+QT_MOC_LITERAL(34, 552, 16), // "client_key_value"
+QT_MOC_LITERAL(35, 569, 13), // "onIoConnected"
+QT_MOC_LITERAL(36, 583, 16), // "onIoDisconnected"
+QT_MOC_LITERAL(37, 600, 17), // "onMitPlcConnected"
+QT_MOC_LITERAL(38, 618, 20), // "onMitPlcDisconnected"
+QT_MOC_LITERAL(39, 639, 14), // "onTcpConnected"
+QT_MOC_LITERAL(40, 654, 17) // "onTcpDisconnected"
 
     },
     "frmInstrumentation\0onButtonCloseClicked\0"
@@ -83,7 +83,7 @@ QT_MOC_LITERAL(40, 653, 17) // "onTcpDisconnected"
     "on_comboProtocol_currentIndexChanged\0"
     "InitIoConnect\0io_key_value\0ip_value\0"
     "port_value\0over_time_value\0InitPlcConnect\0"
-    "plc_key_value\0InvoicePLC_connect\0IP\0"
+    "plc_key_value\0InovancePLC_connect\0IP\0"
     "Port\0InitSerialportConnect\0"
     "serialport_key_value\0portname_value\0"
     "baudrate_value\0parity_value\0databits_value\0"
@@ -181,7 +181,7 @@ void frmInstrumentation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         case 10: _t->on_comboProtocol_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 11: _t->InitIoConnect((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         case 12: _t->InitPlcConnect((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
-        case 13: { bool _r = _t->InvoicePLC_connect((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+        case 13: { bool _r = _t->InovancePLC_connect((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 14: _t->InitSerialportConnect((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7]))); break;
         case 15: _t->InitServerConnect((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;

@@ -689,7 +689,7 @@ public:
         ___qtablewidgetitem->setText(QCoreApplication::translate("frmPlcCommunicateClass", "PLC\345\257\204\345\255\230\345\231\250\351\223\276\346\216\245\345\234\260\345\235\200", nullptr));
         btnAddRegister->setText(QCoreApplication::translate("frmPlcCommunicateClass", "\346\267\273\345\212\240", nullptr));
         btnDeleteRegister->setText(QCoreApplication::translate("frmPlcCommunicateClass", "\345\210\240\351\231\244", nullptr));
-        groupC3->setTitle(QCoreApplication::translate("frmPlcCommunicateClass", "\344\270\211\350\217\261PLC\350\256\276\347\275\256", nullptr));
+        groupC3->setTitle(QCoreApplication::translate("frmPlcCommunicateClass", "PLC\350\256\276\347\275\256", nullptr));
         label_14->setText(QCoreApplication::translate("frmPlcCommunicateClass", "\345\257\204\345\255\230\345\231\250\345\206\231\345\205\245\345\200\274\357\274\232", nullptr));
 #if QT_CONFIG(tooltip)
         txtMitRegisterData->setToolTip(QCoreApplication::translate("frmPlcCommunicateClass", "\345\205\250\345\261\200\345\217\230\351\207\217Int\347\261\273\345\236\213", nullptr));

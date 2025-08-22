@@ -1527,22 +1527,24 @@ void frmInstrumentation::on_btnDisconnect_clicked()
 			QString key = comm_keys[k];
 			if (key == ui.lblType->text())
 			{
-				if (gVariable::plccommunicate_variable_link.value(key).mit_value->isOpen() == true)
-				{
-					mit_plc_client_state = 1;
-					gVariable::PlcCommunicateVar.connect_state = 0;
-					dataVar::mit_plc_client_ip.removeOne(gVariable::plccommunicate_variable_link.value(key).mit_ip_value);
-					dataVar::mit_plc_client_port.removeOne(QString::number(gVariable::plccommunicate_variable_link.value(key).mit_port_value));
-					gVariable::plccommunicate_variable_link.value(key).mit_value->close();
-					gVariable::plccommunicate_variable_link.value(key).mit_value->deleteLater();
-					gVariable::plccommunicate_variable_link.remove(key);
-					disconnectInovance();//汇川PLC断开连接
-					count = 1;
-					emit dataVar::fProItemTab->sig_InfoClick();
-					emit dataVar::fProItemTab->sig_Log(ui.lblType->text() + "已断开连接！");
-					QMessageBox msgBox(QMessageBox::Icon::NoIcon, "提示", ui.lblType->text() + "已断开连接！");
-					msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
-					msgBox.exec();
+				if (gVariable::plccommunicate_variable_link.value(key).mit_value != nullptr) {
+					if (gVariable::plccommunicate_variable_link.value(key).mit_value->isOpen() == true)
+					{
+						mit_plc_client_state = 1;
+						gVariable::PlcCommunicateVar.connect_state = 0;
+						dataVar::mit_plc_client_ip.removeOne(gVariable::plccommunicate_variable_link.value(key).mit_ip_value);
+						dataVar::mit_plc_client_port.removeOne(QString::number(gVariable::plccommunicate_variable_link.value(key).mit_port_value));
+						gVariable::plccommunicate_variable_link.value(key).mit_value->close();
+						gVariable::plccommunicate_variable_link.value(key).mit_value->deleteLater();
+						gVariable::plccommunicate_variable_link.remove(key);
+						disconnectInovance();//汇川PLC断开连接
+						count = 1;
+						emit dataVar::fProItemTab->sig_InfoClick();
+						emit dataVar::fProItemTab->sig_Log(ui.lblType->text() + "已断开连接！");
+						QMessageBox msgBox(QMessageBox::Icon::NoIcon, "提示", ui.lblType->text() + "已断开连接！");
+						msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
+						msgBox.exec();
+					}
 				}
 			}
 		}
@@ -1962,11 +1964,13 @@ void frmInstrumentation::disconnectInovance()
 {
 	try
 	{
-		modbus_close(ctx);
-		modbus_free(ctx);
-		gVariable::PlcCommunicateVar.ctx = nullptr;
-		gVariable::SocketTcpClientVar.connect_state = 0;
-		std::cout << "Inovance PLC disconnect success " << std::endl;
+		if (ctx != nullptr) {
+			modbus_close(ctx);
+			modbus_free(ctx);
+			gVariable::PlcCommunicateVar.ctx = nullptr;
+			gVariable::SocketTcpClientVar.connect_state = 0;
+			std::cout << "Inovance PLC disconnect success " << std::endl;
+		}
 	}
 	catch (...) {
 
