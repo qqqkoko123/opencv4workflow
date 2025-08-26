@@ -1,24 +1,8 @@
-﻿   Qt/MSBuild: 3.4.0.1
+﻿   Qt/MSBuild: 3.4.1.0
    Qt: 5.14.2
-  frmEdgeWidthMeasure.cpp
-  ImageItem.cpp
-  mytitlebar.cpp
-  QGraphicsScenes.cpp
-  QGraphicsViews.cpp
-  Toolnterface.cpp
-  BaseItem.cpp
-  ControlItem.cpp
+  uic frmEdgeWidthMeasure.ui
   EdgeWidthMeasure.cpp
-  qrc_sub_res.cpp
-  moc_Toolnterface.cpp
-  moc_QToolBase.cpp
-  moc_mytitlebar.cpp
+  frmEdgeWidthMeasure.cpp
   moc_frmEdgeWidthMeasure.cpp
-  moc_QGraphicsViews.cpp
-  moc_QGraphicsScenes.cpp
-  moc_ImageItem.cpp
-  moc_BaseItem.cpp
-  moc_ControlItem.cpp
-  moc_EdgeWidthMeasure.cpp
     正在创建库 ../../../QSoftExe/Release/Plugins/Z_EdgeWidthMeasure.lib 和对象 ../../../QSoftExe/Release/Plugins/Z_EdgeWidthMeasure.exp
   Z_EdgeWidthMeasure.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\Z_EdgeWidthMeasure.dll

@@ -1,24 +1,3 @@
-﻿   Qt/MSBuild: 3.4.0.1
-   Qt: 5.14.2
-  frmImageView.cpp
-  ImageItem.cpp
-  mytitlebar.cpp
-  QGraphicsScenes.cpp
-  QGraphicsViews.cpp
-  Toolnterface.cpp
-  BaseItem.cpp
-  ControlItem.cpp
-  ImageView.cpp
-  qrc_sub_res.cpp
-  moc_QToolBase.cpp
-  moc_Toolnterface.cpp
-  moc_frmImageView.cpp
-  moc_ImageItem.cpp
-  moc_mytitlebar.cpp
-  moc_QGraphicsViews.cpp
-  moc_QGraphicsScenes.cpp
-  moc_BaseItem.cpp
-  moc_ControlItem.cpp
-  moc_ImageView.cpp
+﻿  frmImageView.cpp
     正在创建库 ../../../QSoftExe/Release/Plugins/ImageView.lib 和对象 ../../../QSoftExe/Release/Plugins/ImageView.exp
   ImageView.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\ImageView.dll

@@ -1,8 +1,2 @@
-﻿   Qt/MSBuild: 3.4.0.1
-   Qt: 5.14.2
-  uic frmImageView.ui
-  ImageView.cpp
-  frmImageView.cpp
-  moc_frmImageView.cpp
-    正在创建库 ../../../QSoftExe/Debug/Plugins/ImageView.lib 和对象 ../../../QSoftExe/Debug/Plugins/ImageView.exp
+﻿  frmImageView.cpp
   ImageView.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Debug\Plugins\ImageView.dll

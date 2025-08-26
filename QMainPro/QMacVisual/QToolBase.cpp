@@ -53,7 +53,8 @@ bool QToolBase::RunToolFlow_B1(const QString toolname)
 				else if (dataVar::m_a_state == 2)
 				{
 					dataVar::runFinish_B1 = true;
-				}					
+				}		
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -118,6 +119,7 @@ bool QToolBase::RunToolFlow_B2(const QString toolname)
 				{
 					dataVar::runFinish_B2 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -182,6 +184,7 @@ bool QToolBase::RunToolFlow_B3(const QString toolname)
 				{
 					dataVar::runFinish_B3 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -246,6 +249,7 @@ bool QToolBase::RunToolFlow_B4(const QString toolname)
 				{
 					dataVar::runFinish_B4 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -310,6 +314,7 @@ bool QToolBase::RunToolFlow_B5(const QString toolname)
 				{
 					dataVar::runFinish_B5 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -374,6 +379,7 @@ bool QToolBase::RunToolFlow_B6(const QString toolname)
 				{
 					dataVar::runFinish_B6 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -438,6 +444,7 @@ bool QToolBase::RunToolFlow_B7(const QString toolname)
 				{
 					dataVar::runFinish_B7 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -502,6 +509,7 @@ bool QToolBase::RunToolFlow_B8(const QString toolname)
 				{
 					dataVar::runFinish_B8 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -566,6 +574,7 @@ bool QToolBase::RunToolFlow_B9(const QString toolname)
 				{
 					dataVar::runFinish_B9 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -630,6 +639,7 @@ bool QToolBase::RunToolFlow_B10(const QString toolname)
 				{
 					dataVar::runFinish_B10 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -694,6 +704,7 @@ bool QToolBase::RunToolFlow_B11(const QString toolname)
 				{
 					dataVar::runFinish_B11 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -758,6 +769,7 @@ bool QToolBase::RunToolFlow_B12(const QString toolname)
 				{
 					dataVar::runFinish_B12 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -822,6 +834,7 @@ bool QToolBase::RunToolFlow_B13(const QString toolname)
 				{
 					dataVar::runFinish_B13 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -886,6 +899,7 @@ bool QToolBase::RunToolFlow_B14(const QString toolname)
 				{
 					dataVar::runFinish_B14 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -950,6 +964,7 @@ bool QToolBase::RunToolFlow_B15(const QString toolname)
 				{
 					dataVar::runFinish_B15 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -1014,6 +1029,7 @@ bool QToolBase::RunToolFlow_B16(const QString toolname)
 				{
 					dataVar::runFinish_B16 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -1078,6 +1094,7 @@ bool QToolBase::RunToolFlow_B17(const QString toolname)
 				{
 					dataVar::runFinish_B17 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -1142,6 +1159,7 @@ bool QToolBase::RunToolFlow_B18(const QString toolname)
 				{
 					dataVar::runFinish_B18 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -1206,6 +1224,7 @@ bool QToolBase::RunToolFlow_B19(const QString toolname)
 				{
 					dataVar::runFinish_B19 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)
@@ -1270,6 +1289,7 @@ bool QToolBase::RunToolFlow_B20(const QString toolname)
 				{
 					dataVar::runFinish_B20 = true;
 				}
+				//报错继续流转
 				//return false;
 			}
 			else if (-2 == nResult)

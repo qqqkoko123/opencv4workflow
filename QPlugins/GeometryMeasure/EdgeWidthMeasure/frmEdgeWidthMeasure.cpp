@@ -414,6 +414,11 @@ int frmEdgeWidthMeasure::RunToolPro()
 			}			
 			GetToolBase()->m_Tools[tool_index].PublicImage.Name = "图像";
 		}
+		// 是否使用实际距离系数
+		if (ui.isActureDistance->isChecked())
+		{
+			Distance = Distance * ui.spinActureDistance->value();
+		}
 		// 判断距离是否在上下限内
 		if (Distance >= ui.spinLowDistance->value() && Distance <= ui.spinUpDistance->value()) 
 		{

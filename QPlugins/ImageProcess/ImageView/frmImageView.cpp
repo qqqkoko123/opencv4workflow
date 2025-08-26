@@ -608,6 +608,9 @@ int frmImageView::RunToolPro()
 	catch (...)
 	{
 		GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+		if (!out_img.isNull()) {
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputViewImage = out_img;
+		}
 		return -1;
 	}
 }
