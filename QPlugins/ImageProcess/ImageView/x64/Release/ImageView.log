@@ -1,3 +1,4 @@
 ﻿  frmImageView.cpp
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageView\frmImageView.cpp(647): warning C4715: “frmImageView::GetErrorImage”: 不是所有的控件路径都返回值
     正在创建库 ../../../QSoftExe/Release/Plugins/ImageView.lib 和对象 ../../../QSoftExe/Release/Plugins/ImageView.exp
   ImageView.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\ImageView.dll

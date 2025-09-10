@@ -3,7 +3,9 @@
 #include <QDesktopWidget>
 #include "QGraphicsScenes.h"
 #include <QGraphicsOpacityEffect>
-
+extern "C" {
+#include <dmtx.h>
+}
 frmQRcodeIdentify::frmQRcodeIdentify(QString toolName, QToolBase* toolBase, QWidget* parent)
 	: Toolnterface(toolName, toolBase, parent)
 {
@@ -103,7 +105,14 @@ int frmQRcodeIdentify::Execute(const QString toolname)
 	}
 	else
 	{
-		result = RunToolPro();
+		switch (ui.comboMode->currentIndex()) {
+		case 0:
+			result = RunToolPro();
+			break;
+		case 1:
+			result = RunToolProDM();
+			break;
+		}
 	}
 	if (result == -1)
 	{
@@ -207,6 +216,91 @@ int frmQRcodeIdentify::RunToolPro()
 			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
 		}		
 		return 0;
+	}
+	catch (...)
+	{
+		GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+		return -1;
+	}
+}
+
+int frmQRcodeIdentify::RunToolProDM()
+{
+	try
+	{
+		DmtxRegion* reg;
+		srcImage = GetToolBase()->m_Tools[image_index].PublicImage.OutputImage;
+		vPoints.clear();
+		strDecoded.clear();
+		Code.clear();
+		dstImage = cv::Mat();
+		srcImage.copyTo(dstImage);
+		if (dstImage.channels() == 3)
+		{
+			cv::cvtColor(dstImage, dstImage, cv::COLOR_BGR2GRAY);
+		}
+		else if (dstImage.channels() == 4)
+		{
+			cv::cvtColor(dstImage, dstImage, cv::COLOR_RGBA2GRAY);
+		}
+		DmtxImage* image;
+		image = dmtxImageCreate(dstImage.data, dstImage.cols, dstImage.rows, DmtxPack8bppK);//注意图片类型
+		DmtxDecode* dec = dmtxDecodeCreate(image, 1);//解码
+		// 设置关键参数以提升速度
+		//dmtxDecodeSetProp(dec, DmtxPropScanGap, 5);      // 增加扫描间隔 (默认1)
+		//dmtxDecodeSetProp(dec, DmtxPropEdgeMin, 100);    // 提高最小边缘阈值
+		//dmtxDecodeSetProp(dec, DmtxPropEdgeMax, 255);    // 降低最大边缘阈值
+		//dmtxDecodeSetProp(dec, DmtxPropSquareDevn, 0.5); // 增加正方形偏差容忍度 (默认0.2)
+		//dmtxDecodeSetProp(dec, DmtxPropSymbolSize, DmtxSymbolSquareAuto); // 仅识别方形符号
+
+		// 存储识别结果
+		std::vector<std::string> decodedMessages = std::vector<std::string>();
+		double show_thickness = (dstImage.rows > dstImage.cols) ? (2.813 * dstImage.rows) / dstImage.cols :
+			(2.813 * dstImage.cols) / dstImage.rows;
+		double contour_thickness = show_thickness * 0.4;
+		DmtxTime* timeout = new DmtxTime();
+		timeout->sec = 100; // 设置超时时间(毫秒)
+		// 循环检测所有DM码
+		while ((reg = dmtxRegionFindNext(dec, NULL)) != NULL) {
+			DmtxMessage* msg = dmtxDecodeMatrixRegion(dec, reg, 1);//解码信息
+			if (msg != NULL)
+			{
+				// 输出结果
+				cv::Point pt1 = cv::Point(reg->topLoc.X, reg->topLoc.Y + 20);
+				cv::Point pt2 = cv::Point(reg->leftLoc.X - 20, reg->leftLoc.Y);
+				cv::Point pt3 = cv::Point(reg->bottomLoc.X, reg->bottomLoc.Y - 20);
+				cv::Point pt4 = cv::Point(reg->rightLoc.X + 20, reg->rightLoc.Y);
+				/*cv::line(dstImage, pt1, pt2, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
+				cv::line(dstImage, pt2, pt3, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
+				cv::line(dstImage, pt3, pt4, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
+				cv::line(dstImage, pt4, pt1, cv::Scalar(0, 255, 0), cvRound(contour_thickness));*/
+				cv::rectangle(dstImage,cv::Rect(pt2.x,pt1.y,pt4.x-pt2.x,pt1.y-pt3.y), cv::Scalar(0, 255, 0), cvRound(contour_thickness));
+
+				Code.push_back(QString::fromStdString(std::string((char*)msg->output)));
+				 // 将解码内容转为字符串
+				decodedMessages.push_back(std::string((char*)msg->output));
+				dmtxMessageDestroy(&msg);
+			}
+			dmtxRegionDestroy(&reg);
+		}
+		
+		
+		dmtxDecodeDestroy(&dec);
+		dmtxImageDestroy(&image);
+		
+		cin.get();
+		if (decodedMessages.size() == 0) {
+			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+			return -1;
+		}
+		else {
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+			GetToolBase()->m_Tools[tool_index].PublicDetect.Code = Code;
+			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+			return 0;
+		}
+		
 	}
 	catch (...)
 	{
@@ -324,7 +418,16 @@ bool frmQRcodeIdentify::InitDetector()
 		return false;
 	}
 }
-
+bool frmQRcodeIdentify::InitDetectorDM()
+{
+	try {
+		return true;
+	}
+	catch (...)
+	{
+		return false;
+	}
+}
 QImage frmQRcodeIdentify::Mat2QImage(const cv::Mat& mat)
 {
 	if (mat.empty())

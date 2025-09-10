@@ -73,6 +73,7 @@ protected:
 
 private:
 	int RunToolPro();
+	QImage GetErrorImage(int tool_index);
 	bool WriteString(QImage& img, const QString str_msg, const QPoint str_pos, const QColor font_color, const int font_size, const bool font_bold) const;
 	QImage Mat2QImage(const cv::Mat& mat);
 	cv::Mat QImageToMat(const QImage& image);
@@ -86,6 +87,7 @@ private:
 	QColor color, ok_color, ng_color;	
 	int image_index = 0;
 	int tool_index = 0;
+	int getImage_index = 0;
 	int contour_index = 0;
 	int contour_index_row;
 	int text_index = 0;

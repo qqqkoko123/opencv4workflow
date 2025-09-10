@@ -13,3 +13,6 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 
 # 新增对接汇川PLC
 下载并编译libmodbus库3.1.11，将lib文件引入到项目中，将dll文件放至debug/release下
+
+# 新增Data Matrix二维码扫描
+将libdmtx.dll放至debug/release下

@@ -44,7 +44,9 @@ private slots:
 private:
 	int RunTestImage();
 	int RunToolPro();
+	int RunToolProDM();
 	bool InitDetector();
+	bool InitDetectorDM();
 	QImage Mat2QImage(const cv::Mat& mat);
 
 private:	

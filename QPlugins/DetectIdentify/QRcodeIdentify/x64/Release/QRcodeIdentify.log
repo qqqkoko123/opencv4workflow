@@ -1,24 +1,3 @@
-﻿   Qt/MSBuild: 3.4.0.1
-   Qt: 5.14.2
-  ImageItem.cpp
-  Toolnterface.cpp
-  BaseItem.cpp
-  ControlItem.cpp
-  frmQRcodeIdentify.cpp
-  mytitlebar.cpp
-  QGraphicsScenes.cpp
-  QGraphicsViews.cpp
-  QRcodeIdentify.cpp
-  qrc_sub_res.cpp
-  moc_QToolBase.cpp
-  moc_Toolnterface.cpp
-  moc_BaseItem.cpp
-  moc_ControlItem.cpp
-  moc_QGraphicsScenes.cpp
-  moc_frmQRcodeIdentify.cpp
-  moc_ImageItem.cpp
-  moc_mytitlebar.cpp
-  moc_QGraphicsViews.cpp
-  moc_QRcodeIdentify.cpp
+﻿  frmQRcodeIdentify.cpp
     正在创建库 ../../../QSoftExe/Release/Plugins/QRcodeIdentify.lib 和对象 ../../../QSoftExe/Release/Plugins/QRcodeIdentify.exp
   QRcodeIdentify.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\QRcodeIdentify.dll

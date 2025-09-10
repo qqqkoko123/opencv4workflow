@@ -110,6 +110,10 @@ int frmImageView::Execute(const QString toolname)
 			//工具在工具数组中的索引
 			tool_index = i;
 		}
+		if (GetToolBase()->m_Tools[i].PublicToolName == "获取图像")
+		{
+			getImage_index = i;
+		}
 	}
 	if (link_state == false)
 	{
@@ -138,7 +142,7 @@ int frmImageView::RunToolPro()
 		{
 			srcImage = GetToolBase()->m_Tools[image_index].PublicImage.OutputImage;
 		}
-		dstImage = cv::Mat();
+		dstImage = cv::Mat();		
 		if (ui.checkViewContour->isChecked() == true)
 		{
 			srcImage.copyTo(dstImage);
@@ -224,6 +228,11 @@ int frmImageView::RunToolPro()
 			{
 				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
 				return -1;
+			}
+			if (GetToolBase()->m_Tools[image_index].PublicResult.State == false)
+			{
+				// 如果NG显示最近一个状态为成功的图像		
+				out_img = frmImageView::GetErrorImage(image_index);
 			}
 			getViewMsg.clear();
 			for (int m = 0; m < text_keys.count(); m++)
@@ -583,6 +592,10 @@ int frmImageView::RunToolPro()
 				}
 				else
 				{
+					if (GetToolBase()->m_Tools[image_index].PublicResult.State == false)
+					{
+						text_content.clear();
+					}
 					getViewMsg.append(global_text_content.value(text_keys[m]).global_prefix + text_content + " 结果为:"+ ui.txtNGtext->text());
 					WriteString(out_img, global_text_content.value(text_keys[m]).global_prefix + text_content + " 结果为:" + ui.txtNGtext->text(), text_pos, global_text_content.value(text_keys[m]).global_ng_color, ui.spinTextSize->value(), ui.checkBoldFont->isChecked());
 				}
@@ -596,7 +609,7 @@ int frmImageView::RunToolPro()
 		if (ui.checkViewText->isChecked() == false && ui.checkViewContour->isChecked() == false)
 		{
 			out_img = Mat2QImage(srcImage);
-		}
+		}		
 		GetToolBase()->m_Tools[tool_index].PublicImage.OutputViewImage = out_img;
 		GetToolBase()->m_Tools[tool_index].PublicScreen.ScreenNumber = ui.comboScreenNum->currentIndex();
 		GetToolBase()->m_Tools[tool_index].PublicImageProcess.GetViewMsg.clear();
@@ -608,13 +621,30 @@ int frmImageView::RunToolPro()
 	catch (...)
 	{
 		GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-		if (!out_img.isNull()) {
+		if (GetToolBase()->m_Tools[image_index].PublicResult.State == false)
+		{
+			// 如果NG显示最近一个状态为成功的图像		
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputViewImage = frmImageView::GetErrorImage(image_index);
+		}
+		else
+		{
 			GetToolBase()->m_Tools[tool_index].PublicImage.OutputViewImage = out_img;
 		}
 		return -1;
 	}
 }
-
+QImage frmImageView::GetErrorImage(int tool_index)
+{
+	int error_index = 0;
+	if(tool_index - 1 >= error_index && GetToolBase()->m_Tools[tool_index - 1].PublicResult.State)
+	{
+		return Mat2QImage(GetToolBase()->m_Tools[tool_index - 1].PublicImage.OutputImage);
+	}
+	else if(tool_index - 1 >= 0)
+	{
+		return frmImageView::GetErrorImage(tool_index - 1);
+	}
+}
 int frmImageView::ExecuteLink(const int int_link, const QString str_link, const QMap<QString, gVariable::Global_Var> variable_link)
 {
 	try

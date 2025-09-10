@@ -340,12 +340,23 @@ QComboBox::down-arrow:on {
     left: 1px;
 }</string>
         </property>
-        <property name="sizeAdjustPolicy">
-         <enum>QComboBox::AdjustToContents</enum>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="currentText">
+         <string>QRCode</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
         </property>
         <item>
          <property name="text">
           <string>QRCode</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DM</string>
          </property>
         </item>
        </widget>
