@@ -254,7 +254,7 @@ int frmQRcodeIdentify::RunToolProDM()
 		//dmtxDecodeSetProp(dec, DmtxPropSymbolSize, DmtxSymbolSquareAuto); // 仅识别方形符号
 
 		// 存储识别结果
-		std::vector<std::string> decodedMessages = std::vector<std::string>();
+		//std::vector<std::string> decodedMessages = std::vector<std::string>();
 		double show_thickness = (dstImage.rows > dstImage.cols) ? (2.813 * dstImage.rows) / dstImage.cols :
 			(2.813 * dstImage.cols) / dstImage.rows;
 		double contour_thickness = show_thickness * 0.4;
@@ -278,7 +278,7 @@ int frmQRcodeIdentify::RunToolProDM()
 
 				Code.push_back(QString::fromStdString(std::string((char*)msg->output)));
 				 // 将解码内容转为字符串
-				decodedMessages.push_back(std::string((char*)msg->output));
+				strDecoded.push_back(std::string((char*)msg->output));
 				dmtxMessageDestroy(&msg);
 			}
 			dmtxRegionDestroy(&reg);
@@ -289,7 +289,7 @@ int frmQRcodeIdentify::RunToolProDM()
 		dmtxImageDestroy(&image);
 		
 		cin.get();
-		if (decodedMessages.size() == 0) {
+		if (strDecoded.size() == 0) {
 			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
 			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
 			return -1;
@@ -375,6 +375,7 @@ void frmQRcodeIdentify::on_btnExecute_clicked()
 		}
 		ui.txtMsg->append(QString::fromStdString(strDecoded[i]));
 	}
+	
 	QImage img(Mat2QImage(dstImage));
 	view->DispImage(img);
 	ui.btnExecute->setEnabled(true);
