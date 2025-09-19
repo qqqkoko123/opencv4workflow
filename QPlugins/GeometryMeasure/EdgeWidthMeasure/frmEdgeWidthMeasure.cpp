@@ -3,6 +3,12 @@
 #include <QColorDialog>
 #include <QDesktopWidget>
 #include <QGraphicsOpacityEffect>
+#include <locate.h>
+#include <autoMeasure/service/MeasureA4Service.h>
+#include <autoMeasure/service/MeasureCoinService.h>
+#include <autoMeasure/service/GrayService.h>
+#include <rice.h>
+
 
 #define M_PI 3.14159265358979323846
 
@@ -121,6 +127,45 @@ int frmEdgeWidthMeasure::RunToolPro()
 		dstImage = cv::Mat();
 		dstRoiImage = cv::Mat();
 		srcImage.copyTo(dstImage);
+		// 米粒计数
+		if (ui.isActureDistance_5->isChecked()) {
+			std::vector<int> result = on_btnStart(dstImage, 0.5, true, dstImage);
+			//emit dataVar::fProItemTab->sig_InfoClick();
+			//emit dataVar::fProItemTab->sig_Log("米粒总数：" + QString::number(result[0]) + " 优良米粒总数：" + QString::number(result[1]) + " 缺陷米粒总数：" + QString::number(result[2]));
+			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "信息", "米粒总数：" + QString::number(result[0])+" 优良米粒总数："+ QString::number(result[1])+" 缺陷米粒总数："+ QString::number(result[2]));
+			msgBox.setWindowIcon(QIcon(":/resource/info.png"));
+			msgBox.exec();
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+			//GetToolBase()->m_Tools[tool_index].PublicImage.OutputRoiImage = dstRoiImage;
+			//GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = Distance;
+			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+			return 0;
+		}
+		if (ui.isActureDistance_2->isChecked() || ui.isActureDistance_3->isChecked() || ui.isActureDistance_4->isChecked()) {
+			// 是否A4纸直接测量
+			if (ui.isActureDistance_2->isChecked())
+			{
+				//中值滤波
+				//cannyEdgeDetection(srcImage, dstImage, 3, 150, 100);
+				std::unique_ptr<MeasureA4Service> service(new MeasureA4Service());
+				service->processImage(dstImage);
+			}
+			// 是否圆形直接测量
+			if (ui.isActureDistance_3->isChecked()) {
+				std::unique_ptr<MeasureCoinService> service(new MeasureCoinService());
+				service->processImage(dstImage);
+			}
+			// 是否圆形直接测量
+			if (ui.isActureDistance_4->isChecked()) {
+				std::unique_ptr<GrayService> service(new GrayService());
+				service->processImage(dstImage);
+			}
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+			//GetToolBase()->m_Tools[tool_index].PublicImage.OutputRoiImage = dstRoiImage;
+			//GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = Distance;
+			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+			return 0;
+		}
 		if (caliper_item->caliper_init_state == false)
 		{
 			return -1;

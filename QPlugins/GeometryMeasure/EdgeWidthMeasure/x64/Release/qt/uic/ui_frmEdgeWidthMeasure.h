@@ -69,6 +69,7 @@ public:
     QCheckBox *isActureDistance;
     QDoubleSpinBox *spinActureDistance;
     QLabel *label_24;
+    QCheckBox *isActureDistance_2;
     QGroupBox *groupC3;
     QTextEdit *txtMsg;
     QWidget *tab_2;
@@ -466,6 +467,26 @@ public:
         label_24->setFont(font1);
         label_24->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
 "background: transparent;"));
+        isActureDistance_2 = new QCheckBox(groupC2);
+        isActureDistance_2->setObjectName(QString::fromUtf8("isActureDistance_2"));
+        isActureDistance_2->setGeometry(QRect(10, 210, 161, 31));
+        isActureDistance_2->setFont(font);
+        isActureDistance_2->setStyleSheet(QString::fromUtf8("QCheckBox{\n"
+"    color: rgb(30, 30, 30);\n"
+"	border-style: flat;\n"
+"	background: transparent;\n"
+"}\n"
+"QCheckBox::indicator {\n"
+"    width: 17px;\n"
+"    height: 17px;    \n"
+"}\n"
+"QCheckBox::indicator::unchecked {\n"
+"    image: url(:/resource/untick.png);\n"
+"}\n"
+"QCheckBox::indicator::checked {\n"
+"    image: url(:/resource/tick.png);\n"
+"};"));
+        isActureDistance_2->setChecked(true);
         groupC3 = new QGroupBox(tab);
         groupC3->setObjectName(QString::fromUtf8("groupC3"));
         groupC3->setGeometry(QRect(10, 380, 427, 151));
@@ -781,6 +802,7 @@ public:
         label_23->setText(QCoreApplication::translate("frmEdgeWidthMeasureClass", "\344\270\213\351\231\220\350\267\235\347\246\273\357\274\232", nullptr));
         isActureDistance->setText(QCoreApplication::translate("frmEdgeWidthMeasureClass", "\346\230\257\345\220\246\347\224\250\345\256\236\351\231\205\350\267\235\347\246\273", nullptr));
         label_24->setText(QCoreApplication::translate("frmEdgeWidthMeasureClass", "<html><head/><body><p>\345\203\217\347\264\240\350\267\235\347\246\273\347\263\273\346\225\260\357\274\232</p></body></html>", nullptr));
+        isActureDistance_2->setText(QCoreApplication::translate("frmEdgeWidthMeasureClass", "\346\230\257\345\220\246\347\233\264\346\216\245\346\265\213\351\207\217", nullptr));
         groupC3->setTitle(QCoreApplication::translate("frmEdgeWidthMeasureClass", "\350\276\223\345\207\272\346\225\260\346\215\256(\350\276\271\347\274\230\345\256\275\345\272\246)", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("frmEdgeWidthMeasureClass", "\345\237\272\346\234\254\350\256\276\347\275\256", nullptr));
         groupC4->setTitle(QCoreApplication::translate("frmEdgeWidthMeasureClass", "ROI\345\257\271\350\261\241", nullptr));

@@ -1,4 +1,6 @@
-﻿  Reading Qt configuration (C:/Qt/Qt5.12.12/5.12.12/msvc2017_64/bin/qmake)
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
   uic frmBrightness.ui
   rcc sub_res.qrc
   moc Toolnterface.h
@@ -32,4 +34,4 @@
   moc_BaseItem.cpp
   moc_Brightness.cpp
     正在创建库 ../../../QSoftExe/Debug/Plugins/Brightness.lib 和对象 ../../../QSoftExe/Debug/Plugins/Brightness.exp
-  Brightness.vcxproj -> E:\QMacVisual(CV3)\QSoftExe\Debug\Plugins\Brightness.dll
+  Brightness.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Debug\Plugins\Brightness.dll

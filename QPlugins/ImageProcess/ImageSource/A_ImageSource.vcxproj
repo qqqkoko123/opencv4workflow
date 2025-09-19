@@ -60,9 +60,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutDir>../../../QSoftExe/Debug/Plugins/</OutDir>
     <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>$(QTDIR)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutDir>../../../QSoftExe/Release/Plugins/</OutDir>
+    <IncludePath>$(QTDIR)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

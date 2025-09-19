@@ -1,6 +1,8 @@
-﻿   Qt/MSBuild: 3.4.0.1
-  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
+  uic frmMeasureCalibration.ui
+  rcc sub_res.qrc
   moc QToolBase.h
   moc Toolnterface.h
   moc frmMeasureCalibration.h

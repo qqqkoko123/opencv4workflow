@@ -32,12 +32,12 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>5.14.2_msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;quickwidgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>5.14.2_msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;quickwidgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -57,12 +57,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>$(QTDIR)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>$(QTDIR)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;../../../QMainPro/QMacVisual/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -94,13 +102,59 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="autoMeasure\component\CvMediaPlayer.cpp" />
+    <ClCompile Include="autoMeasure\component\CvMediaPlayerRenderer.cpp" />
+    <ClCompile Include="autoMeasure\controller\CvFrameController.cpp" />
+    <ClCompile Include="autoMeasure\controller\MediaController.cpp" />
+    <ClCompile Include="autoMeasure\model\ObjectListModel.cpp" />
+    <ClCompile Include="autoMeasure\service\CvBaseService.cpp" />
+    <ClCompile Include="autoMeasure\service\GrayService.cpp" />
+    <ClCompile Include="autoMeasure\service\MeasureA4Service.cpp" />
+    <ClCompile Include="autoMeasure\service\MeasureCoinService.cpp" />
+    <ClCompile Include="autoMeasure\service\UnDistortService.cpp" />
+    <ClCompile Include="autoMeasure\service\WipeOffService.cpp" />
+    <ClCompile Include="autoMeasure\system\FileHandler.cpp" />
+    <ClCompile Include="autoMeasure\system\HttpManager.cpp" />
+    <ClCompile Include="autoMeasure\system\ImageProvider.cpp" />
+    <ClCompile Include="autoMeasure\util\CvImageUtil.cpp" />
+    <ClCompile Include="autoMeasure\util\CvLineUtil.cpp" />
+    <ClCompile Include="autoMeasure\util\CvPointUtil.cpp" />
+    <ClCompile Include="find_line.cpp" />
     <ClCompile Include="frmEdgeWidthMeasure.cpp" />
+    <ClCompile Include="imageBaseOP.cpp" />
     <ClCompile Include="ImageItem.cpp" />
+    <ClCompile Include="locate.cpp" />
     <ClCompile Include="mytitlebar.cpp" />
     <ClCompile Include="QGraphicsScenes.cpp" />
     <ClCompile Include="QGraphicsViews.cpp" />
+    <ClCompile Include="rice.cpp" />
     <ClCompile Include="Toolnterface.cpp" />
+    <ClInclude Include="autoMeasure\common\Colors.h" />
+    <ClInclude Include="autoMeasure\common\Common.h" />
+    <ClInclude Include="autoMeasure\common\PropertyHelpers.h" />
+    <ClInclude Include="rice.h" />
+    <QtMoc Include="autoMeasure\component\CvMediaPlayer.h" />
+    <ClInclude Include="autoMeasure\component\CvMediaPlayerRenderer.h" />
+    <QtMoc Include="autoMeasure\controller\CvFrameController.h" />
+    <QtMoc Include="autoMeasure\controller\MediaController.h" />
+    <ClInclude Include="autoMeasure\entity\ContourInfo.h" />
+    <QtMoc Include="autoMeasure\model\ObjectListModel.h" />
+    <QtMoc Include="autoMeasure\system\FileHandler.h" />
+    <QtMoc Include="autoMeasure\system\HttpManager.h" />
+    <QtMoc Include="autoMeasure\system\ImageProvider.h" />
+    <QtMoc Include="autoMeasure\service\CvBaseService.h" />
+    <QtMoc Include="autoMeasure\service\GrayService.h" />
+    <QtMoc Include="autoMeasure\service\MeasureA4Service.h" />
+    <QtMoc Include="autoMeasure\service\MeasureCoinService.h" />
+    <QtMoc Include="autoMeasure\service\UnDistortService.h" />
+    <ClInclude Include="autoMeasure\service\WipeOffService.h" />
+    <ClInclude Include="autoMeasure\util\CvImageUtil.h" />
+    <ClInclude Include="autoMeasure\util\CvLineUtil.h" />
+    <ClInclude Include="autoMeasure\util\CvPointUtil.h" />
+    <ClInclude Include="find_line.h" />
     <ClInclude Include="gvariable.h" />
+    <ClInclude Include="imageBaseOP.h" />
+    <ClInclude Include="locate.h" />
     <ClInclude Include="maininterface.h" />
     <QtMoc Include="Toolnterface.h" />
     <QtMoc Include="QToolBase.h" />

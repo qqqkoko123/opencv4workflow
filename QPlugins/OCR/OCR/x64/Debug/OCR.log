@@ -1,7 +1,9 @@
-﻿D:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(QRcodeIdentify.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
-   Qt/MSBuild: 3.4.0.1
-  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+﻿C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(538,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(QRcodeIdentify.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
+  uic frmQRcodeIdentify.ui
+  rcc sub_res.qrc
   moc BaseItem.h
   moc ControlItem.h
   moc ImageItem.h
@@ -15,54 +17,31 @@
   BaseItem.cpp
   ControlItem.cpp
   frmQRcodeIdentify.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
   ImageItem.cpp
   mytitlebar.cpp
   QGraphicsScenes.cpp
   QGraphicsViews.cpp
   QRcodeIdentify.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
   AngleNet.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244: “=”: 从“_Ty”转换到“_Ty”，可能丢失数据
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         with
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         [
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:             _Ty=int64_t
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         ]
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         and
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         [
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:             _Ty=int
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         ]
-  (编译源文件“src/AngleNet.cpp”)
-      D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26):
-      模板实例化上下文(最早的实例化上下文)为
-          G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\AngleNet.cpp(88,32):
-          查看对正在编译的函数 模板 实例化“_Ty std::accumulate<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<__int64>>>,int,std::multiplies<int64_t>>(const _InIt,const _InIt,_Ty,_Fn)”的引用
-          with
-          [
-              _Ty=int,
-              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int64_t>>>,
-              _Fn=std::multiplies<int64_t>
-          ]
-  
   clipper.cpp
   CrnnNet.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
 G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\CrnnNet.cpp(75,12): warning C4477: “printf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 1 拥有了类型“unsigned __int64”
       G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\CrnnNet.cpp(75,12):
       请考虑在格式字符串中使用“%zu”
   
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244: “=”: 从“_Ty”转换到“_Ty”，可能丢失数据
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         with
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         [
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:             _Ty=int64_t
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         ]
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         and
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         [
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:             _Ty=int
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244: “=”: 从“_Ty”转换到“_Ty”，可能丢失数据
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:             _Ty=int64_t
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         ]
   (编译源文件“src/CrnnNet.cpp”)
-      D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26):
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26):
       模板实例化上下文(最早的实例化上下文)为
           G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\CrnnNet.cpp(128,32):
           查看对正在编译的函数 模板 实例化“_Ty std::accumulate<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<__int64>>>,int,std::multiplies<int64_t>>(const _InIt,const _InIt,_Ty,_Fn)”的引用
@@ -73,21 +52,28 @@ D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\num
               _Fn=std::multiplies<int64_t>
           ]
   
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
   DbNet.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244: “=”: 从“_Ty”转换到“_Ty”，可能丢失数据
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         with
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         [
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:             _Ty=int64_t
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         ]
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         and
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         [
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:             _Ty=int
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26): warning C4244:         ]
-  (编译源文件“src/DbNet.cpp”)
-      D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\numeric(33,26):
+  getopt.cpp
+  main.cpp
+  OcrLite.cpp
+  OcrLiteCApi.cpp
+  OcrLiteJni.cpp
+  OcrResultUtils.cpp
+  OcrUtils.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244: “=”: 从“_Ty”转换到“_Ty”，可能丢失数据
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:             _Ty=int64_t
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         ]
+  (编译源文件“src/AngleNet.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26):
       模板实例化上下文(最早的实例化上下文)为
-          G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\DbNet.cpp(138,32):
+          G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\AngleNet.cpp(88,32):
           查看对正在编译的函数 模板 实例化“_Ty std::accumulate<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<__int64>>>,int,std::multiplies<int64_t>>(const _InIt,const _InIt,_Ty,_Fn)”的引用
           with
           [
@@ -96,51 +82,67 @@ D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\num
               _Fn=std::multiplies<int64_t>
           ]
   
-  getopt.cpp
-  main.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
-  OcrLite.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
-  OcrLiteCApi.cpp
-  OcrLiteJni.cpp
-  OcrResultUtils.cpp
-  OcrUtils.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244: “参数”: 从“_Ty”转换到“_Tp”，可能丢失数据
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244:         with
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244:         [
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244:             _Ty=int64_t
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244:         ]
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244:         and
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244:         [
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244:             _Tp=float
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244: “参数”: 从“_Ty”转换到“_Tp”，可能丢失数据
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244:             _Ty=int64_t
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244:             _Tp=float
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103): warning C4244:         ]
   (编译源文件“src/OcrUtils.cpp”)
-      D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xmemory(732,103):
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xmemory(732,103):
       模板实例化上下文(最早的实例化上下文)为
           G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\OcrUtils.cpp(280,20):
           查看对正在编译的函数 模板 实例化“void std::vector<cv::Point2f,std::allocator<cv::Point2f>>::emplace_back<ClipperLib::cInt&,ClipperLib::cInt&>(ClipperLib::cInt &,ClipperLib::cInt &)”的引用
               G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\OcrUtils.cpp(280,32):
               请参阅 "unClip" 中对 "std::vector<cv::Point2f,std::allocator<cv::Point2f>>::emplace_back" 的第一个引用
-          D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\vector(909,24):
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\vector(924,24):
           查看对正在编译的函数 模板 实例化“_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<__int64&,__int64&>(__int64 &,__int64 &)”的引用
           with
           [
               _Ty=cv::Point2f
           ]
-          D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\vector(830,20):
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\vector(845,20):
           查看对正在编译的函数 模板 实例化“_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<__int64&,__int64&>(__int64 &,__int64 &)”的引用
           with
           [
               _Ty=cv::Point2f
           ]
-          D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\vector(848,27):
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
           查看对正在编译的函数 模板 实例化“void std::_Default_allocator_traits<_Alloc>::construct<_Ty,__int64&,__int64&>(_Alloc &,_Objty *const ,__int64 &,__int64 &)”的引用
           with
           [
               _Alloc=std::allocator<cv::Point2f>,
               _Ty=cv::Point_<float>,
               _Objty=cv::Point_<float>
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244: “=”: 从“_Ty”转换到“_Ty”，可能丢失数据
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:             _Ty=int64_t
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26): warning C4244:         ]
+  (编译源文件“src/DbNet.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\numeric(33,26):
+      模板实例化上下文(最早的实例化上下文)为
+          G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\OCR\OCR\src\DbNet.cpp(138,32):
+          查看对正在编译的函数 模板 实例化“_Ty std::accumulate<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<__int64>>>,int,std::multiplies<int64_t>>(const _InIt,const _InIt,_Ty,_Fn)”的引用
+          with
+          [
+              _Ty=int,
+              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int64_t>>>,
+              _Fn=std::multiplies<int64_t>
           ]
   
   Toolnterface.cpp
@@ -155,6 +157,6 @@ D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\xme
   moc_QToolBase.cpp
   moc_QRcodeIdentify.cpp
   moc_mytitlebar.cpp
-D:\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.43.34808\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
     正在创建库 ../../../QSoftExe/Debug/Plugins/OCR.lib 和对象 ../../../QSoftExe/Debug/Plugins/OCR.exp
   OCR.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Debug\Plugins\OCR.dll

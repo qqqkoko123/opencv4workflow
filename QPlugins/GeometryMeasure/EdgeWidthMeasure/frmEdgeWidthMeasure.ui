@@ -957,6 +957,162 @@ background: transparent;</string>
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;像素距离系数：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
+       <widget class="QCheckBox" name="isActureDistance_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>220</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox{
+    color: rgb(30, 30, 30);
+	border-style: flat;
+	background: transparent;
+}
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;    
+}
+QCheckBox::indicator::unchecked {
+    image: url(:/resource/untick.png);
+}
+QCheckBox::indicator::checked {
+    image: url(:/resource/tick.png);
+};</string>
+        </property>
+        <property name="text">
+         <string>是否A4纸直接测量</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="isActureDistance_3">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>220</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox{
+    color: rgb(30, 30, 30);
+	border-style: flat;
+	background: transparent;
+}
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;    
+}
+QCheckBox::indicator::unchecked {
+    image: url(:/resource/untick.png);
+}
+QCheckBox::indicator::checked {
+    image: url(:/resource/tick.png);
+};</string>
+        </property>
+        <property name="text">
+         <string>是否圆形直接测量</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="isActureDistance_4">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>220</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox{
+    color: rgb(30, 30, 30);
+	border-style: flat;
+	background: transparent;
+}
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;    
+}
+QCheckBox::indicator::unchecked {
+    image: url(:/resource/untick.png);
+}
+QCheckBox::indicator::checked {
+    image: url(:/resource/tick.png);
+};</string>
+        </property>
+        <property name="text">
+         <string>是否灰度直接测量</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="isActureDistance_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>160</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox{
+    color: rgb(30, 30, 30);
+	border-style: flat;
+	background: transparent;
+}
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;    
+}
+QCheckBox::indicator::unchecked {
+    image: url(:/resource/untick.png);
+}
+QCheckBox::indicator::checked {
+    image: url(:/resource/tick.png);
+};</string>
+        </property>
+        <property name="text">
+         <string>是否使用米粒计数</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
       </widget>
       <widget class="QGroupBox" name="groupC3">
        <property name="geometry">

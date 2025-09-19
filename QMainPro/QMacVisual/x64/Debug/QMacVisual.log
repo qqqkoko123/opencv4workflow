@@ -1,1 +1,316 @@
-﻿  QMacVisual.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Debug\QMacVisual.exe
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmAbout.ui
+  uic frmCameraSetUp.ui
+  uic frmGlobalVariable.ui
+  uic frmImageLayout.ui
+  uic frmImageView.ui
+  uic frmInstrumentation.ui
+  uic frmLink.ui
+  uic frmLogin.ui
+  uic frmPermis.ui
+  uic frmProcessSetUp.ui
+  uic frmProItemTab.ui
+  uic frmQuit.ui
+  uic frmRegister.ui
+  uic frmSystemSetUp.ui
+  uic frmToolsTree.ui
+  uic frmLog.ui
+  rcc res.qrc
+  moc savelog.h
+  moc Toolnterface.h
+  moc showcpumemory.h
+  moc frmLog.h
+  moc clogmodel.h
+  moc basemainwindow.h
+  moc cmysplashscreen.h
+  moc autoThread.h
+  moc frmLogin.h
+  moc dockwidget.h
+  moc headwidget.h
+  moc frmAbout.h
+  moc frmImageView.h
+  moc FlowListWidget.h
+  moc GlobalVariable.h
+  moc frmToolsTree.h
+  moc frmProItemTab.h
+  moc frmPermis.h
+  moc mainwidget.h
+  moc mainwindow.h
+  moc mytitlebar.h
+  moc frmProcessSetUp.h
+  moc frmSystemSetUp.h
+  moc frmImageLayout.h
+  moc frmGlobalVariable.h
+  moc frmCameraSetUp.h
+  moc frmInstrumentation.h
+  moc frmQuit.h
+  moc frmLink.h
+  moc ipaddress.h
+  moc manualThread.h
+  moc QGraphicsViews.h
+  moc QToolBase.h
+  moc qttreewidget.h
+  moc QRoundProgressBar.h
+  moc frmVisualLogo.h
+  moc frmRegister.h
+  autoThread.cpp
+  basemainwindow.cpp
+  clogmodel.cpp
+  cmysplashscreen.cpp
+  dockwidget.cpp
+  FlowListWidget.cpp
+  frmAbout.cpp
+  frmCameraSetUp.cpp
+  frmGlobalVariable.cpp
+  frmImageLayout.cpp
+  frmImageView.cpp
+  frmInstrumentation.cpp
+  frmLink.cpp
+  frmLogin.cpp
+  frmLog.cpp
+  frmPermis.cpp
+  frmProcessSetUp.cpp
+  frmProItemTab.cpp
+  frmQuit.cpp
+  frmSystemSetUp.cpp
+  frmToolsTree.cpp
+  GlobalVariable.cpp
+  gvariable.cpp
+  ipaddress.cpp
+  manualThread.cpp
+  MvCamera.cpp
+  mytitlebar.cpp
+  QGraphicsViews.cpp
+  QRoundProgressBar.cpp
+  QToolBase.cpp
+  qttreewidget.cpp
+  QtWidgetsSaveLoad.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,31): warning C4996: 'stdext::checked_array_iterator<const T *>': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,31): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,31): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,31): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,31): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\iterator(1483,35):
+      参见“stdext::checked_array_iterator”的声明
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,31):
+      模板实例化上下文(最早的实例化上下文)为
+          C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui\qbrush.h(411,20):
+          查看对正在编译的 类 模板 实例化“QVector<QGradientStop>”的引用
+          C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore\qvector.h(502,1):
+          在编译 类 模板 成员函数“QVector<QGradientStop> &QVector<QGradientStop>::operator =(const QVector<QGradientStop> &)”时
+              G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QMainPro\QMacVisual\QRoundProgressBar.cpp(107,24):
+              请参阅 "QRoundProgressBar::setDataColors" 中对 "QVector<QGradientStop>::operator =" 的第一个引用
+          C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore\qvector.h(953,1):
+          在编译 类 模板 成员函数“bool QVector<QGradientStop>::operator ==(const QVector<QGradientStop> &) const”时
+              C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore\qvector.h(86,57):
+              请参阅 "QVector<QGradientStop>::operator !=" 中对 "QVector<QGradientStop>::operator ==" 的第一个引用
+              G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QMainPro\QMacVisual\QRoundProgressBar.cpp(105,5):
+              请参阅 "QRoundProgressBar::setDataColors" 中对 "QVector<QGradientStop>::operator !=" 的第一个引用
+          C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore\qvector.h(961,17):
+          查看对正在编译的函数 模板 实例化“bool std::equal<const T*,stdext::checked_array_iterator<const T *>>(const _InIt1,const _InIt1,const _InIt2)”的引用
+          with
+          [
+              T=QGradientStop,
+              _InIt1=const QGradientStop *,
+              _InIt2=stdext::checked_array_iterator<const QGradientStop *>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5541,17):
+          查看对正在编译的函数 模板 实例化“bool std::equal<_InIt1,_InIt2,std::equal_to<void>>(const _InIt1,const _InIt1,const _InIt2,_Pr)”的引用
+          with
+          [
+              _InIt1=const QGradientStop *,
+              _InIt2=stdext::checked_array_iterator<const QGradientStop *>,
+              _Pr=std::equal_to<void>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5509,31):
+          查看对正在编译的函数 模板 实例化“decltype(auto) std::_Get_unwrapped_n<const _InIt2&,__int64>(_Iter,const _Diff)”的引用
+          with
+          [
+              _InIt2=stdext::checked_array_iterator<const QGradientStop *>,
+              _Iter=const stdext::checked_array_iterator<const QGradientStop *> &,
+              _Diff=__int64
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1446,26):
+          查看指向正在编译的变量模板“const bool _Unwrappable_for_offset_v<stdext::checked_array_iterator<QPair<double,QColor> const *> const &>”的引用
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1440,44):
+          查看指向正在编译的变量模板“const bool _Unwrappable_v<stdext::checked_array_iterator<QPair<double,QColor> const *> const &,void>”的引用
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1369,5):
+          查看指向正在编译的变量模板“const bool _Allow_inheriting_unwrap_v<stdext::checked_array_iterator<QPair<double,QColor> const *>,void>”的引用
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,22): warning C4996: 'stdext::checked_array_iterator<const T *>::_Prevent_inheriting_unwrap': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,22): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,22): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,22): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1341,22): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,40): warning C4996: 'stdext::checked_array_iterator<const T *>': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,40): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,40): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,40): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,40): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\iterator(1483,35):
+      参见“stdext::checked_array_iterator”的声明
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,40):
+      模板实例化上下文(最早的实例化上下文)为
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1436,93):
+          查看对正在编译的 别名 模板 实例化“std::_Iter_diff_t<_Iter>”的引用
+          with
+          [
+              _Iter=stdext::checked_array_iterator<const QGradientStop *>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1245,55):
+          查看对正在编译的 类 模板 实例化“std::iterator_traits<_Iter>”的引用
+          with
+          [
+              _Iter=stdext::checked_array_iterator<const QGradientStop *>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(496,26):
+          查看对正在编译的 类 模板 实例化“std::_Iterator_traits_base<_Iter,void>”的引用
+          with
+          [
+              _Iter=stdext::checked_array_iterator<const QGradientStop *>
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,31): warning C4996: 'stdext::checked_array_iterator<const T *>::iterator_category': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,31): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,31): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,31): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(476,31): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,40): warning C4996: 'stdext::checked_array_iterator<const T *>': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,40): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,40): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,40): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,40): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\iterator(1483,35):
+      参见“stdext::checked_array_iterator”的声明
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,31): warning C4996: 'stdext::checked_array_iterator<const T *>::value_type': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,31): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,31): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,31): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(477,31): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,40): warning C4996: 'stdext::checked_array_iterator<const T *>': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,40): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,40): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,40): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,40): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\iterator(1483,35):
+      参见“stdext::checked_array_iterator”的声明
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,31): warning C4996: 'stdext::checked_array_iterator<const T *>::difference_type': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,31): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,31): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,31): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(478,31): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,40): warning C4996: 'stdext::checked_array_iterator<const T *>': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,40): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,40): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,40): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,40): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\iterator(1483,35):
+      参见“stdext::checked_array_iterator”的声明
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,31): warning C4996: 'stdext::checked_array_iterator<const T *>::pointer': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,31): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,31): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,31): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(479,31): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,40): warning C4996: 'stdext::checked_array_iterator<const T *>': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,40): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,40): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,40): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,40): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\iterator(1483,35):
+      参见“stdext::checked_array_iterator”的声明
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,31): warning C4996: 'stdext::checked_array_iterator<const T *>::reference': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,31): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,31): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,31): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp(480,31): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1457,13): warning C4996: 'stdext::checked_array_iterator<const T *>::_Verify_offset': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1457,13): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1457,13): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1457,13): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1457,13): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1458,42): warning C4996: 'stdext::checked_array_iterator<const T *>::_Unwrapped': warning STL4043: stdext::checked_array_iterator, stdext::unchecked_array_iterator, and related factory functions are non-Standard extensions and will be removed in the future. std::span (since C++20) and gsl::span can be used instead. You can define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING or _SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS to suppress this warning.
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1458,42): warning C4996:         with
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1458,42): warning C4996:         [
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1458,42): warning C4996:             T=QGradientStop
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(1458,42): warning C4996:         ]
+  (编译源文件“QRoundProgressBar.cpp”)
+  
+  FolderOperation.cpp
+  SoftKey.cpp
+  SQLite.cpp
+  XML.cpp
+  savelog.cpp
+  showcpumemory.cpp
+  Toolnterface.cpp
+  datavar.cpp
+  frmRegister.cpp
+  frmVisualLogo.cpp
+  headwidget.cpp
+  mainwidget.cpp
+  mainwindow.cpp
+  main.cpp
+  qrc_res.cpp
+  moc_savelog.cpp
+  moc_Toolnterface.cpp
+  moc_showcpumemory.cpp
+  moc_frmLog.cpp
+  moc_clogmodel.cpp
+  moc_basemainwindow.cpp
+  moc_cmysplashscreen.cpp
+  moc_autoThread.cpp
+  moc_frmLogin.cpp
+  moc_dockwidget.cpp
+  moc_headwidget.cpp
+  moc_frmAbout.cpp
+  moc_frmImageView.cpp
+  moc_FlowListWidget.cpp
+  moc_GlobalVariable.cpp
+  moc_frmToolsTree.cpp
+  moc_frmProItemTab.cpp
+  moc_frmPermis.cpp
+  moc_mainwidget.cpp
+  moc_mainwindow.cpp
+  moc_mytitlebar.cpp
+  moc_frmProcessSetUp.cpp
+  moc_frmSystemSetUp.cpp
+  moc_frmImageLayout.cpp
+  moc_frmGlobalVariable.cpp
+  moc_frmCameraSetUp.cpp
+  moc_frmInstrumentation.cpp
+  moc_frmQuit.cpp
+  moc_frmLink.cpp
+  moc_ipaddress.cpp
+  moc_manualThread.cpp
+  moc_QGraphicsViews.cpp
+  moc_QToolBase.cpp
+  moc_qttreewidget.cpp
+  moc_QRoundProgressBar.cpp
+  moc_frmVisualLogo.cpp
+  moc_frmRegister.cpp
+  QMacVisual.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Debug\QMacVisual.exe

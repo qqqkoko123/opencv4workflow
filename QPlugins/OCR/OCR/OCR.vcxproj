@@ -63,11 +63,13 @@
     <OutDir>../../../QSoftExe/Debug/Plugins/</OutDir>
     <LibraryPath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\lib;$(LibraryPath)</LibraryPath>
     <ExecutablePath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\include;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(QTDIR)\include;$(QTDIR)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutDir>../../../QSoftExe/Release/Plugins/</OutDir>
     <LibraryPath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\lib;$(LibraryPath)</LibraryPath>
     <ExecutablePath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\include;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(QTDIR)\include;$(QTDIR)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

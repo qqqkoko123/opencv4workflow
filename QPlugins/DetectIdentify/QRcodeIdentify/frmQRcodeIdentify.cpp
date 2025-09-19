@@ -274,6 +274,8 @@ int frmQRcodeIdentify::RunToolProDM()
 				cv::line(dstImage, pt2, pt3, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
 				cv::line(dstImage, pt3, pt4, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
 				cv::line(dstImage, pt4, pt1, cv::Scalar(0, 255, 0), cvRound(contour_thickness));*/
+
+				//此处绘制矩形框，需要改进，没能和检测到的二维码矩形吻合？
 				cv::rectangle(dstImage,cv::Rect(pt2.x,pt1.y,pt4.x-pt2.x,pt1.y-pt3.y), cv::Scalar(0, 255, 0), cvRound(contour_thickness));
 
 				Code.push_back(QString::fromStdString(std::string((char*)msg->output)));

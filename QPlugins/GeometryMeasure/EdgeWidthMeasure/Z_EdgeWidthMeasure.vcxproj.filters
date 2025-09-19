@@ -26,6 +26,60 @@
     <Filter Include="Source Files\ImageView">
       <UniqueIdentifier>{3415d2a7-a2b7-42de-a082-4ace1c6bc3da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\autoMeasure">
+      <UniqueIdentifier>{e2d8acf0-5966-4ed4-8feb-3786b2c05d84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure">
+      <UniqueIdentifier>{a3b2a2ff-f795-4ac4-9dd4-a787e250b461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\autoMeasure\common">
+      <UniqueIdentifier>{e2d5e414-c5e9-4954-abca-0b5f59a01acb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure\common">
+      <UniqueIdentifier>{e1b38674-e715-423b-938c-926d49c86aef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\autoMeasure\component">
+      <UniqueIdentifier>{8d05936b-174a-49ed-95bc-693e62ff1625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure\component">
+      <UniqueIdentifier>{78a7d6d0-5143-45a2-929d-d6065c51df8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\autoMeasure\controller">
+      <UniqueIdentifier>{88aa174c-2501-4e6b-b68c-3a66d2e5a715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure\controller">
+      <UniqueIdentifier>{e712b03e-47f7-45a7-9154-7c42dc81c2d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\autoMeasure\entity">
+      <UniqueIdentifier>{b070a007-7c89-4d55-8e06-4a5689861129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure\entity">
+      <UniqueIdentifier>{59f712aa-cf6a-46fc-bc6e-b2756b975d00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\autoMeasure\model">
+      <UniqueIdentifier>{c5c8b8d7-6042-4fda-8782-b87d93e16201}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure\model">
+      <UniqueIdentifier>{a02d1122-e39b-4959-a7f3-5df365f70eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\autoMeasure\service">
+      <UniqueIdentifier>{50435970-7da3-4009-be7f-ea365c3b4877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure\service">
+      <UniqueIdentifier>{506ffee8-654c-4b58-b187-7bed2486bdca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\autoMeasure\system">
+      <UniqueIdentifier>{1e730a4a-1964-41c4-8608-38f716743052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure\system">
+      <UniqueIdentifier>{59ed9f74-3ce7-45d9-84ce-d8b5121971fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\autoMeasure\util">
+      <UniqueIdentifier>{3fc87df6-9f12-476e-b099-d49c9b55e7ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\autoMeasure\util">
+      <UniqueIdentifier>{21a5cb10-efa1-46e5-b193-010a6e5d497c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="edgewidthmeasure_global.h">
@@ -41,6 +95,45 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gvariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="find_line.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imageBaseOP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="locate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\common\Colors.h">
+      <Filter>Header Files\autoMeasure\common</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\common\Common.h">
+      <Filter>Header Files\autoMeasure\common</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\common\PropertyHelpers.h">
+      <Filter>Header Files\autoMeasure\common</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\component\CvMediaPlayerRenderer.h">
+      <Filter>Header Files\autoMeasure\component</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\entity\ContourInfo.h">
+      <Filter>Header Files\autoMeasure\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\util\CvImageUtil.h">
+      <Filter>Header Files\autoMeasure\util</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\util\CvLineUtil.h">
+      <Filter>Header Files\autoMeasure\util</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\util\CvPointUtil.h">
+      <Filter>Header Files\autoMeasure\util</Filter>
+    </ClInclude>
+    <ClInclude Include="autoMeasure\service\WipeOffService.h">
+      <Filter>Header Files\autoMeasure\service</Filter>
+    </ClInclude>
+    <ClInclude Include="rice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,6 +170,42 @@
     <QtMoc Include="Toolnterface.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="autoMeasure\component\CvMediaPlayer.h">
+      <Filter>Header Files\autoMeasure\component</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\controller\CvFrameController.h">
+      <Filter>Header Files\autoMeasure\controller</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\controller\MediaController.h">
+      <Filter>Header Files\autoMeasure\controller</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\model\ObjectListModel.h">
+      <Filter>Header Files\autoMeasure\model</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\system\FileHandler.h">
+      <Filter>Header Files\autoMeasure\system</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\system\HttpManager.h">
+      <Filter>Header Files\autoMeasure\system</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\system\ImageProvider.h">
+      <Filter>Header Files\autoMeasure\system</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\service\CvBaseService.h">
+      <Filter>Header Files\autoMeasure\service</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\service\GrayService.h">
+      <Filter>Header Files\autoMeasure\service</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\service\MeasureA4Service.h">
+      <Filter>Header Files\autoMeasure\service</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\service\MeasureCoinService.h">
+      <Filter>Header Files\autoMeasure\service</Filter>
+    </QtMoc>
+    <QtMoc Include="autoMeasure\service\UnDistortService.h">
+      <Filter>Header Files\autoMeasure\service</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseItem.cpp">
@@ -101,6 +230,69 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Toolnterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="find_line.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imageBaseOP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="locate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\component\CvMediaPlayer.cpp">
+      <Filter>Source Files\autoMeasure\component</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\component\CvMediaPlayerRenderer.cpp">
+      <Filter>Source Files\autoMeasure\component</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\controller\CvFrameController.cpp">
+      <Filter>Source Files\autoMeasure\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\controller\MediaController.cpp">
+      <Filter>Source Files\autoMeasure\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\model\ObjectListModel.cpp">
+      <Filter>Source Files\autoMeasure\model</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\util\CvImageUtil.cpp">
+      <Filter>Source Files\autoMeasure\util</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\util\CvLineUtil.cpp">
+      <Filter>Source Files\autoMeasure\util</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\util\CvPointUtil.cpp">
+      <Filter>Source Files\autoMeasure\util</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\service\CvBaseService.cpp">
+      <Filter>Source Files\autoMeasure\service</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\service\GrayService.cpp">
+      <Filter>Source Files\autoMeasure\service</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\service\MeasureA4Service.cpp">
+      <Filter>Source Files\autoMeasure\service</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\service\MeasureCoinService.cpp">
+      <Filter>Source Files\autoMeasure\service</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\service\UnDistortService.cpp">
+      <Filter>Source Files\autoMeasure\service</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\service\WipeOffService.cpp">
+      <Filter>Source Files\autoMeasure\service</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\system\FileHandler.cpp">
+      <Filter>Source Files\autoMeasure\system</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\system\HttpManager.cpp">
+      <Filter>Source Files\autoMeasure\system</Filter>
+    </ClCompile>
+    <ClCompile Include="autoMeasure\system\ImageProvider.cpp">
+      <Filter>Source Files\autoMeasure\system</Filter>
+    </ClCompile>
+    <ClCompile Include="rice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

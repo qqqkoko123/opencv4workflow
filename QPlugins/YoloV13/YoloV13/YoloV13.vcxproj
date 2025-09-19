@@ -13,8 +13,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0DD77D05-FB68-4EF1-A819-520A2BCC3B3A}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -55,12 +55,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QMainPro\QMacVisual\include;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtNetwork;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(QTDIR)\include;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QMainPro\QMacVisual\include;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtNetwork;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include;$(IncludePath)</IncludePath>
     <LibraryPath>G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\lib;$(LibraryPath)</LibraryPath>
     <OutDir>../../../QSoftExe/Debug/Plugins/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtNetwork;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QMainPro\QMacVisual\include;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(QTDIR)\include;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtNetwork;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QMainPro\QMacVisual\include;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include;$(IncludePath)</IncludePath>
     <LibraryPath>G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\lib;$(LibraryPath)</LibraryPath>
     <OutDir>../../../QSoftExe/Release/Plugins/</OutDir>
   </PropertyGroup>

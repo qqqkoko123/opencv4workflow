@@ -1,4 +1,6 @@
-﻿  Reading Qt configuration (C:/Qt/Qt5.12.12/5.12.12/msvc2017_64/bin/qmake)
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
   uic frmCropImage.ui
   rcc sub_res.qrc
   moc Toolnterface.h
@@ -32,4 +34,4 @@
   moc_ControlItem.cpp
   moc_CropImage.cpp
     正在创建库 ../../../QSoftExe/Debug/Plugins/CropImage.lib 和对象 ../../../QSoftExe/Debug/Plugins/CropImage.exp
-  CropImage.vcxproj -> E:\QMacVisual(CV3)\QSoftExe\Debug\Plugins\CropImage.dll
+  CropImage.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Debug\Plugins\CropImage.dll
