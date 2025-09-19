@@ -1,5 +1,18 @@
-﻿   Qt/MSBuild: 3.4.0.1
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
+  uic frmRoundedCorners.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc ImageItem.h
+  moc QGraphicsScenes.h
+  moc QGraphicsViews.h
+  moc frmRoundedCorners.h
+  moc mytitlebar.h
+  moc QToolBase.h
+  moc RoundedCorners.h
   Toolnterface.cpp
   BaseItem.cpp
   ControlItem.cpp

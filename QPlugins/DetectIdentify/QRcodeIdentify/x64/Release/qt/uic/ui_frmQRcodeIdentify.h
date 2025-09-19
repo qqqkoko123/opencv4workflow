@@ -155,6 +155,7 @@ public:
 "background: transparent;"));
         comboMode = new QComboBox(groupC_2);
         comboMode->addItem(QString());
+        comboMode->addItem(QString());
         comboMode->setObjectName(QString::fromUtf8("comboMode"));
         comboMode->setGeometry(QRect(166, 34, 120, 30));
         sizePolicy.setHeightForWidth(comboMode->sizePolicy().hasHeightForWidth());
@@ -186,7 +187,7 @@ public:
 "    top: 1px;\n"
 "    left: 1px;\n"
 "}"));
-        comboMode->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+        comboMode->setEditable(false);
         groupC6 = new QGroupBox(tab);
         groupC6->setObjectName(QString::fromUtf8("groupC6"));
         groupC6->setGeometry(QRect(9, 365, 427, 152));
@@ -387,6 +388,7 @@ public:
         retranslateUi(frmQRcodeIdentifyClass);
 
         tabWidget->setCurrentIndex(0);
+        comboMode->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(frmQRcodeIdentifyClass);
@@ -408,7 +410,9 @@ public:
         groupC_2->setTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\344\272\214\347\273\264\347\240\201\347\261\273\345\236\213", nullptr));
         label_5->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\346\224\257\346\214\201\347\232\204\344\272\214\347\273\264\347\240\201\347\261\273\345\236\213\357\274\232", nullptr));
         comboMode->setItemText(0, QCoreApplication::translate("frmQRcodeIdentifyClass", "QRCode", nullptr));
+        comboMode->setItemText(1, QCoreApplication::translate("frmQRcodeIdentifyClass", "DM", nullptr));
 
+        comboMode->setCurrentText(QCoreApplication::translate("frmQRcodeIdentifyClass", "QRCode", nullptr));
         groupC6->setTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\344\272\214\347\273\264\347\240\201\345\206\205\345\256\271", nullptr));
         groupC3->setTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\344\272\214\347\273\264\347\240\201\345\217\202\346\225\260", nullptr));
         groupC4->setTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\345\233\276\345\203\217\347\233\270\344\271\230\345\217\202\346\225\260", nullptr));

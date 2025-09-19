@@ -1,8 +1,788 @@
 ﻿   Qt/MSBuild: 3.4.1.0
    Qt: 5.14.2
-  uic frmEdgeWidthMeasure.ui
   EdgeWidthMeasure.cpp
-  frmEdgeWidthMeasure.cpp
-  moc_frmEdgeWidthMeasure.cpp
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0xa1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0xa2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0xa3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0xa7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0xaa 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0xad 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0xb1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x304 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x305 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x306 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x308 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x30c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x30d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x30e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x314 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x3bb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x3bc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x3bd 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x3c3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x3c7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x3e8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x3ea 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x3eb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x472 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x514 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x5c3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x5c4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x5c5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x5c6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x5c8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x5c9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x66f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x670 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x671 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x673 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x732 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x735 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x736 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x737 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x7ea 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x7ed 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\gvariable.h(1,1): warning C4828: 文件包含在偏移 0x7ee 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xb7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xbb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xbc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xbd 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xc4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xde 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xe2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xe3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xe4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xe5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xe6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xe8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0xf3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x110 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x112 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x117 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x19a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x19c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x19e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x19f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1a2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1a3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1a4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1a5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1a6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1a7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1df 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1e1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1e3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1e4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1e7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1e8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1eb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x1ec 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x219 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x21b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x21d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x21e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x221 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x223 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x258 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x25a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x25c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x25d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x260 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x261 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x262 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x263 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x264 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x265 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x28c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x28e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x290 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x291 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x294 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x295 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x296 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x298 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x299 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x29c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x29d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2d2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2d4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2d6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2d7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2da 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2db 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2dc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2de 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2e1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2e4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2e6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2e7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2eb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2ef 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2f0 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2f2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2f5 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2f7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2f8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2fb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x2fc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x319 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x31a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x31b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x31c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x31f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x320 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x324 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x325 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x326 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x327 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x32a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x32c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x32d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x32f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x330 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x331 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x332 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x378 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x379 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x37d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x380 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x381 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x384 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x385 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x386 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x389 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x38b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x38c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x38e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x38f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x390 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x391 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x4b6 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x4b7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x4bb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x4bc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x4bf 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x4db 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x4dd 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x4e4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x506 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x507 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x509 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x50b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x50e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x510 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x511 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x554 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x555 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x558 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x559 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x55a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x55b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x55c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x55d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x561 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x603 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x604 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x607 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x608 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x609 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x60a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x60b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x610 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x611 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6c9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6ca 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6cd 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6ce 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6d1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6d2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6f3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6f4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6f7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6f8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6f9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x6fb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x71f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x723 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x724 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x725 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x726 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x74e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x750 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x755 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x758 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x759 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x77e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x780 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x785 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7ab 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7b0 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7b9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7ba 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7bd 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7be 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7bf 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7c0 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7c1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7c2 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7fa 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x7fc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x801 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x802 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x806 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x807 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x808 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x809 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x83f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x841 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x842 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x843 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x844 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x845 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x84a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x87f 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x880 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x883 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x884 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x885 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x887 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x889 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x88a 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x88c 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x88d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x88e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x891 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8b3 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8b4 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8b7 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8b8 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8b9 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8bb 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8dc 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8dd 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8e0 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
+G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\GeometryMeasure\EdgeWidthMeasure\mytitlebar.h(1,1): warning C4828: 文件包含在偏移 0x8e1 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+  (编译源文件“EdgeWidthMeasure.cpp”)
+  
     正在创建库 ../../../QSoftExe/Release/Plugins/Z_EdgeWidthMeasure.lib 和对象 ../../../QSoftExe/Release/Plugins/Z_EdgeWidthMeasure.exp
   Z_EdgeWidthMeasure.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\Z_EdgeWidthMeasure.dll

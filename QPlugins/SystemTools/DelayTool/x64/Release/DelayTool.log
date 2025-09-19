@@ -1,5 +1,13 @@
-﻿   Qt/MSBuild: 3.4.0.1
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
+  uic frmDelayTool.ui
+  rcc sub_res.qrc
+  moc QToolBase.h
+  moc Toolnterface.h
+  moc frmDelayTool.h
+  moc mytitlebar.h
+  moc DelayTool.h
   frmDelayTool.cpp
   mytitlebar.cpp
   Toolnterface.cpp

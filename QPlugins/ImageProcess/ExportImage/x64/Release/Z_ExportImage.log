@@ -1,5 +1,13 @@
-﻿   Qt/MSBuild: 3.4.0.1
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
+  uic frmExportImage.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc frmExportImage.h
+  moc mytitlebar.h
+  moc ExportImage.h
   frmExportImage.cpp
   mytitlebar.cpp
   Toolnterface.cpp

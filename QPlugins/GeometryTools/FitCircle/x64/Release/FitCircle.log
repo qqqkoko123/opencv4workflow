@@ -1,5 +1,18 @@
-﻿   Qt/MSBuild: 3.4.0.1
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
+  uic frmFitCircle.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc mytitlebar.h
+  moc frmFitCircle.h
+  moc QGraphicsViews.h
+  moc QGraphicsScenes.h
+  moc ImageItem.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc FitCircle.h
   frmFitCircle.cpp
   ImageItem.cpp
   mytitlebar.cpp

@@ -1,5 +1,13 @@
-﻿   Qt/MSBuild: 3.4.0.1
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
+  uic frmLogicGoto.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc mytitlebar.h
+  moc frmLogicGoto.h
+  moc LogicGoto.h
   mytitlebar.cpp
   Toolnterface.cpp
   frmLogicGoto.cpp

@@ -1,4 +1,4 @@
-#include "EdgeWidthMeasure.h"
+ï»¿#include "EdgeWidthMeasure.h"
 #include "frmEdgeWidthMeasure.h"
 
 EdgeWidthMeasure::EdgeWidthMeasure()
@@ -7,12 +7,12 @@ EdgeWidthMeasure::EdgeWidthMeasure()
 
 QString EdgeWidthMeasure::name()
 {
-    return "±ßÔµ¿í¶È²âÁ¿";
+    return "è¾¹ç¼˜å®½åº¦æµ‹é‡";
 }
 
 QString EdgeWidthMeasure::information()
 {
-    return "¼¸ºÎ²âÁ¿";
+    return "å‡ ä½•æµ‹é‡";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

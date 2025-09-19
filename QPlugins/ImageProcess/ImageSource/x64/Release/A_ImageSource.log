@@ -1,15 +1,27 @@
-﻿  frmImageSource.cpp
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmImageSource.ui
+  rcc sub_res.qrc
+  moc QToolBase.h
+  moc Toolnterface.h
+  moc mytitlebar.h
+  moc frmImageSource.h
+  moc ImageItem.h
+  moc QGraphicsViews.h
+  moc QGraphicsScenes.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc ImageSource.h
+  frmImageSource.cpp
   ImageItem.cpp
   mytitlebar.cpp
   QGraphicsScenes.cpp
   QGraphicsViews.cpp
   Toolnterface.cpp
-G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageSource\CommTools\Camera\MindVision\Include\CameraApi.h(5210,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 (编译源文件 Toolnterface.cpp)
   BaseItem.cpp
   ControlItem.cpp
   ImageSource.cpp
-G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageSource\CommTools\Camera\MindVision\Include\CameraApi.h(5210,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 (编译源文件 frmImageSource.cpp)
-G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageSource\CommTools\Camera\MindVision\Include\CameraApi.h(5210,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 (编译源文件 ImageSource.cpp)
   qrc_sub_res.cpp
   moc_QToolBase.cpp
   moc_Toolnterface.cpp
@@ -21,9 +33,5 @@ G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugi
   moc_BaseItem.cpp
   moc_ControlItem.cpp
   moc_ImageSource.cpp
-G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageSource\CommTools\Camera\MindVision\Include\CameraApi.h(5210,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 (编译源文件 x64\Release\moc\moc_QToolBase.cpp)
-G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageSource\CommTools\Camera\MindVision\Include\CameraApi.h(5210,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 (编译源文件 x64\Release\moc\moc_Toolnterface.cpp)
-G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageSource\CommTools\Camera\MindVision\Include\CameraApi.h(5210,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 (编译源文件 x64\Release\moc\moc_frmImageSource.cpp)
-G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageSource\CommTools\Camera\MindVision\Include\CameraApi.h(5210,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 (编译源文件 x64\Release\moc\moc_ImageSource.cpp)
     正在创建库 ../../../QSoftExe/Release/Plugins/A_ImageSource.lib 和对象 ../../../QSoftExe/Release/Plugins/A_ImageSource.exp
   A_ImageSource.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\A_ImageSource.dll

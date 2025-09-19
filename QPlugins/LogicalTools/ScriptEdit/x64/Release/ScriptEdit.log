@@ -1,5 +1,15 @@
-﻿   Qt/MSBuild: 3.4.0.1
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
+  uic frmScriptEdit.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc frmScriptEdit.h
+  moc codeeditor.h
+  moc highlighter.h
+  moc mytitlebar.h
+  moc QToolBase.h
+  moc ScriptEdit.h
   codeeditor.cpp
   gvariable.cpp
   highlighter.cpp
