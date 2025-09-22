@@ -1767,6 +1767,7 @@ QString frmScriptEdit::GetIconName(QString Name)
 	if (Name.contains("导出CSV")) IconName = ":/resource/export_csv.png";
 	if (Name.contains("YoloV13")) IconName = ":/resource/classifier.png";
 	if (Name.contains("OCR")) IconName = ":/resource/ocr.png";
+	if (Name.contains("二维码生成")) IconName = ":/resource/qrcode.png";
 	return IconName;
 }
 
@@ -1904,7 +1905,7 @@ void frmScriptEdit::slot_ListClick(QModelIndex index)
 	toolNames.clear();
 	toolNames << "全局变量" << "获取图像" << "图像显示" << "导出图像" << "预处理" << "图像拼接" << "图像修复" << "图像细化" << "图像翻转" << "图像旋转" << "透视变换" << "裁切图像" << "创建ROI" << "条形码识别" << "斑点分析" << "二维码识别"
 		<< "字符识别" << "分类器" << "颜色识别" << "亮度检测" << "图像清晰度" << "轮廓特征选择" << "N点标定" << "畸变标定" << "测量标定" << "灰度匹配" << "形状匹配" << "目标跟踪" << "线性计算" << "寻找圆" << "寻找直线" << "拟合圆" << "拟合椭圆" << "拟合直线" << "获取边界点"
-		<< "线圆交点" << "点+点" << "点+线" << "线线交点" << "查找圆缺角" << "边缘宽度测量" << "拟合平面" << "扩展库" << "跳转语句" << "判断语句" << "结束语句" << "脚本编辑" << "TCP/IP服务器" << "TCP/IP客户端" << "PLC通信" << "串口通信" << "通用I/O" << "延时" << "导出CSV" << "YoloV" << "OCR";
+		<< "线圆交点" << "点+点" << "点+线" << "线线交点" << "查找圆缺角" << "边缘宽度测量" << "拟合平面" << "扩展库" << "跳转语句" << "判断语句" << "结束语句" << "脚本编辑" << "TCP/IP服务器" << "TCP/IP客户端" << "PLC通信" << "串口通信" << "通用I/O" << "延时" << "导出CSV" << "YoloV" << "OCR" << "二维码生成" << "自动打印";
 	//清空Table
 	int rowNum = ui.tableWidget->rowCount();
 	for (int i = rowNum - 1; i >= 0; i--)
@@ -4302,6 +4303,86 @@ void frmScriptEdit::slot_ListClick(QModelIndex index)
 						item_variable_type = new QTableWidgetItem("vector<QString>");
 						break;
 					case 1:
+						item_variable_name = new QTableWidgetItem(GetToolBase()->m_Tools[j].PublicToolName + ".状态");
+						item_variable_value = new QTableWidgetItem("PublicResult.State");
+						item_variable_type = new QTableWidgetItem("Bool");
+						break;
+					}
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //设置列不可编辑	
+					item_variable_name->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 1, item_variable_name);
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //设置列不可编辑	
+					item_variable_value->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 2, item_variable_value);
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //设置列不可编辑	
+					item_variable_type->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 3, item_variable_type);
+				}
+			}
+		}
+		break;
+	case 56:
+		//二维码生成
+		for (int j = 0; j < GetToolBase()->m_Tools.size(); j++)
+		{
+			QString toolName;
+			toolName = GetToolBase()->m_Tools[j].PublicToolName;
+			if (tool_name == toolName)
+			{
+				ui.tableWidget->setRowCount(2);  //设置行数	
+				for (int k = 0; k < 2; k++)
+				{
+					item_number = new QTableWidgetItem(QString::number(k + 1));
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //设置列不可编辑	
+					item_number->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 0, item_number);
+					switch (k) {
+					case 0:
+						item_variable_name = new QTableWidgetItem(GetToolBase()->m_Tools[j].PublicToolName + ".二维码");
+						item_variable_value = new QTableWidgetItem("PublicDetect.Code");
+						item_variable_type = new QTableWidgetItem("vector<QString>");
+						break;
+					case 1:
+						item_variable_name = new QTableWidgetItem(GetToolBase()->m_Tools[j].PublicToolName + ".状态");
+						item_variable_value = new QTableWidgetItem("PublicResult.State");
+						item_variable_type = new QTableWidgetItem("Bool");
+						break;
+					}
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //设置列不可编辑	
+					item_variable_name->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 1, item_variable_name);
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //设置列不可编辑	
+					item_variable_value->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 2, item_variable_value);
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //设置列不可编辑	
+					item_variable_type->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 3, item_variable_type);
+				}
+			}
+		}
+		break;
+	case 57:
+		//自动打印
+		for (int j = 0; j < GetToolBase()->m_Tools.size(); j++)
+		{
+			QString toolName;
+			toolName = GetToolBase()->m_Tools[j].PublicToolName;
+			if (tool_name == toolName)
+			{
+				ui.tableWidget->setRowCount(2);  //设置行数	
+				for (int k = 0; k < 2; k++)
+				{
+					item_number = new QTableWidgetItem(QString::number(k + 1));
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //设置列不可编辑	
+					item_number->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 0, item_number);
+					switch (k) {
+					/*case 0:
+						item_variable_name = new QTableWidgetItem(GetToolBase()->m_Tools[j].PublicToolName + ".二维码");
+						item_variable_value = new QTableWidgetItem("PublicDetect.Code");
+						item_variable_type = new QTableWidgetItem("vector<QString>");
+						break;*/
+					case 0:
 						item_variable_name = new QTableWidgetItem(GetToolBase()->m_Tools[j].PublicToolName + ".状态");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");

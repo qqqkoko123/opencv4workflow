@@ -638,11 +638,20 @@ QImage frmImageView::GetErrorImage(int tool_index)
 	int error_index = 0;
 	if(tool_index - 1 >= error_index && GetToolBase()->m_Tools[tool_index - 1].PublicResult.State)
 	{
-		return Mat2QImage(GetToolBase()->m_Tools[tool_index - 1].PublicImage.OutputImage);
+		if (!GetToolBase()->m_Tools[tool_index].PublicImage.OutputViewImage.isNull()) {
+			return GetToolBase()->m_Tools[tool_index - 1].PublicImage.OutputViewImage;
+		}
+		else {
+			return Mat2QImage(GetToolBase()->m_Tools[tool_index - 1].PublicImage.OutputImage);
+		}
+		
 	}
 	else if(tool_index - 1 >= 0)
 	{
 		return frmImageView::GetErrorImage(tool_index - 1);
+	}
+	else {
+		return QImage();
 	}
 }
 int frmImageView::ExecuteLink(const int int_link, const QString str_link, const QMap<QString, gVariable::Global_Var> variable_link)

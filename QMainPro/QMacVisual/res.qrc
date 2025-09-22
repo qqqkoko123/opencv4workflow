@@ -128,5 +128,6 @@
         <file>Bitmaps/save_layout.png</file>
         <file>res/ico/client.png</file>
         <file>res/ico/server.png</file>
+        <file>res/ico/print.png</file>
     </qresource>
 </RCC>

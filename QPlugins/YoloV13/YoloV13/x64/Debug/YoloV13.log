@@ -22,8 +22,8 @@
   mytitlebar.cpp
   QGraphicsScenes.cpp
   QGraphicsViews.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
   Toolnterface.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
   qrc_sub_res.cpp
   moc_QGraphicsViews.cpp
   moc_QGraphicsScenes.cpp

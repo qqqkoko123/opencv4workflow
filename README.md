@@ -16,3 +16,15 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 
 # 新增Data Matrix二维码扫描
 将libdmtx.dll放至debug/release下
+
+# 新增二维码生成
+将qrencoded.dll放至debug下，将qrencode.dll放至release下
+
+# 新增自动打印
+自动打印输出到连接Windows的打印机
+
+觉得好，请打赏我~
+
+![打赏码](https://i.imgs.ovh/2025/09/19/7TQv8b.th.jpeg)     ![打赏码](https://i.imgs.ovh/2025/09/19/7TQq8t.th.png)
+
+

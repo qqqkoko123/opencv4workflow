@@ -47,6 +47,9 @@ typedef void (*SetSkeleton)();
 //动态库--导出图像
 typedef int (*GetExportImage)();
 typedef void (*SetExportImage)();
+//动态库--自动打印
+typedef int (*GetImagePrint)();
+typedef void (*SetImagePrint)();
 #pragma endregion
 
 #pragma region 检测识别
@@ -65,6 +68,9 @@ typedef void (*SetColorIdentify)();
 //动态库--二维码识别
 typedef int (*GetQRcodeIdentify)();
 typedef void (*SetQRcodeIdentify)();
+//动态库--二维码生成
+typedef int (*GetQRcodeGenerate)();
+typedef void (*SetQRcodeGenerate)();
 //动态库--轮廓特征选择
 typedef int (*GetSelectShape)();
 typedef void (*SetSelectShape)();
@@ -542,6 +548,11 @@ private:
 	SetExportImage setExportImageState;
 	int nExportImageState;
 	int nExportImageState_buf;
+	//自动打印
+	GetImagePrint getImagePrintState;
+	SetImagePrint setImagePrintState;
+	int nImagePrintState;
+	int nImagePrintState_buf;
 #pragma endregion
 
 #pragma region 检测识别
@@ -570,6 +581,11 @@ private:
 	SetQRcodeIdentify setQRcodeIdentifyState;
 	int nQRcodeIdentifyState;
 	int nQRcodeIdentifyState_buf;
+	//二维码生成链接
+	GetQRcodeGenerate getQRcodeGenerateState;
+	SetQRcodeGenerate setQRcodeGenerateState;
+	int nQRcodeGenerateState;
+	int nQRcodeGenerateState_buf;
 	//轮廓特征选择链接
 	GetSelectShape getSelectShape;
 	SetSelectShape setSelectShape;

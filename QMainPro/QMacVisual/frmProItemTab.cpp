@@ -527,6 +527,19 @@ void frmProItemTab::timerEvent()
 				nSkeletonState = 0;
 			}
 		}
+		//自动打印
+		if (nImagePrintState_buf == 1)
+		{
+			nImagePrintState = getImagePrintState();
+			if (nImagePrintState == 1)
+			{
+				dataVar::int_link = 1;
+				frmLink* fLink = new frmLink();
+				fLink->exec();
+				setImagePrintState();
+				nImagePrintState = 0;
+			}
+		}
 		//导出图像
 		if (nExportImageState_buf == 1)
 		{
@@ -620,6 +633,19 @@ void frmProItemTab::timerEvent()
 				fLink->exec();
 				setQRcodeIdentifyState();
 				nQRcodeIdentifyState = 0;
+			}
+		}
+		//二维码生成
+		if (nQRcodeGenerateState_buf == 1)
+		{
+			nQRcodeGenerateState = getQRcodeGenerateState();
+			if (nQRcodeGenerateState == 1)
+			{
+				dataVar::int_link = 1;
+				frmLink* fLink = new frmLink();
+				fLink->exec();
+				setQRcodeGenerateState();
+				nQRcodeGenerateState = 0;
 			}
 		}
 		//轮廓特征选择
@@ -1489,6 +1515,8 @@ ToolNameList frmProItemTab::GetProcessItemNum(const QString itemName)
 	if (itemName.contains("导出CSV")) return ToolNameList::EXPORT_CSV;
 	if (itemName.contains("YoloV13")) return ToolNameList::YOLOV13;
 	if (itemName.contains("OCR")) return ToolNameList::OCR;
+	if (itemName.contains("二维码生成")) return ToolNameList::QRCODE_GENERATE;
+	if (itemName.contains("自动打印")) return ToolNameList::IMAGE_PRINT;
 	return ToolNameList::DEFULT_ERROR;
 }
 
@@ -1832,6 +1860,40 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			if (open)
 			{
 				nQRcodeIdentifyState_buf = 1;
+				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				frmPage->setObjectName(sToolName);
+				return frmPage;
+			}
+		}
+	}break;
+	case QRCODE_GENERATE: {
+		//二维码生成
+		QLibrary mylib("./Plugins/QRcodeGenerate.dll");   //声明所用到的dll文件
+		if (mylib.load())    //判断是否正确加载
+		{
+			getQRcodeGenerateState = (GetQRcodeGenerate)mylib.resolve("ShowFormState");
+			setQRcodeGenerateState = (SetQRcodeGenerate)mylib.resolve("SetFormState");
+			Funs open = (Funs)mylib.resolve("showDialog");
+			if (open)
+			{
+				nQRcodeGenerateState_buf = 1;
+				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				frmPage->setObjectName(sToolName);
+				return frmPage;
+			}
+		}
+	}break;
+	case IMAGE_PRINT: {
+		//自动打印
+		QLibrary mylib("./Plugins/ImagePrint.dll");   //声明所用到的dll文件
+		if (mylib.load())    //判断是否正确加载
+		{
+			getImagePrintState = (GetImagePrint)mylib.resolve("ShowFormState");
+			setImagePrintState = (SetImagePrint)mylib.resolve("SetFormState");
+			Funs open = (Funs)mylib.resolve("showDialog");
+			if (open)
+			{
+				nImagePrintState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
 				frmPage->setObjectName(sToolName);
 				return frmPage;

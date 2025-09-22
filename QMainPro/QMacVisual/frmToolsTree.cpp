@@ -273,5 +273,7 @@ QString frmToolsTree::GetIconName(QString Name)
 	if (Name.contains("导出CSV")) IconName = ":/res/ico/export_csv.png";
 	if (Name.contains("YoloV13")) IconName = ":/res/ico/classifier.png";
 	if (Name.contains("OCR")) IconName = ":/res/ico/ocr.png";
+	if (Name.contains("二维码生成")) IconName = ":/res/ico/qrcode.png";
+	if (Name.contains("自动打印")) IconName = ":/res/ico/print.png";
 	return IconName;
 }

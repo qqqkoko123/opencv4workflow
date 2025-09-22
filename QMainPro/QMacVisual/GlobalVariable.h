@@ -64,6 +64,8 @@ enum ToolNameList
     EXPORT_CSV,                    //导出CSV 
     YOLOV13,                       //YoloV13 
     OCR,                           //OCR 
+    QRCODE_GENERATE,               //二维码生成
+    IMAGE_PRINT,               //自动打印
 	DEFULT_ERROR,
 };
 
