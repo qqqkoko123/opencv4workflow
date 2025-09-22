@@ -7,12 +7,12 @@ QRcodeIdentify::QRcodeIdentify()
 
 QString QRcodeIdentify::name()
 {
-    return "二维码生成";
+    return "自动打印";
 }
 
 QString QRcodeIdentify::information()
 {
-    return "检测识别";
+    return "图像处理";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)
