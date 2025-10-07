@@ -729,7 +729,7 @@ QSpinBox::down-arrow{
          <number>1</number>
         </property>
         <property name="maximum">
-         <number>100</number>
+         <number>9999999</number>
         </property>
         <property name="value">
          <number>5</number>
@@ -1079,7 +1079,7 @@ QCheckBox::indicator::checked {
          <rect>
           <x>10</x>
           <y>160</y>
-          <width>161</width>
+          <width>131</width>
           <height>31</height>
          </rect>
         </property>
@@ -1108,6 +1108,45 @@ QCheckBox::indicator::checked {
         </property>
         <property name="text">
          <string>是否使用米粒计数</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="isActureDistance_6">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>160</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox{
+    color: rgb(30, 30, 30);
+	border-style: flat;
+	background: transparent;
+}
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;    
+}
+QCheckBox::indicator::unchecked {
+    image: url(:/resource/untick.png);
+}
+QCheckBox::indicator::checked {
+    image: url(:/resource/tick.png);
+};</string>
+        </property>
+        <property name="text">
+         <string>是否测量长度</string>
         </property>
         <property name="checked">
          <bool>false</bool>

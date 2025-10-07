@@ -61,14 +61,17 @@ void MainWidget::doClose()
     }
     else
     {
-        if (gVariable::CameraVar.hikvision_haldle_value != nullptr)
+        if (!gVariable::CameraVar.m_hDevHandleList->isEmpty())
         {
-            //停止相机抓图
-            int tempValue = MV_CC_StopGrabbing(gVariable::CameraVar.hikvision_haldle_value);
-            //释放相机资源
-            int nRet = MV_CC_CloseDevice(gVariable::CameraVar.hikvision_haldle_value);
-            //反初始化相机
-            MV_CC_Finalize();
+            for (int i = 0; i < gVariable::CameraVar.m_hDevHandleList->size(); i++)
+            {
+                //停止相机抓图
+                int tempValue = MV_CC_StopGrabbing(gVariable::CameraVar.m_hDevHandleList->at(i));
+                //释放相机资源
+                int nRet = MV_CC_CloseDevice(gVariable::CameraVar.m_hDevHandleList->at(i));
+                //反初始化相机
+                MV_CC_Finalize();
+            }
         }
         m_pHeadWidget->close();
         m_pHeadWidget->deleteLater();

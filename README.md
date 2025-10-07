@@ -23,8 +23,28 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 # 新增自动打印
 自动打印输出到连接Windows的打印机
 
-觉得好，请打赏我~
+### 示例图片
+
+# 海康摄像头
+[![76DrSb.png](https://i.imgs.ovh/2025/09/29/76DrSb.png)](https://imgloc.com/image/76DrSb)  
+# 汇川PLC读写
+[![76D8j4.png](https://i.imgs.ovh/2025/09/29/76D8j4.png)](https://imgloc.com/image/76D8j4)
+# OCR
+[![76DsdN.png](https://i.imgs.ovh/2025/09/29/76DsdN.png)](https://imgloc.com/image/76DsdN)
+# YOLOV13
+[![76DK10.png](https://i.imgs.ovh/2025/09/29/76DK10.png)](https://imgloc.com/image/76DK10)
+# 二维码（DataMatrix、QRCode）生成
+[![76DhPb.png](https://i.imgs.ovh/2025/09/29/76DhPb.png)](https://imgloc.com/image/76DhPb)
+# 米粒计数和检测
+[![76DN1e.png](https://i.imgs.ovh/2025/09/29/76DN1e.png)](https://imgloc.com/image/76DN1e)
+# 距离测量
+[![76MSTQ.png](https://i.imgs.ovh/2025/09/29/76MSTQ.png)](https://imgloc.com/image/76MSTQ)
+# 自动打印
+[![76MTmm.png](https://i.imgs.ovh/2025/09/29/76MTmm.png)](https://imgloc.com/image/76MTmm)
+
+# 觉得好，请打赏我~
 
 ![打赏码](https://i.imgs.ovh/2025/09/19/7TQv8b.th.jpeg)     ![打赏码](https://i.imgs.ovh/2025/09/19/7TQq8t.th.png)
+
 
 

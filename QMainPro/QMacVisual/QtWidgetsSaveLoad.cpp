@@ -1449,28 +1449,31 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 	}
 	else if (tool_name == "边缘宽度测量")
 	{
-		InitEdgeWidthMeasureData init_data;
-		init_data = var.value<InitEdgeWidthMeasureData>();
-		WidgetInfo wi_dataList;
-		wi_dataList.use_roi = init_data.use_roi;
-		wi_dataList.type = init_data.type;
-		wi_dataList.x1 = init_data.x1;
-		wi_dataList.y1 = init_data.y1;
-		wi_dataList.x2 = init_data.x2;
-		wi_dataList.y2 = init_data.y2;
-		wi_dataList.height = init_data.height;
-		wi_dataList.row = init_data.row;
-		wi_dataList.col = init_data.col;
-		wi_dataList.len1 = init_data.len1;
-		wi_dataList.len2 = init_data.len2;
-		wi_dataList.angle = init_data.angle;
-		wi_dataList.pp1 = init_data.pp1;
-		wi_dataList.pp2 = init_data.pp2;
-		wi_dataList.segment_line_num = init_data.segment_line_num;
-		wi_dataList.line_s_points = init_data.line_s_points;
-		wi_dataList.line_b_points = init_data.line_b_points;
-		wi_dataList.color = init_data.color;
-		dataEdgeWidthMeasureList[index].append(wi_dataList);
+		for (int i  = 0;i  < var.toList().size();i ++)
+		{
+			InitEdgeWidthMeasureData init_data;
+			init_data = var.toList()[i].value<InitEdgeWidthMeasureData>();
+			WidgetInfo wi_dataList;
+			wi_dataList.use_roi = init_data.use_roi;
+			wi_dataList.type = init_data.type;
+			wi_dataList.x1 = init_data.x1;
+			wi_dataList.y1 = init_data.y1;
+			wi_dataList.x2 = init_data.x2;
+			wi_dataList.y2 = init_data.y2;
+			wi_dataList.height = init_data.height;
+			wi_dataList.row = init_data.row;
+			wi_dataList.col = init_data.col;
+			wi_dataList.len1 = init_data.len1;
+			wi_dataList.len2 = init_data.len2;
+			wi_dataList.angle = init_data.angle;
+			wi_dataList.pp1 = init_data.pp1;
+			wi_dataList.pp2 = init_data.pp2;
+			wi_dataList.segment_line_num = init_data.segment_line_num;
+			wi_dataList.line_s_points = init_data.line_s_points;
+			wi_dataList.line_b_points = init_data.line_b_points;
+			wi_dataList.color = init_data.color;
+			dataEdgeWidthMeasureList[index].append(wi_dataList);
+		}		
 	}
 	else if (tool_name == "导出CSV")
 	{
@@ -2739,30 +2742,32 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 				else if (str_name_buf == "边缘宽度测量")
 				{
 					++edge_width_measure_count;
+					QVariantList varList = QVariantList();
 					for (int s = 0; s < dataEdgeWidthMeasureList[m].size(); s++)
 					{
 						InitEdgeWidthMeasureData init_data;
-						init_data.use_roi = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).use_roi;
-						init_data.type = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).type;
-						init_data.x1 = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).x1;
-						init_data.y1 = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).y1;
-						init_data.x2 = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).x2;
-						init_data.y2 = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).y2;
-						init_data.height = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).height;
-						init_data.row = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).row;
-						init_data.col = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).col;
-						init_data.len1 = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).len1;
-						init_data.len2 = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).len2;
-						init_data.angle = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).angle;
-						init_data.pp1 = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).pp1;
-						init_data.pp2 = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).pp2;
-						init_data.segment_line_num = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).segment_line_num;
-						init_data.line_s_points = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).line_s_points;
-						init_data.line_b_points = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).line_b_points;
-						init_data.color = dataEdgeWidthMeasureList[m].at(edge_width_measure_count).color;
+						init_data.use_roi = dataEdgeWidthMeasureList[m].at(s).use_roi;
+						init_data.type = dataEdgeWidthMeasureList[m].at(s).type;
+						init_data.x1 = dataEdgeWidthMeasureList[m].at(s).x1;
+						init_data.y1 = dataEdgeWidthMeasureList[m].at(s).y1;
+						init_data.x2 = dataEdgeWidthMeasureList[m].at(s).x2;
+						init_data.y2 = dataEdgeWidthMeasureList[m].at(s).y2;
+						init_data.height = dataEdgeWidthMeasureList[m].at(s).height;
+						init_data.row = dataEdgeWidthMeasureList[m].at(s).row;
+						init_data.col = dataEdgeWidthMeasureList[m].at(s).col;
+						init_data.len1 = dataEdgeWidthMeasureList[m].at(s).len1;
+						init_data.len2 = dataEdgeWidthMeasureList[m].at(s).len2;
+						init_data.angle = dataEdgeWidthMeasureList[m].at(s).angle;
+						init_data.pp1 = dataEdgeWidthMeasureList[m].at(s).pp1;
+						init_data.pp2 = dataEdgeWidthMeasureList[m].at(s).pp2;
+						init_data.segment_line_num = dataEdgeWidthMeasureList[m].at(s).segment_line_num;
+						init_data.line_s_points = dataEdgeWidthMeasureList[m].at(s).line_s_points;
+						init_data.line_b_points = dataEdgeWidthMeasureList[m].at(s).line_b_points;
+						init_data.color = dataEdgeWidthMeasureList[m].at(s).color;
 						QVariant var = QVariant::fromValue(init_data);
-						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
+						varList.append(var);
 					}
+					QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(varList);
 				}
 				else if (str_name_buf == "导出CSV")
 				{
@@ -2879,6 +2884,18 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
+				else if (str_name_buf == "OCR")
+				{
+					++image_source_count;
+					for (int s = 0; s < dataImageSourceList[m].size(); s++)
+					{
+						InitImageSourceData init_data;
+						init_data.camera_index = dataImageSourceList[m].at(image_source_count).camera_index;
+						init_data.g_camera = dataImageSourceList[m].at(image_source_count).g_camera;
+						QVariant var = QVariant::fromValue(init_data);
+						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
+					}
+					}
 			}
 		}
 	}

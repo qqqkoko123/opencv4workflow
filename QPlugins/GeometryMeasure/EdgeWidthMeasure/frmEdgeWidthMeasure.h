@@ -79,6 +79,16 @@ private:
 	cv::Point2f AffineTransformPoint(const cv::Point2f match_origin_point, const double match_origin_angle, const cv::Point2f match_current_point, const double match_current_angle, const cv::Point2f input_point);
 	QImage Mat2QImage(const cv::Mat& mat);
 
+	double getLength(cv::Mat srcImage);
+
+	cv::Mat convertTo3Channel(const CaliperP& caliper);
+
+	cv::Mat convertToMat(const CaliperP& caliper);
+
+	cv::Mat caliperToMat(const cv::Mat& srcImage, const CaliperP& caliper);
+
+	cv::Mat extractCaliperRegion(const cv::Mat& srcImage, const CaliperP& caliper);
+
 private:	
 	gVariable gvariable;
 	QGraphicsViews* view;
@@ -89,6 +99,7 @@ private:
 	int image_index = 0;
 	int tool_index = 0;
 	Caliper* caliper_item;
+	QList<Caliper*> caliper_itemList = QList<Caliper*>();
 	CaliperP caliper_p;
 	QColor color;
 	cv::Point2f match_origin_point, match_current_point;
@@ -105,6 +116,7 @@ private:
 	double k;  //斜率
 	double b;  //截距	
 	double Distance;
+	QList<double> DistanceList;
 };
 
 //全局变量控制

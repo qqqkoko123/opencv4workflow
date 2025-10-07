@@ -75,7 +75,6 @@ int Toolnterface::ExecuteScriptEditLink(const QMap<QToolBase*, gVariable::Script
 {
 	return -1;
 }
-
 QVariant Toolnterface::InitGetToolData()
 {
 	return -1;

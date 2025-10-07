@@ -22,6 +22,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
@@ -43,14 +44,19 @@ public:
     QGroupBox *groupC_2;
     QLabel *label_5;
     QComboBox *comboMode;
+    QPushButton *btnTestImage_2;
     QGroupBox *groupC6;
     QTextEdit *txtMsg;
     QGroupBox *groupC3;
     QGroupBox *groupC4;
-    QDoubleSpinBox *spinMulValue;
-    QLabel *label_52;
+    QLabel *label_53;
+    QSpinBox *spinBox;
+    QLabel *label_54;
+    QSpinBox *spinBox_2;
     QPushButton *btnTestImage;
     QLabel *label_8;
+    QDoubleSpinBox *spinMulValue;
+    QLabel *label_52;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QLabel *label_3;
@@ -188,6 +194,21 @@ public:
 "    left: 1px;\n"
 "}"));
         comboMode->setEditable(false);
+        btnTestImage_2 = new QPushButton(groupC_2);
+        btnTestImage_2->setObjectName(QString::fromUtf8("btnTestImage_2"));
+        btnTestImage_2->setGeometry(QRect(330, 30, 83, 32));
+        sizePolicy.setHeightForWidth(btnTestImage_2->sizePolicy().hasHeightForWidth());
+        btnTestImage_2->setSizePolicy(sizePolicy);
+        btnTestImage_2->setMinimumSize(QSize(60, 30));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font1.setPointSize(9);
+        btnTestImage_2->setFont(font1);
+        btnTestImage_2->setStyleSheet(QString::fromUtf8("QWidget{ background-color: rgba(9, 42, 87, 200);}\n"
+"QWidget{ color: rgb(235, 235, 235);}\n"
+"QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}\n"
+"QPushButton:hover{ background-color: rgb(9, 62, 87);}\n"
+"QPushButton:pressed{background-color: rgb(9, 82, 87);}"));
         groupC6 = new QGroupBox(tab);
         groupC6->setObjectName(QString::fromUtf8("groupC6"));
         groupC6->setGeometry(QRect(9, 365, 427, 152));
@@ -197,9 +218,9 @@ public:
         txtMsg = new QTextEdit(groupC6);
         txtMsg->setObjectName(QString::fromUtf8("txtMsg"));
         txtMsg->setGeometry(QRect(4, 32, 419, 117));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        txtMsg->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        txtMsg->setFont(font2);
         txtMsg->setStyleSheet(QString::fromUtf8("QTextEdit         \n"
 "{\n"
 "    background-color: rgba(180, 180, 215,120);    \n"
@@ -254,13 +275,86 @@ public:
         groupC4->setFont(font);
         groupC4->setStyleSheet(QString::fromUtf8("background-color: #acbbac;\n"
 "color: rgb(0, 0, 127);"));
-        spinMulValue = new QDoubleSpinBox(groupC4);
+        label_53 = new QLabel(groupC4);
+        label_53->setObjectName(QString::fromUtf8("label_53"));
+        label_53->setGeometry(QRect(10, 30, 83, 19));
+        label_53->setFont(font);
+        label_53->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
+"background: transparent;"));
+        spinBox = new QSpinBox(groupC4);
+        spinBox->setObjectName(QString::fromUtf8("spinBox"));
+        spinBox->setGeometry(QRect(110, 21, 81, 31));
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
+        font3.setPointSize(11);
+        spinBox->setFont(font3);
+        spinBox->setStyleSheet(QString::fromUtf8("QWidget{color: rgb(85, 0, 255);background-color: rgb(180, 180, 210);}\n"
+"QSpinBox::up-button{\n"
+"    border:transparent;\n"
+"}\n"
+"QSpinBox::down-button{\n"
+"    border:transparent;\n"
+"}\n"
+"QSpinBox::up-arrow{\n"
+"    image:url(:/resource/up.png);\n"
+"}\n"
+"QSpinBox::down-arrow{\n"
+"    image:url(:/resource/down.png);\n"
+"}"));
+        spinBox->setMaximum(9999999);
+        spinBox->setValue(100);
+        label_54 = new QLabel(groupC4);
+        label_54->setObjectName(QString::fromUtf8("label_54"));
+        label_54->setGeometry(QRect(210, 30, 83, 19));
+        label_54->setFont(font);
+        label_54->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
+"background: transparent;"));
+        spinBox_2 = new QSpinBox(groupC4);
+        spinBox_2->setObjectName(QString::fromUtf8("spinBox_2"));
+        spinBox_2->setGeometry(QRect(290, 20, 81, 31));
+        spinBox_2->setFont(font3);
+        spinBox_2->setStyleSheet(QString::fromUtf8("QWidget{color: rgb(85, 0, 255);background-color: rgb(180, 180, 210);}\n"
+"QSpinBox::up-button{\n"
+"    border:transparent;\n"
+"}\n"
+"QSpinBox::down-button{\n"
+"    border:transparent;\n"
+"}\n"
+"QSpinBox::up-arrow{\n"
+"    image:url(:/resource/up.png);\n"
+"}\n"
+"QSpinBox::down-arrow{\n"
+"    image:url(:/resource/down.png);\n"
+"}"));
+        spinBox_2->setMaximum(9999999);
+        spinBox_2->setValue(100);
+        btnTestImage = new QPushButton(groupC3);
+        btnTestImage->setObjectName(QString::fromUtf8("btnTestImage"));
+        btnTestImage->setGeometry(QRect(334, 120, 83, 32));
+        sizePolicy.setHeightForWidth(btnTestImage->sizePolicy().hasHeightForWidth());
+        btnTestImage->setSizePolicy(sizePolicy);
+        btnTestImage->setMinimumSize(QSize(60, 30));
+        btnTestImage->setFont(font1);
+        btnTestImage->setStyleSheet(QString::fromUtf8("QWidget{ background-color: rgba(9, 42, 87, 200);}\n"
+"QWidget{ color: rgb(235, 235, 235);}\n"
+"QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}\n"
+"QPushButton:hover{ background-color: rgb(9, 62, 87);}\n"
+"QPushButton:pressed{background-color: rgb(9, 82, 87);}"));
+        label_8 = new QLabel(groupC3);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        label_8->setGeometry(QRect(285, 118, 43, 35));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
+        font4.setPointSize(12);
+        label_8->setFont(font4);
+        label_8->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
+"background: transparent;"));
+        label_8->setPixmap(QPixmap(QString::fromUtf8(":/resource/a_right.png")));
+        label_8->setScaledContents(true);
+        spinMulValue = new QDoubleSpinBox(groupC3);
         spinMulValue->setObjectName(QString::fromUtf8("spinMulValue"));
-        spinMulValue->setGeometry(QRect(97, 32, 85, 27));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font2.setPointSize(11);
-        spinMulValue->setFont(font2);
+        spinMulValue->setGeometry(QRect(120, 120, 85, 27));
+        spinMulValue->setFont(font3);
         spinMulValue->setStyleSheet(QString::fromUtf8("QWidget{color: rgb(85, 0, 255);background-color: rgb(180, 180, 210);}\n"
 "QDoubleSpinBox::up-button{\n"
 "    border:transparent;\n"
@@ -279,38 +373,12 @@ public:
         spinMulValue->setMaximum(21.000000000000000);
         spinMulValue->setSingleStep(0.010000000000000);
         spinMulValue->setValue(0.003000000000000);
-        label_52 = new QLabel(groupC4);
+        label_52 = new QLabel(groupC3);
         label_52->setObjectName(QString::fromUtf8("label_52"));
-        label_52->setGeometry(QRect(13, 36, 83, 19));
+        label_52->setGeometry(QRect(20, 120, 83, 19));
         label_52->setFont(font);
         label_52->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
 "background: transparent;"));
-        btnTestImage = new QPushButton(groupC3);
-        btnTestImage->setObjectName(QString::fromUtf8("btnTestImage"));
-        btnTestImage->setGeometry(QRect(334, 120, 83, 32));
-        sizePolicy.setHeightForWidth(btnTestImage->sizePolicy().hasHeightForWidth());
-        btnTestImage->setSizePolicy(sizePolicy);
-        btnTestImage->setMinimumSize(QSize(60, 30));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("\345\276\256\350\275\257\351\233\205\351\273\221"));
-        font3.setPointSize(9);
-        btnTestImage->setFont(font3);
-        btnTestImage->setStyleSheet(QString::fromUtf8("QWidget{ background-color: rgba(9, 42, 87, 200);}\n"
-"QWidget{ color: rgb(235, 235, 235);}\n"
-"QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}\n"
-"QPushButton:hover{ background-color: rgb(9, 62, 87);}\n"
-"QPushButton:pressed{background-color: rgb(9, 82, 87);}"));
-        label_8 = new QLabel(groupC3);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setGeometry(QRect(285, 118, 43, 35));
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("\351\273\221\344\275\223"));
-        font4.setPointSize(12);
-        label_8->setFont(font4);
-        label_8->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
-"background: transparent;"));
-        label_8->setPixmap(QPixmap(QString::fromUtf8(":/resource/a_right.png")));
-        label_8->setScaledContents(true);
         tabWidget->addTab(tab, QString());
 
         gridLayout->addWidget(tabWidget, 1, 0, 1, 1);
@@ -413,12 +481,15 @@ public:
         comboMode->setItemText(1, QCoreApplication::translate("frmQRcodeIdentifyClass", "DM", nullptr));
 
         comboMode->setCurrentText(QCoreApplication::translate("frmQRcodeIdentifyClass", "QRCode", nullptr));
+        btnTestImage_2->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\347\224\237\346\210\220\345\233\276\345\203\217", nullptr));
         groupC6->setTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\344\272\214\347\273\264\347\240\201\345\206\205\345\256\271", nullptr));
         groupC3->setTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\344\272\214\347\273\264\347\240\201\345\217\202\346\225\260", nullptr));
         groupC4->setTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\345\233\276\345\203\217\347\233\270\344\271\230\345\217\202\346\225\260", nullptr));
-        label_52->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\347\233\270\344\271\230\347\263\273\346\225\260\357\274\232", nullptr));
+        label_53->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\345\233\276\345\203\217\345\256\275\345\272\246\357\274\232", nullptr));
+        label_54->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\345\233\276\345\203\217\351\253\230\345\272\246\357\274\232", nullptr));
         btnTestImage->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\346\265\213\350\257\225\345\233\276\345\203\217", nullptr));
         label_8->setText(QString());
+        label_52->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\347\233\270\344\271\230\347\263\273\346\225\260\357\274\232", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("frmQRcodeIdentifyClass", "\345\237\272\346\234\254\350\256\276\347\275\256", nullptr));
         label_3->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\345\215\225\345\205\203\346\217\217\350\277\260\357\274\232", nullptr));
         btnExecute->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\346\211\247\350\241\214", nullptr));

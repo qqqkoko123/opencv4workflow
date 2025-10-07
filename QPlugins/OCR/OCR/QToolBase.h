@@ -92,6 +92,7 @@ typedef struct VisionToolGeometry
 	cv::Point2f Center;  //中心坐标/圆心坐标
 	double Angle;  //角度/夹角
 	double Distance;  //距离/边缘宽度
+	QList<double> DistanceList;  //距离/边缘宽度数组
 	double k;  //斜率
 	double b;  //截距
 	double Radius;  //半径

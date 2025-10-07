@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_frmCameraSetUp_t {
-    QByteArrayData data[51];
-    char stringdata0[682];
+    QByteArrayData data[53];
+    char stringdata0[694];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,59 +42,61 @@ QT_MOC_LITERAL(6, 99, 8), // "uint32_t"
 QT_MOC_LITERAL(7, 108, 5), // "ipInt"
 QT_MOC_LITERAL(8, 114, 21), // "on_btnConnect_clicked"
 QT_MOC_LITERAL(9, 136, 15), // "connectHikVison"
-QT_MOC_LITERAL(10, 152, 11), // "startCamera"
-QT_MOC_LITERAL(11, 164, 10), // "stopCamera"
-QT_MOC_LITERAL(12, 175, 11), // "closeCamera"
-QT_MOC_LITERAL(13, 187, 11), // "softTrigger"
-QT_MOC_LITERAL(14, 199, 10), // "ReadBuffer"
-QT_MOC_LITERAL(15, 210, 8), // "cv::Mat&"
-QT_MOC_LITERAL(16, 219, 5), // "image"
-QT_MOC_LITERAL(17, 225, 9), // "getHeight"
-QT_MOC_LITERAL(18, 235, 8), // "getWidth"
-QT_MOC_LITERAL(19, 244, 15), // "getExposureTime"
-QT_MOC_LITERAL(20, 260, 9), // "setHeight"
-QT_MOC_LITERAL(21, 270, 6), // "height"
-QT_MOC_LITERAL(22, 277, 8), // "setWidth"
-QT_MOC_LITERAL(23, 286, 5), // "width"
-QT_MOC_LITERAL(24, 292, 10), // "setOffsetX"
-QT_MOC_LITERAL(25, 303, 7), // "offsetX"
-QT_MOC_LITERAL(26, 311, 10), // "setOffsetY"
-QT_MOC_LITERAL(27, 322, 7), // "offsetY"
-QT_MOC_LITERAL(28, 330, 14), // "setTriggerMode"
-QT_MOC_LITERAL(29, 345, 14), // "TriggerModeNum"
-QT_MOC_LITERAL(30, 360, 16), // "setTriggerSource"
-QT_MOC_LITERAL(31, 377, 16), // "TriggerSourceNum"
-QT_MOC_LITERAL(32, 394, 18), // "setFrameRateEnable"
-QT_MOC_LITERAL(33, 413, 4), // "comm"
-QT_MOC_LITERAL(34, 418, 16), // "setHeartBeatTime"
-QT_MOC_LITERAL(35, 435, 4), // "time"
-QT_MOC_LITERAL(36, 440, 15), // "setExposureTime"
-QT_MOC_LITERAL(37, 456, 15), // "ExposureTimeNum"
-QT_MOC_LITERAL(38, 472, 15), // "setExposureAuto"
-QT_MOC_LITERAL(39, 488, 16), // "exposureAutoFlag"
-QT_MOC_LITERAL(40, 505, 11), // "setGainAuto"
-QT_MOC_LITERAL(41, 517, 12), // "gainAutoFlag"
-QT_MOC_LITERAL(42, 530, 11), // "clearBuffer"
-QT_MOC_LITERAL(43, 542, 24), // "on_btnDisconnect_clicked"
-QT_MOC_LITERAL(44, 567, 18), // "on_btnSave_clicked"
-QT_MOC_LITERAL(45, 586, 11), // "slot_MoveUp"
-QT_MOC_LITERAL(46, 598, 13), // "slot_MoveDown"
-QT_MOC_LITERAL(47, 612, 15), // "slot_DeleteName"
-QT_MOC_LITERAL(48, 628, 18), // "slot_DoubleClicked"
-QT_MOC_LITERAL(49, 647, 17), // "InitCameraConnect"
-QT_MOC_LITERAL(50, 665, 16) // "camera_key_value"
+QT_MOC_LITERAL(10, 152, 4), // "type"
+QT_MOC_LITERAL(11, 157, 11), // "startCamera"
+QT_MOC_LITERAL(12, 169, 6), // "handle"
+QT_MOC_LITERAL(13, 176, 10), // "stopCamera"
+QT_MOC_LITERAL(14, 187, 11), // "closeCamera"
+QT_MOC_LITERAL(15, 199, 11), // "softTrigger"
+QT_MOC_LITERAL(16, 211, 10), // "ReadBuffer"
+QT_MOC_LITERAL(17, 222, 8), // "cv::Mat&"
+QT_MOC_LITERAL(18, 231, 5), // "image"
+QT_MOC_LITERAL(19, 237, 9), // "getHeight"
+QT_MOC_LITERAL(20, 247, 8), // "getWidth"
+QT_MOC_LITERAL(21, 256, 15), // "getExposureTime"
+QT_MOC_LITERAL(22, 272, 9), // "setHeight"
+QT_MOC_LITERAL(23, 282, 6), // "height"
+QT_MOC_LITERAL(24, 289, 8), // "setWidth"
+QT_MOC_LITERAL(25, 298, 5), // "width"
+QT_MOC_LITERAL(26, 304, 10), // "setOffsetX"
+QT_MOC_LITERAL(27, 315, 7), // "offsetX"
+QT_MOC_LITERAL(28, 323, 10), // "setOffsetY"
+QT_MOC_LITERAL(29, 334, 7), // "offsetY"
+QT_MOC_LITERAL(30, 342, 14), // "setTriggerMode"
+QT_MOC_LITERAL(31, 357, 14), // "TriggerModeNum"
+QT_MOC_LITERAL(32, 372, 16), // "setTriggerSource"
+QT_MOC_LITERAL(33, 389, 16), // "TriggerSourceNum"
+QT_MOC_LITERAL(34, 406, 18), // "setFrameRateEnable"
+QT_MOC_LITERAL(35, 425, 4), // "comm"
+QT_MOC_LITERAL(36, 430, 16), // "setHeartBeatTime"
+QT_MOC_LITERAL(37, 447, 4), // "time"
+QT_MOC_LITERAL(38, 452, 15), // "setExposureTime"
+QT_MOC_LITERAL(39, 468, 15), // "ExposureTimeNum"
+QT_MOC_LITERAL(40, 484, 15), // "setExposureAuto"
+QT_MOC_LITERAL(41, 500, 16), // "exposureAutoFlag"
+QT_MOC_LITERAL(42, 517, 11), // "setGainAuto"
+QT_MOC_LITERAL(43, 529, 12), // "gainAutoFlag"
+QT_MOC_LITERAL(44, 542, 11), // "clearBuffer"
+QT_MOC_LITERAL(45, 554, 24), // "on_btnDisconnect_clicked"
+QT_MOC_LITERAL(46, 579, 18), // "on_btnSave_clicked"
+QT_MOC_LITERAL(47, 598, 11), // "slot_MoveUp"
+QT_MOC_LITERAL(48, 610, 13), // "slot_MoveDown"
+QT_MOC_LITERAL(49, 624, 15), // "slot_DeleteName"
+QT_MOC_LITERAL(50, 640, 18), // "slot_DoubleClicked"
+QT_MOC_LITERAL(51, 659, 17), // "InitCameraConnect"
+QT_MOC_LITERAL(52, 677, 16) // "camera_key_value"
 
     },
     "frmCameraSetUp\0onButtonCloseClicked\0"
     "\0on_btnAddCamera_clicked\0"
     "on_btnSearchCamera_clicked\0IPIntToStr\0"
     "uint32_t\0ipInt\0on_btnConnect_clicked\0"
-    "connectHikVison\0startCamera\0stopCamera\0"
-    "closeCamera\0softTrigger\0ReadBuffer\0"
-    "cv::Mat&\0image\0getHeight\0getWidth\0"
-    "getExposureTime\0setHeight\0height\0"
-    "setWidth\0width\0setOffsetX\0offsetX\0"
-    "setOffsetY\0offsetY\0setTriggerMode\0"
+    "connectHikVison\0type\0startCamera\0"
+    "handle\0stopCamera\0closeCamera\0softTrigger\0"
+    "ReadBuffer\0cv::Mat&\0image\0getHeight\0"
+    "getWidth\0getExposureTime\0setHeight\0"
+    "height\0setWidth\0width\0setOffsetX\0"
+    "offsetX\0setOffsetY\0offsetY\0setTriggerMode\0"
     "TriggerModeNum\0setTriggerSource\0"
     "TriggerSourceNum\0setFrameRateEnable\0"
     "comm\0setHeartBeatTime\0time\0setExposureTime\0"
@@ -127,34 +129,34 @@ static const uint qt_meta_data_frmCameraSetUp[] = {
        4,    0,  181,    2, 0x08 /* Private */,
        5,    1,  182,    2, 0x08 /* Private */,
        8,    0,  185,    2, 0x08 /* Private */,
-       9,    0,  186,    2, 0x08 /* Private */,
-      10,    0,  187,    2, 0x08 /* Private */,
-      11,    0,  188,    2, 0x08 /* Private */,
-      12,    0,  189,    2, 0x08 /* Private */,
-      13,    0,  190,    2, 0x08 /* Private */,
-      14,    1,  191,    2, 0x08 /* Private */,
-      17,    0,  194,    2, 0x08 /* Private */,
-      18,    0,  195,    2, 0x08 /* Private */,
-      19,    0,  196,    2, 0x08 /* Private */,
-      20,    1,  197,    2, 0x08 /* Private */,
-      22,    1,  200,    2, 0x08 /* Private */,
-      24,    1,  203,    2, 0x08 /* Private */,
-      26,    1,  206,    2, 0x08 /* Private */,
-      28,    1,  209,    2, 0x08 /* Private */,
-      30,    1,  212,    2, 0x08 /* Private */,
-      32,    1,  215,    2, 0x08 /* Private */,
-      34,    1,  218,    2, 0x08 /* Private */,
-      36,    1,  221,    2, 0x08 /* Private */,
-      38,    1,  224,    2, 0x08 /* Private */,
-      40,    1,  227,    2, 0x08 /* Private */,
-      42,    0,  230,    2, 0x08 /* Private */,
-      43,    0,  231,    2, 0x08 /* Private */,
-      44,    0,  232,    2, 0x08 /* Private */,
-      45,    0,  233,    2, 0x08 /* Private */,
-      46,    0,  234,    2, 0x08 /* Private */,
-      47,    0,  235,    2, 0x08 /* Private */,
-      48,    2,  236,    2, 0x08 /* Private */,
-      49,    1,  241,    2, 0x0a /* Public */,
+       9,    1,  186,    2, 0x08 /* Private */,
+      11,    1,  189,    2, 0x08 /* Private */,
+      13,    1,  192,    2, 0x08 /* Private */,
+      14,    1,  195,    2, 0x08 /* Private */,
+      15,    1,  198,    2, 0x08 /* Private */,
+      16,    2,  201,    2, 0x08 /* Private */,
+      19,    1,  206,    2, 0x08 /* Private */,
+      20,    1,  209,    2, 0x08 /* Private */,
+      21,    1,  212,    2, 0x08 /* Private */,
+      22,    2,  215,    2, 0x08 /* Private */,
+      24,    2,  220,    2, 0x08 /* Private */,
+      26,    2,  225,    2, 0x08 /* Private */,
+      28,    2,  230,    2, 0x08 /* Private */,
+      30,    2,  235,    2, 0x08 /* Private */,
+      32,    2,  240,    2, 0x08 /* Private */,
+      34,    2,  245,    2, 0x08 /* Private */,
+      36,    2,  250,    2, 0x08 /* Private */,
+      38,    2,  255,    2, 0x08 /* Private */,
+      40,    2,  260,    2, 0x08 /* Private */,
+      42,    2,  265,    2, 0x08 /* Private */,
+      44,    0,  270,    2, 0x08 /* Private */,
+      45,    0,  271,    2, 0x08 /* Private */,
+      46,    0,  272,    2, 0x08 /* Private */,
+      47,    0,  273,    2, 0x08 /* Private */,
+      48,    0,  274,    2, 0x08 /* Private */,
+      49,    0,  275,    2, 0x08 /* Private */,
+      50,    2,  276,    2, 0x08 /* Private */,
+      51,    1,  281,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -162,26 +164,26 @@ static const uint qt_meta_data_frmCameraSetUp[] = {
     QMetaType::Void,
     QMetaType::QString, 0x80000000 | 6,    7,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Int,
-    QMetaType::Int,
-    QMetaType::Int,
-    QMetaType::Int,
-    QMetaType::Int, 0x80000000 | 15,   16,
-    QMetaType::Int,
-    QMetaType::Int,
-    QMetaType::Float,
-    QMetaType::Int, QMetaType::UInt,   21,
-    QMetaType::Int, QMetaType::UInt,   23,
-    QMetaType::Int, QMetaType::UInt,   25,
-    QMetaType::Int, QMetaType::UInt,   27,
-    QMetaType::Int, QMetaType::UInt,   29,
-    QMetaType::Int, QMetaType::UInt,   31,
-    QMetaType::Int, QMetaType::Bool,   33,
-    QMetaType::Int, QMetaType::UInt,   35,
-    QMetaType::Int, QMetaType::Float,   37,
-    QMetaType::Int, QMetaType::Bool,   39,
-    QMetaType::Int, QMetaType::Bool,   41,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Int, QMetaType::VoidStar,   12,
+    QMetaType::Int, QMetaType::VoidStar,   12,
+    QMetaType::Int, QMetaType::VoidStar,   12,
+    QMetaType::Int, QMetaType::VoidStar,   12,
+    QMetaType::Int, QMetaType::VoidStar, 0x80000000 | 17,   12,   18,
+    QMetaType::Int, QMetaType::VoidStar,   12,
+    QMetaType::Int, QMetaType::VoidStar,   12,
+    QMetaType::Float, QMetaType::VoidStar,   12,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::UInt,   12,   23,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::UInt,   12,   25,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::UInt,   12,   27,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::UInt,   12,   29,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::UInt,   12,   31,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::UInt,   12,   33,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::Bool,   12,   35,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::UInt,   12,   37,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::Float,   12,   39,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::Bool,   12,   41,
+    QMetaType::Int, QMetaType::VoidStar, QMetaType::Bool,   12,   43,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -189,7 +191,7 @@ static const uint qt_meta_data_frmCameraSetUp[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
-    QMetaType::Void, QMetaType::QString,   50,
+    QMetaType::Void, QMetaType::QString,   52,
 
        0        // eod
 };
@@ -206,44 +208,44 @@ void frmCameraSetUp::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 3: { QString _r = _t->IPIntToStr((*reinterpret_cast< uint32_t(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         case 4: _t->on_btnConnect_clicked(); break;
-        case 5: _t->connectHikVison(); break;
-        case 6: { int _r = _t->startCamera();
+        case 5: _t->connectHikVison((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: { int _r = _t->startCamera((*reinterpret_cast< void*(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 7: { int _r = _t->stopCamera();
+        case 7: { int _r = _t->stopCamera((*reinterpret_cast< void*(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 8: { int _r = _t->closeCamera();
+        case 8: { int _r = _t->closeCamera((*reinterpret_cast< void*(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 9: { int _r = _t->softTrigger();
+        case 9: { int _r = _t->softTrigger((*reinterpret_cast< void*(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 10: { int _r = _t->ReadBuffer((*reinterpret_cast< cv::Mat(*)>(_a[1])));
+        case 10: { int _r = _t->ReadBuffer((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< cv::Mat(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 11: { int _r = _t->getHeight();
+        case 11: { int _r = _t->getHeight((*reinterpret_cast< void*(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 12: { int _r = _t->getWidth();
+        case 12: { int _r = _t->getWidth((*reinterpret_cast< void*(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 13: { float _r = _t->getExposureTime();
+        case 13: { float _r = _t->getExposureTime((*reinterpret_cast< void*(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< float*>(_a[0]) = std::move(_r); }  break;
-        case 14: { int _r = _t->setHeight((*reinterpret_cast< uint(*)>(_a[1])));
+        case 14: { int _r = _t->setHeight((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 15: { int _r = _t->setWidth((*reinterpret_cast< uint(*)>(_a[1])));
+        case 15: { int _r = _t->setWidth((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 16: { int _r = _t->setOffsetX((*reinterpret_cast< uint(*)>(_a[1])));
+        case 16: { int _r = _t->setOffsetX((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 17: { int _r = _t->setOffsetY((*reinterpret_cast< uint(*)>(_a[1])));
+        case 17: { int _r = _t->setOffsetY((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 18: { int _r = _t->setTriggerMode((*reinterpret_cast< uint(*)>(_a[1])));
+        case 18: { int _r = _t->setTriggerMode((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 19: { int _r = _t->setTriggerSource((*reinterpret_cast< uint(*)>(_a[1])));
+        case 19: { int _r = _t->setTriggerSource((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 20: { int _r = _t->setFrameRateEnable((*reinterpret_cast< bool(*)>(_a[1])));
+        case 20: { int _r = _t->setFrameRateEnable((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 21: { int _r = _t->setHeartBeatTime((*reinterpret_cast< uint(*)>(_a[1])));
+        case 21: { int _r = _t->setHeartBeatTime((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 22: { int _r = _t->setExposureTime((*reinterpret_cast< float(*)>(_a[1])));
+        case 22: { int _r = _t->setExposureTime((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 23: { int _r = _t->setExposureAuto((*reinterpret_cast< bool(*)>(_a[1])));
+        case 23: { int _r = _t->setExposureAuto((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
-        case 24: { int _r = _t->setGainAuto((*reinterpret_cast< bool(*)>(_a[1])));
+        case 24: { int _r = _t->setGainAuto((*reinterpret_cast< void*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 25: _t->clearBuffer(); break;
         case 26: _t->on_btnDisconnect_clicked(); break;

@@ -519,7 +519,7 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 						}
 						else if (gvariable.camera_variable_link.value(key).index == 1) //软件触发模式
 						{
-							int nRet = MV_CC_SetCommandValue(hikvision_haldle, "TriggerSoftware");
+							int nRet = MV_CC_SetCommandValue(hikvision_map.take(key), "TriggerSoftware");
 
 							if (nRet == MV_OK)
 							{
@@ -543,13 +543,13 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 								}
 							}
 							//改成同步获取抓图会有2-3秒的延迟
-							ReadBuffer(m_nBufSizeForSaveImage, hikvision_haldle, srcImg, key);
+							ReadBuffer(m_nBufSizeForSaveImage, hikvision_map.take(key), srcImg, key);
 						}
 						else if (gvariable.camera_variable_link.value(key).index == 2) //硬件触发模式
 						{
 							
 							//改成同步获取抓图会有2-3秒的延迟
-							ReadBuffer(m_nBufSizeForSaveImage, hikvision_haldle, srcImg, key);
+							ReadBuffer(m_nBufSizeForSaveImage, hikvision_map.take(key), srcImg, key);
 						}
 				
 					
@@ -808,6 +808,9 @@ int frmImageSource::ExecuteCameraLink(const QMap<QString, gVariable::Camera_Var>
 				{
 					gvariable.CameraVar.hikvision_deviceInfo = gvariable.camera_variable_link.value(key).hikvision_deviceInfo;
 					hikvision_haldle = gvariable.camera_variable_link.value(key).hikvision_haldle_value;
+					//hikvision_haldleList = gvariable.camera_variable_link.value(key).hikvision_haldleList;
+					hikvision_haldleList->append(static_cast<int*>(hikvision_haldle));
+					hikvision_map.insert(key, hikvision_haldle);
 					//gvariable.GlobalVar.srcImg = gvariable.camera_variable_link.value(key).srcImg;
 					time_out = gvariable.camera_variable_link.value(key).time_out;
 					cam_state = 1;
@@ -878,6 +881,9 @@ void frmImageSource::on_comboCamera_currentIndexChanged(int index)
 		{
 			gvariable.CameraVar.hikvision_deviceInfo = gvariable.camera_variable_link.value(key).hikvision_deviceInfo;
 			hikvision_haldle = gvariable.camera_variable_link.value(key).hikvision_haldle_value;
+            //hikvision_haldleList = gvariable.camera_variable_link.value(key).hikvision_haldleList;
+			hikvision_haldleList->append(static_cast<int*>(hikvision_haldle));
+			hikvision_map.insert(key, hikvision_haldle);
 			//gvariable.GlobalVar.srcImg = gvariable.camera_variable_link.value(key).srcImg;
 			time_out = gvariable.camera_variable_link.value(key).time_out;
 			cam_state = 1;

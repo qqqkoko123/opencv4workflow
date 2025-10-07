@@ -494,7 +494,17 @@ int frmImageView::RunToolPro()
 						}
 						else if (strs[1] == "距离" || strs[1] == "边缘宽度")
 						{
-							text_content = QString::number(GetToolBase()->m_Tools[text_index].PublicGeometry.Distance, 'f', 4);
+							for (int n = 0; n < GetToolBase()->m_Tools[text_index].PublicGeometry.DistanceList.size(); n++)
+							{
+								if (n == GetToolBase()->m_Tools[text_index].PublicGeometry.DistanceList.size() - 1)
+								{
+									text_content += QString::number(GetToolBase()->m_Tools[text_index].PublicGeometry.DistanceList[n], 'f', 4);
+								}
+								else
+								{
+									text_content += QString::number(GetToolBase()->m_Tools[text_index].PublicGeometry.DistanceList[n], 'f', 4) + "、";
+								}
+							}
 						}
 						else if (strs[1] == "垂足坐标")
 						{

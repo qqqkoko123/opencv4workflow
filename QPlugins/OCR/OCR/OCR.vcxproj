@@ -61,19 +61,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutDir>../../../QSoftExe/Debug/Plugins/</OutDir>
-    <LibraryPath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\lib;$(LibraryPath)</LibraryPath>
-    <ExecutablePath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\include;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>$(QTDIR)\include;$(QTDIR)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>../../../QPlugins/OCR/OCR/onnxruntime/lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>../../../QPlugins/OCR/OCR/onnxruntime/include;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(QTDIR)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutDir>../../../QSoftExe/Release/Plugins/</OutDir>
-    <LibraryPath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\lib;$(LibraryPath)</LibraryPath>
-    <ExecutablePath>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\include;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>../../../QPlugins/OCR/OCR/onnxruntime/lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>../../../QPlugins/OCR/OCR/onnxruntime/include;$(ExecutablePath)</ExecutablePath>
     <IncludePath>$(QTDIR)\include;$(QTDIR)\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\include;../../../QMainPro/QMacVisual/include;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;../../../QPlugins/OCR/OCR/onnxruntime/include;../../../QPlugins/OCR/OCR/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SupportJustMyCode>false</SupportJustMyCode>
       <PreprocessorDefinitions>OCR_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -85,7 +85,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\onnxruntime\include;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\OCR\OCR\include;../../../QMainPro/QMacVisual/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../QPlugins/OCR/OCR/onnxruntime/include;../../../QPlugins/OCR/OCR/include;../../../QMainPro/QMacVisual/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>OCR_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

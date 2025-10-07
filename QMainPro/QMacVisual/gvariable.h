@@ -50,6 +50,7 @@ public:
 		QString camera_type;
 		CameraHandle mindvision_haldle_value;
 		void* hikvision_haldle_value;
+		QVector<int*>* m_hDevHandleList = new QVector<int*>();
 		MV_CC_DEVICE_INFO* hikvision_deviceInfo;
 		BYTE* mindvision_framebuffer_value = nullptr;
 		int time_out;

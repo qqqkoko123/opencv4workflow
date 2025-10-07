@@ -1,5 +1,5 @@
 ﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
   uic frmImageView.ui
   rcc sub_res.qrc
@@ -22,7 +22,6 @@
   BaseItem.cpp
   ControlItem.cpp
   ImageView.cpp
-G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QPlugins\ImageProcess\ImageView\frmImageView.cpp(647,1): warning C4715: “frmImageView::GetErrorImage”: 不是所有的控件路径都返回值
   qrc_sub_res.cpp
   moc_QToolBase.cpp
   moc_Toolnterface.cpp

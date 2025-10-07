@@ -9,7 +9,6 @@
 #include <autoMeasure/service/GrayService.h>
 #include <rice.h>
 
-
 #define M_PI 3.14159265358979323846
 
 frmEdgeWidthMeasure::frmEdgeWidthMeasure(QString toolName, QToolBase* toolBase, QWidget* parent)
@@ -91,6 +90,7 @@ int frmEdgeWidthMeasure::Execute(const QString toolname)
 	}
 	for (int i = 0; i < GetToolBase()->m_Tools.size(); i++)
 	{
+		QString qs = GetToolBase()->m_Tools[i].PublicToolName;
 		if (GetToolBase()->m_Tools[i].PublicToolName == strs[0])
 		{
 			//获取的图像在工具数组中的索引
@@ -166,319 +166,385 @@ int frmEdgeWidthMeasure::RunToolPro()
 			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
 			return 0;
 		}
-		if (caliper_item->caliper_init_state == false)
+		//多个卡尺同时计算宽度
+		int break_flag = 0;
+		int return_flag = 0;
+		DistanceList.clear();
+		for (int i = 0; i < caliper_itemList.count(); i++)
 		{
-			return -1;
-		}
-		caliper_item->GetCaliper(caliper_p);
-		for (int i = 0; i < caliper_item->line_small_points.size(); i++)
-		{
-			if (caliper_item->line_big_points[i].x() < 0 || caliper_item->line_small_points[i].x() < 0 || caliper_item->line_big_points[i].y() < 0 || caliper_item->line_small_points[i].y() < 0)
+			caliper_item = caliper_itemList.at(i);
+			if (caliper_item->caliper_init_state == false)
 			{
-				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-				return -1;
+				//return -1;
+				break_flag++;
+				break;
 			}
-			if (caliper_item->line_big_points[i].x() > dstImage.cols || caliper_item->line_small_points[i].x() > dstImage.cols || caliper_item->line_big_points[i].y() > dstImage.rows || caliper_item->line_small_points[i].y() > dstImage.rows)
+			caliper_item->GetCaliper(caliper_p);
+			for (int i = 0; i < caliper_item->line_small_points.size(); i++)
 			{
-				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-				return -1;
-			}
-		}
-		switch (ui.comboGrayDirection->currentIndex()) {
-		case 0:
-			direction = 0;
-			break;
-		case 1:
-			direction = 1;
-			break;
-		}
-		xy1.clear();
-		xy2.clear();
-		line_small_points.clear();
-		line_big_points.clear();
-		line_small_points = caliper_item->line_small_points;
-		line_big_points = caliper_item->line_big_points;
-		//位置跟随
-		if (ui.checkUseFollow->isChecked() == true)
-		{
-			strs.clear();
-			strs = ui.txtLinkFollow->text().split(".");
-			if (strs.size() == 1)
-			{
-				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-				return -1;
-			}
-			bool link_state = false;
-			int f_index = 0;
-			for (int i = 0; i < GetToolBase()->m_Tools.size(); i++)
-			{
-				if (GetToolBase()->m_Tools[i].PublicToolName == strs[0])
-				{
-					f_index = i;
-					link_state = true;
-				}
-			}	
-			if (link_state == false)
-			{
-				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-				return -2;
-			}
-			if (strs[1] == "匹配基准中心")
-			{
-				if (GetToolBase()->m_Tools[f_index].PublicTPosition.Center.size() == 0)
+				if (caliper_item->line_big_points[i].x() < 0 || caliper_item->line_small_points[i].x() < 0 || caliper_item->line_big_points[i].y() < 0 || caliper_item->line_small_points[i].y() < 0)
 				{
 					GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-					return -1;
+					//return -1;
+					break_flag++;
+					break;
 				}
-				match_origin_point = GetToolBase()->m_Tools[f_index].PublicTPosition.DatumCenter;
-				match_origin_angle = 0;
-				match_current_point = GetToolBase()->m_Tools[f_index].PublicTPosition.Center[0];
-				match_current_angle = GetToolBase()->m_Tools[f_index].PublicTPosition.Angle[0];
-				for (int p = 0; p < line_small_points.size(); p++)
+				if (caliper_item->line_big_points[i].x() > dstImage.cols || caliper_item->line_small_points[i].x() > dstImage.cols || caliper_item->line_big_points[i].y() > dstImage.rows || caliper_item->line_small_points[i].y() > dstImage.rows)
 				{
-					cv::Point2f point_small_buf = cv::Point2f(line_small_points[p].x(), line_small_points[p].y());
-					cv::Point2f point_small = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, point_small_buf);
-					line_small_points[p] = QPointF(point_small.x, point_small.y);
-					cv::Point2f point_big_buf = cv::Point2f(line_big_points[p].x(), line_big_points[p].y());
-					cv::Point2f point_big = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, point_big_buf);
-					line_big_points[p] = QPointF(point_big.x, point_big.y);
+					GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+					//return -1;
+					break_flag++;
+					break;
 				}
 			}
-			else
+			switch (ui.comboGrayDirection->currentIndex()) {
+			case 0:
+				direction = 0;
+				break;
+			case 1:
+				direction = 1;
+				break;
+			}
+			xy1.clear();
+			xy2.clear();
+			line_small_points.clear();
+			line_big_points.clear();
+			line_small_points = caliper_item->line_small_points;
+			line_big_points = caliper_item->line_big_points;
+			//位置跟随
+			if (ui.checkUseFollow->isChecked() == true)
+			{
+				strs.clear();
+				strs = ui.txtLinkFollow->text().split(".");
+				if (strs.size() == 1)
+				{
+					GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+					//return -1;
+					break_flag++;
+					break;
+				}
+				bool link_state = false;
+				int f_index = 0;
+				for (int i = 0; i < GetToolBase()->m_Tools.size(); i++)
+				{
+					if (GetToolBase()->m_Tools[i].PublicToolName == strs[0])
+					{
+						f_index = i;
+						link_state = true;
+					}
+				}
+				if (link_state == false)
+				{
+					GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+					//return -2;
+					return_flag++;
+					break;
+				}
+				if (strs[1] == "匹配基准中心")
+				{
+					if (GetToolBase()->m_Tools[f_index].PublicTPosition.Center.size() == 0)
+					{
+						GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+						//return -1;
+						break_flag++;
+						break;
+					}
+					match_origin_point = GetToolBase()->m_Tools[f_index].PublicTPosition.DatumCenter;
+					match_origin_angle = 0;
+					match_current_point = GetToolBase()->m_Tools[f_index].PublicTPosition.Center[0];
+					match_current_angle = GetToolBase()->m_Tools[f_index].PublicTPosition.Angle[0];
+					for (int p = 0; p < line_small_points.size(); p++)
+					{
+						cv::Point2f point_small_buf = cv::Point2f(line_small_points[p].x(), line_small_points[p].y());
+						cv::Point2f point_small = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, point_small_buf);
+						line_small_points[p] = QPointF(point_small.x, point_small.y);
+						cv::Point2f point_big_buf = cv::Point2f(line_big_points[p].x(), line_big_points[p].y());
+						cv::Point2f point_big = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, point_big_buf);
+						line_big_points[p] = QPointF(point_big.x, point_big.y);
+					}
+				}
+				else
+				{
+					GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+					//return -2;
+					return_flag++;
+					break;
+				}
+			}
+			int result = GetEdgeWidth(dstImage, line_small_points, line_big_points, xy1, xy2, ui.spinThreshold->value(), direction, ui.spinThreshold->value(), direction, ui.spinSegment->value());
+			if (result == -1)
 			{
 				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-				return -2;
+				//return -1;
+				break_flag++;
+				break;
+			}
+			//拟合直线1
+			vector<cv::Point2f> new_xy1(xy1.size());
+			for (int i = 0; i < xy1.size(); i++)
+			{
+				new_xy1[i].x = xy1[i].x();
+				new_xy1[i].y = xy1[i].y();
+			}
+			int w = srcImage.cols;
+			cv::Vec4f fitline1;
+			cv::fitLine(new_xy1, fitline1, cv::DIST_L2, 0, 0.01, 0.01);
+			float vx1 = fitline1[0];
+			float vy1 = fitline1[1];
+			float x1 = fitline1[2];
+			float y1 = fitline1[3];
+			double x1_1 = w - 1;
+			double y1_1 = (w - x1) * vy1 / vx1 + y1;
+			double x1_2 = 0;
+			double y1_2 = (-x1 * vy1 / vx1) + y1;
+			//剔除点1	
+			select_xy1.clear();
+			cull_xy1.clear();
+			for (int i = 0; i < new_xy1.size(); i++)
+			{
+				//计算点到直线的距离
+				double distance = GetDistP2L(new_xy1[i], cv::Point2f(x1_1, y1_1), cv::Point2f(x1_2, y1_2));
+				if (distance > ui.spinCullDistance->value())
+				{
+					cull_xy1.push_back(new_xy1[i]);
+				}
+				else
+				{
+					select_xy1.push_back(new_xy1[i]);
+				}
+			}
+			//剔除点后再次拟合直线1
+			if (select_xy1.size() > 0)
+			{
+				cv::fitLine(select_xy1, fitline1, cv::DIST_L2, 0, 0.01, 0.01);
+				vx1 = fitline1[0];
+				vy1 = fitline1[1];
+				x1 = fitline1[2];
+				y1 = fitline1[3];
+				x1_1 = w - 1;
+				y1_1 = (w - x1) * vy1 / vx1 + y1;
+				x1_2 = 0;
+				y1_2 = (-x1 * vy1 / vx1) + y1;
+			}		
+			//拟合直线2
+			vector<cv::Point2f> new_xy2(xy2.size());
+			for (int i = 0; i < xy2.size(); i++)
+			{
+				new_xy2[i].x = xy2[i].x();
+				new_xy2[i].y = xy2[i].y();
+			}
+			cv::Vec4f fitline2;
+			cv::fitLine(new_xy2, fitline2, cv::DIST_L2, 0, 0.01, 0.01);
+			float vx2 = fitline2[0];
+			float vy2 = fitline2[1];
+			float x2 = fitline2[2];
+			float y2 = fitline2[3];
+			double x2_1 = w - 1;
+			double y2_1 = (w - x2) * vy2 / vx2 + y2;
+			double x2_2 = 0;
+			double y2_2 = (-x2 * vy2 / vx2) + y2;
+			//剔除点2	
+			select_xy2.clear();
+			cull_xy2.clear();
+			for (int i = 0; i < new_xy2.size(); i++)
+			{
+				//计算点到直线的距离
+				double distance = GetDistP2L(new_xy2[i], cv::Point2f(x2_1, y2_1), cv::Point2f(x2_2, y2_2));
+				if (distance > ui.spinCullDistance->value())
+				{
+					cull_xy2.push_back(new_xy2[i]);
+				}
+				else
+				{
+					select_xy2.push_back(new_xy2[i]);
+				}
+			}
+			//输出结果
+			vector<double> out_distances(select_xy2.size());
+			for (int i = 0; i < select_xy2.size(); i++)
+			{
+				//计算点到直线的距离
+				double distance = GetDistP2L(select_xy2[i], cv::Point2f(x1_1, y1_1), cv::Point2f(x1_2, y1_2));
+				out_distances[i] = distance;
+			}
+			if (out_distances.size() == 0)
+			{
+				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+				//return -1;
+				break_flag++;
+				break;
+			}
+			if (ui.isActureDistance_6->isChecked())
+			{
+				//计算长度
+				try 
+				{
+					// 1. 获取卡尺图像
+					cv::Mat src = extractCaliperRegion(srcImage,caliper_p);
+					// 2. 计算长度
+					Distance = getLength(src);
+				}
+				catch (const cv::Exception& e)
+				{
+					std:string error = e.what();
+					std::cerr << "OpenCV异常: " << error << std::endl;
+				}				
+			}
+			else
+			{
+				//去除最大最小值求平均值
+				Distance = Average(out_distances, out_distances.size());
+			}
+			if (ui.checkViewROI->isChecked() == true)
+			{
+				if(i == 0)
+				{
+					dstRoiImage = dstImage.clone();
+				}
+				if (dstRoiImage.channels() == 1)
+				{
+					cv::cvtColor(dstRoiImage, dstRoiImage, cv::COLOR_GRAY2BGR);
+				}
+				else if (dstRoiImage.channels() == 4)
+				{
+					cv::cvtColor(dstRoiImage, dstRoiImage, cv::COLOR_RGBA2BGR);
+				}
+				for (int i = 0; i < line_small_points.size(); i++)
+				{
+					cv::line(dstRoiImage, cv::Point(line_small_points[i].x(), line_small_points[i].y()), cv::Point(line_big_points[i].x(), line_big_points[i].y()), cv::Scalar(223, 231, 255), 1);
+				}
+				for (int n = 0; n < select_xy1.size(); n++)
+				{
+					cv::line(dstRoiImage, cv::Point(select_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
+					cv::line(dstRoiImage, cv::Point(select_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
+				}
+				for (int n = 0; n < cull_xy1.size(); n++)
+				{
+					cv::line(dstRoiImage, cv::Point(cull_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
+					cv::line(dstRoiImage, cv::Point(cull_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
+				}
+				for (int n = 0; n < select_xy2.size(); n++)
+				{
+					cv::line(dstRoiImage, cv::Point(select_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
+					cv::line(dstRoiImage, cv::Point(select_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
+				}
+				for (int n = 0; n < cull_xy2.size(); n++)
+				{
+					cv::line(dstRoiImage, cv::Point(cull_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
+					cv::line(dstRoiImage, cv::Point(cull_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
+				}
+				cv::RotatedRect rrect = cv::RotatedRect(cv::Point2f(caliper_p.col, caliper_p.row), cv::Size2f(caliper_p.len1, caliper_p.len2), -(caliper_p.angle * 180 / M_PI));
+				cv::Point2f vertices[4];
+				rrect.points(vertices);
+				if (ui.checkUseFollow->isChecked() == true)
+				{
+					cv::Point2f point_1 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[0]);
+					cv::Point2f point_2 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[1]);
+					cv::Point2f point_3 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[2]);
+					cv::Point2f point_4 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[3]);
+					cv::line(dstRoiImage, point_1, point_2, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstRoiImage, point_2, point_3, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstRoiImage, point_3, point_4, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstRoiImage, point_1, point_4, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+				}
+				else
+				{
+					cv::line(dstRoiImage, cv::Point(vertices[0].x, vertices[0].y), cv::Point(vertices[1].x, vertices[1].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstRoiImage, cv::Point(vertices[0].x, vertices[0].y), cv::Point(vertices[3].x, vertices[3].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstRoiImage, cv::Point(vertices[1].x, vertices[1].y), cv::Point(vertices[2].x, vertices[2].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstRoiImage, cv::Point(vertices[2].x, vertices[2].y), cv::Point(vertices[3].x, vertices[3].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+				}
+				GetToolBase()->m_Tools[tool_index].PublicImage.Name = "ROI图像";
+			}
+			else
+			{
+				if (dstImage.channels() == 1)
+				{
+					cv::cvtColor(dstImage, dstImage, cv::COLOR_GRAY2BGR);
+				}
+				else if (dstImage.channels() == 4)
+				{
+					cv::cvtColor(dstImage, dstImage, cv::COLOR_RGBA2BGR);
+				}
+				for (int n = 0; n < select_xy1.size(); n++)
+				{
+					cv::line(dstImage, cv::Point(select_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
+					cv::line(dstImage, cv::Point(select_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
+				}
+				for (int n = 0; n < cull_xy1.size(); n++)
+				{
+					cv::line(dstImage, cv::Point(cull_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
+					cv::line(dstImage, cv::Point(cull_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
+				}
+				for (int n = 0; n < select_xy2.size(); n++)
+				{
+					cv::line(dstImage, cv::Point(select_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
+					cv::line(dstImage, cv::Point(select_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
+				}
+				for (int n = 0; n < cull_xy2.size(); n++)
+				{
+					cv::line(dstImage, cv::Point(cull_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
+					cv::line(dstImage, cv::Point(cull_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
+				}
+				cv::RotatedRect rrect = cv::RotatedRect(cv::Point2f(caliper_p.col, caliper_p.row), cv::Size2f(caliper_p.len1, caliper_p.len2), -(caliper_p.angle * 180 / M_PI));
+				cv::Point2f vertices[4];
+				rrect.points(vertices);
+				if (ui.checkUseFollow->isChecked() == true)
+				{
+					cv::Point2f point_1 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[0]);
+					cv::Point2f point_2 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[1]);
+					cv::Point2f point_3 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[2]);
+					cv::Point2f point_4 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[3]);
+					cv::line(dstImage, point_1, point_2, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstImage, point_2, point_3, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstImage, point_3, point_4, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstImage, point_1, point_4, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+				}
+				else
+				{
+					cv::line(dstImage, cv::Point(vertices[0].x, vertices[0].y), cv::Point(vertices[1].x, vertices[1].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstImage, cv::Point(vertices[0].x, vertices[0].y), cv::Point(vertices[3].x, vertices[3].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstImage, cv::Point(vertices[1].x, vertices[1].y), cv::Point(vertices[2].x, vertices[2].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+					cv::line(dstImage, cv::Point(vertices[2].x, vertices[2].y), cv::Point(vertices[3].x, vertices[3].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
+				}
+				GetToolBase()->m_Tools[tool_index].PublicImage.Name = "图像";
+			}
+			// 是否使用实际距离系数
+			if (ui.isActureDistance->isChecked())
+			{
+				Distance = Distance * ui.spinActureDistance->value();
+			}
+			// 判断距离是否在上下限内
+			if (Distance >= ui.spinLowDistance->value() && Distance <= ui.spinUpDistance->value())
+			{
+				GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+				GetToolBase()->m_Tools[tool_index].PublicImage.OutputRoiImage = dstRoiImage;
+				GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = Distance;
+				GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+				DistanceList.push_back(Distance);
+				GetToolBase()->m_Tools[tool_index].PublicGeometry.DistanceList = DistanceList;
+			}
+			else
+			{
+				GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+				GetToolBase()->m_Tools[tool_index].PublicImage.OutputRoiImage = dstRoiImage;
+				GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = Distance;
+				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+				DistanceList.push_back(Distance);
+				GetToolBase()->m_Tools[tool_index].PublicGeometry.DistanceList = DistanceList;
+				//return -1;
+				break_flag++;
+				break;
 			}
 		}
-		int result = GetEdgeWidth(dstImage, line_small_points, line_big_points, xy1, xy2, ui.spinThreshold->value(), direction, ui.spinThreshold->value(), direction, ui.spinSegment->value());
-		if (result == -1)
+		//返回值判断
+		if (break_flag > 0)
 		{
-			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
 			return -1;
 		}
-		//拟合直线1
-		vector<cv::Point2f> new_xy1(xy1.size());
-		for (int i = 0; i < xy1.size(); i++)
+		else if(return_flag > 0)
 		{
-			new_xy1[i].x = xy1[i].x();
-			new_xy1[i].y = xy1[i].y();
-		}
-		int w = srcImage.cols;
-		cv::Vec4f fitline1;
-		cv::fitLine(new_xy1, fitline1, cv::DIST_L2, 0, 0.01, 0.01);
-		float vx1 = fitline1[0];
-		float vy1 = fitline1[1];
-		float x1 = fitline1[2];
-		float y1 = fitline1[3];
-		double x1_1 = w - 1;
-		double y1_1 = (w - x1) * vy1 / vx1 + y1;
-		double x1_2 = 0;
-		double y1_2 = (-x1 * vy1 / vx1) + y1;
-		//剔除点1	
-		select_xy1.clear();
-		cull_xy1.clear();
-		for (int i = 0; i < new_xy1.size(); i++)
-		{
-			//计算点到直线的距离
-			double distance = GetDistP2L(new_xy1[i], cv::Point2f(x1_1, y1_1), cv::Point2f(x1_2, y1_2));
-			if (distance > ui.spinCullDistance->value())
-			{
-				cull_xy1.push_back(new_xy1[i]);
-			}
-			else
-			{
-				select_xy1.push_back(new_xy1[i]);
-			}
-		}
-		//剔除点后再次拟合直线1
-		cv::fitLine(select_xy1, fitline1, cv::DIST_L2, 0, 0.01, 0.01);
-		vx1 = fitline1[0];
-		vy1 = fitline1[1];
-		x1 = fitline1[2];
-		y1 = fitline1[3];
-		x1_1 = w - 1;
-		y1_1 = (w - x1) * vy1 / vx1 + y1;
-		x1_2 = 0;
-		y1_2 = (-x1 * vy1 / vx1) + y1;
-		//拟合直线2
-		vector<cv::Point2f> new_xy2(xy2.size());
-		for (int i = 0; i < xy2.size(); i++)
-		{
-			new_xy2[i].x = xy2[i].x();
-			new_xy2[i].y = xy2[i].y();
-		}
-		cv::Vec4f fitline2;
-		cv::fitLine(new_xy2, fitline2, cv::DIST_L2, 0, 0.01, 0.01);
-		float vx2 = fitline2[0];
-		float vy2 = fitline2[1];
-		float x2 = fitline2[2];
-		float y2 = fitline2[3];
-		double x2_1 = w - 1;
-		double y2_1 = (w - x2) * vy2 / vx2 + y2;
-		double x2_2 = 0;
-		double y2_2 = (-x2 * vy2 / vx2) + y2;
-		//剔除点2	
-		select_xy2.clear();
-		cull_xy2.clear();
-		for (int i = 0; i < new_xy2.size(); i++)
-		{
-			//计算点到直线的距离
-			double distance = GetDistP2L(new_xy2[i], cv::Point2f(x2_1, y2_1), cv::Point2f(x2_2, y2_2));
-			if (distance > ui.spinCullDistance->value())
-			{
-				cull_xy2.push_back(new_xy2[i]);
-			}
-			else
-			{
-				select_xy2.push_back(new_xy2[i]);
-			}
-		}
-		//输出结果
-		vector<double> out_distances(select_xy2.size());
-		for (int i = 0; i < select_xy2.size(); i++)
-		{
-			//计算点到直线的距离
-			double distance = GetDistP2L(select_xy2[i], cv::Point2f(x1_1, y1_1), cv::Point2f(x1_2, y1_2));
-			out_distances[i] = distance;
-		}
-		if (out_distances.size() == 0)
-		{
-			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-			return -1;
-		}
-		//去除最大最小值求平均值
-		Distance = Average(out_distances, out_distances.size());
-		if (ui.checkViewROI->isChecked() == true)
-		{
-			dstRoiImage = dstImage.clone();
-			if (dstRoiImage.channels() == 1)
-			{
-				cv::cvtColor(dstRoiImage, dstRoiImage, cv::COLOR_GRAY2BGR);
-			}
-			else if (dstRoiImage.channels() == 4)
-			{
-				cv::cvtColor(dstRoiImage, dstRoiImage, cv::COLOR_RGBA2BGR);
-			}
-			for (int i = 0; i < line_small_points.size(); i++)
-			{
-				cv::line(dstRoiImage, cv::Point(line_small_points[i].x(), line_small_points[i].y()), cv::Point(line_big_points[i].x(), line_big_points[i].y()), cv::Scalar(223, 231, 255), 1);
-			}
-			for (int n = 0; n < select_xy1.size(); n++)
-			{
-				cv::line(dstRoiImage, cv::Point(select_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
-				cv::line(dstRoiImage, cv::Point(select_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
-			}
-			for (int n = 0; n < cull_xy1.size(); n++)
-			{
-				cv::line(dstRoiImage, cv::Point(cull_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
-				cv::line(dstRoiImage, cv::Point(cull_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
-			}
-			for (int n = 0; n < select_xy2.size(); n++)
-			{
-				cv::line(dstRoiImage, cv::Point(select_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
-				cv::line(dstRoiImage, cv::Point(select_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
-			}
-			for (int n = 0; n < cull_xy2.size(); n++)
-			{
-				cv::line(dstRoiImage, cv::Point(cull_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
-				cv::line(dstRoiImage, cv::Point(cull_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
-			}
-			cv::RotatedRect rrect = cv::RotatedRect(cv::Point2f(caliper_p.col, caliper_p.row), cv::Size2f(caliper_p.len1, caliper_p.len2), -(caliper_p.angle * 180 / M_PI));
-			cv::Point2f vertices[4];
-			rrect.points(vertices);
-			if (ui.checkUseFollow->isChecked() == true)
-			{
-				cv::Point2f point_1 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[0]);
-				cv::Point2f point_2 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[1]);
-				cv::Point2f point_3 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[2]);
-				cv::Point2f point_4 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[3]);
-				cv::line(dstRoiImage, point_1, point_2, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstRoiImage, point_2, point_3, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstRoiImage, point_3, point_4, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstRoiImage, point_1, point_4, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-			}
-			else
-			{
-				cv::line(dstRoiImage, cv::Point(vertices[0].x, vertices[0].y), cv::Point(vertices[1].x, vertices[1].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstRoiImage, cv::Point(vertices[0].x, vertices[0].y), cv::Point(vertices[3].x, vertices[3].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstRoiImage, cv::Point(vertices[1].x, vertices[1].y), cv::Point(vertices[2].x, vertices[2].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstRoiImage, cv::Point(vertices[2].x, vertices[2].y), cv::Point(vertices[3].x, vertices[3].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-			}			
-			GetToolBase()->m_Tools[tool_index].PublicImage.Name = "ROI图像";		
-		}
-		else
-		{
-			if (dstImage.channels() == 1)
-			{
-				cv::cvtColor(dstImage, dstImage, cv::COLOR_GRAY2BGR);
-			}
-			else if (dstImage.channels() == 4)
-			{
-				cv::cvtColor(dstImage, dstImage, cv::COLOR_RGBA2BGR);
-			}
-			for (int n = 0; n < select_xy1.size(); n++)
-			{
-				cv::line(dstImage, cv::Point(select_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
-				cv::line(dstImage, cv::Point(select_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
-			}
-			for (int n = 0; n < cull_xy1.size(); n++)
-			{
-				cv::line(dstImage, cv::Point(cull_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
-				cv::line(dstImage, cv::Point(cull_xy1[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy1[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy1[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
-			}
-			for (int n = 0; n < select_xy2.size(); n++)
-			{
-				cv::line(dstImage, cv::Point(select_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
-				cv::line(dstImage, cv::Point(select_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(select_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), select_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(211, 0, 141), ui.spinRoiW->value());
-			}
-			for (int n = 0; n < cull_xy2.size(); n++)
-			{
-				cv::line(dstImage, cv::Point(cull_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
-				cv::line(dstImage, cv::Point(cull_xy2[n].x - cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y + sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Point(cull_xy2[n].x + cos(45 * M_PI / 180) * ui.spinCrossL->value(), cull_xy2[n].y - sin(45 * M_PI / 180) * ui.spinCrossL->value()), cv::Scalar(0, 0, 255), ui.spinRoiW->value());
-			}
-			cv::RotatedRect rrect = cv::RotatedRect(cv::Point2f(caliper_p.col, caliper_p.row), cv::Size2f(caliper_p.len1, caliper_p.len2), -(caliper_p.angle * 180 / M_PI));
-			cv::Point2f vertices[4];
-			rrect.points(vertices);
-			if (ui.checkUseFollow->isChecked() == true)
-			{
-				cv::Point2f point_1 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[0]);
-				cv::Point2f point_2 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[1]);
-				cv::Point2f point_3 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[2]);
-				cv::Point2f point_4 = AffineTransformPoint(match_origin_point, 0, match_current_point, match_current_angle, vertices[3]);
-				cv::line(dstImage, point_1, point_2, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstImage, point_2, point_3, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstImage, point_3, point_4, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstImage, point_1, point_4, cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-			}
-			else
-			{
-				cv::line(dstImage, cv::Point(vertices[0].x, vertices[0].y), cv::Point(vertices[1].x, vertices[1].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstImage, cv::Point(vertices[0].x, vertices[0].y), cv::Point(vertices[3].x, vertices[3].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstImage, cv::Point(vertices[1].x, vertices[1].y), cv::Point(vertices[2].x, vertices[2].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-				cv::line(dstImage, cv::Point(vertices[2].x, vertices[2].y), cv::Point(vertices[3].x, vertices[3].y), cv::Scalar(color.blue(), color.green(), color.red()), ui.spinRoiW->value());
-			}			
-			GetToolBase()->m_Tools[tool_index].PublicImage.Name = "图像";
-		}
-		// 是否使用实际距离系数
-		if (ui.isActureDistance->isChecked())
-		{
-			Distance = Distance * ui.spinActureDistance->value();
-		}
-		// 判断距离是否在上下限内
-		if (Distance >= ui.spinLowDistance->value() && Distance <= ui.spinUpDistance->value()) 
-		{
-			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
-			GetToolBase()->m_Tools[tool_index].PublicImage.OutputRoiImage = dstRoiImage;
-			GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = Distance;
-			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
-		}
-		else
-		{
-			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
-			GetToolBase()->m_Tools[tool_index].PublicImage.OutputRoiImage = dstRoiImage;
-			GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = Distance;
-			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-			return -1;
+			return -2;
 		}
 		
 		return 0;
@@ -544,81 +610,109 @@ int frmEdgeWidthMeasure::ExecuteAllLink(const QMap<QString, gVariable::Global_Va
 
 int frmEdgeWidthMeasure::InitSetToolData(const QVariant data)
 {
-	try
+	int break_flag = 0;
+	if (data != NULL)
 	{
-		InitEdgeWidthMeasureData init_data;
-		init_data = data.value<InitEdgeWidthMeasureData>();
-		if (init_data.use_roi == true)
+		//循环取所有卡尺
+		for (int i = 0; i < data.toList().count(); i++)
 		{
-			view->ClearObj();
-			if (init_data.type == "caliper_p")
+			try
 			{
-				caliper_item = new Caliper(init_data.x1, init_data.y1, init_data.x2, init_data.y2, init_data.height);
-				caliper_item->caliper_init_state = true;
-				caliper_item->segment_line_num = init_data.segment_line_num;
-				view->AddItems(caliper_item);
-				caliper_item->line_small_points.clear();
-				caliper_item->line_big_points.clear();
-				for (int i = 0; i < init_data.line_s_points.size(); i++)
+				InitEdgeWidthMeasureData init_data;
+				init_data = data.toList()[i].value<InitEdgeWidthMeasureData>();
+				if (init_data.use_roi == true)
 				{
-					caliper_item->line_small_points.push_back(init_data.line_s_points[i]);
-					caliper_item->line_big_points.push_back(init_data.line_b_points[i]);
-				}
-				caliper_item->SetCaliper(init_data.pp1, init_data.pp2);
+					//取消删除所有卡尺
+					//view->ClearObj();
+					if (init_data.type == "caliper_p")
+					{
+						caliper_item = new Caliper(init_data.x1, init_data.y1, init_data.x2, init_data.y2, init_data.height);
+						caliper_item->caliper_init_state = true;
+						caliper_item->segment_line_num = init_data.segment_line_num;
+						view->AddItems(caliper_item);
+						caliper_item->line_small_points.clear();
+						caliper_item->line_big_points.clear();
+						for (int i = 0; i < init_data.line_s_points.size(); i++)
+						{
+							caliper_item->line_small_points.push_back(init_data.line_s_points[i]);
+							caliper_item->line_big_points.push_back(init_data.line_b_points[i]);
+						}
+						caliper_item->SetCaliper(init_data.pp1, init_data.pp2);
+						caliper_itemList.append(caliper_item);
+					}
+					color = init_data.color;
+					//设置按钮背景颜色
+					QString style_color = "background-color: rgb(" + QString::number(color.red()) + "," + QString::number(color.green()) + "," + QString::number(color.blue()) + ")";
+					ui.btnRoiColor->setStyleSheet(style_color);
+				}			
 			}
-			color = init_data.color;
-			//设置按钮背景颜色
-			QString style_color = "background-color: rgb(" + QString::number(color.red()) + "," + QString::number(color.green()) + "," + QString::number(color.blue()) + ")";
-			ui.btnRoiColor->setStyleSheet(style_color);
+			catch (...)
+			{
+				break_flag++;
+				//return -1;
+			}
 		}
-		return 0;
 	}
-	catch (...)
+	if (break_flag > 0)
 	{
 		return -1;
 	}
+	return 0;
 }
 
 QVariant frmEdgeWidthMeasure::InitGetToolData()
 {
-	InitEdgeWidthMeasureData init_data;
-	if (ui.checkUseROI->isChecked() == true)
+	int break_flag = 0;
+	QVariantList list = QVariantList();
+	QVariant qvarient = QVariant();
+	//循环取所有卡尺
+	for (int i = 0; i < caliper_itemList.count(); i++)
 	{
-		init_data.use_roi = true;
-		if (ui.comboROIShape->currentIndex() == 0)
+		caliper_item = caliper_itemList.at(i);
+		InitEdgeWidthMeasureData init_data;
+		if (ui.checkUseROI->isChecked() == true)
 		{
-			if (caliper_item->caliper_init_state == false)
+			init_data.use_roi = true;
+			if (ui.comboROIShape->currentIndex() == 0)
 			{
-				return -1;
-			}
-			caliper_item->GetCaliper(caliper_p);
-			init_data.type = "caliper_p";
-			init_data.x1 = caliper_p.x1;
-			init_data.y1 = caliper_p.y1;
-			init_data.x2 = caliper_p.x2;
-			init_data.y2 = caliper_p.y2;
-			init_data.height = caliper_p.height;
-			init_data.row = caliper_p.row;
-			init_data.col = caliper_p.col;
-			init_data.len1 = caliper_p.len1;
-			init_data.len2 = caliper_p.len2;
-			init_data.angle = caliper_p.angle;
-			init_data.pp1 = caliper_p.pp1;
-			init_data.pp2 = caliper_p.pp2;
-			init_data.segment_line_num = caliper_item->segment_line_num;
-			init_data.color = color;
-			for (int i = 0; i < caliper_item->line_small_points.size(); i++)
-			{
-				init_data.line_s_points.append(caliper_item->line_small_points[i]);
-				init_data.line_b_points.append(caliper_item->line_big_points[i]);
+
+				if (caliper_item->caliper_init_state == false)
+				{
+					//return -1;
+					break_flag++;
+					break;
+				}
+				caliper_item->GetCaliper(caliper_p);
+				init_data.type = "caliper_p";
+				init_data.x1 = caliper_p.x1;
+				init_data.y1 = caliper_p.y1;
+				init_data.x2 = caliper_p.x2;
+				init_data.y2 = caliper_p.y2;
+				init_data.height = caliper_p.height;
+				init_data.row = caliper_p.row;
+				init_data.col = caliper_p.col;
+				init_data.len1 = caliper_p.len1;
+				init_data.len2 = caliper_p.len2;
+				init_data.angle = caliper_p.angle;
+				init_data.pp1 = caliper_p.pp1;
+				init_data.pp2 = caliper_p.pp2;
+				init_data.segment_line_num = caliper_item->segment_line_num;
+				init_data.color = color;
+				for (int i = 0; i < caliper_item->line_small_points.size(); i++)
+				{
+					init_data.line_s_points.append(caliper_item->line_small_points[i]);
+					init_data.line_b_points.append(caliper_item->line_big_points[i]);
+				}
 			}
 		}
+		else
+		{
+			init_data.use_roi = false;
+		}
+		list.append(QVariant::fromValue(init_data));
 	}
-	else
-	{
-		init_data.use_roi = false;
-	}
-	return QVariant::fromValue(init_data);
+	qvarient = list;
+	return qvarient;
 }
 
 void frmEdgeWidthMeasure::on_btnExecute_clicked()
@@ -627,7 +721,11 @@ void frmEdgeWidthMeasure::on_btnExecute_clicked()
 	QApplication::processEvents();
 	Execute(GetToolName());
 	ui.txtMsg->clear();
-	ui.txtMsg->append("-> 边缘宽度为：" + QString::number(Distance));
+	//显示所有卡尺结果
+	for (int i = 0; i < DistanceList.count(); i++)
+	{
+		ui.txtMsg->append("-> 边缘宽度为：" + QString::number(DistanceList[i]) + "\n");
+	}	
 	QImage img(Mat2QImage(dstImage));
 	view->DispImage(img);
 	ui.btnExecute->setEnabled(true);
@@ -655,13 +753,15 @@ void frmEdgeWidthMeasure::on_btnDelLinkFollow_clicked()
 
 void frmEdgeWidthMeasure::on_btnAddROI_clicked()
 {
-	view->ClearObj();
+	//无限添加卡尺
+	//view->ClearObj();
 	caliper_item = new Caliper(10, 160, 200, 160, 300);
 	caliper_item->caliper_init_state = true;
 	switch (ui.comboROIShape->currentIndex()) {
 	case 0:
 		caliper_item->segment_line_num = ui.spinSegment->value();
 		view->AddItems(caliper_item);
+		caliper_itemList.append(caliper_item);
 		break;
 	}
 }
@@ -669,7 +769,10 @@ void frmEdgeWidthMeasure::on_btnAddROI_clicked()
 void frmEdgeWidthMeasure::on_btnDeleteROI_clicked()
 {
 	caliper_item->caliper_init_state = false;
+	//删除当前卡尺
 	view->ClearObj();
+	//view->scene(caliper_item);
+	caliper_itemList.clear();
 }
 
 void frmEdgeWidthMeasure::on_btnRoiColor_clicked()
@@ -1028,6 +1131,238 @@ QImage frmEdgeWidthMeasure::Mat2QImage(const cv::Mat& mat)
 	{
 		return QImage();
 	}
+}
+
+double frmEdgeWidthMeasure::getLength(cv::Mat srcImage)
+{
+	// ... (加载图像、灰度化、二值化的代码保持不变) ...
+	cv::Mat sourceMat = srcImage;//cv::imread(...);
+	//cv::Mat binaryMat;
+	// ... cv::threshold(...) ...
+
+	//emit statusMessageChanged("预处理完成，开始寻找轮廓...");
+
+	// --- 3. 轮廓发现 ---
+	std::vector<std::vector<cv::Point>> contours;
+	cv::findContours(sourceMat, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+
+	// 假设最大轮廓就是我们的螺丝
+	if (contours.empty()) {
+		//emit statusMessageChanged("错误：未在图像中找到任何轮廓！");
+		return 0;
+	}
+
+	// 寻找面积最大的轮廓
+	double maxArea = 0;
+	int maxAreaIdx = -1;
+	for (int i = 0; i < contours.size(); i++) {
+		double area = cv::contourArea(contours[i]);
+		if (area > maxArea) {
+			maxArea = area;
+			maxAreaIdx = i;
+		}
+	}
+
+	if (maxAreaIdx == -1) {
+		// ... 错误处理
+		return 0;
+	}
+
+	// --- 4. 尺寸测量 ---
+	// 计算最大轮廓的最小外接矩形
+	cv::RotatedRect rotatedRect = cv::minAreaRect(contours[maxAreaIdx]);
+
+	// 获取矩形的尺寸。注意：width和height不一定是物理的长和宽
+	cv::Size2f rectSize = rotatedRect.size;
+	float width = std::min(rectSize.width, rectSize.height);
+	float length = std::max(rectSize.width, rectSize.height);
+
+	qDebug() << "Measured dimensions (pixels): Length =" << length << ", Width =" << width;
+	QString resultMessage = QString("测量结果: 长度= %1 px, 宽度= %2 px").arg(length, 0, 'f', 2).arg(width, 0, 'f', 2);
+
+	// --- 5. 结果可视化 ---
+	// 为了直观展示，我们在原始彩色图上把轮廓和矩形画出来
+	// 获取矩形的四个顶点
+	cv::Point2f vertices[4];
+	rotatedRect.points(vertices);
+	// 将轮廓和矩形画在sourceMat上
+	cv::drawContours(sourceMat, contours, maxAreaIdx, cv::Scalar(0, 255, 0), 2); // 绿色轮廓
+	for (int i = 0; i < 4; i++) {
+		cv::line(sourceMat, vertices[i], vertices[(i + 1) % 4], cv::Scalar(0, 0, 255), 2); // 红色矩形
+	}
+	return length;
+	// 将带有绘制结果的图像发送到UI
+	/*QImage imageQ = matToQImage(sourceMat);
+	m_imageProvider->updateImage(imageQ);
+	emit imageReady("screw_processed");
+	emit statusMessageChanged(resultMessage);*/
+}
+// 转换为3通道矩阵（4行3列）
+cv::Mat frmEdgeWidthMeasure::convertTo3Channel(const CaliperP& caliper) {
+	cv::Mat mat(4, 3, CV_32F);
+	float* data = mat.ptr<float>(0);
+
+	// 第一行：基础参数
+	data[0] = caliper.row;
+	data[1] = caliper.col;
+	data[2] = caliper.angle;
+
+	// 第二行：长度参数
+	data[3] = caliper.len1;
+	data[4] = caliper.len2;
+	data[5] = caliper.height;
+
+	// 第三行：坐标点1
+	data[6] = caliper.x1;
+	data[7] = caliper.y1;
+	data[8] = caliper.pp1.x();
+
+	// 第四行：坐标点2
+	data[9] = caliper.x2;
+	data[10] = caliper.y2;
+	data[11] = caliper.pp1.y();
+
+	return mat;
+}
+// 将CaliperP结构体转换为单通道cv::Mat（12行1列）
+cv::Mat frmEdgeWidthMeasure::convertToMat(const CaliperP& caliper) {
+	cv::Mat mat(12, 1, CV_32F); // 12个浮点参数的单通道矩阵
+	float* data = mat.ptr<float>(0);
+
+	data[0] = caliper.row;     // row
+	data[1] = caliper.col;     // col
+	data[2] = caliper.len1;    // len1
+	data[3] = caliper.len2;    // len2
+	data[4] = caliper.angle;   // angle
+	data[5] = caliper.x1;      // x1
+	data[6] = caliper.y1;      // y1
+	data[7] = caliper.x2;      // x2
+	data[8] = caliper.y2;      // y2
+	data[9] = caliper.height;  // height
+	data[10] = caliper.pp1.x(); // pp1.x
+	data[11] = caliper.pp1.y(); // pp1.y
+
+	return mat;
+}
+
+cv::Mat frmEdgeWidthMeasure::caliperToMat(const cv::Mat& srcImage, const CaliperP& caliper) {
+	// 获取卡尺端点
+	QPointF pp1 = caliper.pp1;
+	QPointF pp2 = caliper.pp2;
+	float height = caliper.height;
+
+	// 计算线段向量和长度
+	float dx = pp2.x() - pp1.x();
+	float dy = pp2.y() - pp1.y();
+	float length = std::sqrt(dx * dx + dy * dy);
+
+	if (length < 1e-5) {
+		return cv::Mat(); // 端点重合，返回空Mat
+	}
+
+	// 计算单位垂直向量（顺时针旋转90度）
+	float nx = dy / length;  // 垂直分量x
+	float ny = -dx / length; // 垂直分量y
+
+	// 计算矩形四个顶点（按左上、右上、右下、左下顺序）
+	std::vector<cv::Point2f> srcPoints;
+	srcPoints.push_back(cv::Point2f(pp1.x() + nx * height / 2, pp1.y() + ny * height / 2)); // 左上
+	srcPoints.push_back(cv::Point2f(pp2.x() + nx * height / 2, pp2.y() + ny * height / 2)); // 右上
+	srcPoints.push_back(cv::Point2f(pp2.x() - nx * height / 2, pp2.y() - ny * height / 2)); // 右下
+	srcPoints.push_back(cv::Point2f(pp1.x() - nx * height / 2, pp1.y() - ny * height / 2)); // 左下
+
+	// 定义目标矩形的四个角点
+	std::vector<cv::Point2f> dstPoints;
+	dstPoints.push_back(cv::Point2f(0, 0));
+	dstPoints.push_back(cv::Point2f(length, 0));
+	dstPoints.push_back(cv::Point2f(length, height));
+	dstPoints.push_back(cv::Point2f(0, height));
+
+	// 计算透视变换矩阵
+	cv::Mat transformMat = cv::getPerspectiveTransform(srcPoints, dstPoints);
+
+	// 执行透视变换
+	cv::Mat dstImage;
+	cv::warpPerspective(
+		srcImage, dstImage, transformMat,
+		cv::Size(static_cast<int>(length), static_cast<int>(height))
+	);
+
+	return dstImage;
+}
+// 计算旋转卡尺区域并转换为 cv::Mat
+cv::Mat frmEdgeWidthMeasure::extractCaliperRegion(const cv::Mat& srcImage, const CaliperP& caliper) {
+	// 获取卡尺关键点
+	QPointF center(caliper.col, caliper.row);
+	QPointF pp1 = caliper.pp1;
+	QPointF pp2 = caliper.pp2;
+	float height = caliper.height;
+	float angle = caliper.angle; // 旋转角度（弧度）
+
+	// 计算卡尺方向向量
+	float dx = pp2.x() - pp1.x();
+	float dy = pp2.y() - pp1.y();
+	float length = std::sqrt(dx * dx + dy * dy);
+
+	if (length < 1e-5) {
+		return cv::Mat(); // 端点重合，返回空Mat
+	}
+
+	// 计算单位方向向量
+	float ux = dx / length;
+	float uy = dy / length;
+
+	// 计算垂直向量（顺时针旋转90度）
+	float vx = uy;
+	float vy = -ux;
+
+	// 计算矩形的四个顶点（考虑旋转）
+	std::vector<cv::Point2f> srcPoints;
+
+	// 顶点1: pp1 + (height/2) * 垂直向量
+	srcPoints.push_back(cv::Point2f(
+		pp1.x() + vx * height / 2,
+		pp1.y() + vy * height / 2
+	));
+
+	// 顶点2: pp2 + (height/2) * 垂直向量
+	srcPoints.push_back(cv::Point2f(
+		pp2.x() + vx * height / 2,
+		pp2.y() + vy * height / 2
+	));
+
+	// 顶点3: pp2 - (height/2) * 垂直向量
+	srcPoints.push_back(cv::Point2f(
+		pp2.x() - vx * height / 2,
+		pp2.y() - vy * height / 2
+	));
+
+	// 顶点4: pp1 - (height/2) * 垂直向量
+	srcPoints.push_back(cv::Point2f(
+		pp1.x() - vx * height / 2,
+		pp1.y() - vy * height / 2
+	));
+
+	// 定义目标矩形的四个角点（考虑旋转）
+	std::vector<cv::Point2f> dstPoints;
+	dstPoints.push_back(cv::Point2f(0, 0));                   // 左上
+	dstPoints.push_back(cv::Point2f(length, 0));              // 右上
+	dstPoints.push_back(cv::Point2f(length, height));         // 右下
+	dstPoints.push_back(cv::Point2f(0, height));             // 左下
+
+	// 计算透视变换矩阵
+	cv::Mat transformMat = cv::getPerspectiveTransform(srcPoints, dstPoints);
+
+	// 执行透视变换
+	cv::Mat dstImage;
+	cv::warpPerspective(
+		srcImage,
+		dstImage,
+		transformMat,
+		cv::Size(static_cast<int>(length), static_cast<int>(height))
+	);
+
+	return dstImage;
 }
 
 //全局变量控制

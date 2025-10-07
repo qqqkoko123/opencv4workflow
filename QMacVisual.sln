@@ -147,7 +147,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OCR", "QPlugins\OCR\OCR\OCR
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImagePrint", "QPlugins\ImageProcess\ImagePrint\QRcodeIdentify.vcxproj", "{F71E1F9D-3250-469D-AAE4-746CE3B80650}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QRcodeGenerate", "QPlugins\DetectIdentify\QRcodeGenerate\QRcodeIdentify.vcxproj", "{2391ED97-DB00-4CF4-8008-33A4D0608373}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QRcodeGenerate", "QPlugins\DetectIdentify\QRcodeGenerate\QRcodeGenerate.vcxproj", "{2391ED97-DB00-4CF4-8008-33A4D0608373}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -98,6 +98,8 @@ private:
 	int cam_state;
 	CameraHandle mindvision_haldle;
 	void* hikvision_haldle;
+	QVector<int*>* hikvision_haldleList = new QVector<int*>();
+	QMap<QString, void*> hikvision_map;
 	BYTE* mindvision_framebuffer = nullptr;
 	tSdkFrameHead m_sFrInfo_A;	 //用于保存当前图像帧的帧头信息		
 	tSdkFrameHead sFrameInfo_A;

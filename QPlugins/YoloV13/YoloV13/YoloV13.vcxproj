@@ -55,31 +55,31 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(QTDIR)\include;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QMainPro\QMacVisual\include;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtNetwork;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(QTDIR)\include;../../../QMainPro/QMacVisual/include;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(IncludePath)</IncludePath>
+    <LibraryPath>$(QTDIR)\lib;$(LibraryPath)</LibraryPath>
     <OutDir>../../../QSoftExe/Debug/Plugins/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>$(QTDIR)\include;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtNetwork;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QMainPro\QMacVisual\include;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(QTDIR)\include;$(QTDIR)\include\QtNetwork;../../../QMainPro/QMacVisual/include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(IncludePath)</IncludePath>
+    <LibraryPath>$(QTDIR)\lib;$(LibraryPath)</LibraryPath>
     <OutDir>../../../QSoftExe/Release/Plugins/</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13\x64\Release\uic;$(QTDIR)\include\QtCore;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13\include;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13\tools;../../../QMainPro/QMacVisual/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);../../../QPluginsYoloV13/YoloV13/x64/Release/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13/include;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QMainPro/QMacVisual/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13\lib;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QMainPro\QMacVisual\lib\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../QPlugins/YoloV13/YoloV13/lib;../../../QMainPro/QMacVisual/lib/release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_world460.lib;onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13\x64\Debug\uic;$(QTDIR)\include\QtCore;G:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13\tools;G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13\include;%(AdditionalIncludeDirectories);../../../QMainPro/QMacVisual/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;../../../QPlugins/YoloV13/YoloV13/x64/Debug/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QPlugins/YoloV13/YoloV13/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opencv_world460d.lib;onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>G:\QMacVisual%28CV3%29%2825000%29\QMacVisual%28CV3%292022.9.21%2825000%29\QMacVisual%28CV3%29\QPlugins\YoloV13\YoloV13\lib;../../../QMainPro/QMacVisual/lib/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../QPlugins/YoloV13/YoloV13/lib;../../../QMainPro/QMacVisual/lib/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
