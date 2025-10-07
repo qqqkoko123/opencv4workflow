@@ -41,10 +41,13 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 [![76MSTQ.png](https://i.imgs.ovh/2025/09/29/76MSTQ.png)](https://imgloc.com/image/76MSTQ)
 # 自动打印
 [![76MTmm.png](https://i.imgs.ovh/2025/09/29/76MTmm.png)](https://imgloc.com/image/76MTmm)
+# 长度测量
+[![79oWVt.png](https://i.imgs.ovh/2025/10/07/79oWVt.png)](https://imgloc.com/image/79oWVt)
 
 # 觉得好，请打赏我~
 
 ![打赏码](https://i.imgs.ovh/2025/09/19/7TQv8b.th.jpeg)     ![打赏码](https://i.imgs.ovh/2025/09/19/7TQq8t.th.png)
+
 
 
 
