@@ -70,6 +70,7 @@ signals:
 private slots:
 	void onRadioClick(bool);
 	void onCalibRadioClick(bool);
+	int ReadBuffer(unsigned int m_nBufSizeForSaveImage, void* m_hDevHandle, cv::Mat& image, int timeout);
 	int ReadBuffer(unsigned int m_nBufSizeForSaveImage, void* m_hDevHandle, cv::Mat& image, QString key);
 	void slot_Message();
 	void slot_PathMessage();
@@ -99,7 +100,8 @@ private:
 	CameraHandle mindvision_haldle;
 	void* hikvision_haldle;
 	QVector<int*>* hikvision_haldleList = new QVector<int*>();
-	QMap<QString, void*> hikvision_map;
+	QMap<QString, void*> hikvision_map = QMap<QString, void*>();
+	QMap<QString, int> hikvision_timeout_map = QMap<QString, int>();
 	BYTE* mindvision_framebuffer = nullptr;
 	tSdkFrameHead m_sFrInfo_A;	 //用于保存当前图像帧的帧头信息		
 	tSdkFrameHead sFrameInfo_A;
@@ -110,7 +112,7 @@ public:
 	//static cv::Mat srcImg;
 	static cv::Mat srcImg; //原图像
 		// 用于保存图像的缓存
-	unsigned int m_nBufSizeForSaveImage;
+	//unsigned int m_nBufSizeForSaveImage;
 };
 
 //全局变量控制

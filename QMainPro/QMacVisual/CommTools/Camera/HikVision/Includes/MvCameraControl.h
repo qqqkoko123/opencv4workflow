@@ -141,8 +141,8 @@ MV_CAMCTRL_API int __stdcall MV_CC_Finalize();
  ************************************************************************/
 MV_CAMCTRL_API unsigned int __stdcall MV_CC_GetSDKVersion();
 
-
-
+//MV_CAMCTRL_API int __stdcall MV_CC_GetErrorString(int nErrorCode, char** pErrorMsg);
+//MV_CAMCTRL_API void __stdcall MV_CC_FreeErrorString(char** pErrorMsg);
 
 /**************************Part2 ch: 相机的控制和取流  | en: Camera control and streaming******************************************/
 

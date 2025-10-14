@@ -52,6 +52,7 @@ public:
 		void* hikvision_haldle_value;
 		QVector<int*>* m_hDevHandleList = new QVector<int*>();
 		MV_CC_DEVICE_INFO* hikvision_deviceInfo;
+		QString m_hDevHandleKey;
 		BYTE* mindvision_framebuffer_value = nullptr;
 		int time_out;
 		cv::Mat srcImg;

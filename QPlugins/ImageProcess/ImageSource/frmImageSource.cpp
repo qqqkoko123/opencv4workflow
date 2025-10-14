@@ -5,7 +5,6 @@
 #include <QThread>
 #include <QElapsedTimer>
 #include <MvCameraControl.h>
-
 cv::Mat frmImageSource::srcImg = cv::Mat(); // 定义并初始化
 frmImageSource::frmImageSource(QString toolName, QToolBase* toolBase, QWidget* parent)
 	: Toolnterface(toolName, toolBase, parent)
@@ -420,90 +419,241 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 		}
 		return 0;
 		break;
+	//case 2:
+	//	//相机取像		
+	//	if (cam_state == 1)
+	//	{
+	//		keys.reserve(300);
+	//		keys.clear();
+	//		keys = gvariable.camera_variable_link.uniqueKeys();
+	//		for (int p = 0; p < keys.length(); p++)
+	//		{
+	//			QString key = keys[p];
+	//			int cam_count = 0;
+	//			if (gvariable.camera_variable_link.value(key).camera_type == "MindVision")
+	//			{
+	//				loop:
+	//				CameraSoftTrigger(mindvision_haldle);  //执行一次软触发					
+	//				if (CameraGetImageBuffer(mindvision_haldle, &sFrameInfo_A, &pbyBuffer_A, time_out) == CAMERA_STATUS_SUCCESS)
+	//				{
+	//					//将获得的相机原始输出图像数据进行处理，叠加饱和度、颜色增益和校正、降噪等处理效果，最后得到RGB888格式的图像数据
+	//					status_A = CameraImageProcess(mindvision_haldle, pbyBuffer_A, mindvision_framebuffer, &sFrameInfo_A);
+	//					//分辨率改变，则刷新背景
+	//					if (m_sFrInfo_A.iWidth != sFrameInfo_A.iWidth || m_sFrInfo_A.iHeight != sFrameInfo_A.iHeight)
+	//					{
+	//						m_sFrInfo_A.iWidth = sFrameInfo_A.iWidth;
+	//						m_sFrInfo_A.iHeight = sFrameInfo_A.iHeight;
+	//					}
+	//					if (status_A == CAMERA_STATUS_SUCCESS)
+	//					{
+	//						//调用SDK封装好的显示接口来显示图像
+	//						CameraImageOverlay(mindvision_haldle, mindvision_framebuffer, &sFrameInfo_A);
+	//						//由于SDK输出的数据默认是从底到顶，转换为OpenCV图片需要做一下垂直镜像
+	//						CameraFlipFrameBuffer(mindvision_framebuffer, &sFrameInfo_A, 1);
+	//						srcImg = cv::Mat(cv::Size(sFrameInfo_A.iWidth, sFrameInfo_A.iHeight), sFrameInfo_A.uiMediaType == CAMERA_MEDIA_TYPE_MONO8 ? CV_8UC1 : CV_8UC3, mindvision_framebuffer);
+	//					}
+	//					//在成功调用CameraGetImageBuffer后，必须调用CameraReleaseImageBuffer来释放获得的buffer		
+	//					CameraReleaseImageBuffer(mindvision_haldle, pbyBuffer_A);
+	//					memcpy(&m_sFrInfo_A, &sFrameInfo_A, sizeof(tSdkFrameHead));
+	//					break;
+	//				}
+	//				else
+	//				{
+	//					++cam_count;
+	//					if (cam_count > 20)
+	//					{
+	//						GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+	//						return -2;
+	//					}
+	//					else
+	//					{
+	//						QElapsedTimer t;
+	//						t.start();
+	//						while (t.elapsed() < 50);
+	//						goto loop;
+	//					}
+	//				}
+	//			}
+	//			else if (gvariable.camera_variable_link.value(key).camera_type == "HIKVision")
+	//			{
+	//				loop2:
+	//				//// ch:探测网络最佳包大小(只对GigE相机有效) | en:Detection network optimal package size(It only works for the GigE camera)
+	//				//if (gvariable.CameraVar.hikvision_deviceInfo->nTLayerType == MV_GIGE_DEVICE)
+	//				//{
+	//				//	int nPacketSize = MV_CC_GetOptimalPacketSize(hikvision_haldle);
+	//				//	if (nPacketSize > 0)
+	//				//	{
+	//				//		int nRet = MV_CC_SetIntValueEx(hikvision_haldle, "GevSCPSPacketSize", nPacketSize);
+	//				//		if (nRet != MV_OK)
+	//				//		{
+	//				//			printf("Warning: Set Packet Size fail nRet [0x%x]!", nRet);
+	//				//		}
+	//				//	}
+	//				//	else
+	//				//	{
+	//				//		printf("Warning: Get Packet Size fail nRet [0x%x]!", nPacketSize);
+	//				//	}
+	//				//}
+	//				//// ch:注册抓图异步回调 | en:Register image callback
+	//				//int nRet = MV_CC_RegisterImageCallBackEx(hikvision_haldle, ImageCallBackEx, hikvision_haldle);
+	//				//if (MV_OK != nRet)
+	//				//{
+	//				//	printf("Register Image CallBack fail! nRet [0x%x]\n", nRet);
+	//				//	break;
+	//				//}
+	//				
+	//				//int nRet = MV_CC_StartGrabbing(hikvision_haldle);
+	//					if (gvariable.camera_variable_link.value(key).hikvision_haldle_value != NULL && gvariable.camera_variable_link.value(key).m_hDevHandleKey == ui.comboCamera->currentText())
+	//					{
+	//						if (gvariable.camera_variable_link.value(key).index == 0) //连续模式
+	//						{
+	//							//异步抓图等待图像回调
+	//							QElapsedTimer t;
+	//							t.start();
+	//							while (t.elapsed() < time_out);
+	//							if (gvariable.camera_variable_link.value(key).srcImg.empty())
+	//							{
+	//								//子线程中操作GUI要用信号与槽
+	//								emit sig_Message();
+	//								return -2;
+	//							}
+	//						}
+	//						else if (gvariable.camera_variable_link.value(key).index == 1) //软件触发模式
+	//						{
+	//							//int nRet = MV_CC_SetCommandValue(hikvision_map.value(ui.comboCamera->currentText()), "TriggerSoftware");
+	//							int nRet = MV_CC_SetCommandValue(gvariable.camera_variable_link.value(key).hikvision_haldle_value, "TriggerSoftware");
+	//							if (nRet == MV_OK)
+	//							{
+	//								//QMessageBox::warning(this, "提示", "软触发执行失败！", QMessageBox::Ok);
+	//								//return -1;
+	//							}
+	//							else
+	//							{
+	//								++cam_count;
+	//								if (cam_count > 20)
+	//								{
+	//									GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+	//									break;
+	//								}
+	//								else
+	//								{
+	//									QElapsedTimer t;
+	//									t.start();
+	//									while (t.elapsed() < 50);
+	//									goto loop2;
+	//								}
+	//							}
+
+	//							//改成同步获取抓图会有2-3秒的延迟
+	//							//ReadBuffer(m_nBufSizeForSaveImage, hikvision_map.value(ui.comboCamera->currentText()), srcImg, hikvision_timeout_map.value(ui.comboCamera->currentText()));
+	//							ReadBuffer(m_nBufSizeForSaveImage, gvariable.camera_variable_link.value(key).hikvision_haldle_value, srcImg, gvariable.camera_variable_link.value(key).time_out);
+	//						}
+	//						else if (gvariable.camera_variable_link.value(key).index == 2) //硬件触发模式
+	//						{
+
+	//							//改成同步获取抓图会有2-3秒的延迟
+	//							//ReadBuffer(m_nBufSizeForSaveImage, hikvision_map.value(ui.comboCamera->currentText()), srcImg, hikvision_timeout_map.value(ui.comboCamera->currentText()));
+	//							ReadBuffer(m_nBufSizeForSaveImage, gvariable.camera_variable_link.value(key).hikvision_haldle_value, srcImg, gvariable.camera_variable_link.value(key).time_out);
+	//						}
+	//					}
+	//					
+	//			
+	//				
+
+
+	//				//// ch:停止取流 | en:Stop grab image
+	//				//nRet = MV_CC_StopGrabbing(hikvision_haldle);
+	//				//if (MV_OK != nRet)
+	//				//{
+	//				//	printf("Stop Grabbing fail! nRet [0x%x]\n", nRet);
+	//				//}
+	//			}
+	//		}
+	//	}
 	case 2:
-		//相机取像		
-		if (cam_state == 1)
-		{
-			keys.reserve(300);
-			keys.clear();
-			keys = gvariable.camera_variable_link.uniqueKeys();
-			for (int p = 0; p < keys.length(); p++)
+			//相机取像		
+			if (cam_state == 1)
 			{
-				QString key = keys[p];
-				int cam_count = 0;
-				if (gvariable.camera_variable_link.value(key).camera_type == "MindVision")
+				keys.reserve(300);
+				keys.clear();
+				keys = gvariable.camera_variable_link.uniqueKeys();
+				for (int p = 0; p < keys.length(); p++)
 				{
+					QString key = keys[p];
+					int cam_count = 0;
+					if (gvariable.camera_variable_link.value(key).camera_type == "MindVision")
+					{
 					loop:
-					CameraSoftTrigger(mindvision_haldle);  //执行一次软触发					
-					if (CameraGetImageBuffer(mindvision_haldle, &sFrameInfo_A, &pbyBuffer_A, time_out) == CAMERA_STATUS_SUCCESS)
-					{
-						//将获得的相机原始输出图像数据进行处理，叠加饱和度、颜色增益和校正、降噪等处理效果，最后得到RGB888格式的图像数据
-						status_A = CameraImageProcess(mindvision_haldle, pbyBuffer_A, mindvision_framebuffer, &sFrameInfo_A);
-						//分辨率改变，则刷新背景
-						if (m_sFrInfo_A.iWidth != sFrameInfo_A.iWidth || m_sFrInfo_A.iHeight != sFrameInfo_A.iHeight)
+						CameraSoftTrigger(mindvision_haldle);  //执行一次软触发					
+						if (CameraGetImageBuffer(mindvision_haldle, &sFrameInfo_A, &pbyBuffer_A, time_out) == CAMERA_STATUS_SUCCESS)
 						{
-							m_sFrInfo_A.iWidth = sFrameInfo_A.iWidth;
-							m_sFrInfo_A.iHeight = sFrameInfo_A.iHeight;
-						}
-						if (status_A == CAMERA_STATUS_SUCCESS)
-						{
-							//调用SDK封装好的显示接口来显示图像
-							CameraImageOverlay(mindvision_haldle, mindvision_framebuffer, &sFrameInfo_A);
-							//由于SDK输出的数据默认是从底到顶，转换为OpenCV图片需要做一下垂直镜像
-							CameraFlipFrameBuffer(mindvision_framebuffer, &sFrameInfo_A, 1);
-							srcImg = cv::Mat(cv::Size(sFrameInfo_A.iWidth, sFrameInfo_A.iHeight), sFrameInfo_A.uiMediaType == CAMERA_MEDIA_TYPE_MONO8 ? CV_8UC1 : CV_8UC3, mindvision_framebuffer);
-						}
-						//在成功调用CameraGetImageBuffer后，必须调用CameraReleaseImageBuffer来释放获得的buffer		
-						CameraReleaseImageBuffer(mindvision_haldle, pbyBuffer_A);
-						memcpy(&m_sFrInfo_A, &sFrameInfo_A, sizeof(tSdkFrameHead));
-						break;
-					}
-					else
-					{
-						++cam_count;
-						if (cam_count > 20)
-						{
-							GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-							return -2;
+							//将获得的相机原始输出图像数据进行处理，叠加饱和度、颜色增益和校正、降噪等处理效果，最后得到RGB888格式的图像数据
+							status_A = CameraImageProcess(mindvision_haldle, pbyBuffer_A, mindvision_framebuffer, &sFrameInfo_A);
+							//分辨率改变，则刷新背景
+							if (m_sFrInfo_A.iWidth != sFrameInfo_A.iWidth || m_sFrInfo_A.iHeight != sFrameInfo_A.iHeight)
+							{
+								m_sFrInfo_A.iWidth = sFrameInfo_A.iWidth;
+								m_sFrInfo_A.iHeight = sFrameInfo_A.iHeight;
+							}
+							if (status_A == CAMERA_STATUS_SUCCESS)
+							{
+								//调用SDK封装好的显示接口来显示图像
+								CameraImageOverlay(mindvision_haldle, mindvision_framebuffer, &sFrameInfo_A);
+								//由于SDK输出的数据默认是从底到顶，转换为OpenCV图片需要做一下垂直镜像
+								CameraFlipFrameBuffer(mindvision_framebuffer, &sFrameInfo_A, 1);
+								srcImg = cv::Mat(cv::Size(sFrameInfo_A.iWidth, sFrameInfo_A.iHeight), sFrameInfo_A.uiMediaType == CAMERA_MEDIA_TYPE_MONO8 ? CV_8UC1 : CV_8UC3, mindvision_framebuffer);
+							}
+							//在成功调用CameraGetImageBuffer后，必须调用CameraReleaseImageBuffer来释放获得的buffer		
+							CameraReleaseImageBuffer(mindvision_haldle, pbyBuffer_A);
+							memcpy(&m_sFrInfo_A, &sFrameInfo_A, sizeof(tSdkFrameHead));
+							break;
 						}
 						else
 						{
-							QElapsedTimer t;
-							t.start();
-							while (t.elapsed() < 50);
-							goto loop;
+							++cam_count;
+							if (cam_count > 20)
+							{
+								GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+								return -2;
+							}
+							else
+							{
+								QElapsedTimer t;
+								t.start();
+								while (t.elapsed() < 50);
+								goto loop;
+							}
 						}
 					}
-				}
-				else if (gvariable.camera_variable_link.value(key).camera_type == "HIKVision")
-				{
+					else if (gvariable.camera_variable_link.value(key).camera_type == "HIKVision" && gvariable.camera_variable_link.value(key).m_hDevHandleKey == ui.comboCamera->currentText())
+					{
 					loop2:
-					//// ch:探测网络最佳包大小(只对GigE相机有效) | en:Detection network optimal package size(It only works for the GigE camera)
-					//if (gvariable.CameraVar.hikvision_deviceInfo->nTLayerType == MV_GIGE_DEVICE)
-					//{
-					//	int nPacketSize = MV_CC_GetOptimalPacketSize(hikvision_haldle);
-					//	if (nPacketSize > 0)
-					//	{
-					//		int nRet = MV_CC_SetIntValueEx(hikvision_haldle, "GevSCPSPacketSize", nPacketSize);
-					//		if (nRet != MV_OK)
-					//		{
-					//			printf("Warning: Set Packet Size fail nRet [0x%x]!", nRet);
-					//		}
-					//	}
-					//	else
-					//	{
-					//		printf("Warning: Get Packet Size fail nRet [0x%x]!", nPacketSize);
-					//	}
-					//}
-					//// ch:注册抓图异步回调 | en:Register image callback
-					//int nRet = MV_CC_RegisterImageCallBackEx(hikvision_haldle, ImageCallBackEx, hikvision_haldle);
-					//if (MV_OK != nRet)
-					//{
-					//	printf("Register Image CallBack fail! nRet [0x%x]\n", nRet);
-					//	break;
-					//}
-					
-					//int nRet = MV_CC_StartGrabbing(hikvision_haldle);
+						//// ch:探测网络最佳包大小(只对GigE相机有效) | en:Detection network optimal package size(It only works for the GigE camera)
+						//if (gvariable.CameraVar.hikvision_deviceInfo->nTLayerType == MV_GIGE_DEVICE)
+						//{
+						//	int nPacketSize = MV_CC_GetOptimalPacketSize(hikvision_haldle);
+						//	if (nPacketSize > 0)
+						//	{
+						//		int nRet = MV_CC_SetIntValueEx(hikvision_haldle, "GevSCPSPacketSize", nPacketSize);
+						//		if (nRet != MV_OK)
+						//		{
+						//			printf("Warning: Set Packet Size fail nRet [0x%x]!", nRet);
+						//		}
+						//	}
+						//	else
+						//	{
+						//		printf("Warning: Get Packet Size fail nRet [0x%x]!", nPacketSize);
+						//	}
+						//}
+						//// ch:注册抓图异步回调 | en:Register image callback
+						//int nRet = MV_CC_RegisterImageCallBackEx(hikvision_haldle, ImageCallBackEx, hikvision_haldle);
+						//if (MV_OK != nRet)
+						//{
+						//	printf("Register Image CallBack fail! nRet [0x%x]\n", nRet);
+						//	break;
+						//}
+
+						//int nRet = MV_CC_StartGrabbing(hikvision_haldle);
 						if (gvariable.camera_variable_link.value(key).index == 0) //连续模式
 						{
 							//异步抓图等待图像回调
@@ -519,8 +669,8 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 						}
 						else if (gvariable.camera_variable_link.value(key).index == 1) //软件触发模式
 						{
-							int nRet = MV_CC_SetCommandValue(hikvision_map.take(key), "TriggerSoftware");
-
+							int nRet = MV_CC_SetCommandValue(hikvision_map.value(gvariable.camera_variable_link.value(key).m_hDevHandleKey), "TriggerSoftware");
+							
 							if (nRet == MV_OK)
 							{
 
@@ -542,28 +692,31 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 									goto loop2;
 								}
 							}
+							//uintptr_t handleAddr = reinterpret_cast<uintptr_t>(gvariable.camera_variable_link.value(key).hikvision_haldle_value);
+							//QMessageBox::warning(this, "提示", key + ":" +QString::number(handleAddr));
+							unsigned int m_nBufSizeForSaveImage = 0;
 							//改成同步获取抓图会有2-3秒的延迟
-							ReadBuffer(m_nBufSizeForSaveImage, hikvision_map.take(key), srcImg, key);
+							ReadBuffer(m_nBufSizeForSaveImage, hikvision_map.value(gvariable.camera_variable_link.value(key).m_hDevHandleKey), srcImg, key);
 						}
 						else if (gvariable.camera_variable_link.value(key).index == 2) //硬件触发模式
 						{
-							
+							unsigned int m_nBufSizeForSaveImage = 0;
 							//改成同步获取抓图会有2-3秒的延迟
-							ReadBuffer(m_nBufSizeForSaveImage, hikvision_map.take(key), srcImg, key);
+							ReadBuffer(m_nBufSizeForSaveImage, hikvision_map.value(gvariable.camera_variable_link.value(key).m_hDevHandleKey), srcImg, key);
 						}
-				
-					
 
 
-					//// ch:停止取流 | en:Stop grab image
-					//nRet = MV_CC_StopGrabbing(hikvision_haldle);
-					//if (MV_OK != nRet)
-					//{
-					//	printf("Stop Grabbing fail! nRet [0x%x]\n", nRet);
-					//}
+
+
+						//// ch:停止取流 | en:Stop grab image
+						//nRet = MV_CC_StopGrabbing(hikvision_haldle);
+						//if (MV_OK != nRet)
+						//{
+						//	printf("Stop Grabbing fail! nRet [0x%x]\n", nRet);
+						//}
+					}
 				}
 			}
-		}
 		else
 		{
 			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
@@ -638,7 +791,7 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 	return 0;
 }
 //读取相机中的图像
-int frmImageSource::ReadBuffer(unsigned int m_nBufSizeForSaveImage,void* m_hDevHandle, cv::Mat& image,QString key)
+int frmImageSource::ReadBuffer(unsigned int m_nBufSizeForSaveImage,void* m_hDevHandle, cv::Mat& image,int timeout)
 {
 	cv::Mat* getImage = new cv::Mat();
 	unsigned int nRecvBufSize = 0;
@@ -647,6 +800,86 @@ int frmImageSource::ReadBuffer(unsigned int m_nBufSizeForSaveImage,void* m_hDevH
 	int tempValue = MV_CC_GetIntValue(m_hDevHandle, "PayloadSize", &stParam);
 	if (tempValue != 0)
 	{
+		QMessageBox::warning(this, "提示", "加载图像尺寸失败！", QMessageBox::Ok);
+		return -1;
+	}
+	nRecvBufSize = stParam.nCurValue;
+	unsigned char* pDate;
+	pDate = (unsigned char*)malloc(nRecvBufSize);
+
+	MV_FRAME_OUT_INFO_EX stImageInfo = { 0 };
+	tempValue = MV_CC_GetOneFrameTimeout(m_hDevHandle, pDate, nRecvBufSize, &stImageInfo, timeout);
+	if (tempValue != 0)
+	{
+		// 获取详细错误信息
+		//char* pErrorMsg = nullptr;
+		//MV_CC_GetErrorString(tempValue, &pErrorMsg);
+		QString error = QString("获取图像失败: %1").arg(QString::number(tempValue));
+		QMessageBox::warning(nullptr, "错误", error);
+		//if (pErrorMsg) MV_CC_FreeErrorString(&pErrorMsg);
+		return -1;
+	}
+	m_nBufSizeForSaveImage = stImageInfo.nWidth * stImageInfo.nHeight * 3 + 2048;
+	unsigned char* m_pBufForSaveImage;
+	m_pBufForSaveImage = (unsigned char*)malloc(m_nBufSizeForSaveImage);
+
+
+	bool isMono;
+	switch (stImageInfo.enPixelType)
+	{
+	case PixelType_Gvsp_Mono8:
+	case PixelType_Gvsp_Mono10:
+	case PixelType_Gvsp_Mono10_Packed:
+	case PixelType_Gvsp_Mono12:
+	case PixelType_Gvsp_Mono12_Packed:
+		isMono = true;
+		break;
+	default:
+		isMono = false;
+		break;
+	}
+	if (isMono)
+	{
+		*getImage = cv::Mat(stImageInfo.nHeight, stImageInfo.nWidth, CV_8UC1, pDate);
+		//imwrite("d:\\测试opencv_Mono.tif", image);
+	}
+	else
+	{
+		//转换图像格式为BGR8
+		MV_CC_PIXEL_CONVERT_PARAM stConvertParam = { 0 };
+		memset(&stConvertParam, 0, sizeof(MV_CC_PIXEL_CONVERT_PARAM));
+		stConvertParam.nWidth = stImageInfo.nWidth;                 //ch:图像宽 | en:image width
+		stConvertParam.nHeight = stImageInfo.nHeight;               //ch:图像高 | en:image height
+		//stConvertParam.pSrcData = m_pBufForDriver;                  //ch:输入数据缓存 | en:input data buffer
+		stConvertParam.pSrcData = pDate;                  //ch:输入数据缓存 | en:input data buffer
+		stConvertParam.nSrcDataLen = stImageInfo.nFrameLen;         //ch:输入数据大小 | en:input data size
+		stConvertParam.enSrcPixelType = stImageInfo.enPixelType;    //ch:输入像素格式 | en:input pixel format
+		stConvertParam.enDstPixelType = PixelType_Gvsp_BGR8_Packed; //ch:输出像素格式 | en:output pixel format  适用于OPENCV的图像格式
+		//stConvertParam.enDstPixelType = PixelType_Gvsp_RGB8_Packed; //ch:输出像素格式 | en:output pixel format
+		stConvertParam.pDstBuffer = m_pBufForSaveImage;                    //ch:输出数据缓存 | en:output data buffer
+		stConvertParam.nDstBufferSize = m_nBufSizeForSaveImage;            //ch:输出缓存大小 | en:output buffer size
+		MV_CC_ConvertPixelType(m_hDevHandle, &stConvertParam);
+
+		*getImage = cv::Mat(stImageInfo.nHeight, stImageInfo.nWidth, CV_8UC3, m_pBufForSaveImage);
+		//imwrite("d:\\测试opencv_Color.tif", image);
+	}
+	(*getImage).copyTo(image);
+	(*getImage).release();
+	free(pDate);
+	free(m_pBufForSaveImage);
+	return 0;
+}
+//读取相机中的图像
+int frmImageSource::ReadBuffer(unsigned int m_nBufSizeForSaveImage, void* m_hDevHandle, cv::Mat& image, QString key)
+{
+	cv::Mat* getImage = new cv::Mat();
+	unsigned int nRecvBufSize = 0;
+	MVCC_INTVALUE stParam;
+	memset(&stParam, 0, sizeof(MVCC_INTVALUE));
+	int tempValue = MV_CC_GetIntValue(m_hDevHandle, "PayloadSize", &stParam);
+	if (tempValue != 0)
+	{
+		QMessageBox::warning(this, "提示", "加载图像尺寸失败！", QMessageBox::Ok);
 		return -1;
 	}
 	nRecvBufSize = stParam.nCurValue;
@@ -657,6 +890,12 @@ int frmImageSource::ReadBuffer(unsigned int m_nBufSizeForSaveImage,void* m_hDevH
 	tempValue = MV_CC_GetOneFrameTimeout(m_hDevHandle, pDate, nRecvBufSize, &stImageInfo, gvariable.camera_variable_link.value(key).time_out);
 	if (tempValue != 0)
 	{
+		// 获取详细错误信息
+		//char* pErrorMsg = nullptr;
+		//MV_CC_GetErrorString(tempValue, &pErrorMsg);
+		QString error = QString("获取图像失败: %1").arg(QString::number(tempValue));
+		QMessageBox::warning(nullptr, "错误", error);
+		//if (pErrorMsg) MV_CC_FreeErrorString(&pErrorMsg);
 		return -1;
 	}
 	m_nBufSizeForSaveImage = stImageInfo.nWidth * stImageInfo.nHeight * 3 + 2048;
@@ -773,11 +1012,73 @@ int frmImageSource::ExecuteAllLink(const QMap<QString, gVariable::Global_Var> g_
 	}
 }
 
+//int frmImageSource::ExecuteCameraLink(const QMap<QString, gVariable::Camera_Var> camera_var_link)
+//{
+//	try
+//	{
+//		gvariable.camera_variable_link = camera_var_link;
+//		if (choose_index >= 0 || !gvariable.camera_variable_link.isEmpty())
+//		{
+//			cam_state = 0;
+//			choose_num = 0;
+//			keys.reserve(300);
+//			keys.clear();
+//			keys = gvariable.camera_variable_link.uniqueKeys();
+//			if (keys.length() < ui.comboCamera->count())
+//			{
+//				choose_num = 1;
+//				return -1;
+//			}			
+//			for (int p = 0; p < keys.length(); p++)
+//			{
+//				QString key = keys[p];
+//				if (!gvariable.camera_variable_link.value(key).camera_type.isEmpty())
+//				{	
+//					if (gvariable.camera_variable_link.value(key).camera_type == "MindVision")
+//					{
+//						if (key == ui.comboCamera->itemText(choose_index))
+//						{
+//							mindvision_haldle = gvariable.camera_variable_link.value(key).mindvision_haldle_value;
+//							mindvision_framebuffer = gvariable.camera_variable_link.value(key).mindvision_framebuffer_value;
+//							time_out = gvariable.camera_variable_link.value(key).time_out;
+//							cam_state = 1;
+//							return 0;
+//						}
+//					}
+//					else if (gvariable.camera_variable_link.value(key).camera_type == "HIKVision")
+//					{
+//						//QMessageBox::warning(this, "提示", QString::number((gvariable.camera_variable_link.value(key).hikvision_haldle_value == NULL)), QMessageBox::Ok);
+//						if (gvariable.camera_variable_link.value(key).hikvision_haldle_value != NULL)
+//						{
+//							//QMessageBox::warning(this, "提示", "success1", QMessageBox::Ok);
+//							gvariable.CameraVar.hikvision_deviceInfo = gvariable.camera_variable_link.value(key).hikvision_deviceInfo;
+//							hikvision_haldle = gvariable.camera_variable_link.value(key).hikvision_haldle_value;
+//							hikvision_haldleList = gvariable.camera_variable_link.value(key).hikvision_haldleList;
+//							//hikvision_haldleList->append(static_cast<int*>(hikvision_haldle));
+//							hikvision_map.insert(gvariable.camera_variable_link.value(key).m_hDevHandleKey, hikvision_haldle);
+//							hikvision_timeout_map.insert(gvariable.camera_variable_link.value(key).m_hDevHandleKey, time_out);
+//							//gvariable.GlobalVar.srcImg = gvariable.camera_variable_link.value(key).srcImg;
+//							time_out = gvariable.camera_variable_link.value(key).time_out;
+//							cam_state = 1;
+//						}
+//					}
+//				}
+//			}
+//		}
+//		return 0;
+//	}
+//	catch (...)
+//	{
+//		return -1;
+//	}
+//}
 int frmImageSource::ExecuteCameraLink(const QMap<QString, gVariable::Camera_Var> camera_var_link)
 {
 	try
 	{
 		gvariable.camera_variable_link = camera_var_link;
+		hikvision_map.clear();
+		hikvision_timeout_map.clear();
 		if (choose_index >= 0)
 		{
 			cam_state = 0;
@@ -789,7 +1090,7 @@ int frmImageSource::ExecuteCameraLink(const QMap<QString, gVariable::Camera_Var>
 			{
 				choose_num = 1;
 				return -1;
-			}			
+			}
 			for (int p = 0; p < keys.length(); p++)
 			{
 				QString key = keys[p];
@@ -800,20 +1101,24 @@ int frmImageSource::ExecuteCameraLink(const QMap<QString, gVariable::Camera_Var>
 						mindvision_haldle = gvariable.camera_variable_link.value(key).mindvision_haldle_value;
 						mindvision_framebuffer = gvariable.camera_variable_link.value(key).mindvision_framebuffer_value;
 						time_out = gvariable.camera_variable_link.value(key).time_out;
-						cam_state = 1;						
+						cam_state = 1;
 						return 0;
 					}
 				}
 				else if (gvariable.camera_variable_link.value(key).camera_type == "HIKVision")
 				{
-					gvariable.CameraVar.hikvision_deviceInfo = gvariable.camera_variable_link.value(key).hikvision_deviceInfo;
-					hikvision_haldle = gvariable.camera_variable_link.value(key).hikvision_haldle_value;
-					//hikvision_haldleList = gvariable.camera_variable_link.value(key).hikvision_haldleList;
-					hikvision_haldleList->append(static_cast<int*>(hikvision_haldle));
-					hikvision_map.insert(key, hikvision_haldle);
-					//gvariable.GlobalVar.srcImg = gvariable.camera_variable_link.value(key).srcImg;
-					time_out = gvariable.camera_variable_link.value(key).time_out;
-					cam_state = 1;
+					if (gvariable.camera_variable_link.value(key).hikvision_haldle_value != NULL && gvariable.camera_variable_link.value(key).m_hDevHandleKey == ui.comboCamera->currentText())
+					{
+						gvariable.CameraVar.hikvision_deviceInfo = gvariable.camera_variable_link.value(key).hikvision_deviceInfo;
+						hikvision_haldle = gvariable.camera_variable_link.value(key).hikvision_haldle_value;
+						hikvision_haldleList = gvariable.camera_variable_link.value(key).hikvision_haldleList;
+						//hikvision_haldleList->append(static_cast<int*>(hikvision_haldle));
+						hikvision_map.insert(gvariable.camera_variable_link.value(key).m_hDevHandleKey, hikvision_haldle);
+						hikvision_timeout_map.insert(gvariable.camera_variable_link.value(key).m_hDevHandleKey, time_out);
+						//gvariable.GlobalVar.srcImg = gvariable.camera_variable_link.value(key).srcImg;
+						time_out = gvariable.camera_variable_link.value(key).time_out;
+						cam_state = 1;
+					}
 				}
 			}
 		}
@@ -824,7 +1129,6 @@ int frmImageSource::ExecuteCameraLink(const QMap<QString, gVariable::Camera_Var>
 		return -1;
 	}
 }
-
 int frmImageSource::InitSetToolData(const QVariant data)
 {
 	try
@@ -856,12 +1160,58 @@ QVariant frmImageSource::InitGetToolData()
 	return QVariant::fromValue(init_data);
 }
 
+//void frmImageSource::on_comboCamera_currentIndexChanged(int index)
+//{
+//	//gvariable.camera_variable_link = gVariable::camera_variable_link;
+//	cam_state = 0;
+//	keys.reserve(300);
+//	keys.clear();
+//	keys = gvariable.camera_variable_link.uniqueKeys();
+//	for (int p = 0; p < keys.length(); p++)
+//	{
+//		QString key = keys[p];
+//		if (!gvariable.camera_variable_link.value(key).camera_type.isEmpty())
+//		{
+//			if (gvariable.camera_variable_link.value(key).camera_type == "MindVision")
+//			{
+//				if (key == ui.comboCamera->itemText(index))
+//				{
+//					mindvision_haldle = gvariable.camera_variable_link.value(key).mindvision_haldle_value;
+//					mindvision_framebuffer = gvariable.camera_variable_link.value(key).mindvision_framebuffer_value;
+//					time_out = gvariable.camera_variable_link.value(key).time_out;
+//					cam_state = 1;
+//					choose_index = index;
+//					return;
+//				}
+//			}
+//			else if (gvariable.camera_variable_link.value(key).camera_type == "HIKVision")
+//			{
+//				if (gvariable.camera_variable_link.value(key).hikvision_haldle_value != NULL)
+//				{
+//					//QMessageBox::warning(this, "提示", "success2", QMessageBox::Ok);
+//					gvariable.CameraVar.hikvision_deviceInfo = gvariable.camera_variable_link.value(key).hikvision_deviceInfo;
+//					hikvision_haldle = gvariable.camera_variable_link.value(key).hikvision_haldle_value;
+//					hikvision_haldleList = gvariable.camera_variable_link.value(key).hikvision_haldleList;
+//					//hikvision_haldleList->append(static_cast<int*>(hikvision_haldle));
+//					hikvision_map.insert(gvariable.camera_variable_link.value(key).m_hDevHandleKey, hikvision_haldle);
+//					//gvariable.GlobalVar.srcImg = gvariable.camera_variable_link.value(key).srcImg;
+//					time_out = gvariable.camera_variable_link.value(key).time_out;
+//					hikvision_timeout_map.insert(gvariable.camera_variable_link.value(key).m_hDevHandleKey, time_out);
+//					cam_state = 1;
+//					choose_index = index;
+//				}
+//			}
+//		}		
+//	}
+//}
 void frmImageSource::on_comboCamera_currentIndexChanged(int index)
 {
 	cam_state = 0;
 	keys.reserve(300);
 	keys.clear();
 	keys = gvariable.camera_variable_link.uniqueKeys();
+	hikvision_map.clear();
+	hikvision_timeout_map.clear();
 	for (int p = 0; p < keys.length(); p++)
 	{
 		QString key = keys[p];
@@ -879,15 +1229,20 @@ void frmImageSource::on_comboCamera_currentIndexChanged(int index)
 		}
 		if (gvariable.camera_variable_link.value(key).camera_type == "HIKVision")
 		{
-			gvariable.CameraVar.hikvision_deviceInfo = gvariable.camera_variable_link.value(key).hikvision_deviceInfo;
-			hikvision_haldle = gvariable.camera_variable_link.value(key).hikvision_haldle_value;
-            //hikvision_haldleList = gvariable.camera_variable_link.value(key).hikvision_haldleList;
-			hikvision_haldleList->append(static_cast<int*>(hikvision_haldle));
-			hikvision_map.insert(key, hikvision_haldle);
-			//gvariable.GlobalVar.srcImg = gvariable.camera_variable_link.value(key).srcImg;
-			time_out = gvariable.camera_variable_link.value(key).time_out;
-			cam_state = 1;
-			choose_index = index;
+			if (gvariable.camera_variable_link.value(key).hikvision_haldle_value != NULL && gvariable.camera_variable_link.value(key).m_hDevHandleKey == ui.comboCamera->currentText())
+			{
+				//QMessageBox::warning(this, "提示", "success2", QMessageBox::Ok);
+				gvariable.CameraVar.hikvision_deviceInfo = gvariable.camera_variable_link.value(key).hikvision_deviceInfo;
+				hikvision_haldle = gvariable.camera_variable_link.value(key).hikvision_haldle_value;
+				hikvision_haldleList = gvariable.camera_variable_link.value(key).hikvision_haldleList;
+				//hikvision_haldleList->append(static_cast<int*>(hikvision_haldle));
+				hikvision_map.insert(gvariable.camera_variable_link.value(key).m_hDevHandleKey, hikvision_haldle);
+				//gvariable.GlobalVar.srcImg = gvariable.camera_variable_link.value(key).srcImg;
+				time_out = gvariable.camera_variable_link.value(key).time_out;
+				hikvision_timeout_map.insert(gvariable.camera_variable_link.value(key).m_hDevHandleKey, time_out);
+				cam_state = 1;
+				choose_index = index;
+			}
 		}
 	}
 }

@@ -37,6 +37,7 @@ private slots:
 	QString IPIntToStr(uint32_t ipInt);
 	void on_btnConnect_clicked();
 	void connectHikVison(int type);
+	void connectHikVison(QString key);
 	int startCamera(void* handle);
 	int stopCamera(void* handle);
 	int closeCamera(void* handle);
@@ -56,6 +57,27 @@ private slots:
 	int setExposureTime(void* handle, float ExposureTimeNum);
 	int setExposureAuto(void* handle, bool exposureAutoFlag);
 	int setGainAuto(void* handle, bool gainAutoFlag);
+	//void connectHikVison();
+	//void connectHikVison(QString camera_key_value);
+	/*int startCamera();
+	int stopCamera();
+	int closeCamera();
+	int softTrigger();
+	int ReadBuffer( cv::Mat& image);
+	int getHeight();
+	int getWidth();
+	float getExposureTime();
+	int setHeight( unsigned int height);
+	int setWidth( unsigned int width);
+	int setOffsetX( unsigned int offsetX);
+	int setOffsetY( unsigned int offsetY);
+	int setTriggerMode( unsigned int TriggerModeNum);
+	int setTriggerSource( unsigned int TriggerSourceNum);
+	int setFrameRateEnable( bool comm);
+	int setHeartBeatTime( unsigned int time);
+	int setExposureTime( float ExposureTimeNum);
+	int setExposureAuto( bool exposureAutoFlag);
+	int setGainAuto( bool gainAutoFlag);*/
 	void clearBuffer();
 	void on_btnDisconnect_clicked();	
 	void on_btnSave_clicked();
@@ -80,8 +102,9 @@ private:
 	//海康威视
 	QVector<MV_CC_DEVICE_INFO_LIST> hCameraList;
 	MV_CC_DEVICE_INFO* m_Device = NULL;
-	void* m_hDevHandle;
+	//void* m_hDevHandle;
 	QVector<int*>* m_hDevHandleList = new QVector<int*>();
+	QMap<QString, void*> m_hDevHandleMap = QMap<QString, void*>();
 	CMvCamera* m_pcMyCamera = new CMvCamera();
 	gVariable gvariable;
 public:	

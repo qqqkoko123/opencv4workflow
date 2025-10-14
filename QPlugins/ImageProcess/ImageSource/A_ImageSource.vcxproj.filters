@@ -98,6 +98,9 @@
     <ClCompile Include="ImageItem.cpp">
       <Filter>Source Files\ImageView</Filter>
     </ClCompile>
+    <ClCompile Include="gvariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="sub_res.qrc">

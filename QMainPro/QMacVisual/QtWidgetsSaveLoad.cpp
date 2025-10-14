@@ -2368,8 +2368,8 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 	}
 	for (int i = 0; i < dataCameraRemoteList.size(); i++)  //相机	
 	{
-		gVariable::CameraVar.time_out = dataCameraRemoteList.at(i).time_out;
-		gVariable::camera_variable_link.insert(dataCameraRemoteList.at(i).camera_key_value, gVariable::CameraVar);
+		//gVariable::CameraVar.time_out = dataCameraRemoteList.at(i).time_out;
+		//gVariable::camera_variable_link.insert(dataCameraRemoteList.at(i).camera_key_value, gVariable::CameraVar);
 		//初始化相机连接
 		dataVar::fCameraSetUp->InitCameraConnect(dataCameraRemoteList.at(i).camera_key_value);
 	}
