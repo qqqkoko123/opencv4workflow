@@ -142,10 +142,10 @@ int frmImageView::RunToolPro()
 		{
 			srcImage = GetToolBase()->m_Tools[image_index].PublicImage.OutputImage;
 		}
-		dstImage = cv::Mat();		
+		dstImage = cv::Mat();
+		srcImage.copyTo(dstImage);
 		if (ui.checkViewContour->isChecked() == true)
 		{
-			srcImage.copyTo(dstImage);
 			int table_contour_count = ui.tableWidgetContour->rowCount();
 			if (dstImage.channels() == 1)
 			{
@@ -205,9 +205,8 @@ int frmImageView::RunToolPro()
 		}
 		if (ui.checkViewText->isChecked() == true)
 		{
-			if (ui.checkViewContour->isChecked() == false)
+			/*if (ui.checkViewContour->isChecked() == false)
 			{
-				srcImage.copyTo(dstImage);
 				if (dstImage.channels() == 1)
 				{
 					cv::cvtColor(dstImage, dstImage, cv::COLOR_GRAY2BGR);
@@ -216,8 +215,9 @@ int frmImageView::RunToolPro()
 				{
 					cv::cvtColor(dstImage, dstImage, cv::COLOR_RGBA2BGR);
 				}
-				out_img = Mat2QImage(dstImage);
-			}			
+				
+			}*/
+			out_img = Mat2QImage(dstImage);
 			keys.reserve(300);
 			keys.clear();
 			keys = gvariable.global_variable_link.uniqueKeys();
@@ -604,7 +604,7 @@ int frmImageView::RunToolPro()
 				{
 					if (GetToolBase()->m_Tools[image_index].PublicResult.State == false)
 					{
-						text_content.clear();
+						text_content = QString();
 					}
 					getViewMsg.append(global_text_content.value(text_keys[m]).global_prefix + text_content + " 结果为:"+ ui.txtNGtext->text());
 					WriteString(out_img, global_text_content.value(text_keys[m]).global_prefix + text_content + " 结果为:" + ui.txtNGtext->text(), text_pos, global_text_content.value(text_keys[m]).global_ng_color, ui.spinTextSize->value(), ui.checkBoldFont->isChecked());
@@ -619,7 +619,7 @@ int frmImageView::RunToolPro()
 		if (ui.checkViewText->isChecked() == false && ui.checkViewContour->isChecked() == false)
 		{
 			out_img = Mat2QImage(srcImage);
-		}		
+		}
 		GetToolBase()->m_Tools[tool_index].PublicImage.OutputViewImage = out_img;
 		GetToolBase()->m_Tools[tool_index].PublicScreen.ScreenNumber = ui.comboScreenNum->currentIndex();
 		GetToolBase()->m_Tools[tool_index].PublicImageProcess.GetViewMsg.clear();
@@ -1122,31 +1122,84 @@ void frmImageView::on_btnDelLinkContent_clicked()
 }
 
 //显示信息
+//bool frmImageView::WriteString(QImage& img, const QString str_msg, const QPoint str_pos, const QColor font_color, const int font_size, const bool font_bold) const
+//{
+//	try
+//	{
+//		//实例QPainter
+//		QPainter painter(&img);
+//		//设置画刷模式
+//		painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+//		QPen pen = painter.pen();
+//		pen.setColor(font_color);
+//		QFont font = painter.font();
+//		font.setBold(font_bold); //加粗
+//		font.setPixelSize(font_size); //改变字体大小
+//		font.setFamily("Microsoft YaHei");//设置字体
+//		painter.setPen(pen);
+//		painter.setFont(font);
+//		//将文字绘制在图片指定位置
+//		painter.drawText(str_pos, str_msg);
+//		return true;
+//	}
+//	catch (...)
+//	{
+//		return false;
+//	}
+//}
 bool frmImageView::WriteString(QImage& img, const QString str_msg, const QPoint str_pos, const QColor font_color, const int font_size, const bool font_bold) const
 {
+	// 确保图像有效且可写
+	if (img.isNull() || img.format() == QImage::Format_Invalid) {
+		qDebug() << "Invalid image format";
+		return false;
+	}
+
+	// 确保图像格式支持绘制操作
+	if (img.format() != QImage::Format_ARGB32 &&
+		img.format() != QImage::Format_RGB32) {
+		img = img.convertToFormat(QImage::Format_ARGB32);
+	}
+
 	try
 	{
-		//实例QPainter
+		// 初始化 QPainter
 		QPainter painter(&img);
-		//设置画刷模式
-		painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
-		QPen pen = painter.pen();
-		pen.setColor(font_color);
-		QFont font = painter.font();
-		font.setBold(font_bold); //加粗
-		font.setPixelSize(font_size); //改变字体大小
-		painter.setPen(pen);
+		if (!painter.isActive()) {
+			qDebug() << "QPainter failed to initialize";
+			return false;
+		}
+
+		// 使用安全的合成模式
+		painter.setCompositionMode(QPainter::CompositionMode_SourceOver);
+
+		// 设置字体
+		QFont font("Microsoft YaHei", font_size);
+		font.setBold(font_bold);
 		painter.setFont(font);
-		//将文字绘制在图片指定位置
+
+		// 设置画笔颜色
+		painter.setPen(font_color);
+
+		// 添加抗锯齿
+		painter.setRenderHint(QPainter::Antialiasing);
+		painter.setRenderHint(QPainter::TextAntialiasing);
+
+		// 绘制文本
 		painter.drawText(str_pos, str_msg);
+
 		return true;
+	}
+	catch (const std::exception& e)
+	{
+		qCritical() << "Exception in WriteString:" << e.what();
 	}
 	catch (...)
 	{
-		return false;
+		qCritical() << "Unknown exception in WriteString";
 	}
+	return false;
 }
-
 #pragma region QImage与Mat相互转换
 //将Mat转化为QImage
 QImage frmImageView::Mat2QImage(const cv::Mat& mat)

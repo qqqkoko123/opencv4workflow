@@ -513,56 +513,255 @@ void frmClassifier::coumputeHog(const cv::Mat& src, vector<float>& descriptors)
 	myHog.compute(src.clone(), descriptors, cv::Size(1, 1), cv::Size(0, 0));
 }
 
+//bool frmClassifier::TrainModel(const QString imgLabels, const QString imgList, const QString imgSaveModel)
+//{
+//	try
+//	{
+//		ifstream inLabels(imgLabels.toStdString()), inImages(imgList.toStdString());
+//		vecImages.reserve(30000);
+//		vecImages.clear();
+//		vecLabels.reserve(30000);
+//		vecLabels.clear();
+//		vecDescriptors.reserve(30000);
+//		vecDescriptors.clear();
+//		while ((inImages >> imageName) && (inLabels >> imageLabel))
+//		{
+//			cv::Mat src = cv::imread(imageName, 0);
+//			cv::resize(src, src, imageSize);
+//			vecImages.push_back(src);
+//			vecLabels.push_back(imageLabel);
+//		}
+//		inLabels.close();
+//		inImages.close();
+//		cv::Mat dataDescriptors;
+//		cv::Mat dataResponse = (cv::Mat)vecLabels;
+//		for (size_t i = 0; i < vecImages.size(); i++)
+//		{
+//			cv::Mat src = vecImages[i];
+//			cv::Mat tempRow;
+//			coumputeHog(src, vecDescriptors);
+//			if (i == 0)
+//			{
+//				dataDescriptors = cv::Mat::zeros(vecImages.size(), vecDescriptors.size(), CV_32FC1);
+//			}
+//			tempRow = ((cv::Mat)vecDescriptors).t();
+//			tempRow.row(0).copyTo(dataDescriptors.row(i));
+//		}
+//		svm->train(dataDescriptors, cv::ml::SampleTypes::ROW_SAMPLE, dataResponse);
+//		svm->save(imgSaveModel.toStdString().c_str());
+//		QString msg = "Model training completed...";
+//		emit sig_ClassifierValue(msg);
+//		return true;
+//	}
+//	catch (cv::Exception& e)
+//	{
+//		emit sig_ClassifierValue(QString());
+//		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "错误", "训练模型异常！"+ QString::fromStdString(e.what()));
+//		msgBox.setWindowIcon(QIcon(":/resource/error.png"));
+//		msgBox.exec();
+//		return false;
+//	}
+//}
 bool frmClassifier::TrainModel(const QString imgLabels, const QString imgList, const QString imgSaveModel)
 {
 	try
 	{
-		ifstream inLabels(imgLabels.toStdString()), inImages(imgList.toStdString());
-		vecImages.reserve(30000);
+		// 1. 详细日志：开始训练
+		emit sig_ClassifierValue("开始训练模型...");
+
+		// 2. 文件加载增强检查
+		ifstream inLabels(imgLabels.toStdString());
+		ifstream inImages(imgList.toStdString());
+
+		if (!inLabels.is_open()) {
+			emit sig_ClassifierValue(QString("无法打开标签文件: %1").arg(imgLabels));
+			return false;
+		}
+		if (!inImages.is_open()) {
+			emit sig_ClassifierValue(QString("无法打开图像列表文件: %1").arg(imgList));
+			return false;
+		}
+
+		// 3. 数据加载
 		vecImages.clear();
-		vecLabels.reserve(30000);
 		vecLabels.clear();
-		vecDescriptors.reserve(30000);
-		vecDescriptors.clear();
+		std::string imageName;
+		int imageLabel;
+		int loadedCount = 0;
+
 		while ((inImages >> imageName) && (inLabels >> imageLabel))
 		{
-			cv::Mat src = cv::imread(imageName, 0);
+			cv::Mat src = cv::imread(imageName, 0); // 灰度图
+			if (src.empty()) {
+				emit sig_ClassifierValue(QString("图像加载失败: %1").arg(QString::fromStdString(imageName)));
+				continue;
+			}
+
 			cv::resize(src, src, imageSize);
 			vecImages.push_back(src);
 			vecLabels.push_back(imageLabel);
+			loadedCount++;
 		}
+
 		inLabels.close();
 		inImages.close();
-		cv::Mat dataDescriptors;
-		cv::Mat dataResponse = (cv::Mat)vecLabels;
+
+		if (loadedCount == 0) {
+			emit sig_ClassifierValue("错误: 没有成功加载任何图像");
+			return false;
+		}
+
+		emit sig_ClassifierValue(QString("成功加载 %1 张图像").arg(loadedCount));
+
+		// 4. 标签处理 - 确保多类别
+		std::set<int> uniqueLabels(vecLabels.begin(), vecLabels.end());
+		if (uniqueLabels.size() < 2) {
+			emit sig_ClassifierValue(QString("错误: 需要至少2个类别, 实际只有 %1 个类别").arg(uniqueLabels.size()));
+			return false;
+		}
+
+		// 5. 特征矩阵初始化
+		std::vector<float> firstDesc;
+		coumputeHog(vecImages[0], firstDesc);
+		if (firstDesc.empty()) {
+			emit sig_ClassifierValue("第一张图像HOG特征计算失败");
+			return false;
+		}
+		const int featureLength = firstDesc.size();
+
+		if (featureLength == 0) {
+			emit sig_ClassifierValue("错误: HOG特征长度为0");
+			return false;
+		}
+
+		cv::Mat dataDescriptors(vecImages.size(), featureLength, CV_32FC1);
+		cv::Mat dataResponse(vecImages.size(), 1, CV_32S);
+
+		// 6. 特征提取与填充
+		int successCount = 0;
 		for (size_t i = 0; i < vecImages.size(); i++)
 		{
-			cv::Mat src = vecImages[i];
-			cv::Mat tempRow;
-			coumputeHog(src, vecDescriptors);
-			if (i == 0)
-			{
-				dataDescriptors = cv::Mat::zeros(vecImages.size(), vecDescriptors.size(), CV_32FC1);
+			std::vector<float> descriptors;
+			coumputeHog(vecImages[i], descriptors);
+			if (descriptors.empty()) {
+				emit sig_ClassifierValue(QString("图像 %1 HOG特征计算失败").arg(i));
+				continue;
 			}
-			tempRow = ((cv::Mat)vecDescriptors).t();
-			tempRow.row(0).copyTo(dataDescriptors.row(i));
+
+			if (descriptors.size() != featureLength) {
+				emit sig_ClassifierValue(QString("图像 %1 特征长度不一致: %2 vs %3")
+					.arg(i).arg(descriptors.size()).arg(featureLength));
+				continue;
+			}
+
+			// 填充特征矩阵
+			for (int j = 0; j < featureLength; j++) {
+				dataDescriptors.at<float>(i, j) = descriptors[j];
+			}
+
+			// 填充标签矩阵
+			dataResponse.at<int>(i) = vecLabels[i];
+			successCount++;
 		}
-		svm->train(dataDescriptors, cv::ml::SampleTypes::ROW_SAMPLE, dataResponse);
-		svm->save(imgSaveModel.toStdString().c_str());
-		QString msg = "Model training completed...";
-		emit sig_ClassifierValue(msg);
-		return true;
+
+		if (successCount == 0) {
+			emit sig_ClassifierValue("错误: 没有成功提取任何特征");
+			return false;
+		}
+
+		// 7. 数据验证
+		cv::Mat dataDescriptorsValid = dataDescriptors.rowRange(0, successCount);
+		cv::Mat dataResponseValid = dataResponse.rowRange(0, successCount);
+
+		double minVal, maxVal;
+		cv::minMaxLoc(dataDescriptorsValid, &minVal, &maxVal);
+		emit sig_ClassifierValue(QString("特征值范围: [%1, %2]").arg(minVal).arg(maxVal));
+
+		if (cvIsNaN(minVal) || cvIsInf(minVal) || cvIsNaN(maxVal) || cvIsInf(maxVal)) {
+			emit sig_ClassifierValue("错误: 特征数据包含NaN或Inf值");
+			return false;
+		}
+
+		// 8. SVM配置与训练
+		svm = cv::ml::SVM::create();
+
+		// 尝试多种配置
+		bool trained = false;
+		std::vector<std::pair<std::string, cv::ml::SVM::KernelTypes>> kernelConfigs = {
+			{"LINEAR", cv::ml::SVM::LINEAR},
+			{"RBF", cv::ml::SVM::RBF},
+			{"POLY", cv::ml::SVM::POLY}
+		};
+
+		for (const auto& config : kernelConfigs) {
+			emit sig_ClassifierValue(QString("尝试使用 %1 核训练...").arg(QString::fromStdString(config.first)));
+
+			svm->setType(cv::ml::SVM::C_SVC);
+			svm->setKernel(config.second);
+
+			// 根据核类型调整参数
+			if (config.second == cv::ml::SVM::LINEAR) {
+				svm->setC(1.0);
+			}
+			else {
+				svm->setGamma(0.01);
+				svm->setC(10.0);
+			}
+
+			svm->setTermCriteria(cv::TermCriteria(
+				cv::TermCriteria::MAX_ITER + cv::TermCriteria::EPS,
+				1000,  // 减少迭代次数
+				1e-3   // 放宽精度
+			));
+
+			try {
+				trained = svm->train(dataDescriptorsValid, cv::ml::ROW_SAMPLE, dataResponseValid);
+
+				if (trained && svm->isTrained()) {
+					emit sig_ClassifierValue(QString("%1 核训练成功!").arg(QString::fromStdString(config.first)));
+					break;
+				}
+			}
+			catch (const cv::Exception& e) {
+				emit sig_ClassifierValue(QString("%1 核训练失败: %2").arg(QString::fromStdString(config.first)).arg(e.what()));
+			}
+		}
+
+		if (!trained) {
+			emit sig_ClassifierValue("所有核函数训练均失败");
+			return false;
+		}
+
+		// 9. 模型验证与保存
+		cv::Mat supportVectors = svm->getSupportVectors();
+		if (supportVectors.empty()) {
+			emit sig_ClassifierValue("错误: 支持向量为空");
+			return false;
+		}
+
+		try {
+			svm->save(imgSaveModel.toStdString());
+			emit sig_ClassifierValue(QString("模型保存成功: %1").arg(imgSaveModel));
+			return true;
+		}
+		catch (const cv::Exception& e) {
+			emit sig_ClassifierValue(QString("保存失败: %1").arg(e.what()));
+			return false;
+		}
 	}
-	catch (...)
-	{
-		emit sig_ClassifierValue(QString());
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "错误", "训练模型异常！");
-		msgBox.setWindowIcon(QIcon(":/resource/error.png"));
-		msgBox.exec();
+	catch (const cv::Exception& e) {
+		emit sig_ClassifierValue(QString("OpenCV错误: %1").arg(e.what()));
+		return false;
+	}
+	catch (const std::exception& e) {
+		emit sig_ClassifierValue(QString("标准错误: %1").arg(e.what()));
+		return false;
+	}
+	catch (...) {
+		emit sig_ClassifierValue("未知错误");
 		return false;
 	}
 }
-
 bool frmClassifier::PredictionImage(const cv::Mat src, QString& type)
 {
 	try

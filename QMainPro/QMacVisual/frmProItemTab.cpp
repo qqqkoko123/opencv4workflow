@@ -1300,7 +1300,7 @@ void frmProItemTab::timerEvent()
 #pragma endregion
 #pragma region OCR
 		//OCR
-		if (nClassifierState_buf == 1)
+		if (nOCRState_buf == 1)
 		{
 			nOCRState = getOCR();
 			if (nOCRState == 1)
