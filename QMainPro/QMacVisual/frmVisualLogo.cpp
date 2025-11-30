@@ -19,11 +19,11 @@ void frmVisualLogo::form_statues()
 {
 	SoftKey sk;
 	dataVar::soft_key = sk.GetKey("MachineVision_LCL");	
-	//Æô¶¯»­ÃæÏÔÊ¾½ø¶ÈÌõ
+	//å¯åŠ¨ç”»é¢æ˜¾ç¤ºè¿›åº¦æ¡
 	QPixmap pixmap(":/Bitmaps/pStart.png");
 	pixmap.scaled(QApplication::desktop()->availableGeometry().size(), Qt::KeepAspectRatio);
 	CMySplashScreen* splash = new CMySplashScreen(pixmap, 3000);
-	splash->setDisabled(true); //½ûÓÃÓÃ»§µÄÊäÈëÊÂ¼şÏìÓ¦
+	splash->setDisabled(true); //ç¦ç”¨ç”¨æˆ·çš„è¾“å…¥äº‹ä»¶å“åº”
 	splash->show();		
 	dataVar::app_state = true;
 	emit sig_FormStatues();	
@@ -38,8 +38,8 @@ void frmVisualLogo::form_statues()
 	dataVar::fImageView = new FrmImageView();
 	dataVar::fProItemTab = new frmProItemTab();		
 	MainWidget *w = new MainWidget();
-	dataVar::m_pWindow->slot_OpenProjectParam();  //³õÊ¼»¯Ê±´ò¿ªÏîÄ¿
-	w->setLogo(":/Bitmaps/pro.png", "opencvÊÓ¾õ¼ì²âÏµÍ³ By:ÇåÇå");	
+	dataVar::m_pWindow->slot_OpenProjectParam();  //åˆå§‹åŒ–æ—¶æ‰“å¼€é¡¹ç›®
+	w->setLogo(":/Bitmaps/pro.png", "opencvè§†è§‰æ£€æµ‹æµç¨‹è½¯ä»¶ By:æ¸…æ¸…");	
 	w->setEnabelHeadMove(true);
 	w->setLogDockWidget(dataVar::fLog);
 	w->setCenterWidget(dataVar::fImageView);
@@ -58,8 +58,9 @@ void frmVisualLogo::slot_FormStatues()
 {
 	while (dataVar::app_state)
 	{
-		//²»Í£µÄ´¦ÀíÊÂ¼ş£¬ÈÃ³ÌĞò±£³ÖÏìÓ¦
+		//ä¸åœçš„å¤„ç†äº‹ä»¶ï¼Œè®©ç¨‹åºä¿æŒå“åº”
 		QApplication::processEvents();
 		QThread::msleep(1);
 	}
 }
+
