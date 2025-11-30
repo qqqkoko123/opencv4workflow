@@ -229,7 +229,7 @@ int frmImageView::RunToolPro()
 				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
 				return -1;
 			}
-			if (GetToolBase()->m_Tools[image_index].PublicResult.State == false)
+			if (GetToolBase()->m_Tools[image_index].PublicResult.State == false && GetToolBase()->m_Tools[image_index].PublicToolName != "亮度检测")
 			{
 				// 如果NG显示最近一个状态为成功的图像		
 				out_img = frmImageView::GetErrorImage(image_index);
@@ -602,7 +602,7 @@ int frmImageView::RunToolPro()
 				}
 				else
 				{
-					if (GetToolBase()->m_Tools[image_index].PublicResult.State == false)
+					if (text_content == NULL)
 					{
 						text_content = QString();
 					}
