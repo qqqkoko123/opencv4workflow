@@ -1,0 +1,37 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmColorIdentify.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc mytitlebar.h
+  moc frmColorIdentify.h
+  moc QGraphicsViews.h
+  moc QGraphicsScenes.h
+  moc ImageItem.h
+  moc ControlItem.h
+  moc BaseItem.h
+  moc ColorIdentify.h
+  ControlItem.cpp
+  frmColorIdentify.cpp
+  ImageItem.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  Toolnterface.cpp
+  BaseItem.cpp
+  ColorIdentify.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_QToolBase.cpp
+  moc_mytitlebar.cpp
+  moc_frmColorIdentify.cpp
+  moc_QGraphicsViews.cpp
+  moc_QGraphicsScenes.cpp
+  moc_ImageItem.cpp
+  moc_ControlItem.cpp
+  moc_BaseItem.cpp
+  moc_ColorIdentify.cpp
+    正在创建库 ../../../QSoftExe/Release/Plugins/ColorIdentify.lib 和对象 ../../../QSoftExe/Release/Plugins/ColorIdentify.exp
+  ColorIdentify.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\ColorIdentify.dll

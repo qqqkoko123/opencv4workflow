@@ -1,0 +1,17 @@
+QMainWindow::separator{width: 0px;height: 0px;margin: 0px;padding: 0.6px;}
+
+QWidget{outline: none;}
+
+.QWidget[type=xblack]{background: black;}
+
+HeadWidget{background:rgb(33, 115, 70)}                     
+
+QToolButton{border: none;}
+
+DockHeadWidget{background:#C6D3E1}
+
+QLabel[type=xblack]{color:black; font-size:15px}
+
+QPushButton[type=xblack]{color:black; border: none}
+QPushButton[type=xblack]:hover{background: transparent}
+QPushButton[type=xblack]:pressed{background:#254661}

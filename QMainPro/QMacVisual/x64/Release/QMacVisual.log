@@ -1,0 +1,4 @@
+﻿   Qt/MSBuild: 3.4.1.0
+   Qt: 5.14.2
+  frmCameraSetUp.cpp
+  QMacVisual.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\QMacVisual.exe

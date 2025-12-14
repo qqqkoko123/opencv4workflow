@@ -1,0 +1,5278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>frmERTCalibrationClass</class>
+ <widget class="QDialog" name="frmERTCalibrationClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1160</width>
+    <height>655</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1160</width>
+    <height>655</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1160</width>
+    <height>655</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>N点标定</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(220, 220, 220);</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>1</number>
+   </property>
+   <item row="2" column="0">
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>42</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1">
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>3</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>42</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="2">
+    <layout class="QGridLayout" name="imageLayout">
+     <property name="spacing">
+      <number>1</number>
+     </property>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>6</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>83</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+       </property>
+       <property name="text">
+        <string>单元描述：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="txtDescribe">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>377</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_8">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnExecute">
+       <property name="minimumSize">
+        <size>
+         <width>90</width>
+         <height>37</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget{ background-color: rgb(85, 135, 127);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(85, 155, 127);}
+QPushButton:pressed{background-color: rgb(85, 175, 127);}</string>
+       </property>
+       <property name="text">
+        <string>执行</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>6</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>470</width>
+       <height>550</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #bcc2bc;</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>基本设置</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupCamera">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>18</y>
+         <width>449</width>
+         <height>73</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>图像对象</string>
+       </property>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>42</y>
+          <width>79</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输入图像：</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtLinkImage">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>39</y>
+          <width>269</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(170, 170, 127,50);</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkImage">
+        <property name="geometry">
+         <rect>
+          <x>376</x>
+          <y>38</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接图像</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkImage">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>38</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除图像链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupC2">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>108</y>
+         <width>449</width>
+         <height>245</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>九点标定示意图</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="leftMargin">
+         <number>1</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>1</number>
+        </property>
+        <property name="bottomMargin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="lblImg1">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="sub_res.qrc">:/resource/n9.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupC3">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>368</y>
+         <width>449</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>旋转中心标定示意图</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="leftMargin">
+         <number>1</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>1</number>
+        </property>
+        <property name="bottomMargin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="lblImg2">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="sub_res.qrc">:/resource/n_rotate.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>找圆工具</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupC5">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>206</y>
+         <width>449</width>
+         <height>179</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>ROI对象</string>
+       </property>
+       <widget class="QCheckBox" name="checkUseROI">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>36</y>
+          <width>93</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox{
+    color: rgb(30, 30, 30);
+	border-style: flat;
+	background: transparent;
+}
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;    
+}
+QCheckBox::indicator::unchecked {
+    image: url(:/resource/untick.png);
+}
+QCheckBox::indicator::checked {
+    image: url(:/resource/tick.png);
+};</string>
+        </property>
+        <property name="text">
+         <string>使用ROI</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboROIShape">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>35</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;  
+    min-width: 5em;
+    color: rgb(0, 0, 200);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/resource/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>圆环</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="btnAddROI">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>34</y>
+          <width>66</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ background-color: rgba(9, 42, 47, 200);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(9, 62, 52);}
+QPushButton:pressed{background-color: rgb(9, 82, 72);}</string>
+        </property>
+        <property name="text">
+         <string>添加</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDeleteROI">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>34</y>
+          <width>66</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ background-color: rgba(97, 63, 56, 200);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(97, 83, 76);}
+QPushButton:pressed{background-color: rgb(117, 83, 96);}</string>
+        </property>
+        <property name="text">
+         <string>删除</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="spinCrossL">
+        <property name="geometry">
+         <rect>
+          <x>355</x>
+          <y>88</y>
+          <width>80</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{color: rgb(85, 0, 255);background-color: rgb(180, 180, 210);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>10</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>92</y>
+          <width>79</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>ROI宽度：</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_18">
+        <property name="geometry">
+         <rect>
+          <x>254</x>
+          <y>92</y>
+          <width>95</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>交叉线长度：</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="spinRoiW">
+        <property name="geometry">
+         <rect>
+          <x>93</x>
+          <y>88</y>
+          <width>80</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{color: rgb(85, 0, 255);background-color: rgb(180, 180, 210);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>2</number>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnGetCenter">
+        <property name="geometry">
+         <rect>
+          <x>353</x>
+          <y>138</y>
+          <width>83</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ background-color: rgba(9, 42, 87, 200);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(9, 62, 87);}
+QPushButton:pressed{background-color: rgb(9, 82, 87);}</string>
+        </property>
+        <property name="text">
+         <string>获取圆心</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>304</x>
+          <y>136</y>
+          <width>43</width>
+          <height>35</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="sub_res.qrc">:/resource/a_right.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupC4">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>18</y>
+         <width>449</width>
+         <height>171</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>参数设置</string>
+       </property>
+       <widget class="QComboBox" name="comboGrayDirection">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>32</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 2px;    
+    color: rgb(0, 0, 200);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/resource/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>白到黑</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>黑到白</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>262</x>
+          <y>37</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>灰度方向：</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>87</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>边缘强度：</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="spinThreshold">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>84</y>
+          <width>85</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>255</number>
+        </property>
+        <property name="value">
+         <number>20</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>12</x>
+          <y>37</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>扫描方向：</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboScanDirection">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>32</y>
+          <width>85</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 2px;    
+    color: rgb(0, 0, 200);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/resource/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>内到外</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>外到内</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>263</x>
+          <y>87</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>分割数量：</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="spinSegment">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>84</y>
+          <width>85</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="minimum">
+         <number>30</number>
+        </property>
+        <property name="maximum">
+         <number>360</number>
+        </property>
+        <property name="value">
+         <number>30</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>137</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>剔除距离：</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="spinCullDistance">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>134</y>
+          <width>85</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>5</number>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupC6">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>402</y>
+         <width>449</width>
+         <height>119</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>输出数据(圆的中心坐标)</string>
+       </property>
+       <widget class="QTextEdit" name="txtFindCirMsg">
+        <property name="geometry">
+         <rect>
+          <x>4</x>
+          <y>32</y>
+          <width>439</width>
+          <height>83</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTextEdit         
+{
+    background-color: rgba(180, 180, 215,120);    
+    gridline-color: rgba(220, 220, 255,255);
+    color: rgba(20, 20, 20,200);
+}
+QScrollBar:vertical{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/resource/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/resource/up.png) center no-repeat;}
+QScrollBar:horizontal{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:horizontal{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:horizontal:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:horizontal{
+		background:url(:/resource/right.png) center no-repeat;}
+QScrollBar::sub-line:horizontal{
+		background:url(:/resource/left.png) center no-repeat;}</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>标定设置</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupC7">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>18</y>
+         <width>449</width>
+         <height>499</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>标定参数</string>
+       </property>
+       <widget class="QFrame" name="frame">
+        <property name="geometry">
+         <rect>
+          <x>16</x>
+          <y>40</y>
+          <width>418</width>
+          <height>47</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:2px solid #778899;border-radius: 22px;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QRadioButton" name="radioNinePoints">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(30, 30, 30);
+border:none;
+background: transparent;</string>
+           </property>
+           <property name="text">
+            <string>九点标定参数</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>110</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioRotateCenter">
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(30, 30, 30);
+border:none;
+background: transparent;</string>
+           </property>
+           <property name="text">
+            <string>旋转中心标定参数</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="geometry">
+         <rect>
+          <x>1</x>
+          <y>91</y>
+          <width>447</width>
+          <height>409</height>
+         </rect>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="page">
+         <widget class="QGroupBox" name="groupC8">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>17</y>
+            <width>449</width>
+            <height>391</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+          </property>
+          <property name="title">
+           <string>坐标数据</string>
+          </property>
+          <widget class="QDoubleSpinBox" name="spinImageY2">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>104</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX8">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>320</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX2">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>104</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageY8">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>320</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QTableWidget" name="tableWidget">
+           <property name="geometry">
+            <rect>
+             <x>1</x>
+             <y>37</y>
+             <width>445</width>
+             <height>353</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QTableWidget          
+{
+    background-color: rgba(180, 180, 210,255);   
+    border:none;
+    gridline-color: rgba(100, 100, 100,200);
+    color: rgba(20, 20, 20,200);
+}
+QTableWidget::item::selected
+{   
+    background-color: rgba(180, 180, 210,255); 
+}
+QHeaderView::section
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #00CD00, stop: 0.5 #00CD00,stop: 0.6 #66CD00, stop:1 #66CD00);color: white;
+}
+QHeaderView::section::pressed {
+        color: white;
+        background-color: rgb(39,106,220);
+}
+QScrollBar:vertical{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/res/ico/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/res/ico/up.png) center no-repeat;}
+QScrollBar:horizontal{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:horizontal{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:horizontal:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:horizontal{
+		background:url(:/res/ico/right.png) center no-repeat;}
+QScrollBar::sub-line:horizontal{
+		background:url(:/res/ico/left.png) center no-repeat;}</string>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAsNeeded</enum>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::ExtendedSelection</enum>
+           </property>
+           <property name="gridStyle">
+            <enum>Qt::SolidLine</enum>
+           </property>
+           <property name="rowCount">
+            <number>9</number>
+           </property>
+           <property name="columnCount">
+            <number>4</number>
+           </property>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>31</number>
+           </attribute>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>106</number>
+           </attribute>
+           <attribute name="verticalHeaderMinimumSectionSize">
+            <number>20</number>
+           </attribute>
+           <attribute name="verticalHeaderDefaultSectionSize">
+            <number>36</number>
+           </attribute>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <row/>
+           <column>
+            <property name="text">
+             <string>图像坐标X</string>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>图像坐标Y</string>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>机械坐标X</string>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>机械坐标Y</string>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+             </font>
+            </property>
+           </column>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX3">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>140</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY8">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>320</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX9">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>356</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX5">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>212</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY5">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>212</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX9">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>356</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY4">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>176</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageY6">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>248</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX7">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>284</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX1">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>68</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX7">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>284</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX6">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>248</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX8">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>320</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX4">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>176</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX6">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>248</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY3">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>140</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX1">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>68</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX3">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>140</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageY4">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>176</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY2">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>104</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageY7">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>284</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY9">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>356</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY1">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>68</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageY1">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>68</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageY5">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>212</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX4">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>176</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageY3">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>140</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageX2">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>104</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY6">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>248</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineX5">
+           <property name="geometry">
+            <rect>
+             <x>232</x>
+             <y>212</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinMachineY7">
+           <property name="geometry">
+            <rect>
+             <x>339</x>
+             <y>284</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>-9999.998999999999796</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QDoubleSpinBox" name="spinImageY9">
+           <property name="geometry">
+            <rect>
+             <x>127</x>
+             <y>356</y>
+             <width>104</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>96</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>4</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>9999.998999999999796</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <zorder>tableWidget</zorder>
+          <zorder>spinImageY2</zorder>
+          <zorder>spinImageX8</zorder>
+          <zorder>spinMachineX2</zorder>
+          <zorder>spinImageY8</zorder>
+          <zorder>spinMachineX3</zorder>
+          <zorder>spinMachineY8</zorder>
+          <zorder>spinMachineX9</zorder>
+          <zorder>spinImageX5</zorder>
+          <zorder>spinMachineY5</zorder>
+          <zorder>spinImageX9</zorder>
+          <zorder>spinMachineY4</zorder>
+          <zorder>spinImageY6</zorder>
+          <zorder>spinImageX7</zorder>
+          <zorder>spinMachineX1</zorder>
+          <zorder>spinMachineX7</zorder>
+          <zorder>spinImageX6</zorder>
+          <zorder>spinMachineX8</zorder>
+          <zorder>spinImageX4</zorder>
+          <zorder>spinMachineX6</zorder>
+          <zorder>spinMachineY3</zorder>
+          <zorder>spinImageX1</zorder>
+          <zorder>spinImageX3</zorder>
+          <zorder>spinImageY4</zorder>
+          <zorder>spinMachineY2</zorder>
+          <zorder>spinImageY7</zorder>
+          <zorder>spinMachineY9</zorder>
+          <zorder>spinMachineY1</zorder>
+          <zorder>spinImageY1</zorder>
+          <zorder>spinImageY5</zorder>
+          <zorder>spinMachineX4</zorder>
+          <zorder>spinImageY3</zorder>
+          <zorder>spinImageX2</zorder>
+          <zorder>spinMachineY6</zorder>
+          <zorder>spinMachineX5</zorder>
+          <zorder>spinMachineY7</zorder>
+          <zorder>spinImageY9</zorder>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_2">
+         <widget class="QGroupBox" name="groupC9">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>17</y>
+            <width>449</width>
+            <height>391</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+          </property>
+          <property name="title">
+           <string>坐标数据</string>
+          </property>
+          <widget class="QDoubleSpinBox" name="spinStandardAngle">
+           <property name="geometry">
+            <rect>
+             <x>96</x>
+             <y>146</y>
+             <width>100</width>
+             <height>28</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="decimals">
+            <number>3</number>
+           </property>
+           <property name="minimum">
+            <double>-180.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>180.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_17">
+           <property name="geometry">
+            <rect>
+             <x>13</x>
+             <y>149</y>
+             <width>81</width>
+             <height>19</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+           </property>
+           <property name="text">
+            <string>基准角度：</string>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="checkUseRotateC">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>13</x>
+             <y>37</y>
+             <width>135</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QCheckBox{
+    color: rgb(30, 30, 30);
+	border-style: flat;
+	background: transparent;
+}
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;    
+}
+QCheckBox::indicator::unchecked {
+    image: url(:/resource/untick.png);
+}
+QCheckBox::indicator::checked {
+    image: url(:/resource/tick.png);
+};</string>
+           </property>
+           <property name="text">
+            <string>标定旋转中心</string>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_21">
+           <property name="geometry">
+            <rect>
+             <x>13</x>
+             <y>88</y>
+             <width>81</width>
+             <height>19</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+           </property>
+           <property name="text">
+            <string>标定方式：</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboCalibMethod">
+           <property name="geometry">
+            <rect>
+             <x>96</x>
+             <y>84</y>
+             <width>147</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>微软雅黑</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 2px;    
+    color: rgb(0, 0, 200);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/resource/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>三点拟合圆标定</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>两点+角度标定</string>
+            </property>
+           </item>
+          </widget>
+          <widget class="QStackedWidget" name="stackedWidgetC">
+           <property name="geometry">
+            <rect>
+             <x>1</x>
+             <y>182</y>
+             <width>445</width>
+             <height>207</height>
+            </rect>
+           </property>
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="page_3">
+            <widget class="QDoubleSpinBox" name="spinImageRY2">
+             <property name="geometry">
+              <rect>
+               <x>236</x>
+               <y>107</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinImageRX2">
+             <property name="geometry">
+              <rect>
+               <x>92</x>
+               <y>107</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinImageRX1">
+             <property name="geometry">
+              <rect>
+               <x>92</x>
+               <y>68</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinImageRY3">
+             <property name="geometry">
+              <rect>
+               <x>236</x>
+               <y>146</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinImageRX3">
+             <property name="geometry">
+              <rect>
+               <x>92</x>
+               <y>146</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QTableWidget" name="tableWidgetR">
+             <property name="geometry">
+              <rect>
+               <x>70</x>
+               <y>33</y>
+               <width>307</width>
+               <height>146</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QTableWidget          
+{
+    background-color: rgba(180, 180, 210,255);   
+    border:none;
+    gridline-color: rgba(100, 100, 100,200);
+    color: rgba(20, 20, 20,200);
+}
+QTableWidget::item::selected
+{   
+    background-color: rgba(180, 180, 210,255); 
+}
+QHeaderView::section
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #00CD00, stop: 0.5 #00CD00,stop: 0.6 #66CD00, stop:1 #66CD00);color: white;
+}
+QHeaderView::section::pressed {
+        color: white;
+        background-color: rgb(39,106,220);
+}
+QScrollBar:vertical{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/res/ico/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/res/ico/up.png) center no-repeat;}
+QScrollBar:horizontal{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:horizontal{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:horizontal:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:horizontal{
+		background:url(:/res/ico/right.png) center no-repeat;}
+QScrollBar::sub-line:horizontal{
+		background:url(:/res/ico/left.png) center no-repeat;}</string>
+             </property>
+             <property name="horizontalScrollBarPolicy">
+              <enum>Qt::ScrollBarAsNeeded</enum>
+             </property>
+             <property name="gridStyle">
+              <enum>Qt::SolidLine</enum>
+             </property>
+             <property name="rowCount">
+              <number>3</number>
+             </property>
+             <property name="columnCount">
+              <number>2</number>
+             </property>
+             <attribute name="horizontalHeaderMinimumSectionSize">
+              <number>31</number>
+             </attribute>
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>144</number>
+             </attribute>
+             <attribute name="verticalHeaderMinimumSectionSize">
+              <number>20</number>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>39</number>
+             </attribute>
+             <row/>
+             <row/>
+             <row/>
+             <column>
+              <property name="text">
+               <string>图像坐标X</string>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>9</pointsize>
+               </font>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>图像坐标Y</string>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+               </font>
+              </property>
+             </column>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinImageRY1">
+             <property name="geometry">
+              <rect>
+               <x>236</x>
+               <y>68</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <zorder>tableWidgetR</zorder>
+            <zorder>spinImageRY2</zorder>
+            <zorder>spinImageRX2</zorder>
+            <zorder>spinImageRX1</zorder>
+            <zorder>spinImageRY3</zorder>
+            <zorder>spinImageRX3</zorder>
+            <zorder>spinImageRY1</zorder>
+           </widget>
+           <widget class="QWidget" name="page_4">
+            <widget class="QDoubleSpinBox" name="spinImgRX2">
+             <property name="geometry">
+              <rect>
+               <x>92</x>
+               <y>107</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinImgRX1">
+             <property name="geometry">
+              <rect>
+               <x>92</x>
+               <y>68</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinImgRY2">
+             <property name="geometry">
+              <rect>
+               <x>236</x>
+               <y>107</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinImgRY1">
+             <property name="geometry">
+              <rect>
+               <x>236</x>
+               <y>68</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>96</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);border:none}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>9999.998999999999796</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <widget class="QTableWidget" name="tableWidgetR2">
+             <property name="geometry">
+              <rect>
+               <x>70</x>
+               <y>33</y>
+               <width>307</width>
+               <height>146</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QTableWidget          
+{
+    background-color: rgba(180, 180, 210,255);   
+    border:none;
+    gridline-color: rgba(100, 100, 100,200);
+    color: rgba(20, 20, 20,200);
+}
+QTableWidget::item::selected
+{   
+    background-color: rgba(180, 180, 210,255); 
+}
+QHeaderView::section
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #00CD00, stop: 0.5 #00CD00,stop: 0.6 #66CD00, stop:1 #66CD00);color: white;
+}
+QHeaderView::section::pressed {
+        color: white;
+        background-color: rgb(39,106,220);
+}
+QScrollBar:vertical{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/res/ico/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/res/ico/up.png) center no-repeat;}
+QScrollBar:horizontal{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:horizontal{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:horizontal:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:horizontal{
+		background:url(:/res/ico/right.png) center no-repeat;}
+QScrollBar::sub-line:horizontal{
+		background:url(:/res/ico/left.png) center no-repeat;}</string>
+             </property>
+             <property name="horizontalScrollBarPolicy">
+              <enum>Qt::ScrollBarAsNeeded</enum>
+             </property>
+             <property name="gridStyle">
+              <enum>Qt::SolidLine</enum>
+             </property>
+             <property name="rowCount">
+              <number>3</number>
+             </property>
+             <property name="columnCount">
+              <number>2</number>
+             </property>
+             <attribute name="horizontalHeaderMinimumSectionSize">
+              <number>31</number>
+             </attribute>
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>144</number>
+             </attribute>
+             <attribute name="verticalHeaderMinimumSectionSize">
+              <number>20</number>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>39</number>
+             </attribute>
+             <row/>
+             <row/>
+             <row/>
+             <column>
+              <property name="text">
+               <string>图像坐标X</string>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>9</pointsize>
+               </font>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>图像坐标Y</string>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+               </font>
+              </property>
+             </column>
+            </widget>
+            <widget class="QLabel" name="label_22">
+             <property name="geometry">
+              <rect>
+               <x>89</x>
+               <y>140</y>
+               <width>141</width>
+               <height>36</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 189, 130, 100);</string>
+             </property>
+             <property name="text">
+              <string>旋转角度 --&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_23">
+             <property name="geometry">
+              <rect>
+               <x>225</x>
+               <y>140</y>
+               <width>141</width>
+               <height>36</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 189, 130, 100);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+            <widget class="QDoubleSpinBox" name="spinRotateAngle">
+             <property name="geometry">
+              <rect>
+               <x>236</x>
+               <y>146</y>
+               <width>137</width>
+               <height>27</height>
+              </rect>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>微软雅黑</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget{color: rgb(255, 255, 255);background-color: rgba(255, 189, 130, 0);border:none;}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="minimum">
+              <double>-180.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>180.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+            <zorder>tableWidgetR2</zorder>
+            <zorder>spinImgRX2</zorder>
+            <zorder>spinImgRX1</zorder>
+            <zorder>spinImgRY2</zorder>
+            <zorder>spinImgRY1</zorder>
+            <zorder>label_22</zorder>
+            <zorder>label_23</zorder>
+            <zorder>spinRotateAngle</zorder>
+           </widget>
+          </widget>
+         </widget>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>输出显示</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupC10">
+       <property name="geometry">
+        <rect>
+         <x>8</x>
+         <y>18</y>
+         <width>449</width>
+         <height>499</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>输出数据</string>
+       </property>
+       <widget class="QTextEdit" name="txtMsg">
+        <property name="geometry">
+         <rect>
+          <x>4</x>
+          <y>32</y>
+          <width>441</width>
+          <height>463</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTextEdit         
+{
+    background-color: rgba(180, 180, 215,120);    
+    gridline-color: rgba(220, 220, 255,255);
+    color: rgba(20, 20, 20,200);
+}
+QScrollBar:vertical{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/resource/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/resource/up.png) center no-repeat;}
+QScrollBar:horizontal{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:horizontal{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:horizontal:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:horizontal{
+		background:url(:/resource/right.png) center no-repeat;}
+QScrollBar::sub-line:horizontal{
+		background:url(:/resource/left.png) center no-repeat;}</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="sub_res.qrc"/>
+  <include location="sub_res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

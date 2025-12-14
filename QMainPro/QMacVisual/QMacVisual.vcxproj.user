@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerWorkingDirectory>../../QSoftExe/Debug/</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LocalDebuggerWorkingDirectory>../../QSoftExe/Release/</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtLastBackgroundBuild>2025-06-30T23:51:59.0776475Z</QtLastBackgroundBuild>
+    <QtTouchProperty>
+    </QtTouchProperty>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtLastBackgroundBuild>2025-07-01T00:03:44.1090294Z</QtLastBackgroundBuild>
+    <QtTouchProperty>
+    </QtTouchProperty>
+  </PropertyGroup>
+</Project>

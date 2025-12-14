@@ -1,0 +1,5 @@
+﻿   Qt/MSBuild: 3.4.1.0
+   Qt: 5.14.2
+  frmImageView.cpp
+    正在创建库 ../../../QSoftExe/Debug/Plugins/ImageView.lib 和对象 ../../../QSoftExe/Debug/Plugins/ImageView.exp
+  ImageView.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Debug\Plugins\ImageView.dll

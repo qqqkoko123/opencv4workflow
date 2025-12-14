@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{98B6FD31-FD1A-4BFF-8ACF-4A7E9DBE4BF0}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>5.14.2_msvc2017_64</QtInstall>
+    <QtModules>core;gui;widgets;quickwidgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>5.14.2_msvc2017_64</QtInstall>
+    <QtModules>core;gui;widgets;quickwidgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="Debug-PropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="Release-PropertySheet.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>$(QTDIR)\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>$(QTDIR)\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;../../../QMainPro/QMacVisual/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>Z_EDGEWIDTHMEASURE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>Z_EDGEWIDTHMEASURE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="autoMeasure\component\CvMediaPlayer.cpp" />
+    <ClCompile Include="autoMeasure\component\CvMediaPlayerRenderer.cpp" />
+    <ClCompile Include="autoMeasure\controller\CvFrameController.cpp" />
+    <ClCompile Include="autoMeasure\controller\MediaController.cpp" />
+    <ClCompile Include="autoMeasure\model\ObjectListModel.cpp" />
+    <ClCompile Include="autoMeasure\service\CvBaseService.cpp" />
+    <ClCompile Include="autoMeasure\service\GrayService.cpp" />
+    <ClCompile Include="autoMeasure\service\MeasureA4Service.cpp" />
+    <ClCompile Include="autoMeasure\service\MeasureCoinService.cpp" />
+    <ClCompile Include="autoMeasure\service\UnDistortService.cpp" />
+    <ClCompile Include="autoMeasure\service\WipeOffService.cpp" />
+    <ClCompile Include="autoMeasure\system\FileHandler.cpp" />
+    <ClCompile Include="autoMeasure\system\HttpManager.cpp" />
+    <ClCompile Include="autoMeasure\system\ImageProvider.cpp" />
+    <ClCompile Include="autoMeasure\util\CvImageUtil.cpp" />
+    <ClCompile Include="autoMeasure\util\CvLineUtil.cpp" />
+    <ClCompile Include="autoMeasure\util\CvPointUtil.cpp" />
+    <ClCompile Include="find_line.cpp" />
+    <ClCompile Include="frmEdgeWidthMeasure.cpp" />
+    <ClCompile Include="imageBaseOP.cpp" />
+    <ClCompile Include="ImageItem.cpp" />
+    <ClCompile Include="locate.cpp" />
+    <ClCompile Include="mytitlebar.cpp" />
+    <ClCompile Include="QGraphicsScenes.cpp" />
+    <ClCompile Include="QGraphicsViews.cpp" />
+    <ClCompile Include="rice.cpp" />
+    <ClCompile Include="Toolnterface.cpp" />
+    <ClInclude Include="autoMeasure\common\Colors.h" />
+    <ClInclude Include="autoMeasure\common\Common.h" />
+    <ClInclude Include="autoMeasure\common\PropertyHelpers.h" />
+    <ClInclude Include="rice.h" />
+    <QtMoc Include="autoMeasure\component\CvMediaPlayer.h" />
+    <ClInclude Include="autoMeasure\component\CvMediaPlayerRenderer.h" />
+    <QtMoc Include="autoMeasure\controller\CvFrameController.h" />
+    <QtMoc Include="autoMeasure\controller\MediaController.h" />
+    <ClInclude Include="autoMeasure\entity\ContourInfo.h" />
+    <QtMoc Include="autoMeasure\model\ObjectListModel.h" />
+    <QtMoc Include="autoMeasure\system\FileHandler.h" />
+    <QtMoc Include="autoMeasure\system\HttpManager.h" />
+    <QtMoc Include="autoMeasure\system\ImageProvider.h" />
+    <QtMoc Include="autoMeasure\service\CvBaseService.h" />
+    <QtMoc Include="autoMeasure\service\GrayService.h" />
+    <QtMoc Include="autoMeasure\service\MeasureA4Service.h" />
+    <QtMoc Include="autoMeasure\service\MeasureCoinService.h" />
+    <QtMoc Include="autoMeasure\service\UnDistortService.h" />
+    <ClInclude Include="autoMeasure\service\WipeOffService.h" />
+    <ClInclude Include="autoMeasure\util\CvImageUtil.h" />
+    <ClInclude Include="autoMeasure\util\CvLineUtil.h" />
+    <ClInclude Include="autoMeasure\util\CvPointUtil.h" />
+    <ClInclude Include="find_line.h" />
+    <ClInclude Include="gvariable.h" />
+    <ClInclude Include="imageBaseOP.h" />
+    <ClInclude Include="locate.h" />
+    <ClInclude Include="maininterface.h" />
+    <QtMoc Include="Toolnterface.h" />
+    <QtMoc Include="QToolBase.h" />
+    <QtMoc Include="mytitlebar.h" />
+    <QtMoc Include="frmEdgeWidthMeasure.h" />
+    <QtMoc Include="QGraphicsViews.h" />
+    <QtMoc Include="QGraphicsScenes.h" />
+    <QtMoc Include="ImageItem.h" />
+    <QtMoc Include="BaseItem.h" />
+    <QtMoc Include="ControlItem.h" />
+    <ClInclude Include="edgewidthmeasure_global.h" />
+    <QtMoc Include="EdgeWidthMeasure.h" />
+    <ClCompile Include="BaseItem.cpp" />
+    <ClCompile Include="ControlItem.cpp" />
+    <ClCompile Include="EdgeWidthMeasure.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="frmEdgeWidthMeasure.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="sub_res.qrc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

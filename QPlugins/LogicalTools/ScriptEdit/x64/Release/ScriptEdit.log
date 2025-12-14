@@ -1,0 +1,29 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmScriptEdit.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc frmScriptEdit.h
+  moc codeeditor.h
+  moc highlighter.h
+  moc mytitlebar.h
+  moc QToolBase.h
+  moc ScriptEdit.h
+  codeeditor.cpp
+  gvariable.cpp
+  highlighter.cpp
+  Toolnterface.cpp
+  frmScriptEdit.cpp
+  mytitlebar.cpp
+  ScriptEdit.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_frmScriptEdit.cpp
+  moc_codeeditor.cpp
+  moc_highlighter.cpp
+  moc_mytitlebar.cpp
+  moc_QToolBase.cpp
+  moc_ScriptEdit.cpp
+    正在创建库 ../../../QSoftExe/Release/Plugins/ScriptEdit.lib 和对象 ../../../QSoftExe/Release/Plugins/ScriptEdit.exp
+  ScriptEdit.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\ScriptEdit.dll

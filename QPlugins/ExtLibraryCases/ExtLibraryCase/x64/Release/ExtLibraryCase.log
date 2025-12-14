@@ -1,0 +1,37 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmExtLibraryCase.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc QGraphicsScenes.h
+  moc frmExtLibraryCase.h
+  moc ImageItem.h
+  moc mytitlebar.h
+  moc QGraphicsViews.h
+  moc QToolBase.h
+  moc ExtLibraryCase.h
+  ImageItem.cpp
+  Toolnterface.cpp
+  BaseItem.cpp
+  ControlItem.cpp
+  frmExtLibraryCase.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  ExtLibraryCase.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_BaseItem.cpp
+  moc_ControlItem.cpp
+  moc_QGraphicsScenes.cpp
+  moc_frmExtLibraryCase.cpp
+  moc_ImageItem.cpp
+  moc_mytitlebar.cpp
+  moc_QGraphicsViews.cpp
+  moc_QToolBase.cpp
+  moc_ExtLibraryCase.cpp
+    正在创建库 ../../../QSoftExe/Release/ExtLibrary/ExtLibraryCase.lib 和对象 ../../../QSoftExe/Release/ExtLibrary/ExtLibraryCase.exp
+  ExtLibraryCase.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\ExtLibrary\ExtLibraryCase.dll

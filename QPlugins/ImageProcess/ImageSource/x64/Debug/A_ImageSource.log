@@ -1,0 +1,8 @@
+﻿   Qt/MSBuild: 3.4.1.0
+   Qt: 5.14.2
+  moc frmImageSource.h
+  ImageSource.cpp
+  frmImageSource.cpp
+  moc_frmImageSource.cpp
+    正在创建库 ../../../QSoftExe/Debug/Plugins/A_ImageSource.lib 和对象 ../../../QSoftExe/Debug/Plugins/A_ImageSource.exp
+  A_ImageSource.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Debug\Plugins\A_ImageSource.dll

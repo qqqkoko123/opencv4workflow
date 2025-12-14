@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0DD77D05-FB68-4EF1-A819-520A2BCC3B3A}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>5.14.2_msvc2017_64</QtInstall>
+    <QtModules>core;xml;network;gui;designer;widgets;serialport</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>5.14.2_msvc2017_64</QtInstall>
+    <QtModules>core;xml;network;gui;designer;widgets;serialport</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>$(QTDIR)\include;../../../QMainPro/QMacVisual/include;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(IncludePath)</IncludePath>
+    <LibraryPath>$(QTDIR)\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>../../../QSoftExe/Debug/Plugins/</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>$(QTDIR)\include;$(QTDIR)\include\QtNetwork;../../../QMainPro/QMacVisual/include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(IncludePath)</IncludePath>
+    <LibraryPath>$(QTDIR)\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>../../../QSoftExe/Release/Plugins/</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);../../../QPluginsYoloV13/YoloV13/x64/Release/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13/include;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QMainPro/QMacVisual/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../../../QPlugins/YoloV13/YoloV13/lib;../../../QMainPro/QMacVisual/lib/release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world460.lib;onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;../../../QPlugins/YoloV13/YoloV13/x64/Debug/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QPlugins/YoloV13/YoloV13/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>opencv_world460d.lib;onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../../QPlugins/YoloV13/YoloV13/lib;../../../QMainPro/QMacVisual/lib/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>YOLOV13_LIB;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>YOLOV13_LIB;_DISABLE_CONSTEXPR_MUTEX_CONSTRUCTOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseItem.cpp" />
+    <ClCompile Include="Classifier.cpp" />
+    <ClCompile Include="ControlItem.cpp" />
+    <ClCompile Include="frmClassifier.cpp" />
+    <ClCompile Include="ImageItem.cpp" />
+    <ClCompile Include="mytitlebar.cpp" />
+    <ClCompile Include="QGraphicsScenes.cpp" />
+    <ClCompile Include="QGraphicsViews.cpp" />
+    <ClCompile Include="Toolnterface.cpp" />
+    <None Include="cpp.hint" />
+    <None Include="yolov13plugin.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="QGraphicsViews.h" />
+    <QtMoc Include="QGraphicsScenes.h" />
+    <QtMoc Include="BaseItem.h" />
+    <QtMoc Include="Classifier.h" />
+    <ClInclude Include="classifier_global.h" />
+    <QtMoc Include="frmClassifier.h" />
+    <QtMoc Include="ControlItem.h" />
+    <ClInclude Include="gvariable.h" />
+    <QtMoc Include="Toolnterface.h" />
+    <QtMoc Include="QToolBase.h" />
+    <QtMoc Include="ImageItem.h" />
+    <ClInclude Include="maininterface.h" />
+    <QtMoc Include="mytitlebar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="sub_res.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="frmClassifier.ui" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties IsDesignerPlugin="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,22 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmSocketTcpServer.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc frmSocketTcpServer.h
+  moc mytitlebar.h
+  moc QToolBase.h
+  moc SocketTcpServer.h
+  Toolnterface.cpp
+  frmSocketTcpServer.cpp
+  mytitlebar.cpp
+  SocketTcpServer.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_frmSocketTcpServer.cpp
+  moc_mytitlebar.cpp
+  moc_QToolBase.cpp
+  moc_SocketTcpServer.cpp
+    正在创建库 ../../../QSoftExe/Release/Plugins/SocketTcpServer.lib 和对象 ../../../QSoftExe/Release/Plugins/SocketTcpServer.exp
+  SocketTcpServer.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\SocketTcpServer.dll

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ResourceCompile Include="QMacVisual.rc" />
+  </ItemGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D7749FB8-95AA-49A4-A6DB-CCD6AF5A6EF4}</ProjectGuid>
+    <Keyword>QtVS_v303</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Debug-PropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Release-PropertySheet.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <OutDir>../../QSoftExe/Debug/</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(QTDIR)\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutDir>../../QSoftExe/Release/</OutDir>
+    <IncludePath>$(QTDIR)\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>./CommTools/PLC/libmodbus;./CommTools/Camera/HikVision/Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILD_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>./CommTools/PLC/libmodbus;./CommTools/Camera/HikVision/Libraries/win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MvCameraControl.lib;modbus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>./CommTools/PLC/libmodbus;./CommTools/Camera/HikVision/Includes;../../../QMainPro/QMacVisual/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BUILD_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>Default</ConformanceMode>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>./CommTools/PLC/libmodbus;./CommTools/Camera/HikVision/Libraries/win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>MvCameraControl.lib;modbusd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackReserveSize>
+      </StackReserveSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>5.14.2_msvc2017_64</QtInstall>
+    <QtModules>core;xml;sql;network;gui;multimedia;widgets;serialport;multimediawidgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>5.14.2_msvc2017_64</QtInstall>
+    <QtModules>core;xml;sql;network;gui;multimedia;widgets;serialport;multimediawidgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="autoThread.cpp" />
+    <ClCompile Include="basemainwindow.cpp" />
+    <ClCompile Include="clogmodel.cpp" />
+    <ClCompile Include="cmysplashscreen.cpp" />
+    <ClCompile Include="dockwidget.cpp" />
+    <ClCompile Include="FlowListWidget.cpp" />
+    <ClCompile Include="frmAbout.cpp" />
+    <ClCompile Include="frmCameraSetUp.cpp" />
+    <ClCompile Include="frmGlobalVariable.cpp" />
+    <ClCompile Include="frmImageLayout.cpp" />
+    <ClCompile Include="frmImageView.cpp" />
+    <ClCompile Include="frmInstrumentation.cpp" />
+    <ClCompile Include="frmLink.cpp" />
+    <ClCompile Include="frmLogin.cpp" />
+    <ClCompile Include="frmLog.cpp" />
+    <ClCompile Include="frmPermis.cpp" />
+    <ClCompile Include="frmProcessSetUp.cpp" />
+    <ClCompile Include="frmProItemTab.cpp" />
+    <ClCompile Include="frmQuit.cpp" />
+    <ClCompile Include="frmSystemSetUp.cpp" />
+    <ClCompile Include="frmToolsTree.cpp" />
+    <ClCompile Include="GlobalVariable.cpp" />
+    <ClCompile Include="gvariable.cpp" />
+    <ClCompile Include="ipaddress.cpp" />
+    <ClCompile Include="manualThread.cpp" />
+    <ClCompile Include="MvCamera.cpp" />
+    <ClCompile Include="mytitlebar.cpp" />
+    <ClCompile Include="QGraphicsViews.cpp" />
+    <ClCompile Include="QRoundProgressBar.cpp" />
+    <ClCompile Include="QToolBase.cpp" />
+    <ClCompile Include="qttreewidget.cpp" />
+    <ClCompile Include="QtWidgetsSaveLoad.cpp" />
+    <ClCompile Include="QWorld\FolderOperation.cpp" />
+    <ClCompile Include="QWorld\SoftKey.cpp" />
+    <ClCompile Include="QWorld\SQLite.cpp" />
+    <ClCompile Include="QWorld\XML.cpp" />
+    <ClCompile Include="savelog.cpp" />
+    <ClCompile Include="showcpumemory.cpp" />
+    <ClCompile Include="Toolnterface.cpp" />
+    <QtRcc Include="res.qrc" />
+    <QtUic Include="frmAbout.ui" />
+    <QtUic Include="frmCameraSetUp.ui" />
+    <QtUic Include="frmGlobalVariable.ui" />
+    <QtUic Include="frmImageLayout.ui" />
+    <QtUic Include="frmImageView.ui" />
+    <QtUic Include="frmInstrumentation.ui" />
+    <QtUic Include="frmLink.ui" />
+    <QtUic Include="frmLogin.ui" />
+    <ClCompile Include="datavar.cpp" />
+    <ClCompile Include="frmRegister.cpp" />
+    <ClCompile Include="frmVisualLogo.cpp" />
+    <ClCompile Include="headwidget.cpp" />
+    <ClCompile Include="mainwidget.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="main.cpp" />
+    <QtUic Include="frmPermis.ui" />
+    <QtUic Include="frmProcessSetUp.ui" />
+    <QtUic Include="frmProItemTab.ui" />
+    <QtUic Include="frmQuit.ui" />
+    <QtUic Include="frmRegister.ui" />
+    <QtUic Include="frmSystemSetUp.ui" />
+    <QtUic Include="frmToolsTree.ui" />
+    <QtUic Include="frmLog.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="savelog.h" />
+    <QtMoc Include="Toolnterface.h" />
+    <QtMoc Include="showcpumemory.h" />
+    <QtMoc Include="frmLog.h" />
+    <QtMoc Include="clogmodel.h" />
+    <QtMoc Include="basemainwindow.h" />
+    <QtMoc Include="cmysplashscreen.h" />
+    <QtMoc Include="autoThread.h" />
+    <ClInclude Include="datavar.h" />
+    <QtMoc Include="frmLogin.h" />
+    <QtMoc Include="dockwidget.h" />
+    <QtMoc Include="headwidget.h" />
+    <QtMoc Include="frmAbout.h" />
+    <QtMoc Include="frmImageView.h" />
+    <QtMoc Include="FlowListWidget.h" />
+    <QtMoc Include="GlobalVariable.h" />
+    <QtMoc Include="frmToolsTree.h" />
+    <QtMoc Include="frmProItemTab.h" />
+    <QtMoc Include="frmPermis.h" />
+    <QtMoc Include="mainwidget.h" />
+    <QtMoc Include="mainwindow.h" />
+    <QtMoc Include="mytitlebar.h" />
+    <QtMoc Include="frmProcessSetUp.h" />
+    <QtMoc Include="frmSystemSetUp.h" />
+    <QtMoc Include="frmImageLayout.h" />
+    <QtMoc Include="frmGlobalVariable.h" />
+    <QtMoc Include="frmCameraSetUp.h" />
+    <QtMoc Include="frmInstrumentation.h" />
+    <QtMoc Include="frmQuit.h" />
+    <QtMoc Include="frmLink.h" />
+    <ClInclude Include="gvariable.h" />
+    <QtMoc Include="ipaddress.h" />
+    <ClInclude Include="maininterface.h" />
+    <QtMoc Include="manualThread.h" />
+    <QtMoc Include="QGraphicsViews.h" />
+    <QtMoc Include="QToolBase.h" />
+    <QtMoc Include="qttreewidget.h" />
+    <QtMoc Include="QRoundProgressBar.h" />
+    <ClInclude Include="QtWidgetsSaveLoad.h" />
+    <ClInclude Include="QWorld\QWorld.h" />
+    <ClInclude Include="resource.h" />
+    <QtMoc Include="frmVisualLogo.h" />
+    <QtMoc Include="frmRegister.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

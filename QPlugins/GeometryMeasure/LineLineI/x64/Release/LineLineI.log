@@ -1,0 +1,37 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmLineLineI.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc mytitlebar.h
+  moc QGraphicsViews.h
+  moc QGraphicsScenes.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc ImageItem.h
+  moc frmLineLineI.h
+  moc LineLineI.h
+  frmLineLineI.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  Toolnterface.cpp
+  BaseItem.cpp
+  ControlItem.cpp
+  ImageItem.cpp
+  LineLineI.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_QToolBase.cpp
+  moc_mytitlebar.cpp
+  moc_QGraphicsViews.cpp
+  moc_QGraphicsScenes.cpp
+  moc_BaseItem.cpp
+  moc_ControlItem.cpp
+  moc_ImageItem.cpp
+  moc_frmLineLineI.cpp
+  moc_LineLineI.cpp
+    正在创建库 ../../../QSoftExe/Release/Plugins/LineLineI.lib 和对象 ../../../QSoftExe/Release/Plugins/LineLineI.exp
+  LineLineI.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\LineLineI.dll

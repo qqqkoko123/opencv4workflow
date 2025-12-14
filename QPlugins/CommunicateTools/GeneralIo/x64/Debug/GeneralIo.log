@@ -1,0 +1,22 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmGeneralIo.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc frmGeneralIo.h
+  moc mytitlebar.h
+  moc GeneralIo.h
+  frmGeneralIo.cpp
+  mytitlebar.cpp
+  Toolnterface.cpp
+  GeneralIo.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_QToolBase.cpp
+  moc_frmGeneralIo.cpp
+  moc_mytitlebar.cpp
+  moc_GeneralIo.cpp
+    正在创建库 ../../../QSoftExe/Debug/Plugins/GeneralIo.lib 和对象 ../../../QSoftExe/Debug/Plugins/GeneralIo.exp
+  GeneralIo.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Debug\Plugins\GeneralIo.dll

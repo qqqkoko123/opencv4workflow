@@ -1,0 +1,35 @@
+﻿  Reading Qt configuration (C:/Qt/Qt5.12.12/5.12.12/msvc2017_64/bin/qmake)
+  uic frmClassifier.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc frmClassifier.h
+  moc ImageItem.h
+  moc mytitlebar.h
+  moc QGraphicsViews.h
+  moc QGraphicsScenes.h
+  moc ControlItem.h
+  moc BaseItem.h
+  moc Classifier.h
+  ControlItem.cpp
+  frmClassifier.cpp
+  ImageItem.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  Toolnterface.cpp
+  BaseItem.cpp
+  Classifier.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_QToolBase.cpp
+  moc_frmClassifier.cpp
+  moc_ImageItem.cpp
+  moc_mytitlebar.cpp
+  moc_QGraphicsViews.cpp
+  moc_QGraphicsScenes.cpp
+  moc_ControlItem.cpp
+  moc_BaseItem.cpp
+  moc_Classifier.cpp
+    正在创建库 ../../../QSoftExe/Debug/Plugins/Z_Classifier.lib 和对象 ../../../QSoftExe/Debug/Plugins/Z_Classifier.exp
+  Z_Classifier.vcxproj -> E:\QMacVisual(CV3)\QSoftExe\Debug\Plugins\Z_Classifier.dll

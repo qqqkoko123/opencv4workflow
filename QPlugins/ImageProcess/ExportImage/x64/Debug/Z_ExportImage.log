@@ -1,0 +1,22 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmExportImage.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc frmExportImage.h
+  moc mytitlebar.h
+  moc ExportImage.h
+  frmExportImage.cpp
+  mytitlebar.cpp
+  Toolnterface.cpp
+  ExportImage.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_QToolBase.cpp
+  moc_frmExportImage.cpp
+  moc_mytitlebar.cpp
+  moc_ExportImage.cpp
+    正在创建库 ../../../QSoftExe/Debug/Plugins/Z_ExportImage.lib 和对象 ../../../QSoftExe/Debug/Plugins/Z_ExportImage.exp
+  Z_ExportImage.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Debug\Plugins\Z_ExportImage.dll

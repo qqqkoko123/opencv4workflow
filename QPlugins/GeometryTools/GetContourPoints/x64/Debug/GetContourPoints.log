@@ -1,0 +1,37 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmGetContourPoints.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc mytitlebar.h
+  moc QGraphicsViews.h
+  moc QGraphicsScenes.h
+  moc ImageItem.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc frmGetContourPoints.h
+  moc GetContourPoints.h
+  frmGetContourPoints.cpp
+  ImageItem.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  Toolnterface.cpp
+  BaseItem.cpp
+  ControlItem.cpp
+  GetContourPoints.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_QToolBase.cpp
+  moc_mytitlebar.cpp
+  moc_QGraphicsViews.cpp
+  moc_QGraphicsScenes.cpp
+  moc_ImageItem.cpp
+  moc_BaseItem.cpp
+  moc_ControlItem.cpp
+  moc_frmGetContourPoints.cpp
+  moc_GetContourPoints.cpp
+    正在创建库 ../../../QSoftExe/Debug/Plugins/GetContourPoints.lib 和对象 ../../../QSoftExe/Debug/Plugins/GetContourPoints.exp
+  GetContourPoints.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Debug\Plugins\GetContourPoints.dll

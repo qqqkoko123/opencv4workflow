@@ -1,0 +1,1155 @@
+2022-09-20 08:00:20.344 [INFO]  -  主程序启动完成...
+2022-09-20 08:35:12.771 [INFO]  -  主程序关闭...
+2022-09-20 11:44:31.951 [INFO]  -  主程序启动完成...
+2022-09-20 11:45:07.128 [INFO]  -  用户名: user0登录成功！
+2022-09-20 11:49:37.957 [INFO]  -  主程序关闭...
+2022-09-20 14:06:07.840 [INFO]  -  主程序启动完成...
+2022-09-20 14:06:18.771 [INFO]  -  用户名: user0登录成功！
+QString::arg: Argument missing: x:362,y:290 | r:331,g:288,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:331,g:288,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:327,g:284,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:327,g:284,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:322,g:281,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:322,g:281,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:315,g:274,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:315,g:274,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:309,g:270,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:309,g:270,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:306,g:269,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:306,g:269,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:304,g:268,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:304,g:268,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:303,g:267,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:303,g:267,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:302,g:266,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:302,g:266,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:297,g:264,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:297,g:264,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:293,g:262,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:293,g:262,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:288,g:260,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:288,g:260,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:279,g:254,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:279,g:254,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:270,g:248,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:270,g:248,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:262,g:240,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:262,g:240,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:253,g:231,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:253,g:231,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:236,g:211,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:236,g:211,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:213,g:182,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:213,g:182,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:201,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:201,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:188,g:155,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:188,g:155,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:182,g:149,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:182,g:149,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:178,g:143,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:178,g:143,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:177,g:142,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:177,g:142,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:175,g:142,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:175,g:142,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:167,g:138,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:167,g:138,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:164,g:136,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:164,g:136,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:155,g:132,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:155,g:132,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:141,g:126,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:141,g:126,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:123,g:119,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:123,g:119,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:114,g:116,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:114,g:116,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:107,g:113,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:107,g:113,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:106,g:112,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:106,g:112,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:106,g:112,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:106,g:112,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:105,g:110,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:105,g:110,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:103,g:107,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:103,g:107,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:102,g:104,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:102,g:104,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:101,g:102,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:101,g:102,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:99,g:100,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:99,g:100,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:96,g:94,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:96,g:94,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:94,g:92,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:94,g:92,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:93,g:89,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:93,g:89,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:93,g:89,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:93,g:89,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:93,g:88,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:93,g:88,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:92,g:92,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:92,g:92,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:92,g:96,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:92,g:96,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:91,g:98,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:91,g:98,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:90,g:104,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:90,g:104,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:89,g:112,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:89,g:112,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:87,g:121,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:87,g:121,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:87,g:124,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:87,g:124,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:86,g:126,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:86,g:126,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:86,g:127,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:86,g:127,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:86,g:129,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:86,g:129,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:85,g:132,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:85,g:132,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:84,g:134,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:84,g:134,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:84,g:136,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:84,g:136,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:84,g:137,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:84,g:137,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:83,g:137,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:83,g:137,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:83,g:138,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:83,g:138,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:82,g:139,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:82,g:139,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:81,g:144,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:81,g:144,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:78,g:153,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:78,g:153,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:76,g:161,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:76,g:161,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:74,g:168,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:74,g:168,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:73,g:171,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:73,g:171,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:72,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:72,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:71,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:71,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:70,g:182,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:70,g:182,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:67,g:187,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:67,g:187,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:66,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:66,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:65,g:195,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:65,g:195,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:63,g:197,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:63,g:197,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:61,g:203,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:61,g:203,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:60,g:214,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:60,g:214,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:59,g:219,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:59,g:219,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:58,g:224,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:58,g:224,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:58,g:226,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:58,g:226,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:57,g:227,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:57,g:227,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:57,g:227,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:57,g:227,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:223,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:223,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:51,g:215,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:51,g:215,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:50,g:213,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:50,g:213,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:50,g:211,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:50,g:211,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:47,g:204,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:47,g:204,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:47,g:200,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:47,g:200,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:46,g:196,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:46,g:196,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:194,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:194,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:187,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:187,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:183,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:183,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:175,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:175,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:172,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:172,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:171,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:171,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:164,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:164,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:159,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:159,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:156,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:156,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:150,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:150,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:145,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:145,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:141,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:141,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:46,g:135,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:46,g:135,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:47,g:127,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:47,g:127,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:47,g:123,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:47,g:123,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:48,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:48,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:49,g:114,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:49,g:114,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:51,g:109,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:51,g:109,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:51,g:106,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:51,g:106,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:52,g:103,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:52,g:103,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:53,g:101,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:53,g:101,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:100,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:100,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:99,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:99,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:55,g:98,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:55,g:98,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:56,g:97,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:56,g:97,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:60,g:95,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:60,g:95,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:64,g:94,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:64,g:94,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:73,g:93,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:73,g:93,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:83,g:92,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:83,g:92,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:100,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:100,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:110,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:110,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:121,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:121,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:125,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:125,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:139,g:92,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:139,g:92,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:161,g:98,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:161,g:98,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:174,g:100,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:174,g:100,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:183,g:102,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:183,g:102,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:195,g:105,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:195,g:105,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:202,g:106,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:202,g:106,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:218,g:111,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:218,g:111,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:233,g:114,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:233,g:114,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:248,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:248,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:250,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:250,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:251,g:119,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:251,g:119,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:252,g:120,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:252,g:120,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:253,g:120,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:253,g:120,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:253,g:121,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:253,g:121,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:255,g:123,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:255,g:123,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:257,g:128,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:257,g:128,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:259,g:131,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:259,g:131,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:261,g:135,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:261,g:135,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:262,g:137,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:262,g:137,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:262,g:139,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:262,g:139,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:262,g:140,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:262,g:140,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:142,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:142,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:144,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:144,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:145,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:145,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:146,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:146,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:147,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:147,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:148,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:148,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:149,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:149,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:151,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:151,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:152,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:152,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:154,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:264,g:154,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:265,g:157,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:265,g:157,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:265,g:161,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:265,g:161,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:266,g:164,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:266,g:164,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:267,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:267,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:267,g:171,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:267,g:171,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:267,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:267,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:175,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:175,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:177,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:268,g:177,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:267,g:178,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:267,g:178,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:183,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:263,g:183,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:258,g:187,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:258,g:187,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:250,g:192,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:250,g:192,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:240,g:196,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:240,g:196,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:222,g:200,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:222,g:200,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:209,g:203,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:209,g:203,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:194,g:204,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:194,g:204,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:169,g:206,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:169,g:206,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:144,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:144,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:128,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:128,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:114,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:114,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:97,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:97,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:86,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:86,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:82,g:206,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:82,g:206,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:78,g:206,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:78,g:206,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:78,g:206,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:78,g:206,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:77,g:206,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:77,g:206,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:72,g:202,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:72,g:202,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:69,g:198,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:69,g:198,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:63,g:192,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:63,g:192,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:52,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:52,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:166,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:45,g:166,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:41,g:159,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:41,g:159,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:40,g:154,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:40,g:154,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:37,g:141,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:37,g:141,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:35,g:128,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:35,g:128,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:35,g:124,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:35,g:124,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:35,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:35,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:37,g:110,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:37,g:110,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:41,g:101,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:41,g:101,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:88,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:88,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:64,g:83,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:64,g:83,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:82,g:81,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:82,g:81,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:97,g:81,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:97,g:81,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:114,g:82,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:114,g:82,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:151,g:88,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:151,g:88,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:190,g:99,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:190,g:99,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:211,g:108,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:211,g:108,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:227,g:117,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:227,g:117,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:238,g:128,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:238,g:128,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:243,g:142,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:243,g:142,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:243,g:154,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:243,g:154,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:239,g:167,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:239,g:167,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:225,g:187,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:225,g:187,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:214,g:199,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:214,g:199,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:205,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:205,g:207,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:194,g:213,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:194,g:213,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:158,g:216,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:158,g:216,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:105,g:209,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:105,g:209,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:70,g:199,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:70,g:199,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:18,g:172,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:18,g:172,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:2,g:96,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:2,g:96,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:13,g:87,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:13,g:87,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:71,g:73,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:71,g:73,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:120,g:73,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:120,g:73,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:144,g:78,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:144,g:78,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:180,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:180,g:91,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:202,g:106,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:202,g:106,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:220,g:134,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:220,g:134,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:223,g:150,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:223,g:150,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:223,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:223,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:215,g:179,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:215,g:179,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:194,g:188,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:194,g:188,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:178,g:191,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:178,g:191,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:156,g:192,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:156,g:192,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:139,g:189,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:139,g:189,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:132,g:182,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:132,g:182,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:132,g:173,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:132,g:173,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:134,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:134,g:169,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:144,g:156,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:144,g:156,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:169,g:140,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:169,g:140,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:210,g:128,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:210,g:128,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:227,g:126,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:227,g:126,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:235,g:126,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:235,g:126,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:235,g:127,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:235,g:127,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:235,g:130,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:235,g:130,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:235,g:132,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:235,g:132,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:234,g:134,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:234,g:134,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:234,g:134,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:234,g:134,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:234,g:135,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:234,g:135,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:233,g:137,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:233,g:137,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:224,g:154,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:224,g:154,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:220,g:164,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:220,g:164,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:212,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:212,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:208,g:180,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:208,g:180,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:202,g:186,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:202,g:186,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:198,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:198,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:198,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:198,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:189,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:189,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:176,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:172,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:172,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:167,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:167,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:160,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:160,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:152,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:197,g:152,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:196,g:148,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:196,g:148,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:196,g:137,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:196,g:137,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:196,g:130,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:196,g:130,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:199,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:199,g:118,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:200,g:110,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:200,g:110,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:203,g:103,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:203,g:103,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:205,g:98,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:205,g:98,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:206,g:95,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:206,g:95,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:206,g:95,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:206,g:95,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:209,g:95,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:209,g:95,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:209,g:115,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:209,g:115,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:208,g:115,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:208,g:115,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:200,g:120,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:200,g:120,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:191,g:127,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:191,g:127,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:180,g:135,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:180,g:135,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:162,g:147,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:162,g:147,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:151,g:154,b:255, 255
+QString::arg: Argument missing: x:362,y:290 | r:151,g:154,b:255, 0
+QString::arg: Argument missing: x:362,y:290 | r:145,g:157,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:145,g:157,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:133,g:166,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:133,g:166,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:122,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:122,g:174,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:106,g:185,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:106,g:185,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:98,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:98,g:190,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:90,g:196,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:90,g:196,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:85,g:200,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:85,g:200,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:79,g:205,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:79,g:205,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:75,g:212,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:75,g:212,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:71,g:216,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:71,g:216,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:67,g:221,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:67,g:221,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:60,g:231,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:60,g:231,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:238,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:54,g:238,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:44,g:251,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:44,g:251,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:36,g:263,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:36,g:263,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:30,g:268,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:30,g:268,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:27,g:272,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:27,g:272,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:26,g:273,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:26,g:273,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:25,g:275,b:0, 0
+QString::arg: Argument missing: x:362,y:290 | r:25,g:275,b:0, 0
+2022-09-20 14:09:21.371 [INFO]  -  主程序启动完成...
+2022-09-20 14:09:31.467 [INFO]  -  用户名: user0登录成功！
+2022-09-20 14:11:07.539 [INFO]  -  主程序启动完成...
+2022-09-20 14:17:39.671 [INFO]  -  用户名: user0登录成功！
+2022-09-20 14:18:55.707 [INFO]  -  主程序启动完成...
+2022-09-20 14:19:02.823 [INFO]  -  用户名: user0登录成功！
+2022-09-20 14:23:33.639 [INFO]  -  主程序启动完成...
+2022-09-20 14:23:42.570 [INFO]  -  用户名: user0登录成功！
+2022-09-20 14:24:41.730 [INFO]  -  主程序关闭...
+2022-09-20 14:25:00.248 [INFO]  -  主程序启动完成...
+2022-09-20 14:25:09.738 [INFO]  -  用户名: user0登录成功！
+2022-09-20 14:26:30.884 [INFO]  -  主程序启动完成...
+2022-09-20 14:26:38.405 [INFO]  -  用户名: user0登录成功！
+2022-09-20 14:29:46.175 [INFO]  -  主程序关闭...
+2022-09-20 14:52:15.377 [INFO]  -  主程序启动完成...
+2022-09-20 14:53:11.467 [INFO]  -  用户名: user0登录成功！
+2022-09-20 16:21:17.042 [INFO]  -  主程序启动完成...
+2022-09-20 16:21:26.618 [INFO]  -  用户名: user0登录成功！
+2022-09-20 17:32:43.014 [INFO]  -  主程序启动完成...
+2022-09-20 17:32:52.524 [INFO]  -  用户名: user0登录成功！
+2022-09-20 17:33:15.749 [INFO]  -  主程序启动完成...
+2022-09-20 17:33:27.809 [INFO]  -  用户名: user0登录成功！
+2022-09-20 17:36:18.231 [INFO]  -  主程序启动完成...
+2022-09-20 17:36:26.361 [INFO]  -  用户名: user0登录成功！
+2022-09-20 17:36:56.347 [INFO]  -  主程序关闭...
+2022-09-20 17:40:42.442 [INFO]  -  主程序启动完成...
+2022-09-20 17:40:49.922 [INFO]  -  用户名: user0登录成功！
+QPen::setWidthF: Setting a pen width that is out of range
+QPen::setWidthF: Setting a pen width that is out of range
+QPen::setWidthF: Setting a pen width that is out of range
+QTransform::scale with NaN called
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPen::setWidthF: Setting a pen width that is out of range
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+QPainterPath::addRect: Adding point with invalid coordinates, ignoring call
+2022-09-20 17:41:48.077 [INFO]  -  项目方案单个流程执行一次...
+2022-09-20 17:44:56.672 [INFO]  -  主程序启动完成...
+2022-09-20 17:45:06.233 [INFO]  -  用户名: user0登录成功！
+2022-09-20 20:01:37.381 [INFO]  -  主程序启动完成...
+2022-09-20 20:01:45.796 [INFO]  -  用户名: user0登录成功！
+2022-09-20 20:05:08.773 [INFO]  -  主程序启动完成...
+2022-09-20 20:05:24.383 [INFO]  -  用户名: user0登录成功！
+2022-09-20 20:06:03.678 [INFO]  -  项目方案单个流程执行一次...
+2022-09-20 20:09:30.136 [INFO]  -  主程序关闭...
+2022-09-20 20:10:02.620 [INFO]  -  主程序启动完成...
+2022-09-20 20:10:09.323 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:10:22.428 [INFO]  -  用户名: user0登录成功！
+2022-09-20 20:13:34.246 [INFO]  -  主程序启动完成...
+2022-09-20 20:13:50.533 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:14:43.871 [INFO]  -  主程序启动完成...
+2022-09-20 20:14:47.246 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:15:46.881 [INFO]  -  主程序启动完成...
+2022-09-20 20:15:50.403 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:23:53.018 [INFO]  -  主程序启动完成...
+2022-09-20 20:23:56.151 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:24:48.823 [INFO]  -  主程序启动完成...
+2022-09-20 20:24:52.031 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:27:59.395 [INFO]  -  主程序启动完成...
+2022-09-20 20:28:05.400 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:29:42.377 [INFO]  -  主程序启动完成...
+2022-09-20 20:29:45.744 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:31:58.670 [INFO]  -  主程序启动完成...
+2022-09-20 20:32:01.710 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:32:30.689 [INFO]  -  主程序启动完成...
+2022-09-20 20:32:36.005 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:42:53.410 [INFO]  -  主程序启动完成...
+2022-09-20 20:42:56.174 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:43:02.091 [INFO]  -  项目方案所有流程开始循环执行...
+2022-09-20 20:43:05.013 [INFO]  -  项目方案所有流程停止执行...
+2022-09-20 20:44:28.775 [INFO]  -  主程序启动完成...
+2022-09-20 20:44:32.204 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:44:34.391 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:53:28.788 [INFO]  -  主程序启动完成...
+2022-09-20 20:54:24.340 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 20:54:56.515 [INFO]  -  用户名: user0登录成功！
+2022-09-20 21:02:25.145 [INFO]  -  主程序启动完成...
+2022-09-20 21:02:32.362 [INFO]  -  用户名: user0登录成功！
+2022-09-20 21:03:14.001 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 21:03:23.646 [INFO]  -  EthernetTcp_1保存参数完成！
+2022-09-20 21:03:25.213 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 21:03:28.952 [INFO]  -  新建流程-M删除完成...
+2022-09-20 21:03:30.616 [INFO]  -  新建流程-x创建完成...
+2022-09-20 21:04:46.430 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 21:04:51.659 [INFO]  -  EthernetTcp_2保存参数完成！
+2022-09-20 21:04:53.538 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 21:09:46.796 [INFO]  -  主程序启动完成...
+2022-09-20 21:10:15.524 [INFO]  -  用户名: user0登录成功！
+2022-09-20 21:10:30.328 [INFO]  -  新建流程-M删除完成...
+2022-09-20 21:10:35.305 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 21:10:42.669 [INFO]  -  EthernetTcp_1保存参数完成！
+2022-09-20 21:10:44.046 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 21:10:49.993 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 21:10:52.826 [INFO]  -  EthernetTcp_2保存参数完成！
+2022-09-20 21:10:54.610 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 21:10:57.101 [INFO]  -  新建流程-G创建完成...
+2022-09-20 21:19:02.018 [INFO]  -  主程序启动完成...
+2022-09-20 21:19:08.742 [INFO]  -  用户名: user0登录成功！
+2022-09-20 21:19:11.328 [INFO]  -  新建流程-M删除完成...
+2022-09-20 21:19:17.135 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 21:19:24.181 [INFO]  -  EthernetTcp_1保存参数完成！
+2022-09-20 21:19:25.570 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 21:19:30.297 [INFO]  -  新建流程-o创建完成...
+2022-09-20 21:19:45.248 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 21:19:49.680 [INFO]  -  EthernetTcp_2保存参数完成！
+2022-09-20 21:19:51.152 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 21:21:16.649 [INFO]  -  主程序启动完成...
+2022-09-20 21:21:22.876 [INFO]  -  用户名: user0登录成功！
+2022-09-20 21:21:25.003 [INFO]  -  新建流程-M删除完成...
+2022-09-20 21:21:35.330 [INFO]  -  新建流程-m创建完成...
+2022-09-20 21:21:39.728 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 21:21:45.911 [INFO]  -  EthernetTcp_1保存参数完成！
+2022-09-20 21:21:47.452 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 21:21:49.059 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 21:21:53.976 [INFO]  -  EthernetTcp_2保存参数完成！
+2022-09-20 21:21:55.327 [INFO]  -  EthernetTcp_2服务器打开成功！
+QObject::connect: Cannot connect (null)::readyRead() to frmSocketTcpServer::slot_ReadClient()
+2022-09-20 21:23:21.660 [INFO]  -  EthernetTcp_2已断开连接！
+2022-09-20 21:23:24.182 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:11:53.903 [INFO]  -  主程序启动完成...
+2022-09-20 22:12:01.336 [INFO]  -  用户名: user0登录成功！
+2022-09-20 22:12:04.335 [INFO]  -  新建流程-M删除完成...
+2022-09-20 22:12:36.357 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 22:12:45.055 [INFO]  -  EthernetTcp_1保存参数完成！
+2022-09-20 22:12:46.388 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 22:12:48.845 [INFO]  -  新建流程-I创建完成...
+2022-09-20 22:12:51.603 [WARN]  -  该仪器通讯参数未保存！
+2022-09-20 22:12:55.309 [INFO]  -  EthernetTcp_2保存参数完成！
+2022-09-20 22:12:56.598 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:13:38.818 [INFO]  -  项目方案单个流程执行一次...
+2022-09-20 22:18:39.394 [INFO]  -  主程序关闭...
+2022-09-20 22:44:45.108 [INFO]  -  主程序启动完成...
+2022-09-20 22:44:45.641 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 22:44:45.642 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:47:25.327 [INFO]  -  用户名: user0登录成功！
+2022-09-20 22:47:28.226 [INFO]  -  新建流程-I删除完成...
+2022-09-20 22:47:28.680 [INFO]  -  新建流程-D创建完成...
+2022-09-20 22:47:37.080 [INFO]  -  主程序关闭...
+2022-09-20 22:47:51.671 [INFO]  -  主程序启动完成...
+2022-09-20 22:47:52.414 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 22:47:52.414 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:48:36.590 [INFO]  -  用户名: user0登录成功！
+2022-09-20 22:50:30.005 [INFO]  -  主程序关闭...
+2022-09-20 22:50:39.762 [INFO]  -  主程序启动完成...
+2022-09-20 22:50:40.500 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 22:50:40.500 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:50:47.930 [INFO]  -  用户名: user0登录成功！
+2022-09-20 22:51:55.105 [INFO]  -  项目方案单个流程执行一次...
+2022-09-20 22:51:58.072 [INFO]  -  主程序关闭...
+2022-09-20 22:52:13.407 [INFO]  -  主程序启动完成...
+2022-09-20 22:52:14.122 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 22:52:14.122 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:52:23.614 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 22:52:30.009 [INFO]  -  用户名: user0登录成功！
+2022-09-20 22:53:55.111 [INFO]  -  项目方案所有流程执行一次...
+2022-09-20 22:53:58.181 [INFO]  -  主程序关闭...
+2022-09-20 22:54:07.762 [INFO]  -  主程序启动完成...
+2022-09-20 22:54:08.543 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 22:54:08.543 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:54:29.123 [INFO]  -  用户名: user0登录成功！
+2022-09-20 22:54:48.246 [INFO]  -  主程序关闭...
+2022-09-20 22:56:20.680 [INFO]  -  主程序启动完成...
+QPixmap::scaled: Pixmap is a null pixmap
+2022-09-20 22:56:21.636 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 22:56:21.636 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:56:33.863 [INFO]  -  用户名: user0登录成功！
+2022-09-20 22:57:06.270 [INFO]  -  主程序关闭...
+2022-09-20 22:57:16.672 [INFO]  -  主程序启动完成...
+QPixmap::scaled: Pixmap is a null pixmap
+2022-09-20 22:57:17.617 [INFO]  -  EthernetTcp_1服务器打开成功！
+2022-09-20 22:57:17.618 [INFO]  -  EthernetTcp_2服务器打开成功！
+2022-09-20 22:57:26.649 [INFO]  -  用户名: user0登录成功！
+2022-09-20 22:57:55.223 [INFO]  -  主程序关闭...
+2022-09-20 23:08:14.695 [INFO]  -  主程序启动完成...
+2022-09-20 23:08:25.381 [INFO]  -  用户名: user0登录成功！
+2022-09-20 23:08:29.880 [INFO]  -  新建项目完成！
+2022-09-20 23:08:31.825 [INFO]  -  新建流程-m创建完成...
+2022-09-20 23:08:38.529 [INFO]  -  主程序关闭...
+2022-09-20 23:08:45.208 [INFO]  -  主程序启动完成...
+2022-09-20 23:08:52.063 [INFO]  -  用户名: user0登录成功！
+2022-09-20 23:09:14.393 [INFO]  -  主程序关闭...
+2022-09-20 23:09:21.305 [INFO]  -  主程序启动完成...
+2022-09-20 23:09:28.353 [INFO]  -  用户名: user0登录成功！
+2022-09-20 23:11:46.937 [INFO]  -  主程序关闭...
+2022-09-20 23:11:59.833 [INFO]  -  主程序启动完成...
+2022-09-20 23:12:05.349 [INFO]  -  用户名: user0登录成功！
+2022-09-20 23:12:07.792 [WARN]  -  新建流程时，请先新建项目！
+2022-09-20 23:12:09.990 [INFO]  -  新建项目完成！
+2022-09-20 23:12:11.984 [INFO]  -  新建流程-K创建完成...
+2022-09-20 23:12:24.122 [INFO]  -  主程序关闭...
+2022-09-20 23:12:32.169 [INFO]  -  主程序启动完成...
+2022-09-20 23:12:39.584 [INFO]  -  用户名: user0登录成功！
+2022-09-20 23:13:09.207 [INFO]  -  主程序关闭...
+2022-09-20 23:13:16.631 [INFO]  -  主程序启动完成...
+2022-09-20 23:13:29.623 [INFO]  -  用户名: user0登录成功！
+2022-09-20 23:15:27.176 [INFO]  -  主程序关闭...
+2022-09-20 23:15:40.057 [INFO]  -  主程序启动完成...
+2022-09-20 23:15:49.017 [INFO]  -  用户名: user0登录成功！
+2022-09-20 23:15:51.242 [INFO]  -  新建项目完成！
+2022-09-20 23:15:53.150 [INFO]  -  新建流程-D创建完成...
+2022-09-20 23:16:15.947 [INFO]  -  主程序关闭...
+2022-09-20 23:16:27.673 [INFO]  -  主程序启动完成...
+QPixmap::scaled: Pixmap is a null pixmap
+2022-09-20 23:16:34.115 [INFO]  -  用户名: user0登录成功！
+2022-09-20 23:21:41.151 [INFO]  -  主程序关闭...

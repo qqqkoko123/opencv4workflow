@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/close.png</file>
+        <file>resource/del_link.png</file>
+        <file>resource/down.png</file>
+        <file>resource/link.png</file>
+        <file>resource/up.png</file>
+        <file>resource/goto.png</file>
+        <file>resource/error.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,2498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>frmInstrumentationClass</class>
+ <widget class="QDialog" name="frmInstrumentationClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>530</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>850</width>
+    <height>530</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>850</width>
+    <height>530</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>仪器仪表</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #bcc2bc;</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="leftMargin">
+    <number>1</number>
+   </property>
+   <property name="topMargin">
+    <number>2</number>
+   </property>
+   <property name="rightMargin">
+    <number>2</number>
+   </property>
+   <property name="bottomMargin">
+    <number>2</number>
+   </property>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>50</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+     <property name="spacing">
+      <number>15</number>
+     </property>
+     <property name="leftMargin">
+      <number>1</number>
+     </property>
+     <property name="rightMargin">
+      <number>2</number>
+     </property>
+     <property name="bottomMargin">
+      <number>2</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QTableWidget" name="tableWidget">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QTableWidget          
+{
+    background-color: #b7c7a7;  
+    border:none;
+    gridline-color: rgba(220, 220, 255,255);
+    color: rgba(20, 20, 20,200);
+}
+QTableWidget::item::selected
+{   
+    background-color: rgba(180, 180, 215,255); 
+}
+QScrollBar:vertical{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/res/ico/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/res/ico/up.png) center no-repeat;}
+QScrollBar:horizontal{ 
+		background:#FFFFF2;
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:horizontal{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:horizontal:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:horizontal{
+		background:url(:/res/ico/right.png) center no-repeat;}
+QScrollBar::sub-line:horizontal{
+		background:url(:/res/ico/left.png) center no-repeat;}</string>
+         </property>
+         <property name="gridStyle">
+          <enum>Qt::DashLine</enum>
+         </property>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>256</number>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>仪器通讯列表</string>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QFrame" name="frame_3">
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid gray;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>3</number>
+            </property>
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="rightMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnConnect">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>37</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QWidget{ background-color: rgba(9, 42, 47, 200);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(9, 62, 52);}
+QPushButton:pressed{background-color: rgb(9, 82, 72);}</string>
+              </property>
+              <property name="text">
+               <string>连接仪器</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>65</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnDisconnect">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>37</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QWidget{ background-color: rgba(97, 63, 56, 200);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(97, 83, 76);}
+QPushButton:pressed{background-color: rgb(117, 103, 96);}</string>
+              </property>
+              <property name="text">
+               <string>断开仪器</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>65</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSave">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>37</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QWidget{ background-color: rgba(19, 22, 47, 200);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(19, 22, 67);}
+QPushButton:pressed{background-color: rgb(19, 22, 87);}</string>
+              </property>
+              <property name="text">
+               <string>保存参数</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QFrame" name="frame_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid gray;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>7</number>
+            </property>
+            <property name="topMargin">
+             <number>7</number>
+            </property>
+            <property name="rightMargin">
+             <number>7</number>
+            </property>
+            <property name="bottomMargin">
+             <number>7</number>
+            </property>
+            <item>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item row="1" column="0">
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="0" column="0" colspan="2">
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>5</number>
+                </property>
+                <property name="rightMargin">
+                 <number>5</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(0, 0, 0);
+border:none;</string>
+                  </property>
+                  <property name="text">
+                   <string>仪器名称或编号：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboInstrumentName">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>325</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;     
+    color: rgb(0, 0, 200);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/res/ico/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>DAM-E3021N</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>5</number>
+                </property>
+                <property name="rightMargin">
+                 <number>5</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_3">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>28</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>28</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(255, 254, 237,0);
+border:none;</string>
+                  </property>
+                  <property name="text">
+                   <string>选择仪器通讯名称或编号：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblType">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑</family>
+                    <pointsize>10</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(129, 0, 193);
+background-color: rgba(255, 254, 237,130);
+border:none;</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QStackedWidget" name="stackedWidget">
+              <property name="styleSheet">
+               <string notr="true">border:none;</string>
+              </property>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="page">
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>11</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="frame_4">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_3">
+                   <property name="leftMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>7</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>9</number>
+                   </property>
+                   <property name="horizontalSpacing">
+                    <number>0</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>23</number>
+                   </property>
+                   <item row="0" column="3">
+                    <widget class="QLabel" name="label_12">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>仪器端口号：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_4">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>仪器IP地址：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1" colspan="4">
+                    <widget class="QLineEdit" name="txtIoRemark">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border: 1px solid white ;
+background-color: rgb(239, 239, 239);
+color: rgb(0, 0, 200);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="label_10">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>超时(ms)：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1" colspan="2">
+                    <widget class="IPAddress" name="widgetIoIP" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>29</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>29</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(239, 239, 239);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QSpinBox" name="spinIoTimeOut">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QWidget{color: rgb(0, 0, 200);background-color: rgb(239, 239, 239);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/res/ico/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/res/ico/down.png);
+}</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>10000</number>
+                     </property>
+                     <property name="value">
+                      <number>5000</number>
+                     </property>
+                     <property name="displayIntegerBase">
+                      <number>10</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="label_11">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>备注：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <spacer name="verticalSpacer_3">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="0" column="4">
+                    <widget class="QSpinBox" name="spinIoPort">
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QWidget{color: rgb(0, 0, 200);background-color: rgb(239, 239, 239);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/res/ico/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/res/ico/down.png);
+}</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                     <property name="minimum">
+                      <number>0</number>
+                     </property>
+                     <property name="maximum">
+                      <number>65535</number>
+                     </property>
+                     <property name="value">
+                      <number>1024</number>
+                     </property>
+                     <property name="displayIntegerBase">
+                      <number>10</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>11</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="frame_5">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_4">
+                   <property name="leftMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>7</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>9</number>
+                   </property>
+                   <property name="horizontalSpacing">
+                    <number>0</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>23</number>
+                   </property>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="label_14">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>备注：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_5">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>仪器IP地址：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="4">
+                    <widget class="QSpinBox" name="spinPlcPort">
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QWidget{color: rgb(0, 0, 200);background-color: rgb(239, 239, 239);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/res/ico/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/res/ico/down.png);
+}</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                     <property name="minimum">
+                      <number>0</number>
+                     </property>
+                     <property name="maximum">
+                      <number>65535</number>
+                     </property>
+                     <property name="value">
+                      <number>1024</number>
+                     </property>
+                     <property name="displayIntegerBase">
+                      <number>10</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="label_17">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>超时(ms)：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1" colspan="4">
+                    <widget class="QLineEdit" name="txtPlcRemark">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border: 1px solid white ;
+background-color: rgb(239, 239, 239);
+color: rgb(0, 0, 200);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="3">
+                    <widget class="QLabel" name="label_15">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>仪器端口号：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QSpinBox" name="spinPlcTimeOut">
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QWidget{color: rgb(0, 0, 200);background-color: rgb(239, 239, 239);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/res/ico/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/res/ico/down.png);
+}</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                     <property name="maximum">
+                      <number>10000</number>
+                     </property>
+                     <property name="value">
+                      <number>5000</number>
+                     </property>
+                     <property name="displayIntegerBase">
+                      <number>10</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <spacer name="verticalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="0" column="1" colspan="2">
+                    <widget class="IPAddress" name="widgetPlcIP" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>29</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>29</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(239, 239, 239);</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_3">
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="frame_6">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_5">
+                   <property name="leftMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>7</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>9</number>
+                   </property>
+                   <property name="horizontalSpacing">
+                    <number>0</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>15</number>
+                   </property>
+                   <item row="2" column="4">
+                    <widget class="QComboBox" name="comboFlowControl">
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;     
+    color: rgb(0, 0, 200);
+		background-color: rgba(230, 230, 230,210);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+    image: url(:/res/ico/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>无</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>硬件</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>软件</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="0" column="3">
+                    <widget class="QLabel" name="label_19">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>波特率：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="3">
+                    <widget class="QLabel" name="label_8">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>数据位：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="label_18">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>备注：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="comboSerialPort">
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;     
+    color: rgb(0, 0, 200);
+	background-color: rgba(230, 230, 230,210);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+    image: url(:/res/ico/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>COM1</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>COM2</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>COM3</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>COM4</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>COM5</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>COM6</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>COM7</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>COM8</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>COM9</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="3" column="1" colspan="4">
+                    <widget class="QLineEdit" name="txtSPRemark">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border: 1px solid white ;
+background-color: rgb(239, 239, 239);
+color: rgb(0, 0, 200);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_6">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>串口号：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="label_9">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>停止位：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QComboBox" name="comboCheckDigit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;     
+    color: rgb(0, 0, 200);
+	background-color: rgba(230, 230, 230,210);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+    image: url(:/res/ico/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>无</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>奇</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>偶</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>标志</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>空格</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="label_21">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>校验位：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QComboBox" name="comboStopBit">
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;     
+    color: rgb(0, 0, 200);
+	background-color: rgba(230, 230, 230,210);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+    image: url(:/res/ico/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>1</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>1.5</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>2</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="0" column="4">
+                    <widget class="QComboBox" name="comboBaudRate">
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;     
+    color: rgb(0, 0, 200);
+	background-color: rgba(230, 230, 230,210);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+    image: url(:/res/ico/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+                     </property>
+                     <property name="currentText">
+                      <string>4800</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>4800</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>9600</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>14400</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>19200</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>38400</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>57600</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>115200</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>128000</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>230400</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>256000</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="1" column="4">
+                    <widget class="QComboBox" name="comboDataBits">
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;     
+    color: rgb(0, 0, 200);
+		background-color: rgba(230, 230, 230,210);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+    image: url(:/res/ico/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+                     </property>
+                     <property name="currentText">
+                      <string>5</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>5</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>6</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>7</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>8</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="2" column="3">
+                    <widget class="QLabel" name="label_7">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>流控制：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="0" colspan="5">
+                    <widget class="QPlainTextEdit" name="plainTextEdit_2">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 122, 15);
+border:none;</string>
+                     </property>
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                     <property name="plainText">
+                      <string>说明：串口通信列表数量或连接状态改变后，需要更新流程的串口通信设置。</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="page_4">
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="frame_7">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_6">
+                   <property name="leftMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>7</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>5</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>9</number>
+                   </property>
+                   <property name="horizontalSpacing">
+                    <number>0</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>23</number>
+                   </property>
+                   <item row="3" column="0" colspan="4">
+                    <widget class="QPlainTextEdit" name="plainTextEdit">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(255, 122, 15);
+border:none;</string>
+                     </property>
+                     <property name="readOnly">
+                      <bool>true</bool>
+                     </property>
+                     <property name="plainText">
+                      <string>说明：(1)服务器连接后，需要在流程新建TCP/IP通信工具后，客户端才能连接；(2)TCP/IP通信列表数量或连接状态改变后，需要更新流程的TCP/IP通信设置。</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="comboProtocol">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;     
+    color: rgb(0, 0, 200);
+	background-color: rgba(230, 230, 230,210);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+    image: url(:/res/ico/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>TCP Server</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>TCP Client</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item row="2" column="1" colspan="3">
+                    <widget class="QLineEdit" name="txtSocketRemark">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border: 1px solid white ;
+background-color: rgb(239, 239, 239);
+color: rgb(0, 0, 200);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_20">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>协议类型：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QLabel" name="lbl_ip">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(0, 0, 0);
+background-color: rgba(0, 0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>本地IP地址：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="3">
+                    <widget class="IPAddress" name="widgetSocketIP" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>29</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>29</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(239, 239, 239);</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="label_22">
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>备注：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="lbl_port">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgba(0, 0, 0, 0);
+color: rgb(0, 0, 0);
+border:none;</string>
+                     </property>
+                     <property name="text">
+                      <string>本地端口号：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QSpinBox" name="spinSocketPort">
+                     <property name="minimumSize">
+                      <size>
+                       <width>120</width>
+                       <height>28</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>微软雅黑</family>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QWidget{color: rgb(0, 0, 200);background-color: rgb(239, 239, 239);}
+QSpinBox::up-button{
+    border:transparent;
+}
+QSpinBox::down-button{
+    border:transparent;
+}
+QSpinBox::up-arrow{
+    image:url(:/res/ico/up.png);
+}
+QSpinBox::down-arrow{
+    image:url(:/res/ico/down.png);
+}</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                     <property name="minimum">
+                      <number>0</number>
+                     </property>
+                     <property name="maximum">
+                      <number>65535</number>
+                     </property>
+                     <property name="value">
+                      <number>1024</number>
+                     </property>
+                     <property name="displayIntegerBase">
+                      <number>10</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QFrame" name="frame">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid gray;</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>3</number>
+            </property>
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="rightMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgba(0, 0, 200,180);
+border:none;</string>
+              </property>
+              <property name="text">
+               <string>仪器通讯类别：</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboInstrument">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>115</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>120</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;  
+    min-width: 7.5em;
+    color: rgb(239, 235, 231);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/res/ico/down_2.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>通用I/O</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>PLC通信</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>串口通信</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>TCP/IP通信</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>45</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnAdd">
+              <property name="minimumSize">
+               <size>
+                <width>90</width>
+                <height>37</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>微软雅黑</family>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QWidget{ background-color: rgba(29, 42, 47, 200);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 5px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(29, 62, 52);}
+QPushButton:pressed{background-color: rgb(29, 82, 72);}</string>
+              </property>
+              <property name="text">
+               <string>添加仪器</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>10</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>IPAddress</class>
+   <extends>QWidget</extends>
+   <header>ipaddress.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="res.qrc"/>
+  <include location="../../QPlugins/ImageProcess/ImageMorphology/sub_res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

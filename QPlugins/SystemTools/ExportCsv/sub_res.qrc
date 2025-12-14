@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/close.png</file>
+        <file>resource/del_link.png</file>
+        <file>resource/down.png</file>
+        <file>resource/export_csv.png</file>
+        <file>resource/link.png</file>
+        <file>resource/tag.png</file>
+        <file>resource/up.png</file>
+        <file>resource/info.png</file>
+        <file>resource/error.png</file>
+    </qresource>
+</RCC>

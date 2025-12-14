@@ -1,0 +1,39 @@
+﻿D:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: 中间目录(x64\Release\)包含从另一个项目(QRcodeIdentify.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmQRcodeIdentify.ui
+  rcc sub_res.qrc
+  moc QToolBase.h
+  moc Toolnterface.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc QGraphicsScenes.h
+  moc frmQRcodeIdentify.h
+  moc ImageItem.h
+  moc mytitlebar.h
+  moc QGraphicsViews.h
+  moc QRcodeIdentify.h
+   D:\opencv4workflow\opencv4workflow\QPlugins\ImageProcess\ImagePrint\frmQRcodeIdentify.h(33): Warning: Function declaration frmQRcodeIdentify::onInit contains extra qualification. Ignoring as signal or slot.
+  ImageItem.cpp
+  Toolnterface.cpp
+  BaseItem.cpp
+  ControlItem.cpp
+  frmQRcodeIdentify.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  QRcodeIdentify.cpp
+  qrc_sub_res.cpp
+  moc_QToolBase.cpp
+  moc_Toolnterface.cpp
+  moc_BaseItem.cpp
+  moc_ControlItem.cpp
+  moc_QGraphicsScenes.cpp
+  moc_frmQRcodeIdentify.cpp
+  moc_ImageItem.cpp
+  moc_mytitlebar.cpp
+  moc_QGraphicsViews.cpp
+  moc_QRcodeIdentify.cpp
+    正在创建库 ../../../QSoftExe/Release/Plugins/ImagePrint.lib 和对象 ../../../QSoftExe/Release/Plugins/ImagePrint.exp
+  QRcodeIdentify.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\ImagePrint.dll

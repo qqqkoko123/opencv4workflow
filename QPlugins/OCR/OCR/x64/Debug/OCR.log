@@ -1,0 +1,5 @@
+﻿D:\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(QRcodeIdentify.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+   Qt/MSBuild: 3.4.1.0
+   Qt: 5.14.2
+    正在创建库 ../../../QSoftExe/Debug/Plugins/OCR.lib 和对象 ../../../QSoftExe/Debug/Plugins/OCR.exp
+  OCR.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Debug\Plugins\OCR.dll

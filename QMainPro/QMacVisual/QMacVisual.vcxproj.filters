@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Header Files\Layout">
+      <UniqueIdentifier>{b6e6569a-0556-4ce0-9ab7-98c8bba3fe26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Layout">
+      <UniqueIdentifier>{3f935634-8c54-4456-a44c-ea1cdaa4920c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\TopForm">
+      <UniqueIdentifier>{eba824d9-6f6a-40ac-a050-136085c061e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TopForm">
+      <UniqueIdentifier>{64781e96-4e04-4786-872b-f896fae04952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ImageView">
+      <UniqueIdentifier>{b6a29f38-a2a6-4e47-92cb-360affc46457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ImageView">
+      <UniqueIdentifier>{74a26acf-42e9-4995-9d80-18605a142b9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Process">
+      <UniqueIdentifier>{c39cf180-702e-4b36-8604-2ae65fe78604}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Process">
+      <UniqueIdentifier>{24b76f4f-b01e-441b-a3d3-69eeabdaf563}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\QWorld">
+      <UniqueIdentifier>{a5c5c1a4-291d-4ed1-9b07-aabebdbdc288}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="res.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="datavar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmRegister.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmVisualLogo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmLogin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="clogmodel.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="dockwidget.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="headwidget.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwidget.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="frmLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="showcpumemory.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="basemainwindow.cpp">
+      <Filter>Source Files\TopForm</Filter>
+    </ClCompile>
+    <ClCompile Include="mytitlebar.cpp">
+      <Filter>Source Files\TopForm</Filter>
+    </ClCompile>
+    <ClCompile Include="frmAbout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QGraphicsViews.cpp">
+      <Filter>Source Files\ImageView</Filter>
+    </ClCompile>
+    <ClCompile Include="frmImageView.cpp">
+      <Filter>Source Files\ImageView</Filter>
+    </ClCompile>
+    <ClCompile Include="FlowListWidget.cpp">
+      <Filter>Source Files\Process</Filter>
+    </ClCompile>
+    <ClCompile Include="QToolBase.cpp">
+      <Filter>Source Files\Process</Filter>
+    </ClCompile>
+    <ClCompile Include="qttreewidget.cpp">
+      <Filter>Source Files\Process</Filter>
+    </ClCompile>
+    <ClCompile Include="Toolnterface.cpp">
+      <Filter>Source Files\Process</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalVariable.cpp">
+      <Filter>Source Files\Process</Filter>
+    </ClCompile>
+    <ClCompile Include="frmToolsTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmProItemTab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="manualThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmPermis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cmysplashscreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QRoundProgressBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QtWidgetsSaveLoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QWorld\FolderOperation.cpp">
+      <Filter>Source Files\QWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="QWorld\SoftKey.cpp">
+      <Filter>Source Files\QWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="QWorld\SQLite.cpp">
+      <Filter>Source Files\QWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="frmProcessSetUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmSystemSetUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="savelog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmImageLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmGlobalVariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmCameraSetUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmInstrumentation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmQuit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frmLink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QWorld\XML.cpp">
+      <Filter>Source Files\QWorld</Filter>
+    </ClCompile>
+    <ClCompile Include="autoThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gvariable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ipaddress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MvCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="frmRegister.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmVisualLogo.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmLogin.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="clogmodel.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
+    <QtMoc Include="dockwidget.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
+    <QtMoc Include="headwidget.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
+    <QtMoc Include="mainwidget.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
+    <QtMoc Include="frmLog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="showcpumemory.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
+    <QtMoc Include="basemainwindow.h">
+      <Filter>Header Files\TopForm</Filter>
+    </QtMoc>
+    <QtMoc Include="mytitlebar.h">
+      <Filter>Header Files\TopForm</Filter>
+    </QtMoc>
+    <QtMoc Include="frmAbout.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmImageView.h">
+      <Filter>Header Files\ImageView</Filter>
+    </QtMoc>
+    <QtMoc Include="FlowListWidget.h">
+      <Filter>Header Files\Process</Filter>
+    </QtMoc>
+    <QtMoc Include="QToolBase.h">
+      <Filter>Header Files\Process</Filter>
+    </QtMoc>
+    <QtMoc Include="qttreewidget.h">
+      <Filter>Header Files\Process</Filter>
+    </QtMoc>
+    <QtMoc Include="Toolnterface.h">
+      <Filter>Header Files\Process</Filter>
+    </QtMoc>
+    <QtMoc Include="GlobalVariable.h">
+      <Filter>Header Files\Process</Filter>
+    </QtMoc>
+    <QtMoc Include="frmToolsTree.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmProItemTab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="manualThread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmPermis.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="cmysplashscreen.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QRoundProgressBar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmProcessSetUp.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmSystemSetUp.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="savelog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmImageLayout.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmGlobalVariable.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmCameraSetUp.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmInstrumentation.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmQuit.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="frmLink.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="autoThread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QGraphicsViews.h">
+      <Filter>Header Files\ImageView</Filter>
+    </QtMoc>
+    <QtMoc Include="ipaddress.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="datavar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="maininterface.h">
+      <Filter>Header Files\Process</Filter>
+    </ClInclude>
+    <ClInclude Include="QtWidgetsSaveLoad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QWorld\QWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gvariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="frmRegister.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmLogin.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmLog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmAbout.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmImageView.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmToolsTree.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmProItemTab.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmPermis.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmProcessSetUp.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmSystemSetUp.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmImageLayout.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmGlobalVariable.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmCameraSetUp.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmInstrumentation.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmQuit.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="frmLink.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QMacVisual.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

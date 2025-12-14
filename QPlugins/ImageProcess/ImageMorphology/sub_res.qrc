@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/btnmenu.png</file>
+        <file>resource/close.png</file>
+        <file>resource/del_link.png</file>
+        <file>resource/down.png</file>
+        <file>resource/fit.png</file>
+        <file>resource/link.png</file>
+        <file>resource/morphology.png</file>
+        <file>resource/up.png</file>
+        <file>resource/zoom.png</file>
+        <file>resource/zoom_out.png</file>
+        <file>resource/error.png</file>
+        <file>resource/left.png</file>
+        <file>resource/right.png</file>
+        <file>resource/enhance.png</file>
+        <file>resource/filter.png</file>
+        <file>resource/gray.png</file>
+        <file>resource/morph.png</file>
+        <file>resource/thre.png</file>
+        <file>resource/tick.png</file>
+        <file>resource/untick.png</file>
+    </qresource>
+</RCC>

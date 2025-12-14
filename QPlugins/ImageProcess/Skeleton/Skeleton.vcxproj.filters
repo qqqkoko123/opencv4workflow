@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{4260e211-45a2-4f72-b299-b19b3cc1f3b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ImageView">
+      <UniqueIdentifier>{4525d025-761e-4e4c-9e45-c3d5b03a167b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ImageView">
+      <UniqueIdentifier>{0e6b16da-8fc1-4d90-8ce3-f0542a29f21f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="skeleton_global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="Skeleton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="maininterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gvariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="frmSkeleton.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="sub_res.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="BaseItem.h">
+      <Filter>Header Files\ImageView</Filter>
+    </QtMoc>
+    <QtMoc Include="ControlItem.h">
+      <Filter>Header Files\ImageView</Filter>
+    </QtMoc>
+    <QtMoc Include="ImageItem.h">
+      <Filter>Header Files\ImageView</Filter>
+    </QtMoc>
+    <QtMoc Include="QGraphicsScenes.h">
+      <Filter>Header Files\ImageView</Filter>
+    </QtMoc>
+    <QtMoc Include="QGraphicsViews.h">
+      <Filter>Header Files\ImageView</Filter>
+    </QtMoc>
+    <QtMoc Include="frmSkeleton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mytitlebar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="QToolBase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Toolnterface.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseItem.cpp">
+      <Filter>Source Files\ImageView</Filter>
+    </ClCompile>
+    <ClCompile Include="ControlItem.cpp">
+      <Filter>Source Files\ImageView</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageItem.cpp">
+      <Filter>Source Files\ImageView</Filter>
+    </ClCompile>
+    <ClCompile Include="QGraphicsScenes.cpp">
+      <Filter>Source Files\ImageView</Filter>
+    </ClCompile>
+    <ClCompile Include="QGraphicsViews.cpp">
+      <Filter>Source Files\ImageView</Filter>
+    </ClCompile>
+    <ClCompile Include="frmSkeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mytitlebar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Toolnterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

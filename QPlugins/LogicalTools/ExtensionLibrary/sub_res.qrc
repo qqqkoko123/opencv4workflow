@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/close.png</file>
+        <file>resource/del_link.png</file>
+        <file>resource/extension_library.png</file>
+        <file>resource/link.png</file>
+        <file>resource/error.png</file>
+        <file>resource/info.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,1424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>frmPerspectiveTransformClass</class>
+ <widget class="QDialog" name="frmPerspectiveTransformClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1160</width>
+    <height>655</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1160</width>
+    <height>655</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1160</width>
+    <height>655</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>透视变换</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(220, 220, 220);</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>1</number>
+   </property>
+   <item row="1" column="2">
+    <layout class="QGridLayout" name="imageLayout">
+     <property name="spacing">
+      <number>1</number>
+     </property>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>42</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>450</width>
+       <height>550</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #bcc2bc;</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>基本设置</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupCamera">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>18</y>
+         <width>427</width>
+         <height>73</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>图像对象</string>
+       </property>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>42</y>
+          <width>79</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输入图像：</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtLinkImage">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>39</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(170, 170, 127,50);</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkImage">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>39</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接图像</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkImage">
+        <property name="geometry">
+         <rect>
+          <x>394</x>
+          <y>39</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除图像链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupCamera_2">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>108</y>
+         <width>427</width>
+         <height>193</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>输入点</string>
+       </property>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>80</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输入点2：</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtInPutPos1">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>34</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>全局变量cv::Point2f类型</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(220, 220, 227,150);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkInPutPos1">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>34</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接输入点1</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkInPutPos1">
+        <property name="geometry">
+         <rect>
+          <x>394</x>
+          <y>34</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除输入点1链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>38</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输入点1：</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkInPutPos2">
+        <property name="geometry">
+         <rect>
+          <x>394</x>
+          <y>76</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除输入点2链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtInPutPos2">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>76</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>全局变量cv::Point2f类型</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(220, 220, 227,150);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkInPutPos2">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>76</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接输入点2</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkInPutPos4">
+        <property name="geometry">
+         <rect>
+          <x>356</x>
+          <y>160</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接输入点4</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkInPutPos4">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>160</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除输入点4链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>122</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输入点3：</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkInPutPos3">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>118</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除输入点3链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>164</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输入点4：</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtInPutPos3">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>118</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>全局变量cv::Point2f类型</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(220, 220, 227,150);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtInPutPos4">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>160</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>全局变量cv::Point2f类型</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(220, 220, 227,150);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkInPutPos3">
+        <property name="geometry">
+         <rect>
+          <x>356</x>
+          <y>118</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接输入点3</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupCamera_3">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>318</y>
+         <width>427</width>
+         <height>193</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>输出点</string>
+       </property>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>80</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输出点2：</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtOutPutPos1">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>34</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>全局变量cv::Point2f类型</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(220, 220, 227,150);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkOutPutPos1">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>34</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接输出点1</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkOutPutPos1">
+        <property name="geometry">
+         <rect>
+          <x>394</x>
+          <y>34</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除输出点1链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>38</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输出点1：</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkOutPutPos2">
+        <property name="geometry">
+         <rect>
+          <x>394</x>
+          <y>76</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除输出点2链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtOutPutPos2">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>76</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>全局变量cv::Point2f类型</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(220, 220, 227,150);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkOutPutPos2">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>76</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接输出点2</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkOutPutPos4">
+        <property name="geometry">
+         <rect>
+          <x>356</x>
+          <y>160</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接输出点4</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkOutPutPos4">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>160</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除输出点4链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>122</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输出点3：</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDelLinkOutPutPos3">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>118</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>删除输出点3链接</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(226, 142, 162, 100);}
+QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/del_link.png</normaloff>:/resource/del_link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_17">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>164</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>输出点4：</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtOutPutPos3">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>118</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>全局变量cv::Point2f类型</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(220, 220, 227,150);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="txtOutPutPos4">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>160</y>
+          <width>255</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>全局变量cv::Point2f类型</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 0, 200);
+background-color: rgba(220, 220, 227,150);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnLinkOutPutPos3">
+        <property name="geometry">
+         <rect>
+          <x>356</x>
+          <y>118</y>
+          <width>27</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>链接输出点3</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{ border:none;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgba(85, 150, 127, 100);}
+QPushButton:pressed{background-color: rgba(85, 180, 127, 160);}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="sub_res.qrc">
+          <normaloff>:/resource/link.png</normaloff>:/resource/link.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>27</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>42</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>6</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>83</width>
+         <height>25</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+       </property>
+       <property name="text">
+        <string>单元描述：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="txtDescribe">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>357</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_8">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnExecute">
+       <property name="minimumSize">
+        <size>
+         <width>90</width>
+         <height>37</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget{ background-color: rgb(85, 135, 127);}
+QWidget{ color: rgb(235, 235, 235);}
+QWidget{ border: 2px groove gray;border-radius: 8px;padding: 2px 4px;}
+QPushButton:hover{ background-color: rgb(85, 155, 127);}
+QPushButton:pressed{background-color: rgb(85, 175, 127);}</string>
+       </property>
+       <property name="text">
+        <string>执行</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>6</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1">
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>3</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="sub_res.qrc"/>
+  <include location="../ImageView/sub_res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

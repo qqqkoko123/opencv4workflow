@@ -1,0 +1,22 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmLinearCalculation.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc mytitlebar.h
+  moc frmLinearCalculation.h
+  moc LinearCalculation.h
+  mytitlebar.cpp
+  Toolnterface.cpp
+  frmLinearCalculation.cpp
+  LinearCalculation.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_QToolBase.cpp
+  moc_mytitlebar.cpp
+  moc_frmLinearCalculation.cpp
+  moc_LinearCalculation.cpp
+    正在创建库 ../../../QSoftExe/Debug/Plugins/LinearCalculation.lib 和对象 ../../../QSoftExe/Debug/Plugins/LinearCalculation.exp
+  LinearCalculation.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Debug\Plugins\LinearCalculation.dll

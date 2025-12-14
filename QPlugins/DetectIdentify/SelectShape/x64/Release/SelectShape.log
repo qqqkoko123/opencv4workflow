@@ -1,0 +1,37 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmSelectShape.ui
+  rcc sub_res.qrc
+  moc Toolnterface.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc ImageItem.h
+  moc QGraphicsScenes.h
+  moc QGraphicsViews.h
+  moc frmSelectShape.h
+  moc mytitlebar.h
+  moc QToolBase.h
+  moc SelectShape.h
+  Toolnterface.cpp
+  BaseItem.cpp
+  ControlItem.cpp
+  frmSelectShape.cpp
+  ImageItem.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  SelectShape.cpp
+  qrc_sub_res.cpp
+  moc_Toolnterface.cpp
+  moc_BaseItem.cpp
+  moc_ControlItem.cpp
+  moc_ImageItem.cpp
+  moc_QGraphicsScenes.cpp
+  moc_QGraphicsViews.cpp
+  moc_frmSelectShape.cpp
+  moc_mytitlebar.cpp
+  moc_QToolBase.cpp
+  moc_SelectShape.cpp
+    正在创建库 ../../../QSoftExe/Release/Plugins/SelectShape.lib 和对象 ../../../QSoftExe/Release/Plugins/SelectShape.exp
+  SelectShape.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\SelectShape.dll

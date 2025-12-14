@@ -1,0 +1,22 @@
+﻿   Qt/MSBuild: 3.4.1.0
+  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmDelayTool.ui
+  rcc sub_res.qrc
+  moc QToolBase.h
+  moc Toolnterface.h
+  moc frmDelayTool.h
+  moc mytitlebar.h
+  moc DelayTool.h
+  frmDelayTool.cpp
+  mytitlebar.cpp
+  Toolnterface.cpp
+  DelayTool.cpp
+  qrc_sub_res.cpp
+  moc_QToolBase.cpp
+  moc_Toolnterface.cpp
+  moc_frmDelayTool.cpp
+  moc_mytitlebar.cpp
+  moc_DelayTool.cpp
+    正在创建库 ../../../QSoftExe/Release/Plugins/DelayTool.lib 和对象 ../../../QSoftExe/Release/Plugins/DelayTool.exp
+  DelayTool.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\DelayTool.dll

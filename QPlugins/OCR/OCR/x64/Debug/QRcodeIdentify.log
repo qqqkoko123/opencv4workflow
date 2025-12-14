@@ -1,0 +1,35 @@
+﻿  Reading Qt configuration (C:/Qt/Qt5.12.12/5.12.12/msvc2017_64/bin/qmake)
+  uic frmQRcodeIdentify.ui
+  rcc sub_res.qrc
+  moc QToolBase.h
+  moc Toolnterface.h
+  moc BaseItem.h
+  moc ControlItem.h
+  moc QGraphicsScenes.h
+  moc frmQRcodeIdentify.h
+  moc ImageItem.h
+  moc mytitlebar.h
+  moc QGraphicsViews.h
+  moc QRcodeIdentify.h
+  ImageItem.cpp
+  Toolnterface.cpp
+  BaseItem.cpp
+  ControlItem.cpp
+  frmQRcodeIdentify.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  QRcodeIdentify.cpp
+  qrc_sub_res.cpp
+  moc_QToolBase.cpp
+  moc_Toolnterface.cpp
+  moc_BaseItem.cpp
+  moc_ControlItem.cpp
+  moc_QGraphicsScenes.cpp
+  moc_frmQRcodeIdentify.cpp
+  moc_ImageItem.cpp
+  moc_mytitlebar.cpp
+  moc_QGraphicsViews.cpp
+  moc_QRcodeIdentify.cpp
+    正在创建库 ../../../QSoftExe/Debug/Plugins/QRcodeIdentify.lib 和对象 ../../../QSoftExe/Debug/Plugins/QRcodeIdentify.exp
+  QRcodeIdentify.vcxproj -> E:\QMacVisual(CV3)\QSoftExe\Debug\Plugins\QRcodeIdentify.dll

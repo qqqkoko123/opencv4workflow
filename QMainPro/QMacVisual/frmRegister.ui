@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>frmRegisterClass</class>
+ <widget class="QWidget" name="frmRegisterClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>190</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>190</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>500</width>
+    <height>190</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>注册软件</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/QMacVisual/Icon/other_478.ico</normaloff>:/QMacVisual/Icon/other_478.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);</string>
+  </property>
+  <widget class="QPushButton" name="btnCmdCheckID">
+   <property name="geometry">
+    <rect>
+     <x>364</x>
+     <y>144</y>
+     <width>120</width>
+     <height>37</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>楷体</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85, 170, 127);
+color: rgb(255, 255, 255);
+border: 2px groove gray;border-radius: 8px;padding: 2px 4px;</string>
+   </property>
+   <property name="text">
+    <string>注册软件</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtAuthorizationCode">
+   <property name="geometry">
+    <rect>
+     <x>84</x>
+     <y>76</y>
+     <width>401</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>18</x>
+     <y>20</y>
+     <width>72</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 255);
+background: transparent;</string>
+   </property>
+   <property name="text">
+    <string>序列号：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>18</x>
+     <y>78</y>
+     <width>72</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(137, 30, 115);
+background: transparent;</string>
+   </property>
+   <property name="text">
+    <string>授权码：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtSerialNumber">
+   <property name="geometry">
+    <rect>
+     <x>84</x>
+     <y>18</y>
+     <width>401</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
