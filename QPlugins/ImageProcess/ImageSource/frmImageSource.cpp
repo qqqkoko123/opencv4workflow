@@ -8,6 +8,8 @@
 #include <qcamera.h>
 #include <opencv2/opencv.hpp>  
 #include <QScreen>
+#include <QCameraImageCapture>
+#include <qmutex.h>
 cv::Mat frmImageSource::srcImg = cv::Mat(); // 定义并初始化
 frmImageSource::frmImageSource(QString toolName, QToolBase* toolBase, QWidget* parent)
 	: Toolnterface(toolName, toolBase, parent)
@@ -726,41 +728,56 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 						if (!m_camera || !(m_camera->state() == QCamera::ActiveState)) {
 							return -2;
 						}
+						imageCapture = new QCameraImageCapture(m_camera, this);
+						// 设置捕获目标为缓冲区（内存）
+						imageCapture->setCaptureDestination(QCameraImageCapture::CaptureToBuffer);
+						imageCapture->capture();  // 捕获图像
+						connectSignals(imageCapture);
+						//// Assuming m_camera is an OpenCV VideoCapture object and frame is a cv::Mat object.  
+						//// Ensure that m_camera is properly initialized before using it.  
+						//#ifdef _WIN32
+						//cv::VideoCapture camera(0);
+						//#else
+      //                  cv::VideoCapture camera(0);
+      //                  #endif
+						//cv::Mat frame;
+						////camera.set(cv::CAP_PROP_FRAME_WIDTH, 1280);
+						////camera.set(cv::CAP_PROP_FRAME_HEIGHT, 720);
+						////camera.set(cv::CAP_PROP_FPS, 30);
+						////camera.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+						//// Example initialization of m_camera (ensure the camera index or video file path is correct).  
+						//camera.open(0); // Open the default camera (index 0).  
 
+						//if (!camera.isOpened()) {
+						//	std::cerr << "Error: Could not open the camera." << std::endl;
+						//	return -1;
+						//}
 
-						// Assuming m_camera is an OpenCV VideoCapture object and frame is a cv::Mat object.  
-						// Ensure that m_camera is properly initialized before using it.  
+						//// Correct usage of the VideoCapture object to read a frame.  
+						//camera.read(frame);// 从相机中读取一帧图像
+						////camera >> frame; 
+						//if (frame.empty()) {
+						//	std::cerr << "Error: Captured frame is empty." << std::endl;
+						//	//CvCapture* capture = cvCreateCameraCapture(0);
+						//	//IplImage* frame2;
+						//	//frame2 = cvQueryFrame(capture);
+						//	//cv::Mat frame(frame2); // 直接使用构造函数
+						//	//cvReleaseCapture(&capture);
+						//	return -1;
+						//}
+						//srcImg = frame.clone();
+						//// 检测是否被遮挡
+						//bool blocked = isCameraBlocked(srcImg);
 
-						cv::VideoCapture camera;
-						cv::Mat frame;
-
-						// Example initialization of m_camera (ensure the camera index or video file path is correct).  
-						camera.open(0); // Open the default camera (index 0).  
-
-						if (!camera.isOpened()) {
-							std::cerr << "Error: Could not open the camera." << std::endl;
-							return -1;
-						}
-
-						// Correct usage of the VideoCapture object to read a frame.  
-						camera.read(frame);
-
-						if (frame.empty()) {
-							std::cerr << "Error: Captured frame is empty." << std::endl;
-							return -1;
-						}
-						srcImg = frame.clone();
-						// 检测是否被遮挡
-						bool blocked = isCameraBlocked(srcImg);
-
-						if (blocked) {
-							emit sig_ShowBlockageWarning();
-						}
-						else {
-							emit sig_HideBlockageWarning();
-						}
-						//释放资源
-						camera.release();
+						//if (blocked) {
+						//	emit sig_ShowBlockageWarning();
+						//}
+						//else {
+						//	emit sig_HideBlockageWarning();
+						//}
+						////释放资源
+						//camera.release();
+						//frame.release();
 					}
 				}
 			}
@@ -836,6 +853,240 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 		break;
 	}
 	return 0;
+}
+// 同步捕获 - 阻塞直到获取图像
+// 连接信号槽以处理内存中的图像
+bool frmImageSource::connectSignals(QCameraImageCapture* imageCapture) {
+	if (!imageCapture) {
+		return false;
+	}
+
+	// 连接捕获完成的信号
+	connect(imageCapture, &QCameraImageCapture::imageCaptured,
+		this, &frmImageSource::onImageCapturedToMemory);
+
+
+	// 连接缓冲区可用的信号
+	connect(imageCapture, &QCameraImageCapture::imageAvailable,
+		this, &frmImageSource::onImageAvailableInMemory);
+
+	// 连接元数据信号
+	connect(imageCapture, &QCameraImageCapture::imageMetadataAvailable,
+		this, &frmImageSource::onImageMetadataAvailable);
+
+	// 连接错误信号
+	connect(imageCapture,
+		QOverload<int, QCameraImageCapture::Error, const QString&>::of(&QCameraImageCapture::error),
+		this, &frmImageSource::onCaptureError);
+
+	return true;
+}
+// 当图像被捕获到内存时（imageCaptured信号）
+void frmImageSource::onImageCapturedToMemory(int id, const QImage& preview) {
+	qDebug() << "图像已捕获到内存，ID:" << id
+		<< "大小:" << preview.size();
+
+	if (!preview.isNull()) {
+		// 保存到内存列表
+		capturedImages.append(preview.copy());
+
+		// 发出信号通知
+		emit imageCapturedInMemory(id, preview);
+	}
+}
+
+// 当图像在缓冲区中可用时（imageAvailable信号）
+void frmImageSource::onImageAvailableInMemory(int id, const QVideoFrame& buffer) {
+	qDebug() << "图像缓冲区可用，ID:" << id;
+
+	// 从QVideoFrame转换为QImage
+	QImage image = convertVideoFrameToImage(buffer);
+	if (!image.isNull()) {
+		capturedImages.append(image.copy());
+		emit imageBufferAvailable(id, image);
+        srcImg = QImage2Mat(image, true);
+		// 检测是否被遮挡
+		bool blocked = isCameraBlocked(srcImg);
+
+		if (blocked) {
+			emit sig_ShowBlockageWarning();
+		}
+		else {
+			emit sig_HideBlockageWarning();
+		}
+	}
+}
+cv::Mat frmImageSource::QImage2Mat(const QImage& image, bool cloneData = true) {
+	if (image.isNull()) {
+		qWarning() << "QImage为空，无法转换";
+		return cv::Mat();
+	}
+
+	// 记录原始格式
+	QImage::Format format = image.format();
+
+	switch (format) {
+		// 处理32位彩色格式
+	case QImage::Format_RGB32:
+	case QImage::Format_ARGB32:
+	case QImage::Format_ARGB32_Premultiplied: {
+		cv::Mat mat(image.height(), image.width(), CV_8UC4,
+			const_cast<uchar*>(image.bits()),
+			image.bytesPerLine());
+
+		cv::Mat result;
+		if (format == QImage::Format_RGB32) {
+			// RGB32实际上是0xffRRGGBB，Alpha为0xff
+			cv::cvtColor(mat, result, cv::COLOR_BGRA2BGR);
+		}
+		else {
+			// ARGB32格式，需要处理Alpha通道
+			cv::cvtColor(mat, result, cv::COLOR_BGRA2BGR);
+		}
+
+		return cloneData ? result.clone() : result;
+	}
+
+											// 处理24位RGB格式
+	case QImage::Format_RGB888: {
+		cv::Mat mat(image.height(), image.width(), CV_8UC3,
+			const_cast<uchar*>(image.bits()),
+			image.bytesPerLine());
+
+		cv::Mat result;
+		cv::cvtColor(mat, result, cv::COLOR_RGB2BGR);
+		return cloneData ? result.clone() : result;
+	}
+
+							  // 处理16位格式
+	case QImage::Format_RGB16: {
+		cv::Mat mat(image.height(), image.width(), CV_16UC3,
+			const_cast<uchar*>(image.bits()),
+			image.bytesPerLine());
+
+		cv::Mat result;
+		// 16位RGB555或RGB565，需要转换
+		cv::cvtColor(mat, result, cv::COLOR_BGR5652BGR);
+		return cloneData ? result.clone() : result;
+	}
+
+							 // 处理灰度格式
+	case QImage::Format_Grayscale8:
+	case QImage::Format_Indexed8: {
+		cv::Mat mat(image.height(), image.width(), CV_8UC1,
+			const_cast<uchar*>(image.bits()),
+			image.bytesPerLine());
+
+		return cloneData ? mat.clone() : mat;
+	}
+
+								// 处理单通道格式
+	case QImage::Format_Mono:
+	case QImage::Format_MonoLSB: {
+		cv::Mat mat(image.height(), image.width(), CV_8UC1);
+
+		// 手动转换，因为QImage的位图格式很特殊
+		for (int y = 0; y < image.height(); ++y) {
+			const uchar* src = image.scanLine(y);
+			uchar* dst = mat.ptr(y);
+
+			for (int x = 0; x < image.width(); ++x) {
+				int byteIndex = x / 8;
+				int bitIndex = x % 8;
+
+				if (format == QImage::Format_Mono) {
+					// 高位在前
+					dst[x] = (src[byteIndex] & (1 << (7 - bitIndex))) ? 255 : 0;
+				}
+				else {
+					// Format_MonoLSB: 低位在前
+					dst[x] = (src[byteIndex] & (1 << bitIndex)) ? 255 : 0;
+				}
+			}
+		}
+
+		return mat;
+	}
+
+							   // 处理Alpha格式
+	case QImage::Format_Alpha8: {
+		cv::Mat mat(image.height(), image.width(), CV_8UC1,
+			const_cast<uchar*>(image.bits()),
+			image.bytesPerLine());
+		return cloneData ? mat.clone() : mat;
+	}
+
+							  // 其他格式，尝试自动转换
+	default: {
+		qDebug() << "自动转换QImage格式:" << format;
+
+		// 尝试转换为RGB888
+		QImage converted = image.convertToFormat(QImage::Format_RGB888);
+		if (converted.isNull()) {
+			qCritical() << "无法自动转换QImage格式:" << format;
+			return cv::Mat();
+		}
+
+		return QImage2Mat(converted, cloneData);
+	}
+	}
+}
+// 从QVideoFrame转换到QImage
+QImage frmImageSource::convertVideoFrameToImage(const QVideoFrame& frame) {
+	if (!frame.isValid()) {
+		return QImage();
+	}
+
+	QVideoFrame cloneFrame(frame);
+
+	if (!cloneFrame.map(QAbstractVideoBuffer::ReadOnly)) {
+		qWarning() << "无法映射视频帧";
+		return QImage();
+	}
+
+	QImage image;
+
+	// 根据像素格式转换
+	switch (cloneFrame.pixelFormat()) {
+	case QVideoFrame::Format_ARGB32:
+	case QVideoFrame::Format_ARGB32_Premultiplied:
+	case QVideoFrame::Format_RGB32:
+		image = QImage(cloneFrame.bits(),
+			cloneFrame.width(),
+			cloneFrame.height(),
+			cloneFrame.bytesPerLine(),
+			QImage::Format_ARGB32);
+		break;
+
+	case QVideoFrame::Format_RGB24:
+		image = QImage(cloneFrame.bits(),
+			cloneFrame.width(),
+			cloneFrame.height(),
+			cloneFrame.bytesPerLine(),
+			QImage::Format_RGB888);
+		break;
+
+	default:
+		// 尝试自动转换
+		image = QImage(cloneFrame.bits(),
+			cloneFrame.width(),
+			cloneFrame.height(),
+			cloneFrame.bytesPerLine(),
+			QImage::Format_RGB32);
+		break;
+	}
+
+	cloneFrame.unmap();
+	return image;
+}
+// 获取图像元数据
+void frmImageSource::onImageMetadataAvailable(int id, const QString& key, const QVariant& value) {
+	qDebug() << "元数据 - ID:" << id << key << "=" << value;
+}
+
+// 捕获错误处理
+void frmImageSource::onCaptureError(int id, QCameraImageCapture::Error error, const QString& errorString) {
+	qWarning() << "捕获错误，ID:" << id << "错误:" << errorString;
 }
 //隐藏遮挡警告
 void frmImageSource::hideBlockageWarning()
@@ -931,9 +1182,9 @@ bool frmImageSource::isCameraBlocked(cv::Mat& frame)
 		isBlocked = true;
 	}
 	// 条件3: 运动变化很小（图像静止）
-	else if (motion < 1.0 && m_totalFrames > 10) {
+	/*else if (motion < 1.0 && m_totalFrames > 10) {
 		isBlocked = true;
-	}
+	}*/
 	// 条件4: 图像对比度很低
 	else {
 		cv::Mat edges;

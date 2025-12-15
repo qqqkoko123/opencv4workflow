@@ -1,5 +1,5 @@
 ﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
   uic frmFindLine.ui
   rcc sub_res.qrc
@@ -33,5 +33,6 @@
   moc_BaseItem.cpp
   moc_ControlItem.cpp
   moc_FindLine.cpp
+  LINK : 没有找到 ..\..\..\QSoftExe\Debug\Plugins\FindLine.dll 或上一个增量链接没有生成它；正在执行完全链接
     正在创建库 ../../../QSoftExe/Debug/Plugins/FindLine.lib 和对象 ../../../QSoftExe/Debug/Plugins/FindLine.exp
-  FindLine.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Debug\Plugins\FindLine.dll
+  FindLine.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Debug\Plugins\FindLine.dll

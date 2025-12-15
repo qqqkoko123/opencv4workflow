@@ -32,7 +32,7 @@ cv::Mat frmClassifier::GetYoloV13(std::string modelPath, std::string labelsPath,
 		/*cv::Mat image = cv::imread(imagePath);*/
 
 		// Perform object detection to get bboxs
-		std::vector<Detection> detections = detector.detect(image);
+		std::vector<Detection> detections = detector.detect(image,0.7);
 
 		// Draw bounding boxes on the image
 		detector.drawBoundingBoxMask(image, detections);

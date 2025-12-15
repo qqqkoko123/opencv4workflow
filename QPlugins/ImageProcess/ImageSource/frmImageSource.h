@@ -7,7 +7,7 @@
 #include "mytitlebar.h"
 #include "QGraphicsViews.h"
 #include "Toolnterface.h"
-
+#include <QCameraImageCapture>
 #ifdef _WIN64
 #pragma comment(lib, "./CommTools/Camera/MindVision/MVCAMSDK_X64.lib")
 #else
@@ -64,6 +64,8 @@ private slots:
 	void on_comboCamera_currentIndexChanged(int index);
 
 signals:
+	void imageCapturedInMemory(int id, const QImage& image);
+	void imageBufferAvailable(int id, const QImage& image);
 	void sig_Message();
 	void sig_PathMessage();
 	void sig_ShowBlockageWarning();
@@ -79,12 +81,21 @@ private slots:
 
 private:
 	int RunToolPro(QString image_path, const int index);
+	bool connectSignals(QCameraImageCapture* imageCapture);
+	void onImageCapturedToMemory(int id, const QImage& preview);
+	void onImageAvailableInMemory(int id, const QVideoFrame& buffer);
+	cv::Mat QImage2Mat(const QImage& image, bool cloneData);
+	QImage convertVideoFrameToImage(const QVideoFrame& frame);
+	void onImageMetadataAvailable(int id, const QString& key, const QVariant& value);
+	void onCaptureError(int id, QCameraImageCapture::Error error, const QString& errorString);
 	void hideBlockageWarning();
 	void showBlockageWarning();
 	bool isCameraBlocked(cv::Mat& frame);
 	QImage Mat2QImage(const cv::Mat& mat);
 	int m_totalFrames = 0;
 	int m_blockedFrames = 0;
+	QList<QImage> capturedImages;  // 存储捕获的图像
+	QList<QByteArray> imageBuffers;  // 存储原始图像数据
 private:	
 	gVariable gvariable;
 	QGraphicsViews* view;
@@ -114,6 +125,7 @@ private:
 	BYTE* pbyBuffer_A;
 	CameraSdkStatus status_A;
 	int time_out;
+	QCameraImageCapture* imageCapture;
 public:
 	//static cv::Mat srcImg;
 	static cv::Mat srcImg; //原图像

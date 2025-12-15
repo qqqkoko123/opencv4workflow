@@ -1,5 +1,5 @@
 ﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
   uic frmDistortionCalibration.ui
   rcc sub_res.qrc
@@ -34,4 +34,4 @@
   moc_ControlItem.cpp
   moc_DistortionCalibration.cpp
     正在创建库 ../../../QSoftExe/Release/Plugins/DistortionCalibration.lib 和对象 ../../../QSoftExe/Release/Plugins/DistortionCalibration.exp
-  DistortionCalibration.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\DistortionCalibration.dll
+  DistortionCalibration.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\DistortionCalibration.dll

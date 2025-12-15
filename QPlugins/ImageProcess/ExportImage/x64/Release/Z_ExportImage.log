@@ -1,5 +1,5 @@
 ﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
   uic frmExportImage.ui
   rcc sub_res.qrc
@@ -19,4 +19,4 @@
   moc_mytitlebar.cpp
   moc_ExportImage.cpp
     正在创建库 ../../../QSoftExe/Release/Plugins/Z_ExportImage.lib 和对象 ../../../QSoftExe/Release/Plugins/Z_ExportImage.exp
-  Z_ExportImage.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\Z_ExportImage.dll
+  Z_ExportImage.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\Z_ExportImage.dll

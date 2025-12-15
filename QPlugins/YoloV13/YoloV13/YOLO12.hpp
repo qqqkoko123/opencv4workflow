@@ -569,7 +569,7 @@ public:
      * @param iouThreshold IoU threshold for Non-Maximum Suppression (default is 0.45).
      * @return std::vector<Detection> Vector of detections.
      */
-    std::vector<Detection> detect(const cv::Mat& image, float confThreshold = 0.4f, float iouThreshold = 0.45f);
+    std::vector<Detection> detect(const cv::Mat& image, float confThreshold = 0.5f, float iouThreshold = 0.45f);
 
     /**
      * @brief Draws bounding boxes on the image based on detections.

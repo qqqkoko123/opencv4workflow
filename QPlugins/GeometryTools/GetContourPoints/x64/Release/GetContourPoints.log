@@ -1,5 +1,5 @@
 ﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (E:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
   uic frmGetContourPoints.ui
   rcc sub_res.qrc
@@ -34,4 +34,4 @@
   moc_frmGetContourPoints.cpp
   moc_GetContourPoints.cpp
     正在创建库 ../../../QSoftExe/Release/Plugins/GetContourPoints.lib 和对象 ../../../QSoftExe/Release/Plugins/GetContourPoints.exp
-  GetContourPoints.vcxproj -> D:\opencv4workflow\opencv4workflow\QSoftExe\Release\Plugins\GetContourPoints.dll
+  GetContourPoints.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\GetContourPoints.dll
