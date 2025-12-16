@@ -778,6 +778,7 @@ int frmImageSource::RunToolPro(QString image_path, const int index)
 						////释放资源
 						//camera.release();
 						//frame.release();
+
 					}
 				}
 			}
@@ -888,7 +889,7 @@ void frmImageSource::onImageCapturedToMemory(int id, const QImage& preview) {
 
 	if (!preview.isNull()) {
 		// 保存到内存列表
-		capturedImages.append(preview.copy());
+
 
 		// 发出信号通知
 		emit imageCapturedInMemory(id, preview);
@@ -902,7 +903,6 @@ void frmImageSource::onImageAvailableInMemory(int id, const QVideoFrame& buffer)
 	// 从QVideoFrame转换为QImage
 	QImage image = convertVideoFrameToImage(buffer);
 	if (!image.isNull()) {
-		capturedImages.append(image.copy());
 		emit imageBufferAvailable(id, image);
         srcImg = QImage2Mat(image, true);
 		// 检测是否被遮挡
@@ -943,7 +943,7 @@ cv::Mat frmImageSource::QImage2Mat(const QImage& image, bool cloneData = true) {
 			// ARGB32格式，需要处理Alpha通道
 			cv::cvtColor(mat, result, cv::COLOR_BGRA2BGR);
 		}
-
+		mat.release();
 		return cloneData ? result.clone() : result;
 	}
 
@@ -955,6 +955,7 @@ cv::Mat frmImageSource::QImage2Mat(const QImage& image, bool cloneData = true) {
 
 		cv::Mat result;
 		cv::cvtColor(mat, result, cv::COLOR_RGB2BGR);
+		mat.release();
 		return cloneData ? result.clone() : result;
 	}
 
@@ -967,6 +968,7 @@ cv::Mat frmImageSource::QImage2Mat(const QImage& image, bool cloneData = true) {
 		cv::Mat result;
 		// 16位RGB555或RGB565，需要转换
 		cv::cvtColor(mat, result, cv::COLOR_BGR5652BGR);
+		mat.release();
 		return cloneData ? result.clone() : result;
 	}
 

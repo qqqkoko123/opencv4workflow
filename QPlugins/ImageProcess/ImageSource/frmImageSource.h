@@ -94,8 +94,6 @@ private:
 	QImage Mat2QImage(const cv::Mat& mat);
 	int m_totalFrames = 0;
 	int m_blockedFrames = 0;
-	QList<QImage> capturedImages;  // 存储捕获的图像
-	QList<QByteArray> imageBuffers;  // 存储原始图像数据
 private:	
 	gVariable gvariable;
 	QGraphicsViews* view;
