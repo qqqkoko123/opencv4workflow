@@ -434,8 +434,8 @@ QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
       <widget class="QGroupBox" name="groupFolder">
        <property name="geometry">
         <rect>
-         <x>9</x>
-         <y>108</y>
+         <x>10</x>
+         <y>210</y>
          <width>427</width>
          <height>101</height>
         </rect>
@@ -759,9 +759,9 @@ background: transparent;</string>
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>220</y>
+         <y>320</y>
          <width>427</width>
-         <height>97</height>
+         <height>101</height>
         </rect>
        </property>
        <property name="font">
@@ -850,6 +850,390 @@ QPushButton:pressed{background-color: rgb(85, 170, 127);}</string>
         <property name="readOnly">
          <bool>true</bool>
         </property>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupCamera_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>100</y>
+         <width>427</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);
+color: rgb(85, 0, 255);</string>
+       </property>
+       <property name="title">
+        <string>任务设置</string>
+       </property>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>101</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;任务类型设置：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboType_2">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>20</y>
+          <width>105</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>51</width>
+          <height>27</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;  
+    min-width: 4.1em;
+    color: rgb(239, 235, 231);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/resource/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+QScrollBar:vertical{
+		background:#FFFFF2; 
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/resource/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/resource/up.png) center no-repeat;}</string>
+        </property>
+        <property name="currentText">
+         <string>Detect</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Classify</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Detect</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Segment</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Pose</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>OBB</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>101</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;YOLO版本：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboType_3">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>50</y>
+          <width>105</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>51</width>
+          <height>27</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;  
+    min-width: 4.1em;
+    color: rgb(239, 235, 231);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/resource/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+QScrollBar:vertical{
+		background:#FFFFF2; 
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/resource/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/resource/up.png) center no-repeat;}</string>
+        </property>
+        <property name="currentText">
+         <string>YOLO26</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>YOLOv5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLOv6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLOv7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLOv8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLOv9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLOv10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLOv11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLOv12</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLOv13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>YOLO26</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>30</y>
+          <width>71</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;设备类型：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboType_4">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>20</y>
+          <width>105</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>51</width>
+          <height>27</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;  
+    min-width: 4.1em;
+    color: rgb(239, 235, 231);
+	background-color: rgba(170, 170, 127,100);
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/resource/down.png);
+} 
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+QScrollBar:vertical{
+		background:#FFFFF2; 
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:2px;
+		padding-right:2px;
+		border-left:1px solid #d7d7d7;}
+QScrollBar::handle:vertical{
+		background:#dbdbdb;
+		border-radius:6px;
+		min-height:20px;}
+QScrollBar::handle:vertical:hover{
+		background:#d0d0d0;}
+QScrollBar::add-line:vertical{
+		background:url(:/resource/down.png) center no-repeat;}
+QScrollBar::sub-line:vertical{
+		background:url(:/resource/up.png) center no-repeat;}</string>
+        </property>
+        <property name="currentText">
+         <string>CPU</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>CPU</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>GPU</string>
+         </property>
+        </item>
        </widget>
       </widget>
      </widget>

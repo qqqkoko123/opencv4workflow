@@ -11,7 +11,13 @@
 #include "YOLO12.hpp" 
 #include <Windows.h>
 #include <QScreen>
-cv::Mat frmClassifier::GetYoloV13(std::string modelPath, std::string labelsPath, cv::Mat image, bool isGPU)
+#include <algorithm> 
+#include "yolos/tasks/detection.hpp"
+#include "yolos/tasks/pose.hpp"
+#include "yolos/tasks/segmentation.hpp"
+#include "yolos/tasks/obb.hpp"
+#include "yolos/tasks/classification.hpp"
+cv::Mat frmClassifier::GetYoloV13(std::string modelPath, std::string labelsPath, cv::Mat image, bool isGPU, std::string task_type, std::string yolo_type, std::string device_type)
 {
 
         // Configuration parameters
@@ -19,29 +25,77 @@ cv::Mat frmClassifier::GetYoloV13(std::string modelPath, std::string labelsPath,
         //const std::string modelPath = "yolov13l.onnx";     // Path to YOLO12 model
         //const std::string imagePath = "data/dog.jpg";           // Path to input image
         //bool isGPU = false;                                           // Set to false for CPU processing
-
-        // Initialize the YOLO12 detector
-	try 
+	try
 	{
-		YOLO12Detector detector(modelPath, labelsPath, isGPU);
+		if (task_type == "Detect") {
+			//try
+			//{
+			//	YOLO12Detector detector(modelPath, labelsPath, isGPU);
 
 
-		DWORD start_time = GetTickCount64();
+			//	DWORD start_time = GetTickCount64();
 
-		// Load an image
-		/*cv::Mat image = cv::imread(imagePath);*/
+			//	// Load an image
+			//	/*cv::Mat image = cv::imread(imagePath);*/
 
-		// Perform object detection to get bboxs
-		std::vector<Detection> detections = detector.detect(image,0.7);
+			//	// Perform object detection to get bboxs
+			//	std::vector<Detection> detections = detector.detect(image, 0.7);
 
-		// Draw bounding boxes on the image
-		detector.drawBoundingBoxMask(image, detections);
-		bool isFullScreen = false;
-		if (detections.size() > 0) {
-			for (int i = 0; i < detections.size(); i++)
+			//	// Draw bounding boxes on the image
+			//	detector.drawBoundingBoxMask(image, detections);
+			//	bool isFullScreen = false;
+			//	if (detections.size() > 0) {
+			//		for (int i = 0; i < detections.size(); i++)
+			//		{
+			//			//检测到手机拍照立刻全屏遮挡
+			//			if (QString::fromStdString(utils::getClassNames(labelsPath)[detections[i].classId]) == "phone")
+			//			{
+			//				//全屏遮挡
+			//				emit sigShowFullScreen();
+			//				isFullScreen = true;
+			//				break;
+			//			}
+			//		}
+			//		GetToolBase()->m_Tools[tool_index].PublicDetect.Category = QString::fromStdString(utils::getClassNames(labelsPath)[detections[0].classId]);
+			//		GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+			//	}
+			//	else
+			//	{
+			//		GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+			//	}
+			//	if (!isFullScreen)
+			//	{
+			//		//撤销全屏遮挡
+			//		emit sigEndFullScreen();
+			//	}
+			//	DWORD end_time = GetTickCount64();
+			//}
+			//catch (const std::exception e) {
+			//	qDebug() << "发生报错：" << e.what();
+			//}
+			if (ui.comboType_4->currentText().QString::toStdString() == "GPU")
 			{
-				//检测到手机拍照立刻全屏遮挡
-				if(QString::fromStdString(utils::getClassNames(labelsPath)[detections[i].classId]) == "phone")
+				isGPU = true;
+			}
+			else if (ui.comboType_4->currentText().QString::toStdString() == "CPU")
+			{
+				isGPU = false;
+			}
+			bool isFullScreen = false;
+			// Initialize
+			yolos::det::YOLODetector detector(modelPath, labelsPath, /*gpu=*/isGPU);
+
+			// Detect
+
+			auto detections = detector.detect(image, /*conf=*/0.25f, /*iou=*/0.45f);
+
+			// Process results
+			for (const auto& det : detections) {
+				/*std::cout << "Class: " << det.className
+					<< " Conf: " << det.confidence
+					<< " Box: " << det.box << std::endl;*/
+					//检测到手机拍照立刻全屏遮挡
+				if (QString::fromStdString(utils::getClassNames(labelsPath)[det.classId]) == "phone")
 				{
 					//全屏遮挡
 					emit sigShowFullScreen();
@@ -49,31 +103,129 @@ cv::Mat frmClassifier::GetYoloV13(std::string modelPath, std::string labelsPath,
 					break;
 				}
 			}
-			GetToolBase()->m_Tools[tool_index].PublicDetect.Category = QString::fromStdString(utils::getClassNames(labelsPath)[detections[0].classId]);
-			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+			if (detections.size() > 0)
+			{
+				GetToolBase()->m_Tools[tool_index].PublicDetect.Category = QString::fromStdString(utils::getClassNames(labelsPath)[detections[0].classId]);
+				GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+			}
+			else
+			{
+				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+			}
+			// Visualize
+			detector.drawDetections(image, detections);
+			if (!isFullScreen)
+			{
+				//撤销全屏遮挡
+				emit sigEndFullScreen();
+			}
+
 		}
-		else
-		{
-			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+		else if (task_type == "Pose") {
+
+			if (ui.comboType_4->currentText().QString::toStdString() == "GPU")
+			{
+				isGPU = true;
+			}
+			else if (ui.comboType_4->currentText().QString::toStdString() == "CPU")
+			{
+				isGPU = false;
+			}
+			yolos::pose::YOLOPoseDetector detector(modelPath, "", isGPU);
+			auto poses = detector.detect(image);
+			detector.drawPoses(image, poses);
 		}
-		if (!isFullScreen)
-		{
-			//撤销全屏遮挡
-			emit sigEndFullScreen();
+		else if (task_type == "OBB") {
+
+			if (ui.comboType_4->currentText().QString::toStdString() == "GPU")
+			{
+				isGPU = true;
+			}
+			else if (ui.comboType_4->currentText().QString::toStdString() == "CPU")
+			{
+				isGPU = false;
+			}
+			yolos::obb::YOLOOBBDetector detector(modelPath, labelsPath, isGPU);
+			auto boxes = detector.detect(image);
+			detector.drawDetections(image, boxes);
 		}
-		DWORD end_time = GetTickCount64();
+		else if (task_type == "Classify") {
+
+			if (ui.comboType_4->currentText().QString::toStdString() == "GPU")
+			{
+				isGPU = true;
+			}
+			else if (ui.comboType_4->currentText().QString::toStdString() == "CPU")
+			{
+				isGPU = false;
+			}
+			yolos::cls::YOLOClassifier classifier(modelPath, labelsPath, isGPU);
+			auto result = classifier.classify(image);
+			std::cout << "Predicted: " << result.className << " (" << result.confidence * 100 << "%)" << std::endl;
+			classifier.drawResult(image, result);
+		}
+		else if (task_type == "Segment") {
+
+			if (ui.comboType_4->currentText().QString::toStdString() == "GPU")
+			{
+				isGPU = true;
+			}
+			else if (ui.comboType_4->currentText().QString::toStdString() == "CPU")
+			{
+				isGPU = false;
+			}
+			yolos::seg::YOLOSegDetector detector(modelPath, labelsPath, isGPU);
+			auto segments = detector.segment(image);
+			detector.drawSegmentations(image, segments, /*maskAlpha=*/0.5f);
+		}
 	}
 	catch (const std::exception e) {
 		qDebug() << "发生报错：" << e.what();
 	}
-        
+        // Initialize the YOLO12 detector
+	
+	
+	/*char* argv[] = { 
+		"ONNXRuntime",
+		task_type.c_str(),
+		yolo_type.c_str(),
+        device_type.c_str(),
+		"FP32",
+		labelsPath.c_str(),
+	};
+	Backend_Type backend;
+	Task_Type task;
+	Algo_Type algo;
+	Device_Type device;
+	Model_Type model;
+	std::string model_path = modelPath;
+	std::string images_path = imgList.QString::toStdString();
+
+	try
+	{
+		backend = magic_enum::enum_cast<Backend_Type>(ONNXRuntime).value();
+		task = magic_enum::enum_cast<Task_Type>(task_type).value();
+		algo = magic_enum::enum_cast<Algo_Type>(yolo_type).value();
+		device = magic_enum::enum_cast<Device_Type>(device_type).value();
+		model = magic_enum::enum_cast<Model_Type>(FP32).value();
+	}
+	catch (const std::bad_optional_access& e)
+	{
+		std::cerr << "argv input error: " << e.what() << std::endl;
+		return image;
+	}
+
+	std::unique_ptr<YOLO> yolo = CreateFactory::instance().create(backend, task);
+	yolo->init(algo, device, model, model_path);
+	yolo->infer(images_path, false, false, argv);
+	yolo->release();*/
 
 
 
         // Display the annotated image
         //cv::imshow("YOLO12 Detections", image);
         //cv::waitKey(0); // Wait indefinitely until a key is pressed
-
+		DWORD end_time = GetTickCount64();
         return image;
 
 }
@@ -255,7 +407,7 @@ int frmClassifier::RunToolPro()
 		{
 			std::string modelpath = ui.txtLoadModel->text().QString::toStdString();
 			std::string labelpath = ui.txtLabels->text().QString::toStdString();
-			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = GetYoloV13(modelpath, labelpath, srcImage, false);
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = GetYoloV13(modelpath, labelpath, srcImage, false, ui.comboType_2->currentText().QString::toStdString(), ui.comboType_3->currentText().QString::toStdString(), ui.comboType_4->currentText().QString::toStdString());
 		}
 		
 		return 0;

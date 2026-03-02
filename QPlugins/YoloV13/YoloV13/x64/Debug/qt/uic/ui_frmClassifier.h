@@ -65,6 +65,13 @@ public:
     QLabel *label_5;
     QPushButton *btnLoadModel;
     QLineEdit *txtLoadModel;
+    QGroupBox *groupCamera_4;
+    QLabel *label_10;
+    QComboBox *comboType_2;
+    QLabel *label_11;
+    QComboBox *comboType_3;
+    QLabel *label_12;
+    QComboBox *comboType_4;
     QWidget *tab_2;
     QGroupBox *groupCamera_3;
     QLabel *label_9;
@@ -223,7 +230,7 @@ public:
         btnDelLinkImage->setIconSize(QSize(27, 27));
         groupFolder = new QGroupBox(tab);
         groupFolder->setObjectName(QString::fromUtf8("groupFolder"));
-        groupFolder->setGeometry(QRect(9, 108, 427, 101));
+        groupFolder->setGeometry(QRect(10, 210, 427, 101));
         groupFolder->setFont(font);
         groupFolder->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);\n"
 "color: rgb(85, 0, 255);"));
@@ -325,7 +332,7 @@ public:
 "background: transparent;"));
         groupCamera_2 = new QGroupBox(tab);
         groupCamera_2->setObjectName(QString::fromUtf8("groupCamera_2"));
-        groupCamera_2->setGeometry(QRect(10, 220, 427, 97));
+        groupCamera_2->setGeometry(QRect(10, 320, 427, 101));
         groupCamera_2->setFont(font);
         groupCamera_2->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);\n"
 "color: rgb(85, 0, 255);"));
@@ -350,6 +357,193 @@ public:
         txtLoadModel->setFont(font);
         txtLoadModel->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
         txtLoadModel->setReadOnly(true);
+        groupCamera_4 = new QGroupBox(tab);
+        groupCamera_4->setObjectName(QString::fromUtf8("groupCamera_4"));
+        groupCamera_4->setGeometry(QRect(10, 100, 427, 101));
+        groupCamera_4->setFont(font);
+        groupCamera_4->setStyleSheet(QString::fromUtf8("background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #dfd5cf, stop: 0.15 #acbbac, stop: 0.85 #acbbac,stop:1 #dfd5cf);\n"
+"color: rgb(85, 0, 255);"));
+        label_10 = new QLabel(groupCamera_4);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+        label_10->setGeometry(QRect(10, 30, 101, 22));
+        label_10->setFont(font1);
+        label_10->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
+"background: transparent;"));
+        comboType_2 = new QComboBox(groupCamera_4);
+        comboType_2->addItem(QString());
+        comboType_2->addItem(QString());
+        comboType_2->addItem(QString());
+        comboType_2->addItem(QString());
+        comboType_2->addItem(QString());
+        comboType_2->setObjectName(QString::fromUtf8("comboType_2"));
+        comboType_2->setGeometry(QRect(120, 20, 105, 27));
+        comboType_2->setMinimumSize(QSize(51, 27));
+        comboType_2->setFont(font);
+        comboType_2->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;  \n"
+"    min-width: 4.1em;\n"
+"    color: rgb(239, 235, 231);\n"
+"	background-color: rgba(170, 170, 127,100);\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px; \n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(:/resource/down.png);\n"
+"} \n"
+"QComboBox::down-arrow:on {\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}\n"
+"QScrollBar:vertical{\n"
+"		background:#FFFFF2; \n"
+"		padding-top:20px;\n"
+"		padding-bottom:20px;\n"
+"		padding-left:2px;\n"
+"		padding-right:2px;\n"
+"		border-left:1px solid #d7d7d7;}\n"
+"QScrollBar::handle:vertical{\n"
+"		background:#dbdbdb;\n"
+"		border-radius:6px;\n"
+"		min-height:20px;}\n"
+"QScrollBar::handle:vertical:hover{\n"
+"		background:#d0d0d0;}\n"
+""
+                        "QScrollBar::add-line:vertical{\n"
+"		background:url(:/resource/down.png) center no-repeat;}\n"
+"QScrollBar::sub-line:vertical{\n"
+"		background:url(:/resource/up.png) center no-repeat;}"));
+        label_11 = new QLabel(groupCamera_4);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+        label_11->setGeometry(QRect(20, 60, 101, 22));
+        label_11->setFont(font1);
+        label_11->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
+"background: transparent;"));
+        comboType_3 = new QComboBox(groupCamera_4);
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->addItem(QString());
+        comboType_3->setObjectName(QString::fromUtf8("comboType_3"));
+        comboType_3->setGeometry(QRect(120, 50, 105, 27));
+        comboType_3->setMinimumSize(QSize(51, 27));
+        comboType_3->setFont(font);
+        comboType_3->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;  \n"
+"    min-width: 4.1em;\n"
+"    color: rgb(239, 235, 231);\n"
+"	background-color: rgba(170, 170, 127,100);\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px; \n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(:/resource/down.png);\n"
+"} \n"
+"QComboBox::down-arrow:on {\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}\n"
+"QScrollBar:vertical{\n"
+"		background:#FFFFF2; \n"
+"		padding-top:20px;\n"
+"		padding-bottom:20px;\n"
+"		padding-left:2px;\n"
+"		padding-right:2px;\n"
+"		border-left:1px solid #d7d7d7;}\n"
+"QScrollBar::handle:vertical{\n"
+"		background:#dbdbdb;\n"
+"		border-radius:6px;\n"
+"		min-height:20px;}\n"
+"QScrollBar::handle:vertical:hover{\n"
+"		background:#d0d0d0;}\n"
+""
+                        "QScrollBar::add-line:vertical{\n"
+"		background:url(:/resource/down.png) center no-repeat;}\n"
+"QScrollBar::sub-line:vertical{\n"
+"		background:url(:/resource/up.png) center no-repeat;}"));
+        label_12 = new QLabel(groupCamera_4);
+        label_12->setObjectName(QString::fromUtf8("label_12"));
+        label_12->setGeometry(QRect(240, 30, 71, 22));
+        label_12->setFont(font1);
+        label_12->setStyleSheet(QString::fromUtf8("color: rgb(30, 30, 30);\n"
+"background: transparent;"));
+        comboType_4 = new QComboBox(groupCamera_4);
+        comboType_4->addItem(QString());
+        comboType_4->addItem(QString());
+        comboType_4->setObjectName(QString::fromUtf8("comboType_4"));
+        comboType_4->setGeometry(QRect(310, 20, 105, 27));
+        comboType_4->setMinimumSize(QSize(51, 27));
+        comboType_4->setFont(font);
+        comboType_4->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;  \n"
+"    min-width: 4.1em;\n"
+"    color: rgb(239, 235, 231);\n"
+"	background-color: rgba(170, 170, 127,100);\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px; \n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(:/resource/down.png);\n"
+"} \n"
+"QComboBox::down-arrow:on {\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}\n"
+"QScrollBar:vertical{\n"
+"		background:#FFFFF2; \n"
+"		padding-top:20px;\n"
+"		padding-bottom:20px;\n"
+"		padding-left:2px;\n"
+"		padding-right:2px;\n"
+"		border-left:1px solid #d7d7d7;}\n"
+"QScrollBar::handle:vertical{\n"
+"		background:#dbdbdb;\n"
+"		border-radius:6px;\n"
+"		min-height:20px;}\n"
+"QScrollBar::handle:vertical:hover{\n"
+"		background:#d0d0d0;}\n"
+""
+                        "QScrollBar::add-line:vertical{\n"
+"		background:url(:/resource/down.png) center no-repeat;}\n"
+"QScrollBar::sub-line:vertical{\n"
+"		background:url(:/resource/up.png) center no-repeat;}"));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
@@ -535,6 +729,35 @@ public:
         label_5->setText(QCoreApplication::translate("frmClassifierClass", "\351\242\204\346\265\213\346\250\241\345\236\213\346\226\207\344\273\266\357\274\232", nullptr));
         btnLoadModel->setText(QCoreApplication::translate("frmClassifierClass", "\346\250\241\345\236\213\346\226\207\344\273\266", nullptr));
         txtLoadModel->setText(QString());
+        groupCamera_4->setTitle(QCoreApplication::translate("frmClassifierClass", "\344\273\273\345\212\241\350\256\276\347\275\256", nullptr));
+        label_10->setText(QCoreApplication::translate("frmClassifierClass", "<html><head/><body><p>\344\273\273\345\212\241\347\261\273\345\236\213\350\256\276\347\275\256\357\274\232</p></body></html>", nullptr));
+        comboType_2->setItemText(0, QCoreApplication::translate("frmClassifierClass", "Classify", nullptr));
+        comboType_2->setItemText(1, QCoreApplication::translate("frmClassifierClass", "Detect", nullptr));
+        comboType_2->setItemText(2, QCoreApplication::translate("frmClassifierClass", "Segment", nullptr));
+        comboType_2->setItemText(3, QCoreApplication::translate("frmClassifierClass", "Pose", nullptr));
+        comboType_2->setItemText(4, QCoreApplication::translate("frmClassifierClass", "OBB", nullptr));
+
+        comboType_2->setCurrentText(QCoreApplication::translate("frmClassifierClass", "Detect", nullptr));
+        label_11->setText(QCoreApplication::translate("frmClassifierClass", "<html><head/><body><p>YOLO\347\211\210\346\234\254\357\274\232</p></body></html>", nullptr));
+        comboType_3->setItemText(0, QCoreApplication::translate("frmClassifierClass", "YOLOv3", nullptr));
+        comboType_3->setItemText(1, QCoreApplication::translate("frmClassifierClass", "YOLOv4", nullptr));
+        comboType_3->setItemText(2, QCoreApplication::translate("frmClassifierClass", "YOLOv5", nullptr));
+        comboType_3->setItemText(3, QCoreApplication::translate("frmClassifierClass", "YOLOv6", nullptr));
+        comboType_3->setItemText(4, QCoreApplication::translate("frmClassifierClass", "YOLOv7", nullptr));
+        comboType_3->setItemText(5, QCoreApplication::translate("frmClassifierClass", "YOLOv8", nullptr));
+        comboType_3->setItemText(6, QCoreApplication::translate("frmClassifierClass", "YOLOv9", nullptr));
+        comboType_3->setItemText(7, QCoreApplication::translate("frmClassifierClass", "YOLOv10", nullptr));
+        comboType_3->setItemText(8, QCoreApplication::translate("frmClassifierClass", "YOLOv11", nullptr));
+        comboType_3->setItemText(9, QCoreApplication::translate("frmClassifierClass", "YOLOv12", nullptr));
+        comboType_3->setItemText(10, QCoreApplication::translate("frmClassifierClass", "YOLOv13", nullptr));
+        comboType_3->setItemText(11, QCoreApplication::translate("frmClassifierClass", "YOLO26", nullptr));
+
+        comboType_3->setCurrentText(QCoreApplication::translate("frmClassifierClass", "YOLO26", nullptr));
+        label_12->setText(QCoreApplication::translate("frmClassifierClass", "<html><head/><body><p>\350\256\276\345\244\207\347\261\273\345\236\213\357\274\232</p></body></html>", nullptr));
+        comboType_4->setItemText(0, QCoreApplication::translate("frmClassifierClass", "CPU", nullptr));
+        comboType_4->setItemText(1, QCoreApplication::translate("frmClassifierClass", "GPU", nullptr));
+
+        comboType_4->setCurrentText(QCoreApplication::translate("frmClassifierClass", "CPU", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("frmClassifierClass", "\345\237\272\346\234\254\350\256\276\347\275\256", nullptr));
         groupCamera_3->setTitle(QCoreApplication::translate("frmClassifierClass", "\345\233\276\345\203\217\347\261\273\345\210\253\345\217\202\346\225\260", nullptr));
         label_9->setText(QCoreApplication::translate("frmClassifierClass", "\345\233\276\345\203\217\347\261\273\345\210\253\346\225\260\351\207\217\357\274\232", nullptr));

@@ -35,7 +35,7 @@ public:
 private:
 	void initTitleBar();
 	void paintEvent(QPaintEvent* event);	
-	cv::Mat GetYoloV13(std::string modelPath, std::string labelsPath, cv::Mat image, bool isGPU);
+	cv::Mat GetYoloV13(std::string modelPath, std::string labelsPath, cv::Mat image, bool isGPU, std::string task_type, std::string yolo_type, std::string device_type);
 	void fullScreen();
 	void endFullScreen();
 private slots:

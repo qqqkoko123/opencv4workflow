@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);../../../QPluginsYoloV13/YoloV13/x64/Release/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13/include;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QMainPro/QMacVisual/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);../../../QPluginsYoloV13/YoloV13/x64/Release/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13/include;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QMainPro/QMacVisual/include;../../../QPlugins/YoloV13/YoloV13/includes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>../../../QPlugins/YoloV13/YoloV13/lib;../../../QMainPro/QMacVisual/lib/release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -75,7 +75,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;../../../QPlugins/YoloV13/YoloV13/x64/Debug/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QPlugins/YoloV13/YoloV13/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;../../../QPlugins/YoloV13/YoloV13/x64/Debug/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QPlugins/YoloV13/YoloV13/include;../../../QPlugins/YoloV13/YoloV13/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opencv_world460d.lib;onnxruntime.lib;onnxruntime_providers_cuda.lib;onnxruntime_providers_shared.lib;onnxruntime_providers_tensorrt.lib;%(AdditionalDependencies)</AdditionalDependencies>
