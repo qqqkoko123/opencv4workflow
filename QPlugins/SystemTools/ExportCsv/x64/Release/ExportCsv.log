@@ -1,22 +1,3 @@
-﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+﻿   Qt/MSBuild: 3.5.0.0
    Qt: 5.14.2
-  uic frmExportCsv.ui
-  rcc sub_res.qrc
-  moc Toolnterface.h
-  moc QToolBase.h
-  moc frmExportCsv.h
-  moc mytitlebar.h
-  moc ExportCsv.h
-  frmExportCsv.cpp
-  mytitlebar.cpp
-  Toolnterface.cpp
-  ExportCsv.cpp
-  qrc_sub_res.cpp
-  moc_Toolnterface.cpp
-  moc_QToolBase.cpp
-  moc_frmExportCsv.cpp
-  moc_mytitlebar.cpp
-  moc_ExportCsv.cpp
-    正在创建库 ../../../QSoftExe/Release/Plugins/ExportCsv.lib 和对象 ../../../QSoftExe/Release/Plugins/ExportCsv.exp
   ExportCsv.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\ExportCsv.dll

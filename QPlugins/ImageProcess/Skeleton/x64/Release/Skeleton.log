@@ -1,37 +1,3 @@
-﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+﻿   Qt/MSBuild: 3.5.0.0
    Qt: 5.14.2
-  uic frmSkeleton.ui
-  rcc sub_res.qrc
-  moc Toolnterface.h
-  moc BaseItem.h
-  moc ControlItem.h
-  moc ImageItem.h
-  moc QGraphicsScenes.h
-  moc QGraphicsViews.h
-  moc frmSkeleton.h
-  moc mytitlebar.h
-  moc QToolBase.h
-  moc Skeleton.h
-  Toolnterface.cpp
-  BaseItem.cpp
-  ControlItem.cpp
-  frmSkeleton.cpp
-  ImageItem.cpp
-  mytitlebar.cpp
-  QGraphicsScenes.cpp
-  QGraphicsViews.cpp
-  Skeleton.cpp
-  qrc_sub_res.cpp
-  moc_Toolnterface.cpp
-  moc_BaseItem.cpp
-  moc_ControlItem.cpp
-  moc_ImageItem.cpp
-  moc_QGraphicsScenes.cpp
-  moc_QGraphicsViews.cpp
-  moc_frmSkeleton.cpp
-  moc_mytitlebar.cpp
-  moc_QToolBase.cpp
-  moc_Skeleton.cpp
-    正在创建库 ../../../QSoftExe/Release/Plugins/Skeleton.lib 和对象 ../../../QSoftExe/Release/Plugins/Skeleton.exp
   Skeleton.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\Skeleton.dll

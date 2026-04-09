@@ -35,7 +35,65 @@ frmQRcodeIdentify::~frmQRcodeIdentify()
 {
 	this->deleteLater();
 }
+std::vector<DmCodeResult> frmQRcodeIdentify::decode_all_dm_codes(const cv::Mat& src) 
+{
+	std::vector<DmCodeResult> results;
 
+	// 1. 转灰度图
+	cv::Mat gray;
+	if (src.channels() == 3) {
+		cv::cvtColor(src, gray, cv::COLOR_BGR2GRAY);
+	}
+	else {
+		gray = src.clone();
+	}
+	// 2. 初始化 dmtx
+	DmtxImage* img = dmtxImageCreate(gray.data, gray.cols, gray.rows, DmtxPack8bpp);
+	if (!img) return results;
+	
+	DmtxDecode* dec = dmtxDecodeCreate(img, 1);
+	if (!dec) {
+		dmtxImageDestroy(&img);
+		return results;
+	}
+
+	DmtxRegion* reg;
+	// 3. 循环查找所有 DM 码区域
+	while ((reg = dmtxRegionFindNext(dec, nullptr)) != nullptr) {
+		// 直接调用 dmtxDecodeMatrixRegion 获取解码消息，避免不必要的 dmtxMessageCreate 调用（可能导致链接问题）
+		DmtxMessage* msg = dmtxDecodeMatrixRegion(dec, reg, DmtxUndefined);
+		if (msg) {
+			DmCodeResult res;
+			// 优先使用 msg->outputIdx（libdmtx 用于记录输出长度的字段），否则回退到 C 字符串长度
+			size_t len = 0;
+			if (msg->outputIdx > 0) len = static_cast<size_t>(msg->outputIdx);
+			else if (msg->output) len = std::strlen(reinterpret_cast<char*>(msg->output));
+			res.content = std::string(reinterpret_cast<char*>(msg->output), len);
+			Code.push_back(QString::fromStdString(res.content));
+			strDecoded.push_back(res.content);
+			// 计算 DM 码的 bounding box，使用 region 的四个角点（topLoc/leftLoc/bottomLoc/rightLoc）
+			int min_x = std::min({ reg->topLoc.X, reg->rightLoc.X, reg->bottomLoc.X, reg->leftLoc.X });
+			int max_x = std::max({ reg->topLoc.X, reg->rightLoc.X, reg->bottomLoc.X, reg->leftLoc.X });
+			int min_y = std::min({ reg->topLoc.Y, reg->rightLoc.Y, reg->bottomLoc.Y, reg->leftLoc.Y });
+			int max_y = std::max({ reg->topLoc.Y, reg->rightLoc.Y, reg->bottomLoc.Y, reg->leftLoc.Y });
+			// 保护性校正，防止宽/高为负
+			int w = std::max(0, max_x - min_x);
+			int h = std::max(0, max_y - min_y);
+			res.bbox = cv::Rect(min_x, min_y, w, h);
+
+			results.push_back(res);
+
+			dmtxMessageDestroy(&msg);
+		}
+		dmtxRegionDestroy(&reg);
+	}
+
+	// 4. 释放资源
+	dmtxDecodeDestroy(&dec);
+	dmtxImageDestroy(&img);
+
+	return results;
+}
 void frmQRcodeIdentify::initTitleBar()
 {
 	m_titleBar = new MyTitleBar(this);
@@ -243,66 +301,87 @@ int frmQRcodeIdentify::RunToolProDM()
 		{
 			cv::cvtColor(dstImage, dstImage, cv::COLOR_RGBA2GRAY);
 		}
-		DmtxImage* image;
-		image = dmtxImageCreate(dstImage.data, dstImage.cols, dstImage.rows, DmtxPack8bppK);//注意图片类型
-		DmtxDecode* dec = dmtxDecodeCreate(image, 1);//解码
-		// 设置关键参数以提升速度
-		//dmtxDecodeSetProp(dec, DmtxPropScanGap, 5);      // 增加扫描间隔 (默认1)
-		//dmtxDecodeSetProp(dec, DmtxPropEdgeMin, 100);    // 提高最小边缘阈值
-		//dmtxDecodeSetProp(dec, DmtxPropEdgeMax, 255);    // 降低最大边缘阈值
-		//dmtxDecodeSetProp(dec, DmtxPropSquareDevn, 0.5); // 增加正方形偏差容忍度 (默认0.2)
-		//dmtxDecodeSetProp(dec, DmtxPropSymbolSize, DmtxSymbolSquareAuto); // 仅识别方形符号
+		//DmtxImage* image;
+		//image = dmtxImageCreate(dstImage.data, dstImage.cols, dstImage.rows, DmtxPack8bppK);//注意图片类型
+		//DmtxDecode* dec = dmtxDecodeCreate(image, 1);//解码
+		//// 设置关键参数以提升速度
+		////dmtxDecodeSetProp(dec, DmtxPropScanGap, 5);      // 增加扫描间隔 (默认1)
+		////dmtxDecodeSetProp(dec, DmtxPropEdgeMin, 100);    // 提高最小边缘阈值
+		////dmtxDecodeSetProp(dec, DmtxPropEdgeMax, 255);    // 降低最大边缘阈值
+		////dmtxDecodeSetProp(dec, DmtxPropSquareDevn, 0.5); // 增加正方形偏差容忍度 (默认0.2)
+		////dmtxDecodeSetProp(dec, DmtxPropSymbolSize, DmtxSymbolSquareAuto); // 仅识别方形符号
 
-		// 存储识别结果
-		//std::vector<std::string> decodedMessages = std::vector<std::string>();
-		double show_thickness = (dstImage.rows > dstImage.cols) ? (2.813 * dstImage.rows) / dstImage.cols :
-			(2.813 * dstImage.cols) / dstImage.rows;
-		double contour_thickness = show_thickness * 0.4;
-		DmtxTime* timeout = new DmtxTime();
-		timeout->sec = 100; // 设置超时时间(毫秒)
-		// 循环检测所有DM码
-		while ((reg = dmtxRegionFindNext(dec, NULL)) != NULL) {
-			DmtxMessage* msg = dmtxDecodeMatrixRegion(dec, reg, 1);//解码信息
-			if (msg != NULL)
-			{
-				// 输出结果
-				cv::Point pt1 = cv::Point(reg->topLoc.X, reg->topLoc.Y + 20);
-				cv::Point pt2 = cv::Point(reg->leftLoc.X - 20, reg->leftLoc.Y);
-				cv::Point pt3 = cv::Point(reg->bottomLoc.X, reg->bottomLoc.Y - 20);
-				cv::Point pt4 = cv::Point(reg->rightLoc.X + 20, reg->rightLoc.Y);
-				/*cv::line(dstImage, pt1, pt2, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
-				cv::line(dstImage, pt2, pt3, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
-				cv::line(dstImage, pt3, pt4, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
-				cv::line(dstImage, pt4, pt1, cv::Scalar(0, 255, 0), cvRound(contour_thickness));*/
+		//// 存储识别结果
+		////std::vector<std::string> decodedMessages = std::vector<std::string>();
+		//double show_thickness = (dstImage.rows > dstImage.cols) ? (2.813 * dstImage.rows) / dstImage.cols :
+		//	(2.813 * dstImage.cols) / dstImage.rows;
+		//double contour_thickness = show_thickness * 0.4;
+		//DmtxTime* timeout = new DmtxTime();
+		//timeout->sec = 100; // 设置超时时间(毫秒)
+		//// 循环检测所有DM码
+		//while ((reg = dmtxRegionFindNext(dec, NULL)) != NULL) {
+		//	DmtxMessage* msg = dmtxDecodeMatrixRegion(dec, reg, 1);//解码信息
+		//	if (msg != NULL)
+		//	{
+		//		// 输出结果
+		//		cv::Point pt1 = cv::Point(reg->topLoc.X, reg->topLoc.Y + 20);
+		//		cv::Point pt2 = cv::Point(reg->leftLoc.X - 20, reg->leftLoc.Y);
+		//		cv::Point pt3 = cv::Point(reg->bottomLoc.X, reg->bottomLoc.Y - 20);
+		//		cv::Point pt4 = cv::Point(reg->rightLoc.X + 20, reg->rightLoc.Y);
+		//		/*cv::line(dstImage, pt1, pt2, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
+		//		cv::line(dstImage, pt2, pt3, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
+		//		cv::line(dstImage, pt3, pt4, cv::Scalar(0, 255, 0), cvRound(contour_thickness));
+		//		cv::line(dstImage, pt4, pt1, cv::Scalar(0, 255, 0), cvRound(contour_thickness));*/
 
-				//此处绘制矩形框，需要改进，没能和检测到的二维码矩形吻合？
-				cv::rectangle(dstImage,cv::Rect(pt2.x,pt1.y,pt4.x-pt2.x,pt1.y-pt3.y), cv::Scalar(0, 255, 0), cvRound(contour_thickness));
+		//		//此处绘制矩形框，需要改进，没能和检测到的二维码矩形吻合？
+		//		cv::rectangle(dstImage,cv::Rect(pt2.x,pt1.y,pt4.x-pt2.x,pt1.y-pt3.y), cv::Scalar(0, 255, 0), cvRound(contour_thickness));
 
-				Code.push_back(QString::fromStdString(std::string((char*)msg->output)));
-				 // 将解码内容转为字符串
-				strDecoded.push_back(std::string((char*)msg->output));
-				dmtxMessageDestroy(&msg);
-			}
-			dmtxRegionDestroy(&reg);
+		//		Code.push_back(QString::fromStdString(std::string((char*)msg->output)));
+		//		 // 将解码内容转为字符串
+		//		strDecoded.push_back(std::string((char*)msg->output));
+		//		dmtxMessageDestroy(&msg);
+		//	}
+		//	dmtxRegionDestroy(&reg);
+		//}
+		//
+		//
+		//dmtxDecodeDestroy(&dec);
+		//dmtxImageDestroy(&image);
+		//
+		//cin.get();
+		//if (strDecoded.size() == 0) {
+		//	GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+		//	GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+		//	return -1;
+		//}
+		//else {
+		//	GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+		//	GetToolBase()->m_Tools[tool_index].PublicDetect.Code = Code;
+		//	GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+		//	return 0;
+		//}
+		 // 解码所有 DM 码
+		std::vector<DmCodeResult> results = decode_all_dm_codes(dstImage);
+
+		// 可视化结果
+		for (DmCodeResult res : results) {
+			cv::rectangle(dstImage, res.bbox, cv::Scalar(0, 255, 0), 2);
+			cv::putText(dstImage, res.content, cv::Point(res.bbox.x, res.bbox.y - 5),
+				cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(0, 0, 255), 2);
 		}
-		
-		
-		dmtxDecodeDestroy(&dec);
-		dmtxImageDestroy(&image);
-		
-		cin.get();
-		if (strDecoded.size() == 0) {
-			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
-			return -1;
-		}
-		else {
+		if (results.size() > 0)
+		{
 			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
 			GetToolBase()->m_Tools[tool_index].PublicDetect.Code = Code;
 			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
 			return 0;
 		}
-		
+		else
+		{
+			GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+			return -1;
+		}
 	}
 	catch (...)
 	{

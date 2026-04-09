@@ -8,7 +8,9 @@
 #include <autoMeasure/service/MeasureCoinService.h>
 #include <autoMeasure/service/GrayService.h>
 #include <rice.h>
-
+#include <opencv2/opencv.hpp>
+#include <iostream>
+#include <vector>
 #define M_PI 3.14159265358979323846
 
 frmEdgeWidthMeasure::frmEdgeWidthMeasure(QString toolName, QToolBase* toolBase, QWidget* parent)
@@ -116,6 +118,246 @@ int frmEdgeWidthMeasure::Execute(const QString toolname)
 	return 0;
 }
 
+// 检查候选圆下方是否可能存在圆柱体（含螺纹）
+bool frmEdgeWidthMeasure::hasCylinderAndThread(const cv::Mat& gray, const cv::Mat& edges, const cv::Point& center, int radius, int bodyHeightFactor = 2) {
+	// 定义圆柱体区域：圆下方，宽度与圆直径相当，高度为半径的 bodyHeightFactor 倍
+	int bodyWidth = radius * 2;
+	int bodyHeight = radius * bodyHeightFactor;
+	int topY = center.y + radius;               // 圆柱体顶部（圆的下边缘）
+	int bottomY = min(gray.rows - 1, topY + bodyHeight);
+	int leftX = max(0, center.x - radius);
+	int rightX = min(gray.cols - 1, center.x + radius);
+
+	if (topY >= gray.rows || leftX >= rightX) return false;
+
+	// 提取圆柱体区域的边缘
+	cv::Mat roiEdges = edges(cv::Rect(leftX, topY, rightX - leftX, bottomY - topY));
+	if (roiEdges.empty()) return false;
+
+	// 统计区域内的边缘点数
+	int edgeCount = countNonZero(roiEdges);
+	float area = roiEdges.total();
+	float edgeDensity = edgeCount / area;
+
+	// 如果边缘点密度较低，说明没有明显的螺纹纹理或圆柱体边缘，拒绝
+	if (edgeDensity < 0.05) return false;
+
+	// 可选：检查垂直方向的投影，判断是否有周期性（螺纹）
+	// 对 roiEdges 进行垂直投影（按列累加）
+	vector<int> verticalProj(roiEdges.cols, 0);
+	for (int y = 0; y < roiEdges.rows; ++y) {
+		for (int x = 0; x < roiEdges.cols; ++x) {
+			if (roiEdges.at<uchar>(y, x)) {
+				verticalProj[x]++;
+			}
+		}
+	}
+
+	// 检查投影是否存在明显的周期性波动（螺纹）
+	// 简单方法：计算投影序列的方差，若方差大则说明有纹理变化
+	cv::Scalar mean, stddev;
+	meanStdDev(verticalProj, mean, stddev);
+	if (stddev[0] < 5.0) return false;  // 变化太小，可能没有螺纹
+
+	// 也可进一步检测波峰数量，但此处简化，认为满足边缘密度和投影波动即可
+	return true;
+}
+// 计算两点间距离
+float frmEdgeWidthMeasure::distance(const cv::Point2f& a, const cv::Point2f& b) {
+	return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+}
+// 计算轮廓的圆形度（0~1，越圆越接近1）
+double frmEdgeWidthMeasure::circularity(const vector<cv::Point>& contour) {
+	double area = contourArea(contour);
+	double perimeter = arcLength(contour, true);
+	if (perimeter <= 0) return 0.0;
+	return 4 * CV_PI * area / (perimeter * perimeter);
+}
+
+// 计算轮廓内像素的灰度标准差（文字区域通常标准差大）
+double frmEdgeWidthMeasure::grayStdDev(const cv::Mat& gray, const vector<cv::Point>& contour) {
+	cv::Mat mask = cv::Mat::zeros(gray.size(), CV_8U);
+	drawContours(mask, vector<vector<cv::Point>>{contour}, 0, cv::Scalar(255), -1);
+	cv::Mat roi;
+	gray.copyTo(roi, mask);
+	cv::Scalar mean, stddev;
+	meanStdDev(roi, mean, stddev, mask);
+	return stddev[0];
+}
+
+// 判断轮廓是否为螺丝钉头部（增强版，加入更多筛选条件）
+bool frmEdgeWidthMeasure::isScrewHead(const vector<cv::Point>& contour, const cv::Mat& gray,
+	double& radius, cv::Point2f& center, double& circ,
+	double minArea, double maxArea,
+	double minCircularity, double minEllipseAspect,
+	double maxGrayStdDev, double minConvexity) {
+	// 1. 面积筛选
+	double area = contourArea(contour);
+	if (area < minArea || area > maxArea) return false;
+
+	// 2. 轮廓点数足够拟合椭圆
+	if (contour.size() < 5) return false;
+
+	// 3. 圆形度（文字通常<0.4，螺丝头部>0.55）
+	circ = circularity(contour);
+	if (circ < minCircularity) return false;
+
+	// 4. 凸包面积比（排除不规则形状，文字常<0.7）
+	vector<cv::Point> hull;
+	convexHull(contour, hull);
+	double hullArea = contourArea(hull);
+	double convexity = area / hullArea;
+	if (convexity < minConvexity) return false;
+	
+
+	// 5. 外接矩形长宽比 (排除细长物体)
+	cv::RotatedRect rect = minAreaRect(contour);
+	float width = rect.size.width;
+	float height = rect.size.height;
+	if (width < height) swap(width, height);
+	float aspect = height / width;
+	if (aspect < 0.45) return false;
+	// 6. 椭圆拟合验证
+	cv::RotatedRect ellipseRect = fitEllipse(contour);
+	cv::Size2f size = ellipseRect.size;
+	float major = max(size.width, size.height);
+	float minor = min(size.width, size.height);
+	float ellipseAspect = minor / major;  // 椭圆短长轴比
+	if (ellipseAspect < minEllipseAspect) return false;
+
+	double ellipseArea = CV_PI * major / 2 * minor / 2;
+	double areaRatio = area / ellipseArea;   // 轮廓与椭圆面积比
+	if (areaRatio < 0.7) return false;       // 轮廓与椭圆偏差太大
+
+	// 7. 灰度标准差（文字区域通常纹理复杂）
+	double stddev = grayStdDev(gray, contour);
+	if (stddev > maxGrayStdDev) return false;
+	// 8. 中心十字槽灰度方差检测 (放宽阈值，兼容浅十字槽)
+	cv::Rect centerRoiRect(
+		cvRound(ellipseRect.center.x - minor * 0.25),
+		cvRound(ellipseRect.center.y - minor * 0.25),
+		cvRound(minor * 0.5),
+		cvRound(minor * 0.5)
+	);
+	centerRoiRect = centerRoiRect & cv::Rect(0, 0, gray.cols, gray.rows);
+	if (centerRoiRect.width <= 0 || centerRoiRect.height <= 0) return false;
+
+	cv::Mat centerRoi(gray, centerRoiRect);
+	cv::Scalar centerMean, centerStddev;
+	meanStdDev(centerRoi, centerMean, centerStddev);
+	if (centerStddev[0] < 2.5) return false;  // 从4.0降到2.5，减少漏检
+	// 9. 过滤细长杆部 (新增：高度/宽度 > 2.0 判定为杆部)
+	float hwRatio = max(height, width) / min(height, width);
+	if (hwRatio > 2.0) return false;
+
+	// 10. 扁平度约束 (排除过高轮廓)
+	float flatAspect = min(height, width) / max(height, width);
+	if (flatAspect > 0.6) return false;  // 从0.5放宽到0.6，兼容真实头部
+
+	// 通过所有筛选
+	radius = minor / 2.0;      // 使用短半轴作为半径，确保圆不大
+	center = ellipseRect.center;
+	return true;
+}
+
+// 非极大值抑制（合并重叠检测，解决重复问题）
+vector<Screw> frmEdgeWidthMeasure::nmsScrews(const vector<Screw>& screws, float overlapThresh = 0.6f) {
+	if (screws.empty()) return {};
+	vector<Screw> sorted = screws;
+	sort(sorted.begin(), sorted.end(),
+		[](const Screw& a, const Screw& b) { return a.radius > b.radius; });
+	vector<bool> keep(sorted.size(), true);
+	for (size_t i = 0; i < sorted.size(); ++i) {
+		if (!keep[i]) continue;
+		for (size_t j = i + 1; j < sorted.size(); ++j) {
+			if (!keep[j]) continue;
+			float dist = norm(sorted[i].center - sorted[j].center);
+			float r1 = sorted[i].radius, r2 = sorted[j].radius;
+			if (dist < (r1 + r2) * overlapThresh) {
+				keep[j] = false; // 保留半径大的
+			}
+			float minDist = max(r1, r2) * 1.2f;
+			if (dist < minDist) keep[j] = false;
+		}
+	}
+	vector<Screw> result;
+	for (size_t i = 0; i < sorted.size(); ++i) {
+		if (keep[i]) result.push_back(sorted[i]);
+	}
+	return result;
+}
+// 聚类合并重复检测的圆（核心解决重复标记）
+vector<cv::Vec3f> frmEdgeWidthMeasure::clusterCircles(const vector<cv::Vec3f>& circles, float clusterRadius = 15.0f) {
+	if (circles.empty()) return {};
+	vector<bool> processed(circles.size(), false);
+	vector<cv::Vec3f> result;
+
+	for (size_t i = 0; i < circles.size(); ++i) {
+		if (processed[i]) continue;
+
+		// 收集同一聚类的所有圆
+		vector<cv::Vec3f> cluster;
+		cluster.push_back(circles[i]);
+		processed[i] = true;
+
+		for (size_t j = i + 1; j < circles.size(); ++j) {
+			if (processed[j]) continue;
+			float dx = circles[i][0] - circles[j][0];
+			float dy = circles[i][1] - circles[j][1];
+			float dist = sqrt(dx * dx + dy * dy);
+			if (dist < clusterRadius) {
+				cluster.push_back(circles[j]);
+				processed[j] = true;
+			}
+		}
+
+		// 计算聚类中心（取平均值）
+		float cx = 0, cy = 0, r = 0;
+		for (const auto& c : cluster) {
+			cx += c[0];
+			cy += c[1];
+			r += c[2];
+		}
+		cx /= cluster.size();
+		cy /= cluster.size();
+		r /= cluster.size();
+		result.push_back(cv::Vec3f(cx, cy, r));
+	}
+	return result;
+}
+
+// 过滤非螺丝头部（基于尺寸+位置+形状）
+vector<cv::Vec3f> frmEdgeWidthMeasure::filterScrewHeads(const vector<cv::Vec3f>& circles, const cv::Mat& img) {
+	vector<cv::Vec3f> valid;
+	int topSkip = 220;  // 顶部文字区
+	float minRadius = 3.0f;   // 最小头部半径
+	float maxRadius = 12.0f;  // 最大头部半径
+
+	for (const auto& c : circles) {
+		float x = c[0], y = c[1], r = c[2];
+
+		// 1. 过滤顶部文字区
+		if (y < topSkip) continue;
+
+		// 2. 过滤图像边缘
+		if (x < r + 20 || x > img.cols - r - 20 || y < r + 20 || y > img.rows - r - 20) continue;
+
+		// 3. 过滤尺寸异常（非头部）
+		if (r < minRadius || r > maxRadius) continue;
+
+		// 4. 验证头部灰度特征（十字槽）
+		cv::Rect roiRect(cvRound(x - r * 0.5), cvRound(y - r * 0.5), cvRound(r), cvRound(r));
+		roiRect = roiRect & cv::Rect(0, 0, img.cols, img.rows);
+		cv::Mat roi(img, roiRect);
+		cv::Scalar mean, stddev;
+		meanStdDev(roi, mean, stddev);
+		if (stddev[0] < 3.0) continue;  // 无十字槽纹理的排除
+
+		valid.push_back(c);
+	}
+	return valid;
+}
+
 int frmEdgeWidthMeasure::RunToolPro()
 {
 	try
@@ -133,6 +375,209 @@ int frmEdgeWidthMeasure::RunToolPro()
 			//emit dataVar::fProItemTab->sig_InfoClick();
 			//emit dataVar::fProItemTab->sig_Log("米粒总数：" + QString::number(result[0]) + " 优良米粒总数：" + QString::number(result[1]) + " 缺陷米粒总数：" + QString::number(result[2]));
 			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "信息", "米粒总数：" + QString::number(result[0])+" 优良米粒总数："+ QString::number(result[1])+" 缺陷米粒总数："+ QString::number(result[2]));
+			msgBox.setWindowIcon(QIcon(":/resource/info.png"));
+			msgBox.exec();
+			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+			//GetToolBase()->m_Tools[tool_index].PublicImage.OutputRoiImage = dstRoiImage;
+			//GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = Distance;
+			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+			return 0;
+		}
+		//螺丝钉计数
+		if (ui.isActureDistance_7->isChecked())
+		{
+			/*Mat src = imread(argv[1]);
+			if (src.empty()) {
+				cout << "无法加载图像: " << argv[1] << endl;
+				return -1;
+			}*/
+
+			// 缩放图像（若太大则缩小，加快处理）
+			cv::Mat img;
+			double scale = 1.0;
+			const int maxWidth = 1200;
+			if (dstImage.cols > maxWidth) {
+				scale = (double)maxWidth / dstImage.cols;
+				cv::resize(dstImage, img, cv::Size(), scale, scale);
+			}
+			else {
+				img = dstImage.clone();
+			}
+
+			cv::Mat gray;
+			cvtColor(img, gray, cv::COLOR_BGR2GRAY);
+
+			// 增强对比度（CLAHE）
+			cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(2.0, cv::Size(8, 8));
+			cv::Mat enhanced;
+			clahe->apply(gray, enhanced);
+
+			// 高斯滤波
+			cv::Mat blurred;
+			GaussianBlur(enhanced, blurred, cv::Size(5, 5), 1.5);
+
+			// 自适应阈值二值化
+			cv::Mat binary;
+			adaptiveThreshold(blurred, binary, 255, cv::ADAPTIVE_THRESH_GAUSSIAN_C, cv::THRESH_BINARY_INV, 11, 2);
+
+			// 形态学操作优化 (保留小螺丝头部，同时抑制杆部噪点)
+			cv::Mat kernel_close = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(2, 2));
+			cv::Mat kernel_open = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));  // 缩小开运算核
+			morphologyEx(binary, binary, cv::MORPH_CLOSE, kernel_close);
+			morphologyEx(binary, binary, cv::MORPH_OPEN, kernel_open);
+			// Canny边缘检测强化头部轮廓
+			cv::Mat edges;
+			Canny(blurred, edges, 50, 150);
+			binary = edges & binary;
+			// ------------------- 可选：颜色辅助（金属高亮区域） -------------------
+			// 将图像转换到 HSV 空间，提取高亮度区域（金属通常反射强）
+			cv::Mat hsv;
+			cvtColor(img, hsv, cv::COLOR_BGR2HSV);
+			cv::Mat maskMetal;
+			// 提取亮度 V 通道 > 200 的区域（可根据实际光照调整）
+			vector<cv::Mat> channels;
+			split(hsv, channels);
+			cv::Mat V = channels[2];
+			threshold(V, maskMetal, 200, 255, cv::THRESH_BINARY);
+			// 与二值图取交集，只保留高亮区域
+			cv::Mat binaryFiltered;
+			bitwise_and(binary, maskMetal, binaryFiltered);
+
+			// 也可以使用原二值图（如果金属亮度不明显，可注释上面代码，改用 binary）
+			// 这里使用过滤后的二值图
+			cv::Mat finalBinary = binaryFiltered.empty() ? binary : binaryFiltered;
+			// 查找轮廓
+			vector<vector<cv::Point>> contours;
+			findContours(finalBinary, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+
+			// ==================== 可调参数（根据实际图片修改） ====================
+			double minArea = 60.0;           // 最小面积（像素）
+			double maxArea = 500.0;          // 最大面积（像素）—— 严格控制，避免包含身体
+			double minCircularity = 0.72;    // 圆形度阈值（螺丝头部>0.7，数字<0.5）
+			double minEllipseAspect = 0.68;  // 椭圆短长轴比（圆形>0.65）
+			double maxGrayStdDev = 14.0;     // 灰度标准差上限（文字区域>30）
+			double minConvexity = 0.93;      // 凸包面积比（螺丝头部>0.95，文字<0.85）
+			int borderMargin = 50;           // 剔除靠近边界的检测（像素）
+			int topSkip = 220;  // 新增：顶部文字区跳过
+			float nmsMinDistRatio = 1.15f;     // NMS 重叠阈值（更积极合并）
+			// ===========================================================
+
+			//// 手动排除顶部和底部固定文字区域（根据图片中文字位置设置）
+			//int topExclude = (int)(img.rows * 0.25);      // 顶部排除比例
+			//int bottomExclude = (int)(img.rows * 0.10);   // 底部排除比例
+
+			vector<Screw> screws;
+			for (const auto& c : contours) {
+				double radius, circ;
+				cv::Point2f center;
+				if (isScrewHead(c, gray, radius, center, circ,
+					minArea, maxArea, minCircularity, minEllipseAspect,
+					maxGrayStdDev, minConvexity)) {
+					// 剔除靠近边界的检测（解决顶部文字误检）
+					if (center.x < borderMargin || center.x > img.cols - borderMargin ||
+						center.y < borderMargin || center.y > img.rows - borderMargin) {
+						continue;
+					}
+					// 强化边界过滤：跳过顶部文字区
+					if (center.y < topSkip ||
+						center.x < borderMargin || center.x > img.cols - borderMargin ||
+						center.y > img.rows - borderMargin) {
+						continue;
+					}
+					screws.push_back({ center, (float)radius, 0, circ });
+				}
+			}
+
+			// 霍夫圆检测作为补充（但需严格限制半径范围，避免误检）
+			vector<cv::Vec3f> circles;
+			int minRadius = (int)sqrt(minArea / CV_PI);
+			int maxRadius = (int)sqrt(maxArea / CV_PI);
+			HoughCircles(enhanced, circles, cv::HOUGH_GRADIENT, 1.5, 20, 100, 30, minRadius, maxRadius);
+			for (const auto& c : circles) {
+				cv::Point2f center(c[0], c[1]);
+				float radius = c[2];
+				// 简单过滤：若中心靠近边界则跳过
+				if (center.x < borderMargin || center.x > img.cols - borderMargin ||
+					center.y < borderMargin || center.y > img.rows - borderMargin) {
+					continue;
+				}
+				screws.push_back({ center, radius, 0, 0.0 });
+			}
+
+			// 合并去重（NMS）
+			// NMS 合并重复检测
+			vector<Screw> finalScrews = nmsScrews(screws, nmsMinDistRatio);
+			for (size_t i = 0; i < finalScrews.size(); ++i) {
+				finalScrews[i].id = i + 1;
+			}
+
+			// 绘制结果
+			//cv::Mat result = img.clone();
+			dstImage = img.clone();
+			for (const auto& s : finalScrews) {
+				// 绘制头部圆圈（绿色）
+				circle(dstImage, s.center, cvRound(s.radius), cv::Scalar(0, 255, 0), 2);
+				// 绘制中心点（红色）
+				circle(dstImage, s.center, 3, cv::Scalar(0, 0, 255), -1);
+				// 标号位置（圆上方）
+				string text = to_string(s.id);
+				cv::Point textPos(s.center.x - 10, s.center.y - s.radius - 5);
+				if (textPos.y < 0) textPos.y = s.center.y + s.radius + 15;
+				putText(dstImage, text, textPos, cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(255, 0, 0), 1);
+			}
+			//// 预处理：灰度+降噪+增强
+			//cv::Mat gray, blurred, enhanced;
+			//cvtColor(img, gray, cv::COLOR_BGR2GRAY);
+			//GaussianBlur(gray, blurred, cv::Size(9,9), 2, 2);
+   // 
+			//// CLAHE增强对比度（突出头部十字槽）
+			//cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(2.0, cv::Size(8,8));
+			//clahe->apply(blurred, enhanced);
+
+			//// 霍夫圆检测（专门定位圆形头部，核心修复！）
+			//vector<cv::Vec3f> circles;
+			//cv::HoughCircles(
+			//	enhanced, circles, cv::HOUGH_GRADIENT,
+			//	1,              // 累加器分辨率
+			//	15,             // 圆心最小距离（关键：避免重复检测）
+			//	100,            // Canny高阈值
+			//	30,             // 累加器阈值（越高越严格）
+			//	3,              // 最小半径
+			//	12              // 最大半径
+			//);
+			//// 第一步过滤：只保留头部特征
+			//vector<cv::Vec3f> filtered = filterScrewHeads(circles, gray);
+
+			//// 第二步聚类：合并重复标记（核心解决多标记问题）
+			//vector<cv::Vec3f> finalCircles = clusterCircles(filtered, 15.0f);
+
+			//// 绘制结果
+			//dstImage = img.clone();
+			//for (size_t i = 0; i < finalCircles.size(); ++i) {
+			//	cv::Point center(cvRound(finalCircles[i][0]), cvRound(finalCircles[i][1]));
+			//	int radius = cvRound(finalCircles[i][2]);
+
+			//	// 绘制头部轮廓
+			//	cv::circle(dstImage, center, radius, cv::Scalar(0, 255, 0), 2);
+			//	// 绘制中心红点
+			//	cv::circle(dstImage, center, 3, cv::Scalar(0, 0, 255), -1);
+			//	// 绘制编号
+			//	string text = to_string(i + 1);
+			//	cv::Point textPos(center.x - 10, center.y - radius - 5);
+			//	if (textPos.y < 0) textPos.y = center.y + radius + 15;
+			//	putText(dstImage, text, textPos, cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(255, 0, 0), 1);
+			//}
+			//// 输出数量
+			//int count = finalCircles.size();
+			//cout << "检测到螺丝钉数量: " << count << endl;
+			//putText(dstImage, "Count: " + to_string(count), cv::Point(30, 50),
+			//	cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 255), 2);
+
+
+			cout << "检测到螺丝钉数量: " << finalScrews.size() << endl;
+			putText(dstImage, "Count: " + to_string(finalScrews.size()), cv::Point(30, 50),
+				cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 255), 2);
+			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "信息", "螺丝钉总数：" + QString::number(finalScrews.size()) );
 			msgBox.setWindowIcon(QIcon(":/resource/info.png"));
 			msgBox.exec();
 			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;

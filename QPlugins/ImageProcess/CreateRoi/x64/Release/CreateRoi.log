@@ -1,37 +1,3 @@
-﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+﻿   Qt/MSBuild: 3.5.0.0
    Qt: 5.14.2
-  uic frmCreateRoi.ui
-  rcc sub_res.qrc
-  moc Toolnterface.h
-  moc QToolBase.h
-  moc mytitlebar.h
-  moc frmCreateRoi.h
-  moc QGraphicsViews.h
-  moc QGraphicsScenes.h
-  moc ImageItem.h
-  moc BaseItem.h
-  moc ControlItem.h
-  moc CreateRoi.h
-  frmCreateRoi.cpp
-  ImageItem.cpp
-  mytitlebar.cpp
-  QGraphicsScenes.cpp
-  QGraphicsViews.cpp
-  Toolnterface.cpp
-  BaseItem.cpp
-  ControlItem.cpp
-  CreateRoi.cpp
-  qrc_sub_res.cpp
-  moc_Toolnterface.cpp
-  moc_QToolBase.cpp
-  moc_mytitlebar.cpp
-  moc_frmCreateRoi.cpp
-  moc_QGraphicsViews.cpp
-  moc_QGraphicsScenes.cpp
-  moc_ImageItem.cpp
-  moc_BaseItem.cpp
-  moc_ControlItem.cpp
-  moc_CreateRoi.cpp
-    正在创建库 ../../../QSoftExe/Release/Plugins/CreateRoi.lib 和对象 ../../../QSoftExe/Release/Plugins/CreateRoi.exp
   CreateRoi.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\CreateRoi.dll

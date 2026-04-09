@@ -435,7 +435,7 @@ QPushButton:pressed{background-color: rgba(226, 172, 162, 200);}</string>
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>210</y>
+         <y>280</y>
          <width>427</width>
          <height>101</height>
         </rect>
@@ -759,7 +759,7 @@ background: transparent;</string>
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>320</y>
+         <y>390</y>
          <width>427</width>
          <height>101</height>
         </rect>
@@ -858,7 +858,7 @@ QPushButton:pressed{background-color: rgb(85, 170, 127);}</string>
          <x>10</x>
          <y>100</y>
          <width>427</width>
-         <height>101</height>
+         <height>171</height>
         </rect>
        </property>
        <property name="font">
@@ -963,7 +963,7 @@ QScrollBar::sub-line:vertical{
 		background:url(:/resource/up.png) center no-repeat;}</string>
         </property>
         <property name="currentText">
-         <string>Detect</string>
+         <string>Classify</string>
         </property>
         <item>
          <property name="text">
@@ -1080,8 +1080,13 @@ QScrollBar::sub-line:vertical{
 		background:url(:/resource/up.png) center no-repeat;}</string>
         </property>
         <property name="currentText">
-         <string>YOLO26</string>
+         <string>YOLOv5</string>
         </property>
+        <item>
+         <property name="text">
+          <string>YOLOv4</string>
+         </property>
+        </item>
         <item>
          <property name="text">
           <string>YOLOv5</string>
@@ -1234,6 +1239,132 @@ QScrollBar::sub-line:vertical{
           <string>GPU</string>
          </property>
         </item>
+       </widget>
+       <widget class="QDoubleSpinBox" name="doubleSpinBox">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>51</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.010000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.450000000000000</double>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>60</y>
+          <width>41</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;IOU：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>90</y>
+          <width>51</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>黑体</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(30, 30, 30);
+background: transparent;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;置信度：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>80</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QWidget{color: rgb(85, 0, 155);background-color: rgb(180, 180, 210);}
+QDoubleSpinBox::up-button{
+    border:transparent;
+}
+QDoubleSpinBox::down-button{
+    border:transparent;
+}
+QDoubleSpinBox::up-arrow{
+    image:url(:/resource/up.png);
+}
+QDoubleSpinBox::down-arrow{
+    image:url(:/resource/down.png);
+}</string>
+        </property>
+        <property name="maximum">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.010000000000000</double>
+        </property>
+        <property name="value">
+         <double>0.400000000000000</double>
+        </property>
        </widget>
       </widget>
      </widget>

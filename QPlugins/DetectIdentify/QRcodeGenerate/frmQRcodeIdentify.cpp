@@ -352,7 +352,7 @@ int frmQRcodeIdentify::ExecuteLink(const int int_link, const QString str_link, c
 				msgBox.exec();
 				return -1;
 			}
-			ui.txtLinkImage->setText(str_link);
+			ui.txtLinkImage->setText(gvariable.global_variable_link.value(str_link).global_qstring_value);
 		}
 		return 0;
 	}

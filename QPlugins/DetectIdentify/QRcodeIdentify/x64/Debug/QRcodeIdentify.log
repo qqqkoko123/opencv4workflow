@@ -1,4 +1,4 @@
-﻿   Qt/MSBuild: 3.4.1.0
+﻿   Qt/MSBuild: 3.5.0.0
   Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
    Qt: 5.14.2
   uic frmQRcodeIdentify.ui
@@ -33,6 +33,5 @@
   moc_mytitlebar.cpp
   moc_QGraphicsViews.cpp
   moc_QRcodeIdentify.cpp
-  LINK : 没有找到 ..\..\..\QSoftExe\Debug\Plugins\QRcodeIdentify.dll 或上一个增量链接没有生成它；正在执行完全链接
     正在创建库 ../../../QSoftExe/Debug/Plugins/QRcodeIdentify.lib 和对象 ../../../QSoftExe/Debug/Plugins/QRcodeIdentify.exp
   QRcodeIdentify.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Debug\Plugins\QRcodeIdentify.dll

@@ -466,7 +466,7 @@ public:
     {
         frmQRcodeIdentifyClass->setWindowTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\344\272\214\347\273\264\347\240\201\350\257\206\345\210\253", nullptr));
         groupC1->setTitle(QCoreApplication::translate("frmQRcodeIdentifyClass", "\345\233\276\345\203\217\345\257\271\350\261\241", nullptr));
-        label_4->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\350\276\223\345\205\245\345\233\276\345\203\217\357\274\232", nullptr));
+        label_4->setText(QCoreApplication::translate("frmQRcodeIdentifyClass", "\350\276\223\345\205\245\346\226\207\346\234\254\357\274\232", nullptr));
 #if QT_CONFIG(tooltip)
         btnLinkImage->setToolTip(QCoreApplication::translate("frmQRcodeIdentifyClass", "\351\223\276\346\216\245\345\233\276\345\203\217", nullptr));
 #endif // QT_CONFIG(tooltip)

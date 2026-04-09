@@ -144,7 +144,7 @@ color: rgb(85, 0, 255);</string>
 background: transparent;</string>
         </property>
         <property name="text">
-         <string>输入图像：</string>
+         <string>输入文本：</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="txtLinkImage">

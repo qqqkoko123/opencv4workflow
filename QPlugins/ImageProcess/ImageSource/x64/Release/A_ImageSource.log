@@ -1,7 +1,3 @@
-﻿   Qt/MSBuild: 3.4.1.0
+﻿   Qt/MSBuild: 3.5.0.0
    Qt: 5.14.2
-  ImageSource.cpp
-  frmImageSource.cpp
-  moc_frmImageSource.cpp
-    正在创建库 ../../../QSoftExe/Release/Plugins/A_ImageSource.lib 和对象 ../../../QSoftExe/Release/Plugins/A_ImageSource.exp
   A_ImageSource.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\A_ImageSource.dll

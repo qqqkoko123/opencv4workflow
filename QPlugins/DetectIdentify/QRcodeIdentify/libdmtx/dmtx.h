@@ -62,7 +62,9 @@ extern "C" {
 #define DmtxModuleData              0x40
 
 #define DMTX_CHECK_BOUNDS(l,i) (assert((i) >= 0 && (i) < (l)->length && (l)->length <= (l)->capacity))
-
+#ifndef DmtxPack8bpp
+#define DmtxPack8bpp DmtxPack8bppK
+#endif
 typedef enum {
    DmtxStatusEncoding, /* Encoding is currently underway */
    DmtxStatusComplete, /* Encoding is done and everything went well */

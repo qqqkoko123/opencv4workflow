@@ -7,7 +7,10 @@
 #include "mytitlebar.h"
 #include "QGraphicsViews.h"
 #include "Toolnterface.h"
-
+struct DmCodeResult {
+	std::string content;
+	cv::Rect bbox; // DM 码在原图中的 bounding box
+};
 class frmQRcodeIdentify : public Toolnterface
 {
 	Q_OBJECT
@@ -15,6 +18,8 @@ class frmQRcodeIdentify : public Toolnterface
 public:
 	frmQRcodeIdentify(QString toolName, QToolBase* toolBase, QWidget* parent = Q_NULLPTR);
 	~frmQRcodeIdentify();
+
+	std::vector<DmCodeResult> decode_all_dm_codes(const cv::Mat& src);
 
 private:
 	Ui::frmQRcodeIdentifyClass ui;

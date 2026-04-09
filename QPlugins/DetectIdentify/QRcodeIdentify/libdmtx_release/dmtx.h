@@ -62,7 +62,10 @@ extern "C" {
 #define DmtxModuleData              0x40
 
 #define DMTX_CHECK_BOUNDS(l,i) (assert((i) >= 0 && (i) < (l)->length && (l)->length <= (l)->capacity))
-
+// 添加8位灰度像素打包格式的定义，兼容旧代码
+#ifndef DmtxPack8bpp
+#define DmtxPack8bpp DmtxPack8bppK
+#endif
 typedef enum {
    DmtxStatusEncoding, /* Encoding is currently underway */
    DmtxStatusComplete, /* Encoding is done and everything went well */

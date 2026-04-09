@@ -1,22 +1,3 @@
-﻿   Qt/MSBuild: 3.4.1.0
-  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+﻿   Qt/MSBuild: 3.5.0.0
    Qt: 5.14.2
-  uic frmLogicGoto.ui
-  rcc sub_res.qrc
-  moc Toolnterface.h
-  moc QToolBase.h
-  moc mytitlebar.h
-  moc frmLogicGoto.h
-  moc LogicGoto.h
-  mytitlebar.cpp
-  Toolnterface.cpp
-  frmLogicGoto.cpp
-  LogicGoto.cpp
-  qrc_sub_res.cpp
-  moc_Toolnterface.cpp
-  moc_QToolBase.cpp
-  moc_mytitlebar.cpp
-  moc_frmLogicGoto.cpp
-  moc_LogicGoto.cpp
-    正在创建库 ../../../QSoftExe/Release/Plugins/LogicGoto.lib 和对象 ../../../QSoftExe/Release/Plugins/LogicGoto.exp
   LogicGoto.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\LogicGoto.dll

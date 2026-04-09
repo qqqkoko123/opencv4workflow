@@ -9,9 +9,13 @@
 #include <iostream>
 #include <string>
 #include "YOLO12.hpp" 
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 #include <Windows.h>
 #include <QScreen>
 #include <algorithm> 
+#include <iomanip>
 #include "yolos/tasks/detection.hpp"
 #include "yolos/tasks/pose.hpp"
 #include "yolos/tasks/segmentation.hpp"
@@ -81,45 +85,305 @@ cv::Mat frmClassifier::GetYoloV13(std::string modelPath, std::string labelsPath,
 			{
 				isGPU = false;
 			}
-			bool isFullScreen = false;
-			// Initialize
-			yolos::det::YOLODetector detector(modelPath, labelsPath, /*gpu=*/isGPU);
-
-			// Detect
-
-			auto detections = detector.detect(image, /*conf=*/0.25f, /*iou=*/0.45f);
-
-			// Process results
-			for (const auto& det : detections) {
-				/*std::cout << "Class: " << det.className
-					<< " Conf: " << det.confidence
-					<< " Box: " << det.box << std::endl;*/
-					//检测到手机拍照立刻全屏遮挡
-				if (QString::fromStdString(utils::getClassNames(labelsPath)[det.classId]) == "phone")
-				{
-					//全屏遮挡
-					emit sigShowFullScreen();
-					isFullScreen = true;
-					break;
-				}
-			}
-			if (detections.size() > 0)
+			if (ui.comboType_3->currentText().QString::toStdString() == "YOLOv4")
 			{
-				GetToolBase()->m_Tools[tool_index].PublicDetect.Category = QString::fromStdString(utils::getClassNames(labelsPath)[detections[0].classId]);
-				GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+				// 使用 OpenCV DNN 加载并推理 YOLOv4（支持 .cfg+.weights 或 .onnx）
+				bool isFullScreen = false;
+				try {
+					// 阈值与输入大小（可调整或做成 UI 参数）
+					const float confThreshold = 0.5f;
+					const float nmsThreshold = 0.45f;
+					const int inpWidth = 416;
+					const int inpHeight = 416;
+
+					// 选择 backend/target
+					cv::dnn::Net net;
+
+					// 辅助：判断后缀
+					auto ends_with = [](const std::string& s, const std::string& suffix) {
+						return s.size() >= suffix.size() && s.compare(s.size() - suffix.size(), suffix.size(), suffix) == 0;
+						};
+
+					// 首先尝试用户在界面中填写的路径（优先使用 txtLoadModel 与 txtLabels）
+					std::string uiModel = ui.txtLoadModel->text().toStdString(); // 可能是 .weights 或 .onnx
+					std::string uiLabels = ui.txtLabels->text().toStdString();   // 可能是 .cfg 或 .names
+
+					// 优先处理 ONNX（通用）
+					if (ends_with(uiModel, ".onnx") || ends_with(modelPath, ".onnx")) {
+						std::string onnxPath = ends_with(uiModel, ".onnx") ? uiModel : modelPath;
+						net = cv::dnn::readNet(onnxPath);
+					}
+					else {
+						// 尝试使用 cfg + weights：按要求 uiModel 为 .weights，uiLabels 为 .names
+						std::string cfgPath;
+						std::string weightsPath;
+
+						// 优先使用界面填写的 txtLoadModel (uiModel) 作为 .weights
+						if (ends_with(uiModel, ".weights")) {
+							weightsPath = uiModel;
+							// 从 uiModel 替换尾部 .weights -> .cfg 作为 cfg 路径
+							cfgPath = uiModel.substr(0, uiModel.size() - 8) + ".cfg";
+							// 如果生成的 cfg 不存在，尝试用传入的 modelPath（如果是 .cfg）
+							std::ifstream f(cfgPath);
+							if (!f.good()) {
+								if (ends_with(modelPath, ".cfg")) {
+									cfgPath = modelPath;
+								}
+							}
+							else {
+								f.close();
+							}
+						}
+						// 否则，如果传入的 modelPath 是 .weights，也同样处理
+						else if (ends_with(modelPath, ".weights")) {
+							weightsPath = modelPath;
+							cfgPath = modelPath.substr(0, modelPath.size() - 8) + ".cfg";
+							std::ifstream f(cfgPath);
+							if (!f.good()) {
+								// 无法找到自动生成的 cfg，留空以便后续回退处理
+							}
+							else {
+								f.close();
+							}
+						}
+						// 仍然尝试兼容少数旧用法：如果传入参数已经包含 cfg+weights，沿用之
+						else if (ends_with(modelPath, ".cfg") && ends_with(labelsPath, ".weights")) {
+							cfgPath = modelPath;
+							weightsPath = labelsPath;
+						}
+						// 额外兼容：如果 uiLabels 意外被选为 .cfg，则把它作为 cfg，并尝试推断 weights
+						else if (ends_with(uiLabels, ".cfg")) {
+							cfgPath = uiLabels;
+							weightsPath = uiLabels.substr(0, uiLabels.size() - 4) + ".weights";
+							std::ifstream f(weightsPath);
+							if (!f.good()) {
+								weightsPath.clear();
+							}
+							else f.close();
+						}
+
+						// 最终加载：若 cfg 与 weights 都存在则用 Darknet 加载，否则尝试用传入的 modelPath 作为通用读取（如 .onnx）
+						if (!cfgPath.empty() && !weightsPath.empty()) {
+							net = cv::dnn::readNetFromDarknet(cfgPath, weightsPath);
+						}
+						else {
+							// 回退：直接尝试用 modelPath（可能是 .onnx 或其它可识别格式）
+							net = cv::dnn::readNet(modelPath);
+						}
+						// 如果都没有找到 cfg+weights，就尝试直接用 modelPath（可能是 .weights/.onnx）
+						if (!cfgPath.empty() && !weightsPath.empty()) {
+							net = cv::dnn::readNetFromDarknet(cfgPath, weightsPath);
+						}
+						else {
+							// 兜底：尝试用 modelPath（可能是 .weights）直接读取（OpenCV 不直接支持仅 .weights）
+							// 如果 modelPath 是 .weights，尝试找同名 .cfg
+							if (ends_with(modelPath, ".weights")) {
+								std::string candCfg = modelPath.substr(0, modelPath.size() - 8) + ".cfg";
+								std::ifstream f(candCfg);
+								if (f.good()) {
+									net = cv::dnn::readNetFromDarknet(candCfg, modelPath);
+									f.close();
+								}
+								else {
+									// 直接读 weights 会失败；作为最后手段尝试 readNet(modelPath)
+									net = cv::dnn::readNet(modelPath);
+								}
+							}
+							else {
+								// 直接尝试用传入的 modelPath
+								net = cv::dnn::readNet(modelPath);
+							}
+						}
+					}
+
+					// 设置 backend/target
+					if (isGPU) {
+#ifdef CV_DNN_HAS_CUDA
+						net.setPreferableBackend(cv::dnn::DNN_BACKEND_CUDA);
+						net.setPreferableTarget(cv::dnn::DNN_TARGET_CUDA);
+#else
+						net.setPreferableBackend(cv::dnn::DNN_BACKEND_DEFAULT);
+						net.setPreferableTarget(cv::dnn::DNN_TARGET_CPU);
+#endif
+					}
+					else {
+						net.setPreferableBackend(cv::dnn::DNN_BACKEND_DEFAULT);
+						net.setPreferableTarget(cv::dnn::DNN_TARGET_CPU);
+					}
+
+					// 预处理并前向推理
+					cv::Mat blob;
+					cv::dnn::blobFromImage(image, blob, 1.0 / 255.0, cv::Size(inpWidth, inpHeight), cv::Scalar(0, 0, 0), true, false);
+					net.setInput(blob);
+
+					std::vector<cv::Mat> outs;
+					net.forward(outs, net.getUnconnectedOutLayersNames());
+
+					// 解析输出（兼容 darknet 格式和常见 yolov4 onnx 输出）
+					std::vector<int> classIds;
+					std::vector<float> confidences;
+					std::vector<cv::Rect> boxes;
+
+					for (size_t i = 0; i < outs.size(); ++i) {
+						// 每个 outs[i] 的每一行是一个检测向量
+						for (int j = 0; j < outs[i].rows; ++j) {
+							const float* data = outs[i].ptr<float>(j);
+							// 常见格式：[center_x, center_y, width, height, obj_conf, class1, class2, ...]
+							float obj_conf = data[4];
+							if (obj_conf <= 0.0f) continue;
+
+							// 找到类别分数最大值
+							int numClasses = outs[i].cols - 5;
+							const float* scores = data + 5;
+							int bestClass = 0;
+							float bestScore = scores[0];
+							for (int c = 1; c < numClasses; ++c) {
+								if (scores[c] > bestScore) {
+									bestScore = scores[c];
+									bestClass = c;
+								}
+							}
+							float confidence = obj_conf * bestScore;
+							if (confidence > confThreshold) {
+								int centerX = static_cast<int>(data[0] * image.cols);
+								int centerY = static_cast<int>(data[1] * image.rows);
+								int width = static_cast<int>(data[2] * image.cols);
+								int height = static_cast<int>(data[3] * image.rows);
+								int left = centerX - width / 2;
+								int top = centerY - height / 2;
+
+								classIds.push_back(bestClass);
+								confidences.push_back(confidence);
+								boxes.push_back(cv::Rect(left, top, width, height));
+							}
+						}
+					}
+
+					// 非极大值抑制
+					std::vector<int> indices;
+					cv::dnn::NMSBoxes(boxes, confidences, confThreshold, nmsThreshold, indices);
+
+					// 本地检测结果结构，初始化成员以消除静态分析警告
+					struct LocalDet { int classId = 0; float confidence = 0.0f; cv::Rect box = cv::Rect(); std::string className = ""; };
+					std::vector<LocalDet> localDetections;
+
+					// 尝试获取类别名称列表（优先使用界面填写的 .names 文件）
+					std::vector<std::string> classNames;
+					std::string namesFile;
+					// ui.txtLabels 可能是 .names 或 .cfg；优先查找 .names
+					if (!ui.txtLabels->text().toStdString().empty() && ends_with(ui.txtLabels->text().toStdString(), ".names")) {
+						namesFile = ui.txtLabels->text().toStdString();
+					}
+					else {
+						// 若 ui.txtLabels 是 .cfg，则尝试同目录同名 .names
+						if (!ui.txtLabels->text().toStdString().empty() && ends_with(ui.txtLabels->text().toStdString(), ".cfg")) {
+							std::string cand = ui.txtLabels->text().toStdString();
+							cand = cand.substr(0, cand.size() - 4) + ".names";
+							std::ifstream f(cand);
+							if (f.good()) {
+								namesFile = cand;
+								f.close();
+							}
+						}
+						// 再尝试传入的 labelsPath 参数
+						if (namesFile.empty() && !labelsPath.empty() && ends_with(labelsPath, ".names")) {
+							namesFile = labelsPath;
+						}
+					}
+					if (!namesFile.empty()) {
+						try {
+							classNames = utils::getClassNames(namesFile);
+						}
+						catch (...) {
+							classNames.clear();
+						}
+					}
+
+					for (int idx : indices) {
+						LocalDet d;
+						d.classId = classIds[idx];
+						d.confidence = confidences[idx];
+						d.box = boxes[idx];
+						if (d.classId >= 0 && d.classId < (int)classNames.size()) d.className = classNames[d.classId];
+						else d.className = std::to_string(d.classId);
+
+						// 检测到 phone 触发全屏
+						if (d.className == "phone") {
+							emit sigShowFullScreen();
+							isFullScreen = true;
+						}
+
+						localDetections.push_back(d);
+
+						// 可视化：绘制 bbox 与标签
+						cv::rectangle(image, d.box, cv::Scalar(0, 255, 0), 2);
+						std::ostringstream label;
+						label << d.className << ":" << std::fixed << std::setprecision(2) << d.confidence;
+						int baseLine = 0;
+						cv::Size labelSize = cv::getTextSize(label.str(), cv::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
+						int top = std::max(d.box.y, static_cast<int>(labelSize.height));
+						cv::putText(image, label.str(), cv::Point(d.box.x, top - 4), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
+					}
+
+					if (!isFullScreen) {
+						emit sigEndFullScreen();
+					}
+
+					// 更新工具状态（与原分支保持一致）
+					if (localDetections.size() > 0) {
+						GetToolBase()->m_Tools[tool_index].PublicDetect.Category = QString::fromStdString(localDetections[0].className);
+						GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+					}
+					else {
+						GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+					}
+				}
+				catch (const std::exception& ex) {
+					qDebug() << "YOLOv4 推理异常：" << ex.what();
+					GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+				}
 			}
 			else
 			{
-				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
-			}
-			// Visualize
-			detector.drawDetections(image, detections);
-			if (!isFullScreen)
-			{
-				//撤销全屏遮挡
-				emit sigEndFullScreen();
-			}
+				bool isFullScreen = false;
+				// Initialize
+				yolos::det::YOLODetector detector(modelPath, labelsPath, /*gpu=*/isGPU);
 
+				// Detect
+
+				auto detections = detector.detect(image, /*conf=*/ui.doubleSpinBox_2->value(), /*iou=*/ui.doubleSpinBox->value());
+
+				// Process results
+				for (const auto& det : detections) {
+					/*std::cout << "Class: " << det.className
+						<< " Conf: " << det.confidence
+						<< " Box: " << det.box << std::endl;*/
+						//检测到手机拍照立刻全屏遮挡
+					if (QString::fromStdString(utils::getClassNames(labelsPath)[det.classId]) == "phone")
+					{
+						//全屏遮挡
+						emit sigShowFullScreen();
+						isFullScreen = true;
+						break;
+					}
+				}
+				if (detections.size() > 0)
+				{
+					GetToolBase()->m_Tools[tool_index].PublicDetect.Category = QString::fromStdString(utils::getClassNames(labelsPath)[detections[0].classId]);
+					GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+				}
+				else
+				{
+					GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+				}
+				// Visualize
+				detector.drawDetections(image, detections);
+				if (!isFullScreen)
+				{
+					//撤销全屏遮挡
+					emit sigEndFullScreen();
+				}
+			}
 		}
 		else if (task_type == "Pose") {
 
@@ -526,8 +790,9 @@ void frmClassifier::on_btnDelLinkImage_clicked()
 
 void frmClassifier::on_btnLabels_clicked()
 {
-	QString dirPath = QFileDialog::getOpenFileName(this, tr("打开图像标签文件"), QDir::currentPath() + "/Parameters/Model/", "*.names");
-	if (false == dirPath.isEmpty())
+	QString filter = "Names Files (*.names)";
+	QString dirPath = QFileDialog::getOpenFileName(this, tr("打开图像标签文件"), QDir::currentPath() + "/Parameters/Model/", filter);
+	if (!dirPath.isEmpty())
 	{
 		imgLabels = dirPath;
 		ui.txtLabels->setText(dirPath);
@@ -561,12 +826,20 @@ void frmClassifier::on_btnTrainModel_clicked()
 
 void frmClassifier::on_btnLoadModel_clicked()
 {
-	QString dirPath = QFileDialog::getOpenFileName(this, tr("打开模型文件"), QDir::currentPath() + "/Parameters/Model/", "*.onnx");
-	if (false == dirPath.isEmpty())
+	QString filter;
+	// 当选择 YOLOv4 时，允许选择 .weights 或 .onnx；否则仅允许 .onnx
+	if (ui.comboType_3->currentText() == "YOLOv4") {
+		filter = tr("模型文件 (*.weights *.onnx);;Weights Files (*.weights);;ONNX Files (*.onnx)");
+	}
+	else {
+		filter = tr("ONNX Files (*.onnx)");
+	}
+
+	QString dirPath = QFileDialog::getOpenFileName(this, tr("打开模型文件"), QDir::currentPath() + "/Parameters/Model/", filter);
+	if (!dirPath.isEmpty())
 	{
 		imgLoadModel = dirPath;
-		//svm = cv::ml::SVM::load(dirPath.toStdString().c_str());
-		QString msg = "Open the model to complete...";
+		QString msg = tr("Open the model to complete...");
 		emit sig_ClassifierValue(msg);
 		ui.txtLoadModel->setText(dirPath);
 	}

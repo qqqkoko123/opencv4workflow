@@ -6,7 +6,10 @@
 #include "mytitlebar.h"
 #include "QGraphicsViews.h"
 #include "Toolnterface.h"
-
+#include <opencv2/opencv.hpp>
+#include <iostream>
+#include <vector>
+#include <cmath>
 struct InitEdgeWidthMeasureData
 {
 	bool use_roi;
@@ -29,7 +32,14 @@ struct InitEdgeWidthMeasureData
 	QColor color;
 };
 Q_DECLARE_METATYPE(InitEdgeWidthMeasureData);
-
+// 在头文件顶部添加Screw结构体声明，确保与cpp文件一致
+struct Screw {
+	cv::Point2f center;
+	float radius;
+	int id;
+	double circularity;   // 用于调试
+};
+Q_DECLARE_METATYPE(Screw);
 class frmEdgeWidthMeasure : public Toolnterface
 {
 	Q_OBJECT
@@ -71,6 +81,14 @@ private slots:
 	void on_spinSegment_valueChanged(int value);
 
 private:
+	bool hasCylinderAndThread(const cv::Mat& gray, const cv::Mat& edges, const cv::Point& center, int radius, int bodyHeightFactor);
+	float distance(const cv::Point2f& a, const cv::Point2f& b);
+	double circularity(const vector<cv::Point>& contour);
+	double grayStdDev(const cv::Mat& gray, const vector<cv::Point>& contour);
+	bool isScrewHead(const vector<cv::Point>& contour, const cv::Mat& gray, double& radius, cv::Point2f& center, double& circ, double minArea, double maxArea, double minCircularity, double minEllipseAspect, double maxGrayStdDev, double minConvexity);
+	vector<Screw> nmsScrews(const vector<Screw>& screws, float overlapThresh);
+	vector<cv::Vec3f> clusterCircles(const vector<cv::Vec3f>& circles, float clusterRadius);
+	vector<cv::Vec3f> filterScrewHeads(const vector<cv::Vec3f>& circles, const cv::Mat& img);
 	int RunToolPro();
 	int GetEdgeWidth(const cv::Mat& src_mat, const std::vector<QPointF> line_small_points, const std::vector<QPointF> line_big_points, vector<QPointF>& edge_points1, vector<QPointF>& edge_points2, const int threshold_delta1 = 20, const int direction1 = 0, const int threshold_delta2 = 20, const int direction2 = 0, const int segment_num = 120);
 	QPointF FindCrosspointimprove(const QList<float>& lineTiDu, const QList<QPointF>& ijRecord, const int direction, const int threshold_delta);

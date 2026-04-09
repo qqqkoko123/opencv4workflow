@@ -1152,6 +1152,45 @@ QCheckBox::indicator::checked {
          <bool>false</bool>
         </property>
        </widget>
+       <widget class="QCheckBox" name="isActureDistance_7">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>160</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QCheckBox{
+    color: rgb(30, 30, 30);
+	border-style: flat;
+	background: transparent;
+}
+QCheckBox::indicator {
+    width: 17px;
+    height: 17px;    
+}
+QCheckBox::indicator::unchecked {
+    image: url(:/resource/untick.png);
+}
+QCheckBox::indicator::checked {
+    image: url(:/resource/tick.png);
+};</string>
+        </property>
+        <property name="text">
+         <string>是否使用螺丝计数</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
       </widget>
       <widget class="QGroupBox" name="groupC3">
        <property name="geometry">
