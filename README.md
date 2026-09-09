@@ -28,29 +28,29 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 ### 示例图片
 
 # 海康摄像头
-[![76DrSb.png](https://i.imgs.ovh/2025/09/29/76DrSb.png)](https://imgloc.com/image/76DrSb)  
+[![海康摄像头](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E6%B5%B7%E5%BA%B7%E6%91%84%E5%83%8F%E5%A4%B4.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E6%B5%B7%E5%BA%B7%E6%91%84%E5%83%8F%E5%A4%B4.png)
 # 汇川PLC读写
-[![76D8j4.png](https://i.imgs.ovh/2025/09/29/76D8j4.png)](https://imgloc.com/image/76D8j4)
+[![汇川PLC读写](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E6%B1%87%E5%B7%9DPLC%E8%AF%BB%E5%86%99.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E6%B1%87%E5%B7%9DPLC%E8%AF%BB%E5%86%99.png)
 # OCR
-[![76DsdN.png](https://i.imgs.ovh/2025/09/29/76DsdN.png)](https://imgloc.com/image/76DsdN)
+[![OCR](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/OCR.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/OCR.png)
 # YOLOV13
-[![76DK10.png](https://i.imgs.ovh/2025/09/29/76DK10.png)](https://imgloc.com/image/76DK10)
+[![YOLOV13](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/YOLOV13.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/YOLOV13.png)
 # 二维码（DataMatrix、QRCode）生成
-[![76DhPb.png](https://i.imgs.ovh/2025/09/29/76DhPb.png)](https://imgloc.com/image/76DhPb)
+[![二维码（DataMatrix、QRCode）生成](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E4%BA%8C%E7%BB%B4%E7%A0%81%EF%BC%88DataMatrix%E3%80%81QRCode%EF%BC%89%E7%94%9F%E6%88%90.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E4%BA%8C%E7%BB%B4%E7%A0%81%EF%BC%88DataMatrix%E3%80%81QRCode%EF%BC%89%E7%94%9F%E6%88%90.png)
 # 米粒计数和检测
-[![76DN1e.png](https://i.imgs.ovh/2025/09/29/76DN1e.png)](https://imgloc.com/image/76DN1e)
+[![米粒计数和检测](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E7%B1%B3%E7%B2%92%E8%AE%A1%E6%95%B0%E5%92%8C%E6%A3%80%E6%B5%8B.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E7%B1%B3%E7%B2%92%E8%AE%A1%E6%95%B0%E5%92%8C%E6%A3%80%E6%B5%8B.png)
 # 距离测量
-[![76MSTQ.png](https://i.imgs.ovh/2025/09/29/76MSTQ.png)](https://imgloc.com/image/76MSTQ)
+[![距离测量](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E8%B7%9D%E7%A6%BB%E6%B5%8B%E9%87%8F.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E8%B7%9D%E7%A6%BB%E6%B5%8B%E9%87%8F.png)
 # 自动打印
-[![76MTmm.png](https://i.imgs.ovh/2025/09/29/76MTmm.png)](https://imgloc.com/image/76MTmm)
+[![自动打印](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%B0.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E8%87%AA%E5%8A%A8%E6%89%93%E5%8D%B0.png)
 # 长度测量
-[![yH4xxn.png](https://i.imgs.ovh/2026/02/03/yH4xxn.png)](https://imgloc.com/image/yH4xxn)
+[![长度测量](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E9%95%BF%E5%BA%A6%E6%B5%8B%E9%87%8F.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E9%95%BF%E5%BA%A6%E6%B5%8B%E9%87%8F.png)
 # 软件著作权
-[![yHpJVg.png](https://i.imgs.ovh/2026/02/03/yHpJVg.png)](https://imgloc.com/image/yHpJVg)
+[![软件著作权](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E8%BD%AF%E8%91%97.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E8%BD%AF%E8%91%97.png)
 
 # 觉得好，请打赏我~
 
-![打赏码](https://i.imgs.ovh/2025/09/19/7TQv8b.th.jpeg)     ![打赏码](https://i.imgs.ovh/2025/09/19/7TQq8t.th.png)
+![支付宝打赏](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E8%A7%89%E5%BE%97%E5%A5%BD%E8%AF%B7%E6%89%93%E8%B5%8F%E6%88%91alipay.jpg)     ![微信打赏](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E8%A7%89%E5%BE%97%E5%A5%BD%E8%AF%B7%E6%89%93%E8%B5%8F%E6%88%91wechat_reward.jpg)
 
 
 
