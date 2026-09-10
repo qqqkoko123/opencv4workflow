@@ -1,4 +1,4 @@
-#include "ImageRepair.h"
+ï»¿#include "ImageRepair.h"
 #include "frmImageRepair.h"
 
 ImageRepair::ImageRepair()
@@ -7,12 +7,12 @@ ImageRepair::ImageRepair()
 
 QString ImageRepair::name()
 {
-    return "Í¼ÏñĞŞ¸´";
+    return "å›¾åƒä¿®å¤";
 }
 
 QString ImageRepair::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

@@ -1,4 +1,4 @@
-#include "frmProcessSetUp.h"
+ï»¿#include "frmProcessSetUp.h"
 #include <QMessageBox>
 #include <QTableWidgetItem>
 #include <QComboBox>
@@ -11,15 +11,15 @@ frmProcessSetUp::frmProcessSetUp(QWidget*parent)
 {
 	ui.setupUi(this);	
 	this->setWindowIcon(QIcon(":/res/ico/process.png"));	
-	//FramelessWindowHintÊôĞÔÉèÖÃ´°¿ÚÈ¥³ı±ß¿ò
-	//WindowMinimizeButtonHint ÊôĞÔÉèÖÃÔÚ´°¿Ú×îĞ¡»¯Ê±£¬µã»÷ÈÎÎñÀ¸´°¿Ú¿ÉÒÔÏÔÊ¾³öÔ­´°¿Ú
+	//FramelessWindowHintå±æ€§è®¾ç½®çª—å£å»é™¤è¾¹æ¡†
+	//WindowMinimizeButtonHint å±æ€§è®¾ç½®åœ¨çª—å£æœ€å°åŒ–æ—¶ï¼Œç‚¹å‡»ä»»åŠ¡æ çª—å£å¯ä»¥æ˜¾ç¤ºå‡ºåŸçª—å£
 	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint);
-	//ÉèÖÃ´°ÌåÔÚÆÁÄ»ÖĞ¼äÎ»ÖÃ
+	//è®¾ç½®çª—ä½“åœ¨å±å¹•ä¸­é—´ä½ç½®
 	QDesktopWidget* desktop = QApplication::desktop();
 	move((desktop->width() - this->width()) / 2, (desktop->height() - this->height()) / 2);
-	//ÉèÖÃ´°¿Ú±³¾°Í¸Ã÷
+	//è®¾ç½®çª—å£èƒŒæ™¯é€æ˜
 	setAttribute(Qt::WA_TranslucentBackground);	
-	//³õÊ¼»¯±êÌâÀ¸
+	//åˆå§‹åŒ–æ ‡é¢˜æ 
 	initTitleBar();		
 	form_load();		
 }
@@ -37,14 +37,14 @@ void frmProcessSetUp::initTitleBar()
 	m_titleBar->setBackgroundColor(3, 110, 95);
 	m_titleBar->setStyleSheet("background-color: rgba(0, 0, 0,0);color:white;font-size:16px");
 	m_titleBar->setTitleIcon(":/res/ico/process.png");
-	m_titleBar->setTitleContent("Á÷³ÌÉèÖÃ");
+	m_titleBar->setTitleContent("æµç¨‹è®¾ç½®");
 	m_titleBar->setButtonType(ONLY_CLOSE_BUTTON);
 	m_titleBar->setTitleWidth(this->width());
 }
 
 void frmProcessSetUp::paintEvent(QPaintEvent* event)
 {
-	//ÉèÖÃ±³¾°É«
+	//è®¾ç½®èƒŒæ™¯è‰²
 	QPainter painter(this);
 	QPainterPath pathBack;
 	pathBack.setFillRule(Qt::WindingFill);
@@ -57,24 +57,24 @@ void frmProcessSetUp::paintEvent(QPaintEvent* event)
 void frmProcessSetUp::form_load()
 {	
 	ui.txtProject->setFocus();	
-	//Ìí¼ÓList	 	
+	//æ·»åŠ List	 	
 	ItemModel = new QStandardItemModel(this);
-	ui.listProcess->setEditTriggers(QAbstractItemView::NoEditTriggers);  //½ûÖ¹±à¼­
+	ui.listProcess->setEditTriggers(QAbstractItemView::NoEditTriggers);  //ç¦æ­¢ç¼–è¾‘
 }
 
 void frmProcessSetUp::onButtonCloseClicked()
 {
-	//ĞÅºÅÓë²Û½â³ıÁ¬½Ó
+	//ä¿¡å·ä¸æ§½è§£é™¤è¿æ¥
 	disconnect(ui.listProcess, SIGNAL(clicked(QModelIndex)), this, SLOT(slot_ListClick(QModelIndex)));	
 	this->close();
 }
 
 void frmProcessSetUp::slot_CreateList()
 {
-	//»ñÈ¡×Ó¿Ø¼ş
+	//è·å–å­æ§ä»¶
 	objTabName = dataVar::fProItemTab->findChild<QTabWidget*>("ProItemTabWidget");
 	int count = objTabName->count();
-	//Ìí¼ÓList	 		
+	//æ·»åŠ List	 		
 	ItemModel->removeRows(0, ItemModel->rowCount());
 	for (int i = 0; i < count; i++)
 	{
@@ -102,8 +102,8 @@ void frmProcessSetUp::on_btnProjectModify_clicked()
 	if (ui.txtProject->text() == QString())
 	{
 		emit dataVar::fProItemTab->sig_WarnClick();
-		emit dataVar::fProItemTab->sig_Log("ÏîÄ¿Ãû³Æ²»ÄÜÎª¿Õ£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "ÏîÄ¿Ãû³Æ²»ÄÜÎª¿Õ£¡");
+		emit dataVar::fProItemTab->sig_Log("é¡¹ç›®åç§°ä¸èƒ½ä¸ºç©ºï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "é¡¹ç›®åç§°ä¸èƒ½ä¸ºç©ºï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 		msgBox.exec();
 		return;
@@ -111,9 +111,9 @@ void frmProcessSetUp::on_btnProjectModify_clicked()
 	else
 	{
 		emit dataVar::fProItemTab->sig_InfoClick();
-		emit dataVar::fProItemTab->sig_Log("ÏîÄ¿Ãû³ÆĞŞ¸ÄÍê³É£¡");
+		emit dataVar::fProItemTab->sig_Log("é¡¹ç›®åç§°ä¿®æ”¹å®Œæˆï¼");
 		dataVar::projectName = ui.txtProject->text();
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "ÌáÊ¾", "ÏîÄ¿Ãû³ÆĞŞ¸ÄÍê³É£¡");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "æç¤º", "é¡¹ç›®åç§°ä¿®æ”¹å®Œæˆï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
 		msgBox.exec();
 	}	
@@ -121,7 +121,7 @@ void frmProcessSetUp::on_btnProjectModify_clicked()
 
 void frmProcessSetUp::on_btnProcessModify_clicked()
 {
-	//»ñÈ¡×Ó¿Ø¼ş
+	//è·å–å­æ§ä»¶
 	objTabName = dataVar::fProItemTab->findChild<QTabWidget*>("ProItemTabWidget");
 	int count = objTabName->count();
 	for (int i = 0; i < count; i++)
@@ -129,8 +129,8 @@ void frmProcessSetUp::on_btnProcessModify_clicked()
 		if (ui.txtProcess->text() == objTabName->tabText(i))
 		{
 			emit dataVar::fProItemTab->sig_WarnClick();
-			emit dataVar::fProItemTab->sig_Log("ÒÑÓĞÏàÍ¬Á÷³ÌÃû³Æ£¡");
-			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "ÒÑÓĞÏàÍ¬Á÷³ÌÃû³Æ£¡");
+			emit dataVar::fProItemTab->sig_Log("å·²æœ‰ç›¸åŒæµç¨‹åç§°ï¼");
+			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "å·²æœ‰ç›¸åŒæµç¨‹åç§°ï¼");
 			msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 			msgBox.exec();
 			return;
@@ -139,8 +139,8 @@ void frmProcessSetUp::on_btnProcessModify_clicked()
 	if (ui.txtProcess->text() == QString() || ui.txtProcess->text() == str_name)
 	{
 		emit dataVar::fProItemTab->sig_WarnClick();
-		emit dataVar::fProItemTab->sig_Log("Î´Ñ¡ÔñÁ÷³Ì»òÁ÷³ÌÎ´¸ü¸ÄÃû³Æ£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "Î´Ñ¡ÔñÁ÷³Ì»òÁ÷³ÌÎ´¸ü¸ÄÃû³Æ£¡");
+		emit dataVar::fProItemTab->sig_Log("æœªé€‰æ‹©æµç¨‹æˆ–æµç¨‹æœªæ›´æ”¹åç§°ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "æœªé€‰æ‹©æµç¨‹æˆ–æµç¨‹æœªæ›´æ”¹åç§°ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 		msgBox.exec();
 		return;
@@ -148,14 +148,14 @@ void frmProcessSetUp::on_btnProcessModify_clicked()
 	else
 	{
 		QString str_modify = ui.txtProcess->text();
-		//ĞŞ¸ÄQListViewÄÚÈİ	
+		//ä¿®æ”¹QListViewå†…å®¹	
 		ItemModel->setItem(index_process_modify, new QStandardItem(str_modify));		
-		//ĞŞ¸ÄQTabWidgetÄÚÈİ	
-		objTabName = dataVar::fProItemTab->findChild<QTabWidget*>("ProItemTabWidget");  //»ñÈ¡×Ó¿Ø¼ş
+		//ä¿®æ”¹QTabWidgetå†…å®¹	
+		objTabName = dataVar::fProItemTab->findChild<QTabWidget*>("ProItemTabWidget");  //è·å–å­æ§ä»¶
 		objTabName->setTabText(index_process_modify, str_modify);
-		//ĞŞ¸ÄQTreeWidgetÄÚÈİ
-		objTreeName = dataVar::fProItemTab->findChild<QTreeWidget*>("ProItemTreeWidget");  //»ñÈ¡×Ó¿Ø¼ş		
-	    //±éÀútreeWidget
+		//ä¿®æ”¹QTreeWidgetå†…å®¹
+		objTreeName = dataVar::fProItemTab->findChild<QTreeWidget*>("ProItemTreeWidget");  //è·å–å­æ§ä»¶		
+	    //éå†treeWidget
 		QTreeWidgetItemIterator it(objTreeName);
 		QString key_old_name;
 		while (*it) 
@@ -171,8 +171,8 @@ void frmProcessSetUp::on_btnProcessModify_clicked()
 		}		
 		disconnect(this, &frmProcessSetUp::sig_UpdateQTreeWidget, dataVar::fProItemTab, &frmProItemTab::slot_UpdateQTreeWidget);
 		emit dataVar::fProItemTab->sig_InfoClick();
-		emit dataVar::fProItemTab->sig_Log(key_old_name + " ĞŞ¸ÄÃû³ÆÎª£º" + str_modify);
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "ÌáÊ¾", "Á÷³ÌÃû³ÆĞŞ¸ÄÍê³É£¡");
+		emit dataVar::fProItemTab->sig_Log(key_old_name + " ä¿®æ”¹åç§°ä¸ºï¼š" + str_modify);
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "æç¤º", "æµç¨‹åç§°ä¿®æ”¹å®Œæˆï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
 		msgBox.exec();
 	}	

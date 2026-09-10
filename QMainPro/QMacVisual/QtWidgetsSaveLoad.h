@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QList>
 #include <QDataStream>
@@ -341,7 +341,7 @@ Q_DECLARE_METATYPE(InitSocketTcpServerData);
 class WidgetInfo
 {
 public:
-	//´°Ìå½çÃæ¿Ø¼şĞòÁĞ»¯/·´ĞòÁĞ»¯
+	//çª—ä½“ç•Œé¢æ§ä»¶åºåˆ—åŒ–/ååºåˆ—åŒ–
 	QString control_name;
 	QString qLabel_text;
 	QString qLineEdit_text;
@@ -354,7 +354,7 @@ public:
 	double qDoubleSpinBox_value;
 	QVector<QString> qTableWidget_text;
 	int row_count;
-	//Êı¾İĞòÁĞ»¯/·´ĞòÁĞ»¯	
+	//æ•°æ®åºåˆ—åŒ–/ååºåˆ—åŒ–	
 	QString tree_text = QString();
 	QIcon tree_icon;
 	QVector<QString> flowProItemList;
@@ -369,7 +369,7 @@ public:
 	QPixmap m_subPixmap;
 	QMap<QString, int> itemContent;
 	QList<QString> m_states;
-	//ÒÇÆ÷ÒÇ±í
+	//ä»ªå™¨ä»ªè¡¨
 	QString global_key;
 	QString global_ip;
 	int global_port;
@@ -410,7 +410,7 @@ public:
 	QString stopbits_value;
 	QString flowcontrol_value;
 	QString protocol_value;
-	//Ïà»ú
+	//ç›¸æœº
 	QString camera_key_value;
 	int ccd_index;
 	QVector<QString> camera_state;
@@ -425,7 +425,7 @@ public:
 	int time_out;
 
 public:
-	//¹¤¾ßµÄÌØ¶¨²ÎÊı
+	//å·¥å…·çš„ç‰¹å®šå‚æ•°
 	int camera_index;
 	QVector<QString> g_camera;
 	QString type;
@@ -501,7 +501,7 @@ public:
 	int server_index;
 	QVector<QString> server_tools;
 
-	//ÖØÔØÔËËã·û
+	//é‡è½½è¿ç®—ç¬¦
 	friend QDataStream& operator << (QDataStream& dataStream, const WidgetInfo& wi)
 	{
 		dataStream << wi.control_name << wi.qLabel_text << wi.qLineEdit_text << wi.qTextEdit_text << wi.qPlainTextEdit_text << wi.qCheckBox_checked << wi.qRadioButton_checked << wi.qComboBox_currentText
@@ -521,7 +521,7 @@ public:
 		return dataStream;
 	}	
 
-	//ÖØÔØÔËËã·û
+	//é‡è½½è¿ç®—ç¬¦
 	friend QDataStream& operator >> (QDataStream& dataStream, WidgetInfo& wi)
 	{
 		dataStream >> wi.control_name >> wi.qLabel_text >> wi.qLineEdit_text >> wi.qTextEdit_text >> wi.qPlainTextEdit_text >> wi.qCheckBox_checked >> wi.qRadioButton_checked >> wi.qComboBox_currentText

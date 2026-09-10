@@ -1,4 +1,4 @@
-#include "Brightness.h"
+ï»¿#include "Brightness.h"
 #include "frmBrightness.h"
 
 Brightness::Brightness()
@@ -7,12 +7,12 @@ Brightness::Brightness()
 
 QString Brightness::name()
 {
-    return "ÁÁ¶È¼ì²â";
+    return "äº®åº¦æ£€æµ‹";
 }
 
 QString Brightness::information()
 {
-    return "¼ì²âÊ¶±ð";
+    return "æ£€æµ‹è¯†åˆ«";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

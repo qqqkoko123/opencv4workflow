@@ -1,4 +1,4 @@
-#include "ExportImage.h"
+ï»¿#include "ExportImage.h"
 #include "frmExportImage.h"
 
 ExportImage::ExportImage()
@@ -7,12 +7,12 @@ ExportImage::ExportImage()
 
 QString ExportImage::name()
 {
-    return "µ¼³öÍ¼Ïñ";
+    return "å¯¼å‡ºå›¾åƒ";
 }
 
 QString ExportImage::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

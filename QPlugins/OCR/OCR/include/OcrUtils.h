@@ -1,4 +1,4 @@
-#ifndef __OCR_UTILS_H__
+﻿#ifndef __OCR_UTILS_H__
 #define __OCR_UTILS_H__
 
 #include <opencv2/core.hpp>

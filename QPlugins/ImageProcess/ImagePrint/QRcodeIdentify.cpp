@@ -1,4 +1,4 @@
-#include "QRcodeIdentify.h"
+ï»¿#include "QRcodeIdentify.h"
 #include "frmQRcodeIdentify.h"
 
 QRcodeIdentify::QRcodeIdentify()
@@ -7,12 +7,12 @@ QRcodeIdentify::QRcodeIdentify()
 
 QString QRcodeIdentify::name()
 {
-    return "×Ô¶¯´òÓ¡";
+    return "è‡ªåŠ¨æ‰“å°";
 }
 
 QString QRcodeIdentify::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

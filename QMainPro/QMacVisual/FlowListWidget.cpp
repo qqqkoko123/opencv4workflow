@@ -418,17 +418,28 @@ void DragListWidgetPrivate::OpenFunction(int index)
 	//获取子控件
 	objTabName = dataVar::fProItemTab->findChild<QTabWidget*>("ProItemTabWidget");
 	objTreeName = dataVar::fProItemTab->findChild<QTreeWidget*>("ProItemTreeWidget");
-	int flow = objTabName->currentIndex();  //索引号
+	int flow = objTabName->currentIndex();
 	int flow_index = 0;
-	QTreeWidgetItemIterator it(objTreeName);  //遍历treeWidget
-	QList<QTreeWidgetItem*> pro_keys = dataVar::fProItemTab->m_pro_value.uniqueKeys();
-	for (int i = 0; i < (*it)->childCount(); i++)
+	if (objTreeName != nullptr)
 	{
-		QTreeWidgetItem* key = pro_keys[i];
-		if ((*it)->child(flow) == pro_keys[i])
+		QTreeWidgetItemIterator it(objTreeName);
+		QTreeWidgetItem* root = *it;
+		if (root != nullptr && flow >= 0)
 		{
-			flow_index = dataVar::fProItemTab->m_pro_value.values(key).at(0);
+			QTreeWidgetItem* cur = root->child(flow);
+			if (cur != nullptr && dataVar::fProItemTab->m_pro_value.contains(cur))
+			{
+				flow_index = dataVar::fProItemTab->m_pro_value.value(cur);
+			}
+			else
+			{
+				flow_index = flow;
+			}
 		}
+	}
+	if (flow_index < 0 || flow_index >= QConfig::ToolBase.size() || QConfig::ToolBase[flow_index] == nullptr)
+	{
+		return;
 	}
 	DragListItem item = m_items.value(index);
 	QString itemInfo = item.m_strTitle;

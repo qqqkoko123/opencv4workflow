@@ -145,7 +145,7 @@ typedef struct VisionToolResult
 typedef struct VisionTool
 {
 	QString PublicToolName;	
-	Toolnterface* PublicToolDlg;
+	Toolnterface* PublicToolDlg = nullptr;
 	VisionToolIMAGE PublicImage;
 	VisionToolINFO PublicInfo;	
 	VisionToolSCREEN PublicScreen;	

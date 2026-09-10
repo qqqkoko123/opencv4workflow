@@ -1,4 +1,4 @@
-#include "SocketTcpServer.h"
+ï»¿#include "SocketTcpServer.h"
 #include "frmSocketTcpServer.h"
 
 SocketTcpServer::SocketTcpServer()
@@ -7,12 +7,12 @@ SocketTcpServer::SocketTcpServer()
 
 QString SocketTcpServer::name()
 {
-    return "TCP/IP·şÎñÆ÷";
+    return "TCP/IPæœåŠ¡å™¨";
 }
 
 QString SocketTcpServer::information()
 {
-    return "Í¨Ñ¶¹¤¾ß";
+    return "é€šè®¯å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

@@ -1,4 +1,4 @@
-#include "DelayTool.h"
+ï»¿#include "DelayTool.h"
 #include "frmDelayTool.h"
 
 DelayTool::DelayTool()
@@ -7,12 +7,12 @@ DelayTool::DelayTool()
 
 QString DelayTool::name()
 {
-    return "ÑÓÊ±";
+    return "å»¶æ—¶";
 }
 
 QString DelayTool::information()
 {
-    return "ÏµÍ³¹¤¾ß";
+    return "ç³»ç»Ÿå·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

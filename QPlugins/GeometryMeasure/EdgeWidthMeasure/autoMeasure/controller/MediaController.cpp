@@ -1,4 +1,4 @@
-#include "MediaController.h"
+﻿#include "MediaController.h"
 
 #include <QTime>
 MediaController::MediaController() = default;

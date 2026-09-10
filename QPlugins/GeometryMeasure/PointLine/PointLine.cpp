@@ -1,4 +1,4 @@
-#include "PointLine.h"
+Ôªø#include "PointLine.h"
 #include "frmPointLine.h"
 
 PointLine::PointLine()
@@ -7,12 +7,12 @@ PointLine::PointLine()
 
 QString PointLine::name()
 {
-    return "µ„+œﬂ";
+    return "ÁÇπ+Á∫ø";
 }
 
 QString PointLine::information()
 {
-    return "º∏∫Œ≤‚¡ø";
+    return "Âá†‰ΩïÊµãÈáè";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

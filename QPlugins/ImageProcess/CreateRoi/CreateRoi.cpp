@@ -1,4 +1,4 @@
-#include "CreateRoi.h"
+ï»¿#include "CreateRoi.h"
 #include "frmCreateRoi.h"
 
 CreateRoi::CreateRoi()
@@ -7,12 +7,12 @@ CreateRoi::CreateRoi()
 
 QString CreateRoi::name()
 {
-    return "´´½¨ROI";
+    return "åˆ›å»ºROI";
 }
 
 QString CreateRoi::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

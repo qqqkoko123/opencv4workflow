@@ -1,4 +1,4 @@
-#include "QtWidgetsSaveLoad.h"
+ï»¿#include "QtWidgetsSaveLoad.h"
 #include <QDebug>
 #include <QFileInfo>
 #include "datavar.h"
@@ -75,7 +75,7 @@ void QtWidgetsSaveLoad::addQTableWidget(QTableWidget* w)
 {
 	WidgetInfo wi;
 	wi.control_name = w->objectName();
-	for (int i = 0; i < w->rowCount(); i++) //È¡³öÃ¿¸ö¸ñ×ÓµÄÄÚÈİ
+	for (int i = 0; i < w->rowCount(); i++) //???????????????
 	{
 		for (int j = 0; j < w->columnCount(); j++)
 		{
@@ -94,12 +94,12 @@ void QtWidgetsSaveLoad::addQTableWidget(QTableWidget* w)
 
 void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 {
-	//´°Ìå½çÃæ¿Ø¼şĞòÁĞ»¯
+	//????????????Ğ»?
 	widgetInfoLists_save.clear();
 	for (int k = 0; k < parent.size(); k++)
 	{
 		widgetInfoLists.clear();
-		//ÊÕ¼¯QLabel¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QLabel???????????æµ½QList<WidgetInfo>
 		QList<QLabel*> listQLabel = parent[k]->findChildren<QLabel*>();
 		for (int i = 0; i < listQLabel.size(); i++)
 		{
@@ -114,7 +114,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QLineEdit¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QLineEdit???????????æµ½QList<WidgetInfo>
 		QList<QLineEdit*> listQLineEdit = parent[k]->findChildren<QLineEdit*>();
 		for (int i = 0; i < listQLineEdit.size(); i++)
 		{
@@ -129,7 +129,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QTextEdit¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QTextEdit???????????æµ½QList<WidgetInfo>
 		QList<QTextEdit*> listQTextEdit = parent[k]->findChildren<QTextEdit*>();
 		for (int i = 0; i < listQTextEdit.size(); i++)
 		{
@@ -144,7 +144,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QPlainTextEdit¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QPlainTextEdit???????????æµ½QList<WidgetInfo>
 		QList<QPlainTextEdit*> listQPlainTextEdit = parent[k]->findChildren<QPlainTextEdit*>();
 		for (int i = 0; i < listQPlainTextEdit.size(); i++)
 		{
@@ -159,7 +159,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QCheckBox¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QCheckBox???????????æµ½QList<WidgetInfo>
 		QList<QCheckBox*> listQCheckBox = parent[k]->findChildren<QCheckBox*>();
 		for (int i = 0; i < listQCheckBox.size(); i++)
 		{
@@ -174,7 +174,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QRadioButton¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QRadioButton???????????æµ½QList<WidgetInfo>
 		QList<QRadioButton*> listQRadioButton = parent[k]->findChildren<QRadioButton*>();
 		for (int i = 0; i < listQRadioButton.size(); i++)
 		{
@@ -189,7 +189,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QComboBox¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QComboBox???????????æµ½QList<WidgetInfo>
 		QList<QComboBox*> listQComboBox = parent[k]->findChildren<QComboBox*>();
 		for (int i = 0; i < listQComboBox.size(); i++)
 		{
@@ -204,7 +204,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QSpinBox¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QSpinBox???????????æµ½QList<WidgetInfo>
 		QList<QSpinBox*> listQSpinBox = parent[k]->findChildren<QSpinBox*>();
 		for (int i = 0; i < listQSpinBox.size(); i++)
 		{
@@ -219,7 +219,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QDoubleSpinBox¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QDoubleSpinBox???????????æµ½QList<WidgetInfo>
 		QList<QDoubleSpinBox*> listQDoubleSpinBox = parent[k]->findChildren<QDoubleSpinBox*>();
 		for (int i = 0; i < listQDoubleSpinBox.size(); i++)
 		{
@@ -234,7 +234,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				widgetInfoLists.append(wi);
 			}
 		}
-		//ÊÕ¼¯QTableWidget¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>
+		//???QTableWidget???????????æµ½QList<WidgetInfo>
 		QList<QTableWidget*> listQTableWidget = parent[k]->findChildren<QTableWidget*>();
 		for (int i = 0; i < listQTableWidget.size(); i++)
 		{
@@ -246,7 +246,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 				WidgetInfo wi;
 				wi.control_name = le->objectName();
 				wi.row_count = le->rowCount();
-				for (int i = 0; i < le->rowCount(); i++) //È¡³öÃ¿¸ö¸ñ×ÓµÄÄÚÈİ
+				for (int i = 0; i < le->rowCount(); i++) //???????????????
 				{
 					for (int j = 0; j < le->columnCount(); j++)
 					{
@@ -265,7 +265,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 		}
 		widgetInfoLists_save.append(widgetInfoLists);
 	}
-	//Á÷³ÌÊ÷ÁĞ±íĞòÁĞ»¯	
+	//???????Ğ±????Ğ»?	
 	dataInfoList.clear();
 	for (int i = 0; i < dataVar::fProItemTab->treeItem.count(); i++)
 	{
@@ -283,7 +283,7 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 			dataInfoList.append(wi_dataInfoList);
 		}
 	}
-	//Á÷³Ì¹¤¾ßÁĞ±íĞòÁĞ»¯
+	//????????Ğ±????Ğ»?
 	dataToolList.clear();
 	for (int i = 0; i < dataVar::fProItemTab->treeItem.count(); i++)
 	{
@@ -304,14 +304,14 @@ void QtWidgetsSaveLoad::gatherChildrenWidgetInfo(QList<QWidget*> parent)
 
 void QtWidgetsSaveLoad::saveParamToFileOne()
 {
-	//Á÷³Ì¹¤¾ßÍ¼±êÁĞ±íĞòÁĞ»¯	
+	//???????????Ğ±????Ğ»?	
 	dataToolTitleList.clear();
 	dataToolTitleList.resize(20);
 	for (int i = 0; i < dataVar::fProItemTab->treeItem.count(); i++)
 	{
 		if (dataVar::fProItemTab->treeItem[i] != nullptr)
 		{
-			QList<QString> state_keys;  //¼¤»î/½ûÓÃ×´Ì¬
+			QList<QString> state_keys;  //????/??????
 			QList<int> t_keys;
 			switch (i) {
 			case 0:
@@ -781,10 +781,10 @@ void QtWidgetsSaveLoad::saveParamToFileOne()
 
 void QtWidgetsSaveLoad::saveParamToFileTwo()
 {
-	//ÒÇÆ÷ÒÇ±íĞòÁĞ»¯	
+	//??????????Ğ»?	
 	QList<QString> g_keys;
 	g_keys.reserve(200);
-	dataIoLocalList.clear();  //Í¨ÓÃI/O
+	dataIoLocalList.clear();  //???I/O
 	g_keys.clear();
 	g_keys = dataVar::fInstrumentation->global_io_content.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -803,7 +803,7 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		}
 		dataIoLocalList.append(wi_dataIList);
 	}
-	dataPlcLocalList.clear();  //PLCÍ¨ĞÅ
+	dataPlcLocalList.clear();  //PLC???
 	g_keys.clear();
 	g_keys = dataVar::fInstrumentation->global_plc_content.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -822,7 +822,7 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		}
 		dataPlcLocalList.append(wi_dataIList);
 	}
-	dataSerialportLocalList.clear();  //´®¿ÚÍ¨ĞÅ
+	dataSerialportLocalList.clear();  //???????
 	g_keys.clear();
 	g_keys = dataVar::fInstrumentation->global_serialport_content.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -839,7 +839,7 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		wi_dataIList.global_remark = dataVar::fInstrumentation->global_serialport_content.value(key).global_remark;
 		dataSerialportLocalList.append(wi_dataIList);
 	}
-	dataTcpLocalList.clear();  //TCP/IPÍ¨ĞÅ
+	dataTcpLocalList.clear();  //TCP/IP???
 	g_keys.clear();
 	g_keys = dataVar::fInstrumentation->global_tcp_content.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -858,7 +858,7 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		}
 		dataTcpLocalList.append(wi_dataIList);
 	}
-	dataIoRemoteList.clear();  //Í¨ÓÃI/O
+	dataIoRemoteList.clear();  //???I/O
 	g_keys.clear();
 	g_keys = gVariable::generalio_variable_link.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -873,7 +873,7 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		wi_dataIList.remark_value = gVariable::generalio_variable_link.value(key).remark_value;
 		dataIoRemoteList.append(wi_dataIList);
 	}
-	dataPlcRemoteList.clear();  //PLCÍ¨ĞÅ
+	dataPlcRemoteList.clear();  //PLC???
 	g_keys.clear();
 	g_keys = gVariable::plccommunicate_variable_link.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -889,7 +889,7 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		wi_dataIList.mit_remark_value = gVariable::plccommunicate_variable_link.value(key).mit_remark_value;
 		dataPlcRemoteList.append(wi_dataIList);
 	}
-	dataSerialportRemoteList.clear();  //´®¿ÚÍ¨ĞÅ
+	dataSerialportRemoteList.clear();  //???????
 	g_keys.clear();
 	g_keys = gVariable::serialport_variable_link.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -902,23 +902,23 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		wi_dataIList.baudrate_value = gVariable::serialport_variable_link.value(key).baudrate_value;
 		if (gVariable::serialport_variable_link.value(key).parity_value == QSerialPort::NoParity)
 		{
-			wi_dataIList.parity_value = "ÎŞ";
+			wi_dataIList.parity_value = "æ— ";
 		}
 		else if (gVariable::serialport_variable_link.value(key).parity_value == QSerialPort::Parity::OddParity)
 		{
-			wi_dataIList.parity_value = "Ææ";
+			wi_dataIList.parity_value = "å¥‡";
 		}
 		else if (gVariable::serialport_variable_link.value(key).parity_value == QSerialPort::Parity::EvenParity)
 		{
-			wi_dataIList.parity_value = "Å¼";
+			wi_dataIList.parity_value = "å¶";
 		}
 		else if (gVariable::serialport_variable_link.value(key).parity_value == QSerialPort::Parity::MarkParity)
 		{
-			wi_dataIList.parity_value = "±êÖ¾";
+			wi_dataIList.parity_value = "æ ‡å¿—";
 		}
 		else if (gVariable::serialport_variable_link.value(key).parity_value == QSerialPort::Parity::SpaceParity)
 		{
-			wi_dataIList.parity_value = "¿Õ¸ñ";
+			wi_dataIList.parity_value = "ç©ºæ ¼";
 		}
 		if (gVariable::serialport_variable_link.value(key).databits_value == QSerialPort::Data5)
 		{
@@ -950,20 +950,20 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		}
 		if (gVariable::serialport_variable_link.value(key).flowcontrol_value == QSerialPort::FlowControl::NoFlowControl)
 		{
-			wi_dataIList.flowcontrol_value = "ÎŞ";
+			wi_dataIList.flowcontrol_value = "æ— ";
 		}
 		if (gVariable::serialport_variable_link.value(key).flowcontrol_value == QSerialPort::FlowControl::HardwareControl)
 		{
-			wi_dataIList.flowcontrol_value = "Ó²¼ş";
+			wi_dataIList.flowcontrol_value = "ç¡¬ä»¶";
 		}
 		if (gVariable::serialport_variable_link.value(key).flowcontrol_value == QSerialPort::FlowControl::SoftwareControl)
 		{
-			wi_dataIList.flowcontrol_value = "Èí¼ş";
+			wi_dataIList.flowcontrol_value = "è½¯ä»¶";
 		}
 		wi_dataIList.remark_value = gVariable::serialport_variable_link.value(key).remark_value;
 		dataSerialportRemoteList.append(wi_dataIList);
 	}
-	dataServerRemoteList.clear();  //TCP/IP·şÎñÆ÷
+	dataServerRemoteList.clear();  //TCP/IP??????
 	g_keys.clear();
 	g_keys = gVariable::sockettcpserver_variable_link.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -978,7 +978,7 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		wi_dataIList.remark_value = gVariable::sockettcpserver_variable_link.value(key).remark_value;
 		dataServerRemoteList.append(wi_dataIList);
 	}
-	dataClientRemoteList.clear();  //TCP/IP¿Í»§¶Ë
+	dataClientRemoteList.clear();  //TCP/IP?????
 	g_keys.clear();
 	g_keys = gVariable::sockettcpclient_variable_link.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -993,8 +993,8 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		wi_dataIList.remark_value = gVariable::sockettcpclient_variable_link.value(key).remark_value;
 		dataClientRemoteList.append(wi_dataIList);
 	}
-	//Ïà»úĞòÁĞ»¯
-	dataCameraLocalList.clear();  //Ïà»ú
+	//??????Ğ»?
+	dataCameraLocalList.clear();  //???
 	g_keys.clear();
 	g_keys = dataVar::fCameraSetUp->global_camera_content.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -1016,7 +1016,7 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 		}
 		dataCameraLocalList.append(wi_dataIList);
 	}
-	dataCameraRemoteList.clear();  //Ïà»ú
+	dataCameraRemoteList.clear();  //???
 	g_keys.clear();
 	g_keys = gVariable::camera_variable_link.uniqueKeys();
 	for (int p = 0; p < g_keys.length(); p++)
@@ -1031,12 +1031,12 @@ void QtWidgetsSaveLoad::saveParamToFileTwo()
 
 void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 {
-	//´°Ìå½çÃæ¿Ø¼ş·´ĞòÁĞ»¯
+	//??????????????Ğ»?
 	for (int k = 0; k < parent.size(); k++)
 	{
 		widgetInfoLists.clear();
 		widgetInfoLists = widgetInfoLists_save[k];
-		//ÉèÖÃQLabel¿Ø¼şĞÅÏ¢
+		//????QLabel??????
 		QList<QLabel*> listQLabel = parent[k]->findChildren<QLabel*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQLabel.size(); j++)
@@ -1046,7 +1046,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setText(widgetInfoLists.at(i).qLabel_text);
 			}
 		}
-		//ÉèÖÃQLineEdit¿Ø¼şĞÅÏ¢
+		//????QLineEdit??????
 		QList<QLineEdit*> listQLineEdit = parent[k]->findChildren<QLineEdit*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQLineEdit.size(); j++)
@@ -1056,7 +1056,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setText(widgetInfoLists.at(i).qLineEdit_text);
 			}
 		}
-		//ÉèÖÃQTextEdit¿Ø¼şĞÅÏ¢
+		//????QTextEdit??????
 		QList<QTextEdit*> listQTextEdit = parent[k]->findChildren<QTextEdit*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQTextEdit.size(); j++)
@@ -1066,7 +1066,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setText(widgetInfoLists.at(i).qTextEdit_text);
 			}
 		}
-		//ÉèÖÃQPlainTextEdit¿Ø¼şĞÅÏ¢
+		//????QPlainTextEdit??????
 		QList<QPlainTextEdit*> listQPlainTextEdit = parent[k]->findChildren<QPlainTextEdit*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQPlainTextEdit.size(); j++)
@@ -1076,7 +1076,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setPlainText(widgetInfoLists.at(i).qPlainTextEdit_text);
 			}
 		}
-		//ÉèÖÃQCheckBox¿Ø¼şĞÅÏ¢
+		//????QCheckBox??????
 		QList<QCheckBox*> listQCheckBox = parent[k]->findChildren<QCheckBox*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQCheckBox.size(); j++)
@@ -1086,7 +1086,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setChecked(widgetInfoLists.at(i).qCheckBox_checked);
 			}
 		}
-		//ÉèÖÃQRadioButton¿Ø¼şĞÅÏ¢
+		//????QRadioButton??????
 		QList<QRadioButton*> listQRadioButton = parent[k]->findChildren<QRadioButton*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQRadioButton.size(); j++)
@@ -1096,7 +1096,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setChecked(widgetInfoLists.at(i).qRadioButton_checked);
 			}
 		}
-		//ÉèÖÃQComboBox¿Ø¼şĞÅÏ¢
+		//????QComboBox??????
 		QList<QComboBox*> listQComboBox = parent[k]->findChildren<QComboBox*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQComboBox.size(); j++)
@@ -1106,7 +1106,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setCurrentText(widgetInfoLists.at(i).qComboBox_currentText);
 			}
 		}
-		//ÉèÖÃQSpinBox¿Ø¼şĞÅÏ¢
+		//????QSpinBox??????
 		QList<QSpinBox*> listQSpinBox = parent[k]->findChildren<QSpinBox*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQSpinBox.size(); j++)
@@ -1116,7 +1116,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setValue(widgetInfoLists.at(i).qSpinBox_value);
 			}
 		}
-		//ÉèÖÃQDoubleSpinBox¿Ø¼şĞÅÏ¢
+		//????QDoubleSpinBox??????
 		QList<QDoubleSpinBox*> listQDoubleSpinBox = parent[k]->findChildren<QDoubleSpinBox*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQDoubleSpinBox.size(); j++)
@@ -1126,7 +1126,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 					le->setValue(widgetInfoLists.at(i).qDoubleSpinBox_value);
 			}
 		}
-		//ÉèÖÃQTableWidget¿Ø¼şĞÅÏ¢
+		//????QTableWidget??????
 		QList<QTableWidget*> listQTableWidget = parent[k]->findChildren<QTableWidget*>();
 		for (int i = 0; i < widgetInfoLists.size(); i++) {
 			for (int j = 0; j < listQTableWidget.size(); j++)
@@ -1134,8 +1134,8 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 				QTableWidget* le = listQTableWidget.at(j);
 				if (le->objectName() == widgetInfoLists.at(i).control_name)
 				{
-					le->setRowCount(widgetInfoLists.at(i).row_count);  //ÉèÖÃĞĞÊı
-					for (int m = 0; m < le->rowCount(); m++) //È¡³öÃ¿¸ö¸ñ×ÓµÄÄÚÈİ
+					le->setRowCount(widgetInfoLists.at(i).row_count);  //????????
+					for (int m = 0; m < le->rowCount(); m++) //???????????????
 					{
 						for (int n = 0; n < le->columnCount(); n++)
 						{
@@ -1152,7 +1152,7 @@ void QtWidgetsSaveLoad::setChildrenWidgetValue(QList<QWidget*> parent)
 
 void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var)
 {
-	if (tool_name == "»ñÈ¡Í¼Ïñ")
+	if (tool_name == "è·å–å›¾åƒ")
 	{
 		InitImageSourceData init_data;
 		init_data = var.value<InitImageSourceData>();
@@ -1161,7 +1161,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.g_camera = init_data.g_camera;
 		dataImageSourceList[index].append(wi_dataList);
 	}
-	else if (tool_name == "²ÃÇĞÍ¼Ïñ")
+	else if (tool_name == "è£åˆ‡å›¾åƒ")
 	{
 		InitCropImageData init_data;
 		init_data = var.value<InitCropImageData>();
@@ -1180,7 +1180,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.list_ps = init_data.list_ps;
 		dataCropImageList[index].append(wi_dataList);
 	}
-	else if (tool_name == "Ô¤´¦Àí")
+	else if (tool_name == "é¢„å¤„ç†")
 	{
 		InitImageMorphologyData init_data;
 		init_data = var.value<InitImageMorphologyData>();
@@ -1199,7 +1199,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.list_ps = init_data.list_ps;
 		dataImageMorphologyList[index].append(wi_dataList);
 	}
-	else if (tool_name == "Í¼ÏñÏ¸»¯")
+	else if (tool_name == "å›¾åƒç»†åŒ–")
 	{
 		InitSkeletonData init_data;
 		init_data = var.value<InitSkeletonData>();
@@ -1218,7 +1218,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.list_ps = init_data.list_ps;
 		dataSkeletonList[index].append(wi_dataList);
 	}
-	else if (tool_name == "°ßµã·ÖÎö")
+	else if (tool_name == "æ–‘ç‚¹åˆ†æ")
 	{
 		InitBlobDetectorData init_data;
 		init_data = var.value<InitBlobDetectorData>();
@@ -1238,7 +1238,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.color = init_data.color;
 		dataBlobDetectorList[index].append(wi_dataList);
 	}
-	else if (tool_name == "ÂÖÀªÌØÕ÷Ñ¡Ôñ")
+	else if (tool_name == "è½®å»“ç‰¹å¾é€‰æ‹©")
 	{
 		InitSelectShapeData init_data;
 		init_data = var.value<InitSelectShapeData>();
@@ -1258,7 +1258,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.color = init_data.color;
 		dataSelectShapeList[index].append(wi_dataList);
 	}
-	else if (tool_name == "Í¼ÏñÏÔÊ¾")
+	else if (tool_name == "å›¾åƒæ˜¾ç¤º")
 	{
 		InitImageViewData init_data;
 		init_data = var.value<InitImageViewData>();
@@ -1275,7 +1275,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.contour_color = init_data.contour_color;
 		dataImageViewList[index].append(wi_dataList);
 	}
-	else if (tool_name == "ÑÕÉ«Ê¶±ğ")
+	else if (tool_name == "é¢œè‰²è¯†åˆ«")
 	{
 		InitColorIdentifyData init_data;
 		init_data = var.value<InitColorIdentifyData>();
@@ -1289,7 +1289,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.srcStandardImage = init_data.srcStandardImage;
 		dataColorIdentifyList[index].append(wi_dataList);
 	}
-	else if (tool_name == "·ÖÀàÆ÷")
+	else if (tool_name == "åˆ†ç±»å™¨")
 	{
 		InitClassifierData init_data;
 		init_data = var.value<InitClassifierData>();
@@ -1299,7 +1299,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.file_model = init_data.file_model;
 		dataClassifierList[index].append(wi_dataList);
 	}
-	else if (tool_name == "Ä¿±ê¸ú×Ù")
+	else if (tool_name == "ç›®æ ‡è·Ÿè¸ª")
 	{
 		InitCamShiftTrackData init_data;
 		init_data = var.value<InitCamShiftTrackData>();
@@ -1311,7 +1311,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.height = init_data.height;
 		dataCamShiftTrackList[index].append(wi_dataList);
 	}
-	else if (tool_name == "»Ò¶ÈÆ¥Åä")
+	else if (tool_name == "ç°åº¦åŒ¹é…")
 	{
 		InitTemplateMatchData init_data;
 		init_data = var.value<InitTemplateMatchData>();
@@ -1326,7 +1326,7 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.datum_center = init_data.datum_center;
 		dataTemplateMatchList[index].append(wi_dataList);
 	}
-	else if (tool_name == "ĞÎ×´Æ¥Åä")
+	else if (tool_name == "å½¢çŠ¶åŒ¹é…")
 	{
 		InitShapeMatchData init_data;
 		init_data = var.value<InitShapeMatchData>();
@@ -1360,11 +1360,17 @@ void QtWidgetsSaveLoad::saveToolParam(int index, QString tool_name, QVariant var
 		wi_dataList.g_camera = init_data.g_camera;
 		dataImageSourceList[index].append(wi_dataList);
 	}
+	else if (tool_name == QString::fromUtf8("\xE8\xBD\xA6\xE7\x89\x8C\xE8\xAF\x86\xE5\x88\xAB"))
+	{
+		WidgetInfo wi_dataList;
+		wi_dataList.g_camera = var.toStringList().toVector();
+		dataImageSourceList[index].append(wi_dataList);
+	}
 }
 
 void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant var)
 {
-	if (tool_name == "²âÁ¿±ê¶¨")
+	if (tool_name == "æµ‹é‡æ ‡å®š")
 	{
 		InitMeasureCalibrationData init_data;
 		init_data = var.value<InitMeasureCalibrationData>();
@@ -1373,7 +1379,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 		wi_dataList.PixelEquivalentY = init_data.PixelEquivalentY;
 		dataMeasureCalibrationList[index].append(wi_dataList);
 	}
-	else if (tool_name == "»ñÈ¡±ß½çµã")
+	else if (tool_name == "è·å–è¾¹ç•Œç‚¹")
 	{
 		InitGetContourPointsData init_data;
 		init_data = var.value<InitGetContourPointsData>();
@@ -1388,7 +1394,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 		wi_dataList.color = init_data.color;
 		dataGetContourPointsList[index].append(wi_dataList);
 	}
-	else if (tool_name == "Ñ°ÕÒÔ²")
+	else if (tool_name == "å¯»æ‰¾åœ†")
 	{
 		InitFindCircleData init_data;
 		init_data = var.value<InitFindCircleData>();
@@ -1405,7 +1411,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 		wi_dataList.color = init_data.color;
 		dataFindCircleList[index].append(wi_dataList);
 	}
-	else if (tool_name == "²éÕÒÔ²È±½Ç")
+	else if (tool_name == "æŸ¥æ‰¾åœ†ç¼ºè§’")
 	{
 		InitRoundedCornersData init_data;
 		init_data = var.value<InitRoundedCornersData>();
@@ -1422,7 +1428,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 		wi_dataList.color = init_data.color;
 		dataRoundedCornersList[index].append(wi_dataList);
 	}
-	else if (tool_name == "Ñ°ÕÒÖ±Ïß")
+	else if (tool_name == "å¯»æ‰¾ç›´çº¿")
 	{
 		InitFindLineData init_data;
 		init_data = var.value<InitFindLineData>();
@@ -1447,7 +1453,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 		wi_dataList.color = init_data.color;
 		dataFindLineList[index].append(wi_dataList);
 	}
-	else if (tool_name == "±ßÔµ¿í¶È²âÁ¿")
+	else if (tool_name == "è¾¹ç¼˜å®½åº¦æµ‹é‡")
 	{
 		for (int i  = 0;i  < var.toList().size();i ++)
 		{
@@ -1475,7 +1481,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 			dataEdgeWidthMeasureList[index].append(wi_dataList);
 		}		
 	}
-	else if (tool_name == "µ¼³öCSV")
+	else if (tool_name == "å¯¼å‡ºCSV")
 	{
 		InitExportCsvData init_data;
 		init_data = var.value<InitExportCsvData>();
@@ -1485,7 +1491,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 		wi_dataList.dirPath = init_data.dirPath;
 		dataExportCsvList[index].append(wi_dataList);
 	}
-	else if (tool_name == "À©Õ¹¿â")
+	else if (tool_name == "æ‰©å±•åº“")
 	{
 		InitExtensionLibraryData init_data;
 		init_data = var.value<InitExtensionLibraryData>();
@@ -1494,7 +1500,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 		wi_dataList.dirPath = init_data.dirPath;
 		dataExtensionLibraryList[index].append(wi_dataList);
 	}
-	else if (tool_name == "Ìø×ªÓï¾ä")
+	else if (tool_name == "è·³è½¬è¯­å¥")
 	{
 		InitLogicGotoData init_data;
 		init_data = var.value<InitLogicGotoData>();
@@ -1507,7 +1513,7 @@ void QtWidgetsSaveLoad::saveToolParam2(int index, QString tool_name, QVariant va
 
 void QtWidgetsSaveLoad::saveToolParam3(int index, QString tool_name, QVariant var)
 {
-	if (tool_name == "Í¨ÓÃI/O")
+	if (tool_name == "é€šç”¨I/O")
 	{
 		InitGeneralIoData init_data;
 		init_data = var.value<InitGeneralIoData>();
@@ -1516,7 +1522,7 @@ void QtWidgetsSaveLoad::saveToolParam3(int index, QString tool_name, QVariant va
 		wi_dataList.io_tools = init_data.io_tools;
 		dataGeneralIoList[index].append(wi_dataList);
 	}
-	else if (tool_name == "PLCÍ¨ĞÅ")
+	else if (tool_name == "PLCé€šä¿¡")
 	{
 		InitPlcCommunicateData init_data;
 		init_data = var.value<InitPlcCommunicateData>();
@@ -1531,7 +1537,7 @@ void QtWidgetsSaveLoad::saveToolParam3(int index, QString tool_name, QVariant va
 		wi_dataList.mit_data = init_data.mit_data;
 		dataPlcCommunicateList[index].append(wi_dataList);
 	}
-	else if (tool_name == "´®¿ÚÍ¨ĞÅ")
+	else if (tool_name == "ä¸²å£é€šä¿¡")
 	{
 		InitSerialPortData init_data;
 		init_data = var.value<InitSerialPortData>();
@@ -1540,7 +1546,7 @@ void QtWidgetsSaveLoad::saveToolParam3(int index, QString tool_name, QVariant va
 		wi_dataList.sport_tools = init_data.sport_tools;
 		dataSerialPortList[index].append(wi_dataList);
 	}
-	else if (tool_name == "TCP/IP¿Í»§¶Ë")
+	else if (tool_name == "TCP/IPå®¢æˆ·ç«¯")
 	{
 		InitSocketTcpClientData init_data;
 		init_data = var.value<InitSocketTcpClientData>();
@@ -1549,7 +1555,7 @@ void QtWidgetsSaveLoad::saveToolParam3(int index, QString tool_name, QVariant va
 		wi_dataList.client_tools = init_data.client_tools;
 		dataSocketTcpClientList[index].append(wi_dataList);
 	}
-	else if (tool_name == "TCP/IP·şÎñÆ÷")
+	else if (tool_name == "TCP/IPæœåŠ¡å™¨")
 	{
 		InitSocketTcpServerData init_data;
 		init_data = var.value<InitSocketTcpServerData>();
@@ -1562,11 +1568,11 @@ void QtWidgetsSaveLoad::saveToolParam3(int index, QString tool_name, QVariant va
 
 void  QtWidgetsSaveLoad::saveToFile(QList<QWidget*> parent)
 {
-	//ÊÕ¼¯¿Ø¼şĞÅÏ¢£¬±£´æµ½QList<WidgetInfo>ÖĞ
+	//??????????????æµ½QList<WidgetInfo>??
 	gatherChildrenWidgetInfo(parent);
 	saveParamToFileOne();
 	saveParamToFileTwo();
-	//°ÑQList<WidgetInfo>ĞòÁĞ»¯µ½ÎÄ¼şÖĞ
+	//??QList<WidgetInfo>???Ğ»????????
 	QString allpath = workPath + "\\" + filename;
 	QFile file(allpath);
 	if (file.exists())
@@ -1603,7 +1609,7 @@ void  QtWidgetsSaveLoad::loadFromFile(QList<QWidget*> parent)
 
 void  QtWidgetsSaveLoad::loadFromFileFirst()
 {
-	//·´ĞòÁĞ»¯¶ÁÈ¡ÎÄ¼şÖĞĞÅÏ¢µ½QList<WidgetInfo>
+	//?????Ğ»??????????????QList<WidgetInfo>
 	QString allpath = workPath + "\\" + filename;
 	QFile file(allpath);
 	if (file.open(QIODevice::ReadOnly)) {
@@ -1624,7 +1630,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		emit dataVar::fProItemTab->sig_ErrorClick();
 		emit dataVar::fProItemTab->sig_Log(allpath + " load error!");
 	}
-	//·´ĞòÁĞ»¯Á÷³ÌÊ÷ÁĞ±í
+	//?????Ğ»????????Ğ±?
 	int tree_count = -1;
 	dataVar::fProItemTab->treeItem.clear();
 	dataVar::fProItemTab->treeItem.resize(20);
@@ -1637,19 +1643,23 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 			dataVar::fProItemTab->treeItem[tree_count]->setText(0, dataInfoList.at(i).tree_text);
 			dataVar::fProItemTab->treeItem[tree_count]->setIcon(0, dataInfoList.at(i).tree_icon);
 			dataVar::fProItemTab->itemParent->insertChild(tree_count, dataVar::fProItemTab->treeItem[tree_count]);
-			//·´ĞòÁĞ»¯¼ÇÂ¼Á÷³Ì¶ÔÓ¦µÄË÷ÒıÖµ	
+			//?????Ğ»?????????????????	
 			dataVar::fProItemTab->m_pro_value.insert(dataVar::fProItemTab->treeItem[tree_count], tree_count);
 		}
 	}
-	//·´ĞòÁĞ»¯³õÊ¼»¯Á÷³Ì
+	//?????Ğ»??????????
 	dataVar::fProItemTab->DeserializeInitProcess();
-	//·´ĞòÁĞ»¯Á÷³Ì¹¤¾ßÁĞ±í
+	//?????Ğ»?????????Ğ±?
 	int tool_count = -1;
 	for (int i = 0; i < dataToolList.size(); i++)
 	{
 		if (dataToolList.at(i).flowProItemList.size() != 0)
 		{
 			++tool_count;
+			if (tool_count < 0 || tool_count >= QConfig::ToolBase.size() || QConfig::ToolBase[tool_count] == nullptr)
+			{
+				continue;
+			}
 			QConfig::ToolBase[tool_count]->m_FlowSortList = dataToolList.at(i).flowProItemList;
 			for (int j = 0; j < dataToolList.at(i).flowProItemList.size(); j++)
 			{
@@ -1663,7 +1673,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 			QConfig::ToolBase[tool_count]->RunScriptEditToolLink();
 		}
 	}
-	//·´ĞòÁĞ»¯Á÷³Ì¹¤¾ßÍ¼±êÁĞ±í
+	//?????Ğ»????????????Ğ±?
 	int tool_title_count = -1;
 	for (int i = 0; i < dataToolTitleList.size(); i++)
 	{
@@ -2175,8 +2185,8 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 			}
 		}
 	}
-	//·´ĞòÁĞ»¯ÒÇÆ÷ÒÇ±í
-	for (int i = 0; i < dataIoLocalList.size(); i++)  //Í¨ÓÃI/O	
+	//?????Ğ»????????
+	for (int i = 0; i < dataIoLocalList.size(); i++)  //???I/O	
 	{
 		if (i == 0)
 		{
@@ -2189,7 +2199,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		dataVar::fInstrumentation->IoContent.global_remark = dataIoLocalList.at(i).global_remark;
 		dataVar::fInstrumentation->global_io_content.insert(dataIoLocalList.at(i).global_key, dataVar::fInstrumentation->IoContent);
 	}
-	for (int i = 0; i < dataPlcLocalList.size(); i++)  //PLCÍ¨ĞÅ	
+	for (int i = 0; i < dataPlcLocalList.size(); i++)  //PLC???	
 	{
 		if (i == 0)
 		{
@@ -2202,7 +2212,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		dataVar::fInstrumentation->PlcContent.global_remark = dataPlcLocalList.at(i).global_remark;
 		dataVar::fInstrumentation->global_plc_content.insert(dataPlcLocalList.at(i).global_key, dataVar::fInstrumentation->PlcContent);
 	}
-	for (int i = 0; i < dataSerialportLocalList.size(); i++)  //´®¿ÚÍ¨ĞÅ	
+	for (int i = 0; i < dataSerialportLocalList.size(); i++)  //???????	
 	{
 		dataVar::fInstrumentation->SerialPortContent.global_serial_port = dataSerialportLocalList.at(i).global_serial_port;
 		dataVar::fInstrumentation->SerialPortContent.global_baud_rate = dataSerialportLocalList.at(i).global_baud_rate;
@@ -2213,7 +2223,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		dataVar::fInstrumentation->SerialPortContent.global_remark = dataSerialportLocalList.at(i).global_remark;
 		dataVar::fInstrumentation->global_serialport_content.insert(dataSerialportLocalList.at(i).global_key, dataVar::fInstrumentation->SerialPortContent);
 	}
-	for (int i = 0; i < dataTcpLocalList.size(); i++)  //TCP/IPÍ¨ĞÅ	
+	for (int i = 0; i < dataTcpLocalList.size(); i++)  //TCP/IP???	
 	{
 		if (i == 0)
 		{
@@ -2226,7 +2236,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		dataVar::fInstrumentation->TcpContent.global_remark = dataTcpLocalList.at(i).global_remark;
 		dataVar::fInstrumentation->global_tcp_content.insert(dataTcpLocalList.at(i).global_key, dataVar::fInstrumentation->TcpContent);
 	}
-	for (int i = 0; i < dataIoRemoteList.size(); i++)  //Í¨ÓÃI/O	
+	for (int i = 0; i < dataIoRemoteList.size(); i++)  //???I/O	
 	{
 		gVariable::GeneralIoVar.connect_state = dataIoRemoteList.at(i).connect_state;
 		gVariable::GeneralIoVar.ip_value = dataIoRemoteList.at(i).ip_value;
@@ -2234,10 +2244,10 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		gVariable::GeneralIoVar.over_time_value = dataIoRemoteList.at(i).over_time_value;
 		gVariable::GeneralIoVar.remark_value = dataIoRemoteList.at(i).remark_value;
 		gVariable::generalio_variable_link.insert(dataIoRemoteList.at(i).io_key_value, gVariable::GeneralIoVar);
-		//³õÊ¼»¯Í¨ÓÃI/OÁ¬½Ó
+		//????????I/O????
 		dataVar::fInstrumentation->InitIoConnect(dataIoRemoteList.at(i).io_key_value, dataIoRemoteList.at(i).ip_value, dataIoRemoteList.at(i).port_value, dataIoRemoteList.at(i).over_time_value);
 	}
-	for (int i = 0; i < dataPlcRemoteList.size(); i++)  //PLCÍ¨ĞÅ	
+	for (int i = 0; i < dataPlcRemoteList.size(); i++)  //PLC???	
 	{
 		gVariable::PlcCommunicateVar.connect_state = dataPlcRemoteList.at(i).connect_state;
 		gVariable::PlcCommunicateVar.plc_type = dataPlcRemoteList.at(i).plc_type;
@@ -2246,37 +2256,37 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		gVariable::PlcCommunicateVar.mit_over_time_value = dataPlcRemoteList.at(i).mit_over_time_value;
 		gVariable::PlcCommunicateVar.mit_remark_value = dataPlcRemoteList.at(i).mit_remark_value;
 		gVariable::plccommunicate_variable_link.insert(dataPlcRemoteList.at(i).plc_key_value, gVariable::PlcCommunicateVar);
-		//³õÊ¼»¯PLCÍ¨ĞÅÁ¬½Ó
+		//?????PLC???????
 		dataVar::fInstrumentation->InitPlcConnect(dataPlcRemoteList.at(i).plc_key_value, dataPlcRemoteList.at(i).mit_ip_value, dataPlcRemoteList.at(i).mit_port_value, dataPlcRemoteList.at(i).mit_over_time_value);
 	}
-	for (int i = 0; i < dataSerialportRemoteList.size(); i++)  //´®¿ÚÍ¨ĞÅ	
+	for (int i = 0; i < dataSerialportRemoteList.size(); i++)  //???????	
 	{
 		gVariable::SerialPortVar.connect_state = dataSerialportRemoteList.at(i).connect_state;
 		gVariable::SerialPortVar.portname_value = dataSerialportRemoteList.at(i).portname_value;
 		gVariable::SerialPortVar.baudrate_value = dataSerialportRemoteList.at(i).baudrate_value;
-		QSerialPort::Parity parity;   //Ğ£ÑéÎ»
-		if (dataSerialportRemoteList.at(i).parity_value == "ÎŞ")
+		QSerialPort::Parity parity;   //Ğ£??Î»
+		if (dataSerialportRemoteList.at(i).parity_value == "æ— ")
 		{
 			parity = QSerialPort::NoParity;
 		}
-		else if (dataSerialportRemoteList.at(i).parity_value == "Ææ")
+		else if (dataSerialportRemoteList.at(i).parity_value == "å¥‡")
 		{
 			parity = QSerialPort::Parity::OddParity;
 		}
-		else if (dataSerialportRemoteList.at(i).parity_value == "Å¼")
+		else if (dataSerialportRemoteList.at(i).parity_value == "å¶")
 		{
 			parity = QSerialPort::Parity::EvenParity;
 		}
-		else if (dataSerialportRemoteList.at(i).parity_value == "±êÖ¾")
+		else if (dataSerialportRemoteList.at(i).parity_value == "æ ‡å¿—")
 		{
 			parity = QSerialPort::Parity::MarkParity;
 		}
-		else if (dataSerialportRemoteList.at(i).parity_value == "¿Õ¸ñ")
+		else if (dataSerialportRemoteList.at(i).parity_value == "ç©ºæ ¼")
 		{
 			parity = QSerialPort::Parity::SpaceParity;
 		}
 		gVariable::SerialPortVar.parity_value = parity;
-		QSerialPort::DataBits dataBits;  //Êı¾İÎ»
+		QSerialPort::DataBits dataBits;  //????Î»
 		if (dataSerialportRemoteList.at(i).databits_value == "5")
 		{
 			dataBits = QSerialPort::Data5;
@@ -2294,7 +2304,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 			dataBits = QSerialPort::Data8;
 		}
 		gVariable::SerialPortVar.databits_value = dataBits;
-		QSerialPort::StopBits stopBits;  //Í£Ö¹Î»
+		QSerialPort::StopBits stopBits;  //??Î»
 		if (dataSerialportRemoteList.at(i).stopbits_value == "1")
 		{
 			stopBits = QSerialPort::OneStop;
@@ -2308,26 +2318,26 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 			stopBits = QSerialPort::TwoStop;
 		}
 		gVariable::SerialPortVar.stopbits_value = stopBits;
-		QSerialPort::FlowControl flowControl;  //Á÷¿ØÖÆ
-		if (dataSerialportRemoteList.at(i).flowcontrol_value == "ÎŞ")
+		QSerialPort::FlowControl flowControl;  //??????
+		if (dataSerialportRemoteList.at(i).flowcontrol_value == "æ— ")
 		{
 			flowControl = QSerialPort::FlowControl::NoFlowControl;
 		}
-		else if (dataSerialportRemoteList.at(i).flowcontrol_value == "Ó²¼ş")
+		else if (dataSerialportRemoteList.at(i).flowcontrol_value == "ç¡¬ä»¶")
 		{
 			flowControl = QSerialPort::FlowControl::HardwareControl;
 		}
-		else if (dataSerialportRemoteList.at(i).flowcontrol_value == "Èí¼ş")
+		else if (dataSerialportRemoteList.at(i).flowcontrol_value == "è½¯ä»¶")
 		{
 			flowControl = QSerialPort::FlowControl::SoftwareControl;
 		}
 		gVariable::SerialPortVar.flowcontrol_value = flowControl;
 		gVariable::SerialPortVar.remark_value = dataSerialportRemoteList.at(i).remark_value;
 		gVariable::serialport_variable_link.insert(dataSerialportRemoteList.at(i).serialport_key_value, gVariable::SerialPortVar);
-		//³õÊ¼»¯´®¿ÚÍ¨ĞÅÁ¬½Ó
+		//????????????????
 		dataVar::fInstrumentation->InitSerialportConnect(dataSerialportRemoteList.at(i).serialport_key_value, dataSerialportRemoteList.at(i).portname_value, dataSerialportRemoteList.at(i).baudrate_value, dataSerialportRemoteList.at(i).parity_value, dataSerialportRemoteList.at(i).databits_value, dataSerialportRemoteList.at(i).stopbits_value, dataSerialportRemoteList.at(i).flowcontrol_value);
 	}
-	for (int i = 0; i < dataServerRemoteList.size(); i++)  //TCP/IP·şÎñÆ÷	
+	for (int i = 0; i < dataServerRemoteList.size(); i++)  //TCP/IP??????	
 	{
 		gVariable::SocketTcpServerVar.connect_state = dataServerRemoteList.at(i).connect_state;
 		gVariable::SocketTcpServerVar.protocol_value = dataServerRemoteList.at(i).protocol_value;
@@ -2335,10 +2345,10 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		gVariable::SocketTcpServerVar.port_value = dataServerRemoteList.at(i).port_value;
 		gVariable::SocketTcpServerVar.remark_value = dataServerRemoteList.at(i).remark_value;
 		gVariable::sockettcpserver_variable_link.insert(dataServerRemoteList.at(i).server_key_value, gVariable::SocketTcpServerVar);
-		//³õÊ¼»¯TCP/IP·şÎñÆ÷Á¬½Ó
+		//?????TCP/IP??????????
 		dataVar::fInstrumentation->InitServerConnect(dataServerRemoteList.at(i).server_key_value, dataServerRemoteList.at(i).port_value);
 	}
-	for (int i = 0; i < dataClientRemoteList.size(); i++)  //TCP/IP¿Í»§¶Ë	
+	for (int i = 0; i < dataClientRemoteList.size(); i++)  //TCP/IP?????	
 	{
 		gVariable::SocketTcpClientVar.connect_state = dataClientRemoteList.at(i).connect_state;
 		gVariable::SocketTcpClientVar.protocol_value = dataClientRemoteList.at(i).protocol_value;
@@ -2346,11 +2356,11 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		gVariable::SocketTcpClientVar.port_value = dataClientRemoteList.at(i).port_value;
 		gVariable::SocketTcpClientVar.remark_value = dataClientRemoteList.at(i).remark_value;
 		gVariable::sockettcpclient_variable_link.insert(dataClientRemoteList.at(i).client_key_value, gVariable::SocketTcpClientVar);
-		//³õÊ¼»¯TCP/IP¿Í»§¶ËÁ¬½Ó
+		//?????TCP/IP?????????
 		dataVar::fInstrumentation->InitClientConnect(dataClientRemoteList.at(i).client_key_value, dataClientRemoteList.at(i).ip_value, dataClientRemoteList.at(i).port_value);
 	}
-	//·´ĞòÁĞ»¯Ïà»ú
-	for (int i = 0; i < dataCameraLocalList.size(); i++)  //Ïà»ú	
+	//?????Ğ»????
+	for (int i = 0; i < dataCameraLocalList.size(); i++)  //???	
 	{
 		if (i == 0)
 		{
@@ -2366,14 +2376,14 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 		dataVar::fCameraSetUp->CameraContent.global_remark = dataCameraLocalList.at(i).global_remark;
 		dataVar::fCameraSetUp->global_camera_content.insert(dataCameraLocalList.at(i).global_key, dataVar::fCameraSetUp->CameraContent);
 	}
-	for (int i = 0; i < dataCameraRemoteList.size(); i++)  //Ïà»ú	
+	for (int i = 0; i < dataCameraRemoteList.size(); i++)  //???	
 	{
 		//gVariable::CameraVar.time_out = dataCameraRemoteList.at(i).time_out;
 		//gVariable::camera_variable_link.insert(dataCameraRemoteList.at(i).camera_key_value, gVariable::CameraVar);
-		//³õÊ¼»¯Ïà»úÁ¬½Ó
+		//????????????
 		dataVar::fCameraSetUp->InitCameraConnect(dataCameraRemoteList.at(i).camera_key_value);
 	}
-	//·´ĞòÁĞ¹¤¾ßµÄÌØ¶¨²ÎÊı
+	//?????Ğ¹???????????
 	for (int m = 0; m < 20; m++)
 	{
 		if (QConfig::ToolBase[m] != nullptr)
@@ -2406,7 +2416,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 			int socket_tcp_server_count = -1;
 			for (int n = 0; n < QConfig::ToolBase[m]->m_Tools.size(); n++)
 			{
-				int str_count = 0;  //ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+				int str_count = 0;  //????????????????
 				for (int k = 0; k < QConfig::ToolBase[m]->m_Tools[n].PublicToolName.length(); k++)
 				{
 					if (!(QConfig::ToolBase[m]->m_Tools[n].PublicToolName[k] > '0' && QConfig::ToolBase[m]->m_Tools[n].PublicToolName[k] < '9'))
@@ -2415,7 +2425,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 					}
 				}
 				QString str_name_buf = QConfig::ToolBase[m]->m_Tools[n].PublicToolName.mid(0, str_count);
-				if (str_name_buf == "»ñÈ¡Í¼Ïñ")
+				if (str_name_buf == "è·å–å›¾åƒ")
 				{
 					++image_source_count;
 					for (int s = 0; s < dataImageSourceList[m].size(); s++)
@@ -2427,7 +2437,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "²ÃÇĞÍ¼Ïñ")
+				else if (str_name_buf == "è£åˆ‡å›¾åƒ")
 				{
 					++crop_image_count;
 					for (int s = 0; s < dataCropImageList[m].size(); s++)
@@ -2449,7 +2459,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "Ô¤´¦Àí")
+				else if (str_name_buf == "é¢„å¤„ç†")
 				{
 					++image_morphology_count;
 					for (int s = 0; s < dataImageMorphologyList[m].size(); s++)
@@ -2471,7 +2481,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "Í¼ÏñÏ¸»¯")
+				else if (str_name_buf == "å›¾åƒç»†åŒ–")
 				{
 					++skeleton_count;
 					for (int s = 0; s < dataSkeletonList[m].size(); s++)
@@ -2493,7 +2503,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "°ßµã·ÖÎö")
+				else if (str_name_buf == "æ–‘ç‚¹åˆ†æ")
 				{
 					++blob_detector_count;
 					for (int s = 0; s < dataBlobDetectorList[m].size(); s++)
@@ -2516,7 +2526,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "ÂÖÀªÌØÕ÷Ñ¡Ôñ")
+				else if (str_name_buf == "è½®å»“ç‰¹å¾é€‰æ‹©")
 				{
 					++select_shape_count;
 					for (int s = 0; s < dataSelectShapeList[m].size(); s++)
@@ -2539,7 +2549,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "Í¼ÏñÏÔÊ¾")
+				else if (str_name_buf == "å›¾åƒæ˜¾ç¤º")
 				{
 					++image_view_count;
 					for (int s = 0; s < dataImageViewList[m].size(); s++)
@@ -2559,7 +2569,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "ÑÕÉ«Ê¶±ğ")
+				else if (str_name_buf == "é¢œè‰²è¯†åˆ«")
 				{
 					++color_identify_count;
 					for (int s = 0; s < dataColorIdentifyList[m].size(); s++)
@@ -2576,7 +2586,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "·ÖÀàÆ÷")
+				else if (str_name_buf == "åˆ†ç±»å™¨")
 				{
 					++classifier_count;
 					for (int s = 0; s < dataClassifierList[m].size(); s++)
@@ -2589,7 +2599,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "Ä¿±ê¸ú×Ù")
+				else if (str_name_buf == "ç›®æ ‡è·Ÿè¸ª")
 				{
 					++camshift_track_count;
 					for (int s = 0; s < dataCamShiftTrackList[m].size(); s++)
@@ -2604,7 +2614,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "»Ò¶ÈÆ¥Åä")
+				else if (str_name_buf == "ç°åº¦åŒ¹é…")
 				{
 					++template_match_count;
 					for (int s = 0; s < dataTemplateMatchList[m].size(); s++)
@@ -2622,7 +2632,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "ĞÎ×´Æ¥Åä")
+				else if (str_name_buf == "å½¢çŠ¶åŒ¹é…")
 				{
 					++shape_match_count;
 					for (int s = 0; s < dataShapeMatchList[m].size(); s++)
@@ -2641,7 +2651,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "²âÁ¿±ê¶¨")
+				else if (str_name_buf == "æµ‹é‡æ ‡å®š")
 				{
 					++measure_calibration_count;
 					for (int s = 0; s < dataMeasureCalibrationList[m].size(); s++)
@@ -2653,7 +2663,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "»ñÈ¡±ß½çµã")
+				else if (str_name_buf == "è·å–è¾¹ç•Œç‚¹")
 				{
 					++get_contour_points_count;
 					for (int s = 0; s < dataGetContourPointsList[m].size(); s++)
@@ -2671,7 +2681,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "Ñ°ÕÒÔ²")
+				else if (str_name_buf == "å¯»æ‰¾åœ†")
 				{
 					++find_circle_count;
 					for (int s = 0; s < dataFindCircleList[m].size(); s++)
@@ -2691,7 +2701,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "²éÕÒÔ²È±½Ç")
+				else if (str_name_buf == "æŸ¥æ‰¾åœ†ç¼ºè§’")
 				{
 					++rounded_corners_count;
 					for (int s = 0; s < dataRoundedCornersList[m].size(); s++)
@@ -2711,7 +2721,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "Ñ°ÕÒÖ±Ïß")
+				else if (str_name_buf == "å¯»æ‰¾ç›´çº¿")
 				{
 					++find_line_count;
 					for (int s = 0; s < dataFindLineList[m].size(); s++)
@@ -2739,7 +2749,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "±ßÔµ¿í¶È²âÁ¿")
+				else if (str_name_buf == "è¾¹ç¼˜å®½åº¦æµ‹é‡")
 				{
 					++edge_width_measure_count;
 					QVariantList varList = QVariantList();
@@ -2769,7 +2779,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 					}
 					QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(varList);
 				}
-				else if (str_name_buf == "µ¼³öCSV")
+				else if (str_name_buf == "å¯¼å‡ºCSV")
 				{
 					++export_csv_count;
 					for (int s = 0; s < dataExportCsvList[m].size(); s++)
@@ -2782,7 +2792,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "À©Õ¹¿â")
+				else if (str_name_buf == "æ‰©å±•åº“")
 				{
 					++extension_library_count;
 					for (int s = 0; s < dataExtensionLibraryList[m].size(); s++)
@@ -2794,7 +2804,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "Ìø×ªÓï¾ä")
+				else if (str_name_buf == "è·³è½¬è¯­å¥")
 				{
 					++logic_goto_count;
 					for (int s = 0; s < dataLogicGotoList[m].size(); s++)
@@ -2806,7 +2816,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "Í¨ÓÃI/O")
+				else if (str_name_buf == "é€šç”¨I/O")
 				{
 					++general_io_count;
 					for (int s = 0; s < dataGeneralIoList[m].size(); s++)
@@ -2818,7 +2828,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "PLCÍ¨ĞÅ")
+				else if (str_name_buf == "PLCé€šä¿¡")
 				{
 					++plc_communicate_count;
 					for (int s = 0; s < dataPlcCommunicateList[m].size(); s++)
@@ -2836,7 +2846,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "´®¿ÚÍ¨ĞÅ")
+				else if (str_name_buf == "ä¸²å£é€šä¿¡")
 				{
 					++serial_port_count;
 					for (int s = 0; s < dataSerialPortList[m].size(); s++)
@@ -2848,7 +2858,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "TCP/IP¿Í»§¶Ë")
+				else if (str_name_buf == "TCP/IPå®¢æˆ·ç«¯")
 				{
 					++socket_tcp_client_count;
 					for (int s = 0; s < dataSocketTcpClientList[m].size(); s++)
@@ -2860,7 +2870,7 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 				}
-				else if (str_name_buf == "TCP/IP·şÎñÆ÷")
+				else if (str_name_buf == "TCP/IPæœåŠ¡å™¨")
 				{
 					++socket_tcp_server_count;
 					for (int s = 0; s < dataSocketTcpServerList[m].size(); s++)
@@ -2896,6 +2906,16 @@ void  QtWidgetsSaveLoad::loadFromFileFirst()
 						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
 					}
 					}
+				else if (str_name_buf == QString::fromUtf8("\xE8\xBD\xA6\xE7\x89\x8C\xE8\xAF\x86\xE5\x88\xAB"))
+				{
+					++image_source_count;
+					for (int s = 0; s < dataImageSourceList[m].size(); s++)
+					{
+						QStringList list = dataImageSourceList[m].at(image_source_count).g_camera.toList();
+						QVariant var(list);
+						QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitSetToolData(var);
+					}
+				}
 			}
 		}
 	}

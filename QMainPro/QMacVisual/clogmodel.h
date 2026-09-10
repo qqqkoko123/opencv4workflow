@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #pragma execution_character_set("utf-8")
 
 #include <QAbstractListModel>
@@ -12,17 +12,17 @@ public:
     ~CLogModel();
 
 public:
-    //É¾³ı
+    //åˆ é™¤
     bool remove(int index);   
-    //Çå¿ÕÊı¾İ
+    //æ¸…ç©ºæ•°æ®
     void clear();
-    //Êı¾İ³¤¶È
+    //æ•°æ®é•¿åº¦
     int length() const;
-    //indexÊÇ·ñÓĞĞ§
+    //indexæ˜¯å¦æœ‰æ•ˆ
     bool isValid(int index) const;
 
 public slots:
-    //²åÈë
+    //æ’å…¥
     bool insert(int index, const QString item);
 
 public:

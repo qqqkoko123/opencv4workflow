@@ -1,4 +1,4 @@
-#include "ScriptEdit.h"
+ï»¿#include "ScriptEdit.h"
 #include "frmScriptEdit.h"
 
 ScriptEdit::ScriptEdit()
@@ -7,12 +7,12 @@ ScriptEdit::ScriptEdit()
 
 QString ScriptEdit::name()
 {
-    return "½Å±¾±à¼­";
+    return "è„šæœ¬ç¼–è¾‘";
 }
 
 QString ScriptEdit::information()
 {
-    return "Âß¼­¹¤¾ß";
+    return "é€»è¾‘å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

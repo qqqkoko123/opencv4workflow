@@ -1,4 +1,4 @@
-#include "frmSystemSetUp.h"
+ï»¿#include "frmSystemSetUp.h"
 #include <QMessageBox>
 #include <QDir>
 #include <QSettings>
@@ -13,7 +13,7 @@ frmSystemSetUp::frmSystemSetUp(QWidget*parent)
 	connect(ui.checkProgramSelfStart, SIGNAL(toggled(bool)), this, SLOT(slot_ProgramSelfStart(bool)));
 	connect(ui.checkProcessSelfStart, SIGNAL(toggled(bool)), this, SLOT(slot_ProcessSelfStart(bool)));
 	connect(ui.checkSignOutTime, SIGNAL(toggled(bool)), this, SLOT(slot_SignOutTime(bool)));
-	//³õÊ¼»¯±êÌâÀ¸
+	//åˆå§‹åŒ–æ ‡é¢˜æ 
 	initTitleBar();		
 }
 
@@ -27,14 +27,14 @@ void frmSystemSetUp::initTitleBar()
 	m_titleBar->setBackgroundColor(3, 110, 95);
 	m_titleBar->setStyleSheet("background-color: rgba(0, 0, 0,0);color:white;font-size:16px");
 	m_titleBar->setTitleIcon(":/res/ico/set.png");
-	m_titleBar->setTitleContent("ÏµÍ³²ÎÊı");
+	m_titleBar->setTitleContent("ç³»ç»Ÿå‚æ•°");
 	m_titleBar->setButtonType(ONLY_CLOSE_BUTTON);
 	m_titleBar->setTitleWidth(this->width());
 }
 
 void frmSystemSetUp::paintEvent(QPaintEvent* event)
 {
-	//ÉèÖÃ±³¾°É«
+	//è®¾ç½®èƒŒæ™¯è‰²
 	QPainter painter(this);
 	QPainterPath pathBack;
 	pathBack.setFillRule(Qt::WindingFill);
@@ -44,12 +44,12 @@ void frmSystemSetUp::paintEvent(QPaintEvent* event)
 	return QWidget::paintEvent(event);
 }
 
-//ÉèÖÃ³ÌĞò×ÔÆô¶¯appPath³ÌĞòÂ·¾¶
+//è®¾ç½®ç¨‹åºè‡ªå¯åŠ¨appPathç¨‹åºè·¯å¾„
 void frmSystemSetUp::SetProcessAutoRunSelf(const QString& appPath)
 {
-	//×¢²á±íÂ·¾¶ĞèÒªÊ¹ÓÃË«·´Ğ±¸Ü£¬Èç¹ûÊÇ32Î»ÏµÍ³£¬ÒªÊ¹ÓÃQSettings::Registry32Format
+	//æ³¨å†Œè¡¨è·¯å¾„éœ€è¦ä½¿ç”¨åŒåæ–œæ ï¼Œå¦‚æœæ˜¯32ä½ç³»ç»Ÿï¼Œè¦ä½¿ç”¨QSettings::Registry32Format
 	QSettings settings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::Registry64Format);
-	//ÒÔ³ÌĞòÃû³Æ×÷Îª×¢²á±íÖĞµÄ¼ü£¬¸ù¾İ¼ü»ñÈ¡¶ÔÓ¦µÄÖµ(³ÌĞòÂ·¾¶)
+	//ä»¥ç¨‹åºåç§°ä½œä¸ºæ³¨å†Œè¡¨ä¸­çš„é”®ï¼Œæ ¹æ®é”®è·å–å¯¹åº”çš„å€¼(ç¨‹åºè·¯å¾„)
 	QFileInfo fInfo(appPath);
 	QString name = fInfo.baseName();
 	QString path = settings.value(name).toString();
@@ -60,12 +60,12 @@ void frmSystemSetUp::SetProcessAutoRunSelf(const QString& appPath)
 	}
 }
 
-//ÒÆ³ı³ÌĞò×ÔÆô¶¯appPath³ÌĞòÂ·¾¶
+//ç§»é™¤ç¨‹åºè‡ªå¯åŠ¨appPathç¨‹åºè·¯å¾„
 void frmSystemSetUp::RemoveProcessAutoRunSelf(const QString& appPath)
 {
-	//×¢²á±íÂ·¾¶ĞèÒªÊ¹ÓÃË«·´Ğ±¸Ü£¬Èç¹ûÊÇ32Î»ÏµÍ³£¬ÒªÊ¹ÓÃQSettings::Registry32Format
+	//æ³¨å†Œè¡¨è·¯å¾„éœ€è¦ä½¿ç”¨åŒåæ–œæ ï¼Œå¦‚æœæ˜¯32ä½ç³»ç»Ÿï¼Œè¦ä½¿ç”¨QSettings::Registry32Format
 	QSettings settings("HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::Registry64Format);
-	//ÒÔ³ÌĞòÃû³Æ×÷Îª×¢²á±íÖĞµÄ¼ü£¬¸ù¾İ¼ü»ñÈ¡¶ÔÓ¦µÄÖµ(³ÌĞòÂ·¾¶)
+	//ä»¥ç¨‹åºåç§°ä½œä¸ºæ³¨å†Œè¡¨ä¸­çš„é”®ï¼Œæ ¹æ®é”®è·å–å¯¹åº”çš„å€¼(ç¨‹åºè·¯å¾„)
 	QFileInfo fInfo(appPath);
 	QString name = fInfo.baseName();
 	settings.remove(name);

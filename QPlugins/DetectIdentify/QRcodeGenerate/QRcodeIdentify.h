@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #pragma execution_character_set("utf-8")
 
 #include "qrcodeidentify_global.h"
@@ -19,7 +19,7 @@ public:
 
     virtual QString name() override;
     virtual QString information() override;
-    // ÉùÃ÷ staticMetaObject
+    // å£°æ˜Ž staticMetaObject
     //static const QRCODEIDENTIFY_METAOBJECT_EXPORT QMetaObject staticMetaObject;
 };
 

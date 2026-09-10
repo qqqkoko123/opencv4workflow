@@ -1,4 +1,4 @@
-// BoundedThreadSafeQueue.hpp
+﻿// BoundedThreadSafeQueue.hpp
 #ifndef BOUNDED_THREAD_SAFE_QUEUE_HPP
 #define BOUNDED_THREAD_SAFE_QUEUE_HPP
 

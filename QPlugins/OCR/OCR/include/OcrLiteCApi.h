@@ -1,4 +1,4 @@
-#ifdef __cplusplus
+﻿#ifdef __cplusplus
 #ifndef __OCR_LITE_C_API_H__
 #define __OCR_LITE_C_API_H__
 extern "C"

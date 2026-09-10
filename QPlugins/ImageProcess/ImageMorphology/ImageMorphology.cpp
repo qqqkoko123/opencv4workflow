@@ -1,4 +1,4 @@
-#include "ImageMorphology.h"
+ï»¿#include "ImageMorphology.h"
 #include "frmImageMorphology.h"
 
 ImageMorphology::ImageMorphology()
@@ -7,12 +7,12 @@ ImageMorphology::ImageMorphology()
 
 QString ImageMorphology::name()
 {
-    return "Ô¤´¦Àí";
+    return "é¢„å¤„ç†";
 }
 
 QString ImageMorphology::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

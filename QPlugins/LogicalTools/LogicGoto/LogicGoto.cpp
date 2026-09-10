@@ -1,4 +1,4 @@
-#include "LogicGoto.h"
+ï»¿#include "LogicGoto.h"
 #include "frmLogicGoto.h"
 
 LogicGoto::LogicGoto()
@@ -7,12 +7,12 @@ LogicGoto::LogicGoto()
 
 QString LogicGoto::name()
 {
-    return "Ìø×ªÓï¾ä";
+    return "è·³è½¬è¯­å¥";
 }
 
 QString LogicGoto::information()
 {
-    return "Âß¼­¹¤¾ß";
+    return "é€»è¾‘å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

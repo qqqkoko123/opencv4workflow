@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QMap>
 #include <QPoint>
@@ -17,7 +17,7 @@ class QToolBase;
 class gVariable 
 {	
 public:		
-	//¶¨ÒåÈ«¾Ö±äÁ¿½á¹¹Ìå
+	//å®šä¹‰å…¨å±€å˜é‡ç»“æ„ä½“
 	typedef struct GLOBALVAR
 	{		
 		QString global_type;
@@ -37,15 +37,15 @@ public:
 	} Global_Var;
 	static Global_Var GlobalVar;
 	static QMap<QString, Global_Var> global_variable_link;	
-	//¶¨ÒåÌø×ª¹¤¾ß½á¹¹Ìå
+	//å®šä¹‰è·³è½¬å·¥å…·ç»“æ„ä½“
 	typedef struct GOTOVAR
 	{		
 		std::vector<QString> goto_array_name_value;		
 	} Goto_Var;
 	static Goto_Var GotoVar;
 	static QMap<QString, Goto_Var> goto_variable_link;
-	//¶¨ÒåÍ¨Ñ¶½á¹¹Ìå
-	typedef struct CAMERAVAR  //Ïà»ú
+	//å®šä¹‰é€šè®¯ç»“æ„ä½“
+	typedef struct CAMERAVAR  //ç›¸æœº
 	{
 		QString camera_type;
 		CameraHandle mindvision_haldle_value;
@@ -56,12 +56,12 @@ public:
 		BYTE* mindvision_framebuffer_value = nullptr;
 		int time_out;
 		cv::Mat srcImg;
-		int index;  //´¥·¢Ä£Ê½Ë÷Òı
+		int index;  //è§¦å‘æ¨¡å¼ç´¢å¼•
 		QCamera* usbcamera_value = nullptr;
 	} Camera_Var;
 	static Camera_Var CameraVar;
 	static QMap<QString, Camera_Var> camera_variable_link;
-	typedef struct GENERALIOVAR  //Í¨ÓÃI/O
+	typedef struct GENERALIOVAR  //é€šç”¨I/O
 	{
 		QTcpSocket* io_value = nullptr;
 		int connect_state;
@@ -72,7 +72,7 @@ public:
 	} GeneralIo_Var;
 	static GeneralIo_Var GeneralIoVar;
 	static QMap<QString, GeneralIo_Var> generalio_variable_link;
-	typedef struct PLCCOMMUNICATEVAR  //PLCÍ¨ĞÅ
+	typedef struct PLCCOMMUNICATEVAR  //PLCé€šä¿¡
 	{
 		QTcpSocket* mit_value = nullptr;
 		int connect_state;
@@ -85,7 +85,7 @@ public:
 	} PlcCommunicate_Var;
 	static PlcCommunicate_Var PlcCommunicateVar;
 	static QMap<QString, PlcCommunicate_Var> plccommunicate_variable_link;
-	typedef struct SERIALPORTVAR  //´®¿ÚÍ¨ĞÅ
+	typedef struct SERIALPORTVAR  //ä¸²å£é€šä¿¡
 	{
 		QSerialPort* serialport_value = nullptr;
 		int connect_state;
@@ -99,7 +99,7 @@ public:
 	} SerialPort_Var;
 	static SerialPort_Var SerialPortVar;
 	static QMap<QString, SerialPort_Var> serialport_variable_link;
-	typedef struct SOCKETTCPSERVERVAR  //TCP/IP·şÎñÆ÷
+	typedef struct SOCKETTCPSERVERVAR  //TCP/IPæœåŠ¡å™¨
 	{
 		QTcpServer* server_value = nullptr;	
 		int connect_state;
@@ -110,7 +110,7 @@ public:
 	} SocketTcpServer_Var;
 	static SocketTcpServer_Var SocketTcpServerVar;
 	static QMap<QString, SocketTcpServer_Var> sockettcpserver_variable_link;
-	typedef struct SOCKETTCPCLIENTVAR  //TCP/IP¿Í»§¶Ë
+	typedef struct SOCKETTCPCLIENTVAR  //TCP/IPå®¢æˆ·ç«¯
 	{
 		QTcpSocket* client_value = nullptr;
 		int connect_state;
@@ -121,7 +121,7 @@ public:
 	} SocketTcpClient_Var;
 	static SocketTcpClient_Var SocketTcpClientVar;
 	static QMap<QString, SocketTcpClient_Var> sockettcpclient_variable_link;
-	typedef struct SCRIPTEDITVAR  //½Å±¾±à¼­
+	typedef struct SCRIPTEDITVAR  //è„šæœ¬ç¼–è¾‘
 	{
 		QVector<QString> flow_pro_item_list;
 		int item_id;

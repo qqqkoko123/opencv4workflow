@@ -1,51 +1,51 @@
-#pragma once
+ï»¿#pragma once
 #include<opencv2/opencv.hpp>
 #include<iostream>
 //using namespace cv;
-//Í¼ÏñËÄÔòÔËËã
-cv::Mat add(cv::Mat img1, cv::Mat img2);//¼Óadd
-cv::Mat sub(cv::Mat img1, cv::Mat img2);//¼õsubstract
-cv::Mat div(cv::Mat img1, cv::Mat img2);//³ıdivide
-cv::Mat mul(cv::Mat img1, cv::Mat img2);//³Ëmultiply
-//¶ÁÈ¡
+//å›¾åƒå››åˆ™è¿ç®—
+cv::Mat add(cv::Mat img1, cv::Mat img2);//åŠ add
+cv::Mat sub(cv::Mat img1, cv::Mat img2);//å‡substract
+cv::Mat div(cv::Mat img1, cv::Mat img2);//é™¤divide
+cv::Mat mul(cv::Mat img1, cv::Mat img2);//ä¹˜multiply
+//è¯»å–
 cv::Mat QF_ReadImage(const cv::String& path, int flag = 1);
-//±£´æ
+//ä¿å­˜
 void QF_WriteImage(const cv::String& filename, const cv::Mat& src);
-//ÏÔÊ¾ 
-//flag 0±íÊ¾CV_WINDOW_NORMAL¿É×ÔÓÉµ÷½Ú´óĞ¡£¬1±íÊ¾WINDOW_AUTOSIZE²»¿Éµ÷½Ú´óĞ¡
+//æ˜¾ç¤º 
+//flag 0è¡¨ç¤ºCV_WINDOW_NORMALå¯è‡ªç”±è°ƒèŠ‚å¤§å°ï¼Œ1è¡¨ç¤ºWINDOW_AUTOSIZEä¸å¯è°ƒèŠ‚å¤§å°
 void QF_ShowImage(const cv::Mat& src, const cv::String winName, int flag = 1);
-//»­Ïß
+//ç”»çº¿
 void QF_drawline(const cv::Mat& src, cv::Point pt1, cv::Point pt2,
 	const cv::Scalar& color, int thickness);
-//»­¾ØĞÎ
+//ç”»çŸ©å½¢
 void QF_DrawRectangle(const cv::Mat& src, cv::Rect rect,
 	cv::Scalar& color, int thickness);
 
-////»­Ô²
+////ç”»åœ†
 void QF_DrawCircle(const cv::Mat& src, cv::Point center,
 	int radius, cv::Scalar color, int Thickness);
-//ÍÖÔ²  cvÀïÃ»ÓĞÍÖÔ²º¯Êı
+//æ¤­åœ†  cvé‡Œæ²¡æœ‰æ¤­åœ†å‡½æ•°
 void QF_drawEllipse(const cv::Mat& src);
-//»æÖÆ¼ıÍ·
+//ç»˜åˆ¶ç®­å¤´
 void QF_DrawArrow(const cv::Mat& src, cv::Point p1, cv::Point p2,
 	const cv::Scalar color, int thickness);
-//ÎÄ×Ö
-void QF_DrawText(cv::Mat& src, // ´ı»æÖÆµÄÍ¼Ïñ
-	const cv::String& text, // ´ı»æÖÆµÄÎÄ×Ö
-	cv::Point origin, // ÎÄ±¾¿òµÄ×óÏÂ½Ç
-	int fontFace, // ×ÖÌå (Èçcv::FONT_HERSHEY_PLAIN)
-	double fontScale, // ³ß´çÒò×Ó£¬ÖµÔ½´óÎÄ×ÖÔ½´ó
-	cv::Scalar color, // ÏßÌõµÄÑÕÉ«£¨BGR£©
+//æ–‡å­—
+void QF_DrawText(cv::Mat& src, // å¾…ç»˜åˆ¶çš„å›¾åƒ
+	const cv::String& text, // å¾…ç»˜åˆ¶çš„æ–‡å­—
+	cv::Point origin, // æ–‡æœ¬æ¡†çš„å·¦ä¸‹è§’
+	int fontFace, // å­—ä½“ (å¦‚cv::FONT_HERSHEY_PLAIN)
+	double fontScale, // å°ºå¯¸å› å­ï¼Œå€¼è¶Šå¤§æ–‡å­—è¶Šå¤§
+	cv::Scalar color, // çº¿æ¡çš„é¢œè‰²ï¼ˆBGRï¼‰
 	int thickness);
-//´´½¨Í¼Ïñ
+//åˆ›å»ºå›¾åƒ
 cv::Mat QF_CreateImage(int rows, int cols, int PixelType);
-//¸´ÖÆÓëÒÆ¶¯Í¼Ïñ
-cv::Mat QF_CopyImage(cv::Mat& src, int x/*xµÄÆ«ÒÆÁ¿*/, int y/*yµÄÆ«ÒÆÁ¿*/);
-//·ÂÉä±ä»»
+//å¤åˆ¶ä¸ç§»åŠ¨å›¾åƒ
+cv::Mat QF_CopyImage(cv::Mat& src, int x/*xçš„åç§»é‡*/, int y/*yçš„åç§»é‡*/);
+//ä»¿å°„å˜æ¢
 void QF_WarpAffine(cv::Mat& src, cv::Mat& dst, cv::Mat& matrix, cv::Size dsize);
-//Çó·ÂÉä¾ØÕó ·µ»ØÒ»¸ö2*3µÄ¾ØÕóÓÃÓÚwarpaffine ĞèÒªÁ½×éÈı¸öµã
+//æ±‚ä»¿å°„çŸ©é˜µ è¿”å›ä¸€ä¸ª2*3çš„çŸ©é˜µç”¨äºwarpaffine éœ€è¦ä¸¤ç»„ä¸‰ä¸ªç‚¹
 cv::Mat QF_GetAffineTransformation(const cv::Point2f* src, const cv::Point2f* dst);
-//ÇóÍ¸ÊÓ±ä»»¾ØÕó ĞèÒªÁ½×éËÄ¸öµã
+//æ±‚é€è§†å˜æ¢çŸ©é˜µ éœ€è¦ä¸¤ç»„å››ä¸ªç‚¹
 cv::Mat QF_GetPerspectiveTransformation(const cv::Point2f* src, const cv::Point2f* dst);
-//Í¸ÊÓ±ä»»
+//é€è§†å˜æ¢
 void QF_WarpPerspective(cv::Mat& src, cv::Mat& dst, cv::Mat& matrix);

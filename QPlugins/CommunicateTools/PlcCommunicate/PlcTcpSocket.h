@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #pragma comment(lib, "ws2_32.lib")
 #include <QtWidgets/QWidget>
 #include <sstream>
@@ -19,31 +19,31 @@ public:
 	MitTcpSocket(void);
 	~MitTcpSocket(void);
 
-	//Á¬½ÓÈıÁâPLC£»
+	//è¿æ¥ä¸‰è±PLCï¼›
 	bool Connect(QString key, QString ip = "192.168.3.39", int port = 8192);
-	//¶Ï¿ªÈıÁâPLC£»
+	//æ–­å¼€ä¸‰è±PLCï¼›
 	void Disconnect(QString key);
-	//Ğ´Èë16Î»¼Ä´æÆ÷£»
+	//å†™å…¥16ä½å¯„å­˜å™¨ï¼›
 	bool Write1D(QString key, QString device, short value);
-	//Ğ´Èë32Î»¼Ä´æÆ÷£»
+	//å†™å…¥32ä½å¯„å­˜å™¨ï¼›
 	bool Write2D(QString key, QString device, int value);
-	//¶ÁÈ¡16Î»¼Ä´æÆ÷£»
+	//è¯»å–16ä½å¯„å­˜å™¨ï¼›
 	bool Read1D(QString key, QString device, short& value);
-	//¶ÁÈ¡32Î»¼Ä´æÆ÷£»
+	//è¯»å–32ä½å¯„å­˜å™¨ï¼›
 	bool Read2D(QString key, QString device, int& value);
-	//ÖÃÎ»¸¨Öú¼ÌµçÆ÷M£»
+	//ç½®ä½è¾…åŠ©ç»§ç”µå™¨Mï¼›
 	bool SetM(QString key, QString device);
-	//¸´Î»¸¨Öú¼ÌµçÆ÷M£»
+	//å¤ä½è¾…åŠ©ç»§ç”µå™¨Mï¼›
 	bool RstM(QString key, QString device);
-	//ÖÃÎ»Ëø´æ¼ÌµçÆ÷L£»
+	//ç½®ä½é”å­˜ç»§ç”µå™¨Lï¼›
 	bool SetL(QString key, QString device);
-	//¸´Î»Ëø´æ¼ÌµçÆ÷L£»
+	//å¤ä½é”å­˜ç»§ç”µå™¨Lï¼›
 	bool RstL(QString key, QString device);
 
 private:
-	//Ë«×Ö×ªÁ½¸öµ¥×Ö£»
+	//åŒå­—è½¬ä¸¤ä¸ªå•å­—ï¼›
 	void DWordToSWord(int int32Num, int &int16Num_L, int &int16Num_H);
-	//Á½¸öµ¥×Ö×ªË«×Ö£»
+	//ä¸¤ä¸ªå•å­—è½¬åŒå­—ï¼›
 	void SWordToDWord(int int16Num_L, int int16Num_H, int &int32Num);
 
 private:

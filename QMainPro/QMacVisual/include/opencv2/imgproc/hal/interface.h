@@ -1,4 +1,4 @@
-#ifndef OPENCV_IMGPROC_HAL_INTERFACE_H
+﻿#ifndef OPENCV_IMGPROC_HAL_INTERFACE_H
 #define OPENCV_IMGPROC_HAL_INTERFACE_H
 
 //! @addtogroup imgproc_hal_interface

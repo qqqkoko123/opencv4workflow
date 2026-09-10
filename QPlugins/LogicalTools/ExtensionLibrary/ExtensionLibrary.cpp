@@ -1,4 +1,4 @@
-#include "ExtensionLibrary.h"
+ï»¿#include "ExtensionLibrary.h"
 #include "frmExtensionLibrary.h"
 
 ExtensionLibrary::ExtensionLibrary()
@@ -7,12 +7,12 @@ ExtensionLibrary::ExtensionLibrary()
 
 QString ExtensionLibrary::name()
 {
-    return "À©Õ¹¿â";
+    return "æ‰©å±•åº“";
 }
 
 QString ExtensionLibrary::information()
 {
-    return "Âß¼­¹¤¾ß";
+    return "é€»è¾‘å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

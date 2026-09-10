@@ -1,4 +1,4 @@
-#include "BarcodeIdentify.h"
+ï»¿#include "BarcodeIdentify.h"
 #include "frmBarcodeIdentify.h"
 
 BarcodeIdentify::BarcodeIdentify()
@@ -7,12 +7,12 @@ BarcodeIdentify::BarcodeIdentify()
 
 QString BarcodeIdentify::name()
 {
-    return "ÌõĞÎÂëÊ¶±ğ";
+    return "æ¡å½¢ç è¯†åˆ«";
 }
 
 QString BarcodeIdentify::information()
 {
-    return "¼ì²âÊ¶±ğ";
+    return "æ£€æµ‹è¯†åˆ«";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

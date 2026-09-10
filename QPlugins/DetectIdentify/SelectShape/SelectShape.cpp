@@ -1,4 +1,4 @@
-#include "SelectShape.h"
+ï»¿#include "SelectShape.h"
 #include "frmSelectShape.h"
 
 SelectShape::SelectShape()
@@ -7,12 +7,12 @@ SelectShape::SelectShape()
 
 QString SelectShape::name()
 {
-    return "ÂÖÀªÌØÕ÷Ñ¡Ôñ";
+    return "è½®å»“ç‰¹å¾é€‰æ‹©";
 }
 
 QString SelectShape::information()
 {
-    return "¼ì²âÊ¶±ğ";
+    return "æ£€æµ‹è¯†åˆ«";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

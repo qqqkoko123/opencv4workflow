@@ -1,4 +1,4 @@
-#include "ImageSource.h"
+ï»¿#include "ImageSource.h"
 #include "frmImageSource.h"
 
 ImageSource::ImageSource()
@@ -7,12 +7,12 @@ ImageSource::ImageSource()
 
 QString ImageSource::name()
 {
-    return "»ñÈ¡Í¼Ïñ";
+    return "è·å–å›¾åƒ";
 }
 
 QString ImageSource::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

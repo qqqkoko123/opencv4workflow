@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 // ============================================================================
 // YOLOs-CPP - Unified YOLO Inference Library

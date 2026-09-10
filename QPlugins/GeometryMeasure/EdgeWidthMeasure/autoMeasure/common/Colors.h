@@ -1,9 +1,9 @@
-#pragma once
+Ôªø#pragma once
 #include <map>
-#include <vector> // ÃÌº”¥À––“‘–ﬁ∏¥ E0135
+#include <vector> // Ê∑ªÂä†Ê≠§Ë°å‰ª•‰øÆÂ§ç E0135
 #include <QString>
 
-std::vector<std::pair<QString, QString> > globalColorsVec = { // ÃÌº” '=' “‘–ﬁ∏¥ E0065
+std::vector<std::pair<QString, QString> > globalColorsVec = { // Ê∑ªÂä† '=' ‰ª•‰øÆÂ§ç E0065
      { "red", "#f44336"},
      { "red-50", "#ffebee"},
      { "red-100", "#ffcdd2"},

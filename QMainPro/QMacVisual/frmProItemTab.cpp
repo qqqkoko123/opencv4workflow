@@ -1,4 +1,4 @@
-#include "frmProItemTab.h"
+ï»¿#include "frmProItemTab.h"
 #include <QDebug>
 #include <QMessageBox>
 #include <QStyleFactory>
@@ -15,18 +15,18 @@ frmProItemTab::frmProItemTab(QWidget* parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
-	//Òş²ØQTabWidget±êÇ©
+	//????QTabWidget???
 	ui.ProItemTabWidget->tabBar()->hide();
-	//¸¸ÀàÈç¹ûÓĞÑùÊ½±í£¬±³¾°É«ÉèÖÃ·½·¨
+	//?????????????????????????????
 	QGraphicsOpacityEffect* e = new QGraphicsOpacityEffect(this);
 	e->setOpacity(0.9);
 	ui.ProItemTabWidget->setGraphicsEffect(e);
-	//LogĞÅºÅÓë²Ûº¯Êı
+	//Log?????????
 	connect(this, &frmProItemTab::sig_Log, dataVar::fLog, &FrmLog::slot_Message, Qt::AutoConnection);
 	connect(this, &frmProItemTab::sig_InfoClick, dataVar::fLog, &FrmLog::slot_InfoClick, Qt::AutoConnection);
 	connect(this, &frmProItemTab::sig_WarnClick, dataVar::fLog, &FrmLog::slot_WarnClick, Qt::AutoConnection);
 	connect(this, &frmProItemTab::sig_ErrorClick, dataVar::fLog, &FrmLog::slot_ErrorClick, Qt::AutoConnection);
-	//ÏÔÊ¾Í¼ÏñĞÅºÅÓë²Ûº¯Êı
+	//???????????????
 	connect(this, &frmProItemTab::sig_ImageShow_B1, dataVar::fImageView, &FrmImageView::ImageShow_B1, Qt::DirectConnection);
 	connect(this, &frmProItemTab::sig_ImageShow_B2, dataVar::fImageView, &FrmImageView::ImageShow_B2, Qt::DirectConnection);
 	connect(this, &frmProItemTab::sig_ImageShow_B3, dataVar::fImageView, &FrmImageView::ImageShow_B3, Qt::DirectConnection);
@@ -48,91 +48,91 @@ frmProItemTab::frmProItemTab(QWidget* parent)
 	connect(this, &frmProItemTab::sig_ImageShow_B19, dataVar::fImageView, &FrmImageView::ImageShow_B19, Qt::DirectConnection);
 	connect(this, &frmProItemTab::sig_ImageShow_B20, dataVar::fImageView, &FrmImageView::ImageShow_B20, Qt::DirectConnection);
 	connect(this, &frmProItemTab::sig_ManualCycleStop, this, &frmProItemTab::slot_ManualCycleStop, Qt::AutoConnection);
-	//Í¼Ïñ¶ÁÈ¡´íÎóĞÅºÅÓë²Ûº¯Êı
+	//??????????????????
 	connect(this, &frmProItemTab::sig_CycleProErr, this, &frmProItemTab::slot_CycleProErr, Qt::AutoConnection);
-	//»ñÈ¡Á÷³ÌÁĞ±íĞÅºÅÓë²Ûº¯Êı
+	//????????????????????
 	connect(this, &frmProItemTab::sig_CreateList, dataVar::fProcessSetUp, &frmProcessSetUp::slot_CreateList, Qt::AutoConnection);
-	//´´½¨ÊÖ¶¯ÔËĞĞÏß³Ì
+	//??????????????
 	Thread_A = new QThread(this);
-	dataVar::manualCycleThread.moveToThread(Thread_A);  	//°Ñ×Ô¶¨ÒåµÄÏß³Ì¼ÓÈëµ½×ÓÏß³ÌÖĞ	
+	dataVar::manualCycleThread.moveToThread(Thread_A);  	//?????????????????????	
 	connect(this, &frmProItemTab::sig_CyclePro, &dataVar::manualCycleThread, &manualThread::funThread_A, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì1Ïß³Ì
+	//???????????????1???
 	Thread_B1 = new QThread(this);
 	dataVar::autoCycleThread_B1.moveToThread(Thread_B1);
 	connect(this, &frmProItemTab::sig_CyclePro_B1, &dataVar::autoCycleThread_B1, &autoThread_B1::funThread_B1, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì2Ïß³Ì
+	//???????????????2???
 	Thread_B2 = new QThread(this);
 	dataVar::autoCycleThread_B2.moveToThread(Thread_B2);
 	connect(this, &frmProItemTab::sig_CyclePro_B2, &dataVar::autoCycleThread_B2, &autoThread_B2::funThread_B2, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì3Ïß³Ì
+	//???????????????3???
 	Thread_B3 = new QThread(this);
 	dataVar::autoCycleThread_B3.moveToThread(Thread_B3);
 	connect(this, &frmProItemTab::sig_CyclePro_B3, &dataVar::autoCycleThread_B3, &autoThread_B3::funThread_B3, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì4Ïß³Ì
+	//???????????????4???
 	Thread_B4 = new QThread(this);
 	dataVar::autoCycleThread_B4.moveToThread(Thread_B4);
 	connect(this, &frmProItemTab::sig_CyclePro_B4, &dataVar::autoCycleThread_B4, &autoThread_B4::funThread_B4, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì5Ïß³Ì
+	//???????????????5???
 	Thread_B5 = new QThread(this);
 	dataVar::autoCycleThread_B5.moveToThread(Thread_B5);
 	connect(this, &frmProItemTab::sig_CyclePro_B5, &dataVar::autoCycleThread_B5, &autoThread_B5::funThread_B5, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì6Ïß³Ì
+	//???????????????6???
 	Thread_B6 = new QThread(this);
 	dataVar::autoCycleThread_B6.moveToThread(Thread_B6);
 	connect(this, &frmProItemTab::sig_CyclePro_B6, &dataVar::autoCycleThread_B6, &autoThread_B6::funThread_B6, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì7Ïß³Ì
+	//???????????????7???
 	Thread_B7 = new QThread(this);
 	dataVar::autoCycleThread_B7.moveToThread(Thread_B7);
 	connect(this, &frmProItemTab::sig_CyclePro_B7, &dataVar::autoCycleThread_B7, &autoThread_B7::funThread_B7, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì8Ïß³Ì
+	//???????????????8???
 	Thread_B8 = new QThread(this);
 	dataVar::autoCycleThread_B8.moveToThread(Thread_B8);
 	connect(this, &frmProItemTab::sig_CyclePro_B8, &dataVar::autoCycleThread_B8, &autoThread_B8::funThread_B8, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì9Ïß³Ì
+	//???????????????9???
 	Thread_B9 = new QThread(this);
 	dataVar::autoCycleThread_B9.moveToThread(Thread_B9);
 	connect(this, &frmProItemTab::sig_CyclePro_B9, &dataVar::autoCycleThread_B9, &autoThread_B9::funThread_B9, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì10Ïß³Ì
+	//???????????????10???
 	Thread_B10 = new QThread(this);
 	dataVar::autoCycleThread_B10.moveToThread(Thread_B10);
 	connect(this, &frmProItemTab::sig_CyclePro_B10, &dataVar::autoCycleThread_B10, &autoThread_B10::funThread_B10, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì11Ïß³Ì
+	//???????????????11???
 	Thread_B11 = new QThread(this);
 	dataVar::autoCycleThread_B11.moveToThread(Thread_B11);
 	connect(this, &frmProItemTab::sig_CyclePro_B11, &dataVar::autoCycleThread_B11, &autoThread_B11::funThread_B11, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì12Ïß³Ì
+	//???????????????12???
 	Thread_B12 = new QThread(this);
 	dataVar::autoCycleThread_B12.moveToThread(Thread_B12);
 	connect(this, &frmProItemTab::sig_CyclePro_B12, &dataVar::autoCycleThread_B12, &autoThread_B12::funThread_B12, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì13Ïß³Ì
+	//???????????????13???
 	Thread_B13 = new QThread(this);
 	dataVar::autoCycleThread_B13.moveToThread(Thread_B13);
 	connect(this, &frmProItemTab::sig_CyclePro_B13, &dataVar::autoCycleThread_B13, &autoThread_B13::funThread_B13, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì14Ïß³Ì
+	//???????????????14???
 	Thread_B14 = new QThread(this);
 	dataVar::autoCycleThread_B14.moveToThread(Thread_B14);
 	connect(this, &frmProItemTab::sig_CyclePro_B14, &dataVar::autoCycleThread_B14, &autoThread_B14::funThread_B14, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì15Ïß³Ì
+	//???????????????15???
 	Thread_B15 = new QThread(this);
 	dataVar::autoCycleThread_B15.moveToThread(Thread_B15);
 	connect(this, &frmProItemTab::sig_CyclePro_B15, &dataVar::autoCycleThread_B15, &autoThread_B15::funThread_B15, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì16Ïß³Ì
+	//???????????????16???
 	Thread_B16 = new QThread(this);
 	dataVar::autoCycleThread_B16.moveToThread(Thread_B16);
 	connect(this, &frmProItemTab::sig_CyclePro_B16, &dataVar::autoCycleThread_B16, &autoThread_B16::funThread_B16, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì17Ïß³Ì
+	//???????????????17???
 	Thread_B17 = new QThread(this);
 	dataVar::autoCycleThread_B17.moveToThread(Thread_B17);
 	connect(this, &frmProItemTab::sig_CyclePro_B17, &dataVar::autoCycleThread_B17, &autoThread_B17::funThread_B17, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì18Ïß³Ì
+	//???????????????18???
 	Thread_B18 = new QThread(this);
 	dataVar::autoCycleThread_B18.moveToThread(Thread_B18);
 	connect(this, &frmProItemTab::sig_CyclePro_B18, &dataVar::autoCycleThread_B18, &autoThread_B18::funThread_B18, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì19Ïß³Ì
+	//???????????????19???
 	Thread_B19 = new QThread(this);
 	dataVar::autoCycleThread_B19.moveToThread(Thread_B19);
 	connect(this, &frmProItemTab::sig_CyclePro_B19, &dataVar::autoCycleThread_B19, &autoThread_B19::funThread_B19, Qt::AutoConnection);
-	//´´½¨×Ô¶¯ÔËĞĞÁ÷³Ì20Ïß³Ì
+	//???????????????20???
 	Thread_B20 = new QThread(this);
 	dataVar::autoCycleThread_B20.moveToThread(Thread_B20);
 	connect(this, &frmProItemTab::sig_CyclePro_B20, &dataVar::autoCycleThread_B20, &autoThread_B20::funThread_B20, Qt::AutoConnection);
@@ -141,9 +141,9 @@ frmProItemTab::frmProItemTab(QWidget* parent)
 	p_timer->start(300);
 	p_autotimer = new QTimer(this);
 	connect(p_autotimer, SIGNAL(timeout()), this, SLOT(slot_Cutover()));
-	//Á÷³ÌÁĞ±í³õÊ¼»¯
+	//?????????????
 	ProcessTreeInit();
-	//°´Å¥ÑùÊ½
+	//??????
 	QString btnStyle(
 		"QWidget{"
 		"border: none;"
@@ -169,14 +169,14 @@ frmProItemTab::~frmProItemTab()
 	{
 		delete itemParent;
 	}
-	//ÊÍ·Åµ¥Á÷³ÌÑ­»·ÔËĞĞÏß³Ì¾ä±ú
+	//????????????????????
 	if (Thread_A != nullptr)
 	{
 		Thread_A->terminate();
 		Thread_A->deleteLater();
 		Thread_A = nullptr;
 	}
-	//ÊÍ·Å¶àÁ÷³ÌÑ­»·ÔËĞĞÏß³Ì¾ä±ú	
+	//????????????????????	
 	if (Thread_B1 != nullptr)
 	{
 		Thread_B1->terminate();
@@ -315,8 +315,8 @@ void frmProItemTab::timerEvent()
 {
 	try
 	{
-#pragma region Í¼Ïñ´¦Àí
-		//»ñÈ¡Í¼Ïñ
+#pragma region ?????
+		//??????
 		if (nImageSourceState_buf == 1)
 		{
 			nImageSourceState = getImageSourceState();
@@ -336,7 +336,7 @@ void frmProItemTab::timerEvent()
 				nImageSourceState = 0;
 			}
 		}
-		//´´½¨ROI
+		//????ROI
 		if (nCreateRoiState_buf == 1)
 		{
 			nCreateRoiState = getCreateRoiState();
@@ -356,7 +356,7 @@ void frmProItemTab::timerEvent()
 				nCreateRoiState = 0;
 			}
 		}
-		//²ÃÇĞÍ¼Ïñ
+		//???????
 		if (nCropImageState_buf == 1)
 		{
 			nCropImageState = getCropImageState();
@@ -369,7 +369,7 @@ void frmProItemTab::timerEvent()
 				nCropImageState = 0;
 			}
 		}
-		//Í¼Ïñ·­×ª
+		//????
 		if (nImageFlipState_buf == 1)
 		{
 			nImageFlipState = getImageFlipState();
@@ -382,7 +382,7 @@ void frmProItemTab::timerEvent()
 				nImageFlipState = 0;
 			}
 		}
-		//Ô¤´¦Àí
+		//?????
 		if (nImageMorphologyState_buf == 1)
 		{
 			nImageMorphologyState = getImageMorphologyState();
@@ -395,7 +395,7 @@ void frmProItemTab::timerEvent()
 				nImageMorphologyState = 0;
 			}
 		}
-		//Í¼ÏñĞŞ¸´
+		//??????
 		if (nImageRepairState_buf == 1)
 		{
 			nImageRepairState = getImageRepairState();
@@ -408,7 +408,7 @@ void frmProItemTab::timerEvent()
 				nImageRepairState = 0;
 			}
 		}
-		//Í¼ÏñĞı×ª
+		//??????
 		if (nImageRotateState_buf == 1)
 		{
 			nImageRotateState = getImageRotateState();
@@ -421,7 +421,7 @@ void frmProItemTab::timerEvent()
 				nImageRotateState = 0;
 			}
 		}
-		//Í¼ÏñÆ´½Ó
+		//??????
 		if (nImageSpliceState_buf == 1)
 		{
 			nImageSpliceState = getImageSpliceState();
@@ -434,7 +434,7 @@ void frmProItemTab::timerEvent()
 				nImageSpliceState = 0;
 			}
 		}
-		//Í¼ÏñÏÔÊ¾
+		//??????
 		if (nImageViewState_buf == 1)
 		{
 			nImageViewState = getImageViewState();
@@ -466,7 +466,7 @@ void frmProItemTab::timerEvent()
 				nImageViewState = 0;
 			}
 		}
-		//Í¸ÊÓ±ä»»
+		//?????
 		if (nPerspectiveTransformState_buf == 1)
 		{
 			nPerspectiveTransformState = getPerspectiveTransformState();
@@ -514,7 +514,7 @@ void frmProItemTab::timerEvent()
 				nPerspectiveTransformState = 0;
 			}
 		}
-		//Í¼ÏñÏ¸»¯
+		//??????
 		if (nSkeletonState_buf == 1)
 		{
 			nSkeletonState = getSkeletonState();
@@ -527,7 +527,7 @@ void frmProItemTab::timerEvent()
 				nSkeletonState = 0;
 			}
 		}
-		//×Ô¶¯´òÓ¡
+		//??????
 		if (nImagePrintState_buf == 1)
 		{
 			nImagePrintState = getImagePrintState();
@@ -540,7 +540,7 @@ void frmProItemTab::timerEvent()
 				nImagePrintState = 0;
 			}
 		}
-		//µ¼³öÍ¼Ïñ
+		//???????
 		if (nExportImageState_buf == 1)
 		{
 			nExportImageState = getExportImageState();
@@ -562,8 +562,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region ¼ì²âÊ¶±ğ
-		//ÌõĞÎÂëÊ¶±ğ
+#pragma region ??????
+		//?????????
 		if (nBarcodeIdentifyState_buf == 1)
 		{
 			nBarcodeIdentifyState = getBarcodeIdentifyState();
@@ -576,7 +576,7 @@ void frmProItemTab::timerEvent()
 				nBarcodeIdentifyState = 0;
 			}
 		}
-		//°ßµã·ÖÎö
+		//??????
 		if (nBlobDetectorState_buf == 1)
 		{
 			nBlobDetectorState = getBlobDetectorState();
@@ -589,7 +589,7 @@ void frmProItemTab::timerEvent()
 				nBlobDetectorState = 0;
 			}
 		}
-		//ÁÁ¶È¼ì²â
+		//??????
 		if (nBrightnessState_buf == 1)
 		{
 			nBrightnessState = getBrightnessState();
@@ -602,7 +602,7 @@ void frmProItemTab::timerEvent()
 				nBrightnessState = 0;
 			}
 		}
-		//ÑÕÉ«Ê¶±ğ
+		//??????
 		if (nColorIdentifyState_buf == 1)
 		{
 			nColorIdentifyState = getColorIdentifyState();
@@ -622,7 +622,7 @@ void frmProItemTab::timerEvent()
 				nColorIdentifyState = 0;
 			}
 		}
-		//¶şÎ¬ÂëÊ¶±ğ
+		//????????
 		if (nQRcodeIdentifyState_buf == 1)
 		{
 			nQRcodeIdentifyState = getQRcodeIdentifyState();
@@ -635,7 +635,7 @@ void frmProItemTab::timerEvent()
 				nQRcodeIdentifyState = 0;
 			}
 		}
-		//¶şÎ¬ÂëÉú³É
+		//?????????
 		if (nQRcodeGenerateState_buf == 1)
 		{
 			nQRcodeGenerateState = getQRcodeGenerateState();
@@ -648,7 +648,7 @@ void frmProItemTab::timerEvent()
 				nQRcodeGenerateState = 0;
 			}
 		}
-		//ÂÖÀªÌØÕ÷Ñ¡Ôñ
+		//???????????
 		if (nSelectShapeState_buf == 1)
 		{
 			nSelectShapeState = getSelectShape();
@@ -661,7 +661,7 @@ void frmProItemTab::timerEvent()
 				nSelectShapeState = 0;
 			}
 		}
-		//·ÖÀàÆ÷
+		//??????
 		if (nClassifierState_buf == 1)
 		{
 			nClassifierState = getClassifierState();
@@ -676,8 +676,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region ±ê¶¨¹¤¾ß
-		//Nµã±ê¶¨
+#pragma region ??????
+		//N???
 		if (nERTCalibrationState_buf == 1)
 		{
 			nERTCalibrationState = getERTCalibrationState();
@@ -690,7 +690,7 @@ void frmProItemTab::timerEvent()
 				nERTCalibrationState = 0;
 			}
 		}
-		//²âÁ¿±ê¶¨
+		//??????
 		if (nMeasureCalibrationState_buf == 1)
 		{
 			nMeasureCalibrationState = getMeasureCalibrationState();
@@ -705,8 +705,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region ¶ÔÎ»¹¤¾ß
-		//Ä¿±ê¸ú×Ù
+#pragma region ????????
+		//??????
 		if (nCamShiftTrackState_buf == 1)
 		{
 			nCamShiftTrackState = getCamShiftTrackState();
@@ -719,7 +719,7 @@ void frmProItemTab::timerEvent()
 				nCamShiftTrackState = 0;
 			}
 		}
-		//ÏßĞÔ¼ÆËã
+		//???????
 		if (nLinearCalculationState_buf == 1)
 		{
 			nLinearCalculationState = getLinearCalculationState();
@@ -771,7 +771,7 @@ void frmProItemTab::timerEvent()
 				nLinearCalculationState = 0;
 			}
 		}
-		//»Ò¶ÈÆ¥Åä
+		//??????
 		if (nTemplateMatchState_buf == 1)
 		{
 			nTemplateMatchState = getTemplateMatchState();
@@ -784,7 +784,7 @@ void frmProItemTab::timerEvent()
 				nTemplateMatchState = 0;
 			}
 		}
-		//ĞÎ×´Æ¥Åä
+		//??????
 		if (nShapeMatchState_buf == 1)
 		{
 			nShapeMatchState = getShapeMatchState();
@@ -799,8 +799,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region ¼¸ºÎ¹¤¾ß
-		//Ñ°ÕÒÔ²
+#pragma region ????????
+		//????
 		if (nFindCircleState_buf == 1)
 		{
 			nFindCircleState = getFindCircleState();
@@ -820,7 +820,7 @@ void frmProItemTab::timerEvent()
 				nFindCircleState = 0;
 			}
 		}
-		//Ñ°ÕÒÖ±Ïß
+		//??????
 		if (nFindLineState_buf == 1)
 		{
 			nFindLineState = getFindLineState();
@@ -840,7 +840,7 @@ void frmProItemTab::timerEvent()
 				nFindLineState = 0;
 			}
 		}
-		//ÄâºÏÔ²
+		//????
 		if (nFitCircleState_buf == 1)
 		{
 			nFitCircleState = getFitCircleState();
@@ -860,7 +860,7 @@ void frmProItemTab::timerEvent()
 				nFitCircleState = 0;
 			}
 		}
-		//ÄâºÏÍÖÔ²
+		//??????
 		if (nFitEllipseState_buf == 1)
 		{
 			nFitEllipseState = getFitEllipseState();
@@ -880,7 +880,7 @@ void frmProItemTab::timerEvent()
 				nFitEllipseState = 0;
 			}
 		}
-		//ÄâºÏÖ±Ïß
+		//??????
 		if (nFitLineState_buf == 1)
 		{
 			nFitLineState = getFitLineState();
@@ -900,7 +900,7 @@ void frmProItemTab::timerEvent()
 				nFitLineState = 0;
 			}
 		}
-		//»ñÈ¡±ß½çµã
+		//???????
 		if (nContourPointsState_buf == 1)
 		{
 			nContourPointsState = getContourPointsState();
@@ -915,8 +915,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region ¼¸ºÎ²âÁ¿
-		//ÏßÔ²½»µã
+#pragma region ????????
+		//???????
 		if (nLineCircleState_buf == 1)
 		{
 			nLineCircleState = getLineCircleState();
@@ -956,7 +956,7 @@ void frmProItemTab::timerEvent()
 				nLineCircleState = 0;
 			}
 		}
-		//ÏßÏß½»µã
+		//???????
 		if (nLineLineIState_buf == 1)
 		{
 			nLineLineIState = getLineLineIState();
@@ -1004,7 +1004,7 @@ void frmProItemTab::timerEvent()
 				nLineLineIState = 0;
 			}
 		}
-		//µã+Ïß
+		//??+??
 		if (nPointLineState_buf == 1)
 		{
 			nPointLineState = getPointLineState();
@@ -1040,7 +1040,7 @@ void frmProItemTab::timerEvent()
 				nPointLineState = 0;
 			}
 		}
-		//µã+µã
+		//??+??
 		if (nPointPointState_buf == 1)
 		{
 			nPointPointState = getPointPointState();
@@ -1064,7 +1064,7 @@ void frmProItemTab::timerEvent()
 				nPointPointState = 0;
 			}
 		}
-		//Ô²È±¿Ú½Ç¶È
+		//??????
 		if (nRoundedCornersState_buf == 1)
 		{
 			nRoundedCornersState = getRoundedCornersState();
@@ -1084,7 +1084,7 @@ void frmProItemTab::timerEvent()
 				nRoundedCornersState = 0;
 			}
 		}
-		//±ßÔµ¿í¶È²âÁ¿
+		//??????????
 		if (nEdgeWidthMeasureState_buf == 1)
 		{
 			nEdgeWidthMeasureState = getEdgeWidthMeasureState();
@@ -1106,8 +1106,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region ÈıÎ¬¼ì²â
-		//ÄâºÏÆ½Ãæ
+#pragma region ??????
+		//??????
 		if (nFlatnessState_buf == 1)
 		{
 			nFlatnessState = getFlatnessState();
@@ -1137,8 +1137,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region Âß¼­¹¤¾ß
-		//À©Õ¹¿â
+#pragma region ???????
+		//?????
 		if (nExtensionLibraryState_buf == 1)
 		{
 			nExtensionLibraryState = getExtensionLibraryState();
@@ -1151,7 +1151,7 @@ void frmProItemTab::timerEvent()
 				nExtensionLibraryState = 0;
 			}
 		}
-		//Ìø×ªÓï¾ä
+		//??????
 		if (nLogicGotoState_buf == 1)
 		{
 			nLogicGotoState = getLogicGotoState();
@@ -1171,7 +1171,7 @@ void frmProItemTab::timerEvent()
 				nLogicGotoState = 0;
 			}
 		}
-		//ÅĞ¶ÏÓï¾ä
+		//???????
 		if (nLogicJudgeState_buf == 1)
 		{
 			nLogicJudgeState = getLogicJudgeState();
@@ -1191,7 +1191,7 @@ void frmProItemTab::timerEvent()
 				nLogicJudgeState = 0;
 			}
 		}
-		//½áÊøÓï¾ä
+		//???????
 		if (nLogicJudgeEndState_buf == 1)
 		{
 			nLogicJudgeEndState = getLogicJudgeEndState();
@@ -1213,8 +1213,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region Í¨Ñ¶¹¤¾ß
-		//PLCÍ¨ĞÅ
+#pragma region ??????
+		//PLC???
 		if (nPlcCommunicateState_buf == 1)
 		{
 			nPlcCommunicateState = getPlcCommunicate();
@@ -1227,7 +1227,7 @@ void frmProItemTab::timerEvent()
 				nPlcCommunicateState = 0;
 			}
 		}
-		//´®¿ÚÍ¨ĞÅ
+		//???????
 		if (nSerialPortState_buf == 1)
 		{
 			nSerialPortState = getSerialPort();
@@ -1240,7 +1240,7 @@ void frmProItemTab::timerEvent()
 				nSerialPortState = 0;
 			}
 		}
-		//TCP/IP·şÎñÆ÷
+		//TCP/IP??????
 		if (nSocketTcpServerState_buf == 1)
 		{
 			nSocketTcpServerState = getSocketTcpServer();
@@ -1253,7 +1253,7 @@ void frmProItemTab::timerEvent()
 				nSocketTcpServerState = 0;
 			}
 		}
-		//TCP/IP¿Í»§¶Ë
+		//TCP/IP?????
 		if (nSocketTcpClientState_buf == 1)
 		{
 			nSocketTcpClientState = getSocketTcpClient();
@@ -1268,8 +1268,8 @@ void frmProItemTab::timerEvent()
 		}
 #pragma endregion
 
-#pragma region ÏµÍ³¹¤¾ß
-		//µ¼³öCSV
+#pragma region ??????
+		//????CSV
 		if (nExportCsvState_buf == 1)
 		{
 			nExportCsvState = getExportCsv();
@@ -1283,7 +1283,7 @@ void frmProItemTab::timerEvent()
 			}
 		}
 #pragma endregion	
-#pragma region Ä¿±ê¼ì²â
+#pragma region ?????
 		//YoloV13
 		if (nYoloV13State_buf == 1)
 		{
@@ -1313,22 +1313,36 @@ void frmProItemTab::timerEvent()
 			}
 		}
 #pragma endregion
+#pragma region PlateRecognition
+		if (nPlateRecognitionState_buf == 1 && getPlateRecognition != nullptr && setPlateRecognition != nullptr)
+		{
+			nPlateRecognitionState = getPlateRecognition();
+			if (nPlateRecognitionState == 1)
+			{
+				dataVar::int_link = 1;
+				frmLink* fLink = new frmLink();
+				fLink->exec();
+				setPlateRecognition();
+				nPlateRecognitionState = 0;
+			}
+		}
+#pragma endregion
 	}
 	catch (...) {
-		//±¨´íĞÅÏ¢
+		//???????
 		emit sig_InfoClick();
-		emit sig_Log("Á÷³Ì´íÎó£¡");
+		emit sig_Log("è¿è¡Œå¼‚å¸¸");
 	}
 }
 
-//Á÷³ÌÁĞ±í³õÊ¼»¯
+//?????????????
 void frmProItemTab::ProcessTreeInit()
 {
-	//³ÌĞòÆô¶¯¼ÇÂ¼Log
+	//???????????Log
 	emit sig_InfoClick();
-	emit sig_Log("Ö÷³ÌĞòÆô¶¯Íê³É...");
+	emit sig_Log("æ­£åœ¨åˆå§‹åŒ–æµç¨‹æ ‘...");
 	ui.ProItemTreeWidget->setIconSize(QSize(22, 22));
-	//¸ü»»ÏµÍ³Ä¬ÈÏÍ¼±ê
+	//????????????
 	ui.ProItemTreeWidget->setStyleSheet("QTreeWidget::branch:has-children:!has-siblings:closed,\
 	QWidget{border: 1px;border-style: solid;border-color: #d9d9d9}\
 	QTreeWidget::item{color: #363636}\
@@ -1338,24 +1352,24 @@ void frmProItemTab::ProcessTreeInit()
 	QTreeWidget::branch:closed:has-children:has-siblings{border-image: none; image: url(:/res/ico/unfold_2.png);}\
 	QTreeWidget::branch:open:has-children:!has-siblings{border-image: none; image: url(:/res/ico/fold_2.png);}\
 	QTreeWidget::branch:open:has-children:has-siblings{border-image: none; image: url(:/res/ico/fold_2.png);}"
-		"QScrollBar:vertical{" //ÉèÖÃ¹ö¶¯ÌõÑùÊ½
-		"background:#FFFFF2;"  //±³¾°É«  
-		"padding-top:20px;"    //ÉÏÔ¤ÁôÎ»ÖÃ(·ÅÖÃÏòÉÏ¼ıÍ·£©  
-		"padding-bottom:20px;" //ÏÂÔ¤ÁôÎ»ÖÃ(·ÅÖÃÏòÏÂ¼ıÍ·£©  
-		"padding-left:2px;"    //×óÔ¤ÁôÎ»ÖÃ 
-		"padding-right:2px;"   //ÓÒÔ¤ÁôÎ»ÖÃ 
-		"border-left:1px solid #d7d7d7;}" //×ó·Ö¸îÏß  
-		"QScrollBar::handle:vertical{" //»¬¿éÑùÊ½  
-		"background:#dbdbdb;"  //»¬¿éÑÕÉ«  
-		"border-radius:6px;"   //±ß½ÇÔ²
-		"min-height:20px;}"    //»¬¿é×îĞ¡¸ß¶È
-		"QScrollBar::handle:vertical:hover{" //Êó±ê´¥¼°»¬¿éÑùÊ½  
-		"background:#d0d0d0;}" //»¬¿éÑÕÉ«  
-		"QScrollBar::add-line:vertical{" //ÏòÏÂ¼ıÍ·ÑùÊ½  
+		"QScrollBar:vertical{" //?????????????
+		"background:#FFFFF2;"  //?????  
+		"padding-top:20px;"    //?????????(????????????  
+		"padding-bottom:20px;" //?????????(????????????  
+		"padding-left:2px;"    //????????? 
+		"padding-right:2px;"   //????????? 
+		"border-left:1px solid #d7d7d7;}" //??????  
+		"QScrollBar::handle:vertical{" //???????  
+		"background:#dbdbdb;"  //???????  
+		"border-radius:6px;"   //????
+		"min-height:20px;}"    //???????????
+		"QScrollBar::handle:vertical:hover{" //????????????  
+		"background:#d0d0d0;}" //???????  
+		"QScrollBar::add-line:vertical{" //?????????  
 		"background:url(:/res/ico/down.png) center no-repeat;}"
-		"QScrollBar::sub-line:vertical{" //ÏòÉÏ¼ıÍ·ÑùÊ½
+		"QScrollBar::sub-line:vertical{" //?????????
 		"background:url(:/res/ico/up.png) center no-repeat;}");
-	//ÉèÖÃ×ÖÌå¼°×ÖÌå´óĞ¡
+	//????????????????
 	QFont font("Microsoft YaHei");
 	font.setPixelSize(14.5);
 	ui.ProItemTreeWidget->setFont(font);
@@ -1363,12 +1377,12 @@ void frmProItemTab::ProcessTreeInit()
 	ui.ProItemTreeWidget->clear();
 	this->setAcceptDrops(false);
 	ui.ProItemTreeWidget->setFixedHeight(28);
-	//Ìí¼Ó½Úµã	
+	//??????	
 	itemParent = new QTreeWidgetItem(ui.ProItemTreeWidget);
-	itemParent->setText(0, "ÏîÄ¿Á÷³Ì·½°¸");
+	itemParent->setText(0, "æµç¨‹åˆ—è¡¨");
 	itemParent->setIcon(0, QIcon(":/res/ico/tool_2.png"));
 	itemParent->setFlags(Qt::NoItemFlags | Qt::ItemIsEnabled);
-	//ĞÅºÅÓë²Ûº¯Êı	
+	//?????????	
 	connect(ui.ProItemTreeWidget, &QTreeWidget::itemExpanded, this, &frmProItemTab::slotItemExpanded, Qt::AutoConnection);
 	connect(ui.ProItemTreeWidget, &QTreeWidget::itemCollapsed, this, &frmProItemTab::slotItemCollapsed, Qt::AutoConnection);
 	connect(ui.ProItemTreeWidget, &QTreeWidget::itemPressed, this, &frmProItemTab::slotItemPressed, Qt::AutoConnection);
@@ -1376,7 +1390,7 @@ void frmProItemTab::ProcessTreeInit()
 
 void frmProItemTab::slotItemExpanded(QTreeWidgetItem* item)
 {
-	//±éÀútreeWidget
+	//????treeWidget
 	QTreeWidgetItemIterator it(ui.ProItemTreeWidget);
 	treeList.clear();
 	while (*it)
@@ -1406,16 +1420,16 @@ void frmProItemTab::slotItemPressed(QTreeWidgetItem* item, int column)
 		return;
 	press_index = parent->indexOfChild(item);
 	ui.dockTabWidget->setWindowTitle(parent->child(press_index)->text(0));
-	//ÇĞ»»QTabWidget
+	//????QTabWidget
 	ui.ProItemTabWidget->setCurrentIndex(press_index);
-	QTreeWidgetItemIterator it(ui.ProItemTreeWidget);  //±éÀútreeWidget
+	QTreeWidgetItemIterator it(ui.ProItemTreeWidget);  //????treeWidget
 	QList<QTreeWidgetItem*> pro_keys = m_pro_value.uniqueKeys();
 	for (int i = 0; i < (*it)->childCount(); i++)
 	{
 		QTreeWidgetItem* key = pro_keys[i];
 		if ((*it)->child(press_index) == pro_keys[i])
 		{
-			//»ñÈ¡Ïß³ÌËù¶ÔÓ¦µÄÁ÷³ÌºÅ
+			//??????????????????
 			dataVar::dragNumber = m_pro_value.values(key).at(0);
 		}
 	}
@@ -1460,82 +1474,90 @@ void frmProItemTab::slot_ManualStop()
 
 ToolNameList frmProItemTab::GetProcessItemNum(const QString itemName)
 {
-	if (itemName.contains("»ñÈ¡Í¼Ïñ")) return ToolNameList::IMAGE_SOURCE;
-	if (itemName.contains("Í¼ÏñÏÔÊ¾")) return ToolNameList::IMAGE_VIEW;
-	if (itemName.contains("µ¼³öÍ¼Ïñ")) return ToolNameList::EXPORT_IMAGE;
-	if (itemName.contains("Ô¤´¦Àí")) return ToolNameList::IMAGE_MORPHOLOGY;
-	if (itemName.contains("Í¼ÏñÆ´½Ó")) return ToolNameList::IMAGE_SPLICE;
-	if (itemName.contains("Í¼ÏñĞŞ¸´")) return ToolNameList::IMAGE_REPAIR;
-	if (itemName.contains("Í¼ÏñÏ¸»¯")) return ToolNameList::SKELETON;
-	if (itemName.contains("Í¼Ïñ·­×ª")) return ToolNameList::IMAGE_FLIP;
-	if (itemName.contains("Í¼ÏñĞı×ª")) return ToolNameList::IMAGE_ROTATE;
-	if (itemName.contains("Í¸ÊÓ±ä»»")) return ToolNameList::PERSPECTIVE_TRANSFORM;
-	if (itemName.contains("²ÃÇĞÍ¼Ïñ")) return ToolNameList::CROP_IMAGE;
-	if (itemName.contains("´´½¨ROI")) return ToolNameList::CREATE_ROI;
-	if (itemName.contains("ÌõĞÎÂëÊ¶±ğ")) return ToolNameList::BARCODE_IDENTIFY;
-	if (itemName.contains("°ßµã·ÖÎö")) return ToolNameList::BLOB_DETECTOR;
-	if (itemName.contains("¶şÎ¬ÂëÊ¶±ğ")) return ToolNameList::QRCODE_IDENTIFY;
-	if (itemName.contains("×Ö·ûÊ¶±ğ")) return ToolNameList::OCR_IDENTIFY;
-	if (itemName.contains("·ÖÀàÆ÷")) return ToolNameList::CLASSIFIER;
-	if (itemName.contains("ÑÕÉ«Ê¶±ğ")) return ToolNameList::COLOR_IDENTIFY;
-	if (itemName.contains("ÁÁ¶È¼ì²â")) return ToolNameList::BRIGHTNESS;
-	if (itemName.contains("Í¼ÏñÇåÎú¶È")) return ToolNameList::IMAGE_CLARITY;
-	if (itemName.contains("ÂÖÀªÌØÕ÷Ñ¡Ôñ")) return ToolNameList::SELECT_SHAPE;
-	if (itemName.contains("Nµã±ê¶¨")) return ToolNameList::ERT_CALIBRATION;
-	if (itemName.contains("»û±ä±ê¶¨")) return ToolNameList::DISTORTION_CALIBRATION;
-	if (itemName.contains("²âÁ¿±ê¶¨")) return ToolNameList::MEASURE_CALIBRATION;
-	if (itemName.contains("»Ò¶ÈÆ¥Åä")) return ToolNameList::TEMPLATE_MATCH;
-	if (itemName.contains("ĞÎ×´Æ¥Åä")) return ToolNameList::SHAPE_MATCH;
-	if (itemName.contains("Ä¿±ê¸ú×Ù")) return ToolNameList::CAMSHIFT_TRACK;
-	if (itemName.contains("ÏßĞÔ¼ÆËã")) return ToolNameList::LINEAR_CALCULATION;
-	if (itemName.contains("ÏßÔ²½»µã")) return ToolNameList::LINE_CIRCLE;
-	if (itemName.contains("µã+µã")) return ToolNameList::POINT_POINT;
-	if (itemName.contains("µã+Ïß")) return ToolNameList::POINT_LINE;
-	if (itemName.contains("ÏßÏß½»µã")) return ToolNameList::LINE_LINE_I;
-	if (itemName.contains("²éÕÒÔ²È±½Ç")) return ToolNameList::ROUNDED_CORNERS;
-	if (itemName.contains("Ñ°ÕÒÔ²")) return ToolNameList::FIND_CIRCLE;
-	if (itemName.contains("Ñ°ÕÒÖ±Ïß")) return ToolNameList::FIND_LINE;
-	if (itemName.contains("ÄâºÏÔ²")) return ToolNameList::FIT_CIRCLE;
-	if (itemName.contains("ÄâºÏÍÖÔ²")) return ToolNameList::FIT_ELLIPSE;
-	if (itemName.contains("ÄâºÏÖ±Ïß")) return ToolNameList::FIT_LINE;
-	if (itemName.contains("»ñÈ¡±ß½çµã")) return ToolNameList::GET_CONTOUR_POINTS;
-	if (itemName.contains("±ßÔµ¿í¶È²âÁ¿")) return ToolNameList::EDGE_WIDTH;
-	if (itemName.contains("ÄâºÏÆ½Ãæ")) return ToolNameList::FLATNESS;
-	if (itemName.contains("À©Õ¹¿â")) return ToolNameList::EXTENSION_LIBRARY;
-	if (itemName.contains("Ìø×ªÓï¾ä")) return ToolNameList::LOGIC_GOTO;
-	if (itemName.contains("ÅĞ¶ÏÓï¾ä")) return ToolNameList::LOGIC_JUDGE;
-	if (itemName.contains("½áÊøÓï¾ä")) return ToolNameList::LOGIC_JUDGE_END;
-	if (itemName.contains("½Å±¾±à¼­")) return ToolNameList::SCRIPT_EDIT;
-	if (itemName.contains("TCP/IP·şÎñÆ÷")) return ToolNameList::SOCKET_TCP_SERVER;
-	if (itemName.contains("TCP/IP¿Í»§¶Ë")) return ToolNameList::SOCKET_TCP_CLIENT;
-	if (itemName.contains("PLCÍ¨ĞÅ")) return ToolNameList::PLC_COMMUNICATE;
-	if (itemName.contains("´®¿ÚÍ¨ĞÅ")) return ToolNameList::SERIAL_PORT;
-	if (itemName.contains("Í¨ÓÃI/O")) return ToolNameList::GENERAL_IO;
-	if (itemName.contains("ÑÓÊ±")) return ToolNameList::DELAY_TOOL;
-	if (itemName.contains("µ¼³öCSV")) return ToolNameList::EXPORT_CSV;
+	if (itemName.contains("è·å–å›¾åƒ")) return ToolNameList::IMAGE_SOURCE;
+	if (itemName.contains("å›¾åƒæ˜¾ç¤º")) return ToolNameList::IMAGE_VIEW;
+	if (itemName.contains("å¯¼å‡ºå›¾åƒ")) return ToolNameList::EXPORT_IMAGE;
+	if (itemName.contains("é¢„å¤„ç†")) return ToolNameList::IMAGE_MORPHOLOGY;
+	if (itemName.contains("å›¾åƒæ‹¼æ¥")) return ToolNameList::IMAGE_SPLICE;
+	if (itemName.contains("å›¾åƒä¿®å¤")) return ToolNameList::IMAGE_REPAIR;
+	if (itemName.contains("å›¾åƒç»†åŒ–")) return ToolNameList::SKELETON;
+	if (itemName.contains("å›¾åƒç¿»è½¬")) return ToolNameList::IMAGE_FLIP;
+	if (itemName.contains("å›¾åƒæ—‹è½¬")) return ToolNameList::IMAGE_ROTATE;
+	if (itemName.contains("é€è§†å˜æ¢")) return ToolNameList::PERSPECTIVE_TRANSFORM;
+	if (itemName.contains("è£åˆ‡å›¾åƒ")) return ToolNameList::CROP_IMAGE;
+	if (itemName.contains("åˆ›å»ºROI")) return ToolNameList::CREATE_ROI;
+	if (itemName.contains("æ¡å½¢ç è¯†åˆ«")) return ToolNameList::BARCODE_IDENTIFY;
+	if (itemName.contains("æ–‘ç‚¹åˆ†æ")) return ToolNameList::BLOB_DETECTOR;
+	if (itemName.contains("äºŒç»´ç è¯†åˆ«")) return ToolNameList::QRCODE_IDENTIFY;
+	if (itemName.contains("å­—ç¬¦è¯†åˆ«")) return ToolNameList::OCR_IDENTIFY;
+	if (itemName.contains("åˆ†ç±»å™¨")) return ToolNameList::CLASSIFIER;
+	if (itemName.contains("é¢œè‰²è¯†åˆ«")) return ToolNameList::COLOR_IDENTIFY;
+	if (itemName.contains("äº®åº¦æ£€æµ‹")) return ToolNameList::BRIGHTNESS;
+	if (itemName.contains("å›¾åƒæ¸…æ™°åº¦")) return ToolNameList::IMAGE_CLARITY;
+	if (itemName.contains("è½®å»“ç‰¹å¾é€‰æ‹©")) return ToolNameList::SELECT_SHAPE;
+	if (itemName.contains("Nç‚¹æ ‡å®š")) return ToolNameList::ERT_CALIBRATION;
+	if (itemName.contains("ç•¸å˜æ ‡å®š")) return ToolNameList::DISTORTION_CALIBRATION;
+	if (itemName.contains("æµ‹é‡æ ‡å®š")) return ToolNameList::MEASURE_CALIBRATION;
+	if (itemName.contains("ç°åº¦åŒ¹é…")) return ToolNameList::TEMPLATE_MATCH;
+	if (itemName.contains("å½¢çŠ¶åŒ¹é…")) return ToolNameList::SHAPE_MATCH;
+	if (itemName.contains("ç›®æ ‡è·Ÿè¸ª")) return ToolNameList::CAMSHIFT_TRACK;
+	if (itemName.contains("çº¿æ€§è®¡ç®—")) return ToolNameList::LINEAR_CALCULATION;
+	if (itemName.contains("çº¿åœ†äº¤ç‚¹")) return ToolNameList::LINE_CIRCLE;
+	if (itemName.contains("ç‚¹+ç‚¹")) return ToolNameList::POINT_POINT;
+	if (itemName.contains("ç‚¹+çº¿")) return ToolNameList::POINT_LINE;
+	if (itemName.contains("çº¿çº¿äº¤ç‚¹")) return ToolNameList::LINE_LINE_I;
+	if (itemName.contains("æŸ¥æ‰¾åœ†ç¼ºè§’")) return ToolNameList::ROUNDED_CORNERS;
+	if (itemName.contains("å¯»æ‰¾åœ†")) return ToolNameList::FIND_CIRCLE;
+	if (itemName.contains("å¯»æ‰¾ç›´çº¿")) return ToolNameList::FIND_LINE;
+	if (itemName.contains("æ‹Ÿåˆåœ†")) return ToolNameList::FIT_CIRCLE;
+	if (itemName.contains("æ‹Ÿåˆæ¤­åœ†")) return ToolNameList::FIT_ELLIPSE;
+	if (itemName.contains("æ‹Ÿåˆç›´çº¿")) return ToolNameList::FIT_LINE;
+	if (itemName.contains("è·å–è¾¹ç•Œç‚¹")) return ToolNameList::GET_CONTOUR_POINTS;
+	if (itemName.contains("è¾¹ç¼˜å®½åº¦æµ‹é‡")) return ToolNameList::EDGE_WIDTH;
+	if (itemName.contains("æ‹Ÿåˆå¹³é¢")) return ToolNameList::FLATNESS;
+	if (itemName.contains("æ‰©å±•åº“")) return ToolNameList::EXTENSION_LIBRARY;
+	if (itemName.contains("è·³è½¬è¯­å¥")) return ToolNameList::LOGIC_GOTO;
+	if (itemName.contains("åˆ¤æ–­è¯­å¥")) return ToolNameList::LOGIC_JUDGE;
+	if (itemName.contains("ç»“æŸè¯­å¥")) return ToolNameList::LOGIC_JUDGE_END;
+	if (itemName.contains("è„šæœ¬ç¼–è¾‘")) return ToolNameList::SCRIPT_EDIT;
+	if (itemName.contains("TCP/IPæœåŠ¡å™¨")) return ToolNameList::SOCKET_TCP_SERVER;
+	if (itemName.contains("TCP/IPå®¢æˆ·ç«¯")) return ToolNameList::SOCKET_TCP_CLIENT;
+	if (itemName.contains("PLCé€šä¿¡")) return ToolNameList::PLC_COMMUNICATE;
+	if (itemName.contains("ä¸²å£é€šä¿¡")) return ToolNameList::SERIAL_PORT;
+	if (itemName.contains("é€šç”¨I/O")) return ToolNameList::GENERAL_IO;
+	if (itemName.contains("å»¶æ—¶")) return ToolNameList::DELAY_TOOL;
+	if (itemName.contains("å¯¼å‡ºCSV")) return ToolNameList::EXPORT_CSV;
 	if (itemName.contains("YoloV13")) return ToolNameList::YOLOV13;
+	if (itemName.contains("è½¦ç‰Œè¯†åˆ«")) return ToolNameList::PLATE_RECOGNITION;
+	if (itemName.contains("äºŒç»´ç ç”Ÿæˆ")) return ToolNameList::QRCODE_GENERATE;
+	if (itemName.contains("è‡ªåŠ¨æ‰“å°")) return ToolNameList::IMAGE_PRINT;
 	if (itemName.contains("OCR")) return ToolNameList::OCR;
-	if (itemName.contains("¶şÎ¬ÂëÉú³É")) return ToolNameList::QRCODE_GENERATE;
-	if (itemName.contains("×Ô¶¯´òÓ¡")) return ToolNameList::IMAGE_PRINT;
 	return ToolNameList::DEFULT_ERROR;
 }
 
-typedef Toolnterface* (*Funs)(QString sToolName, QToolBase* toolBase); //¶¨Òåº¯ÊıÖ¸Õë
+typedef Toolnterface* (*Funs)(QString sToolName, QToolBase* toolBase); //??????????
 Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolName, const ToolNameList toolName)
 {
 	int flow_index = 0;
 	if (mode == -10000)
 	{
-		int flow = ui.ProItemTabWidget->currentIndex();  //Ë÷ÒıºÅ	
-		QTreeWidgetItemIterator it(ui.ProItemTreeWidget);  //±éÀútreeWidget
-		QList<QTreeWidgetItem*> pro_keys = m_pro_value.uniqueKeys();
-		for (int i = 0; i < (*it)->childCount(); i++)
+		int flow = ui.ProItemTabWidget->currentIndex();
+		if (flow < 0)
 		{
-			QTreeWidgetItem* key = pro_keys[i];
-			if ((*it)->child(flow) == pro_keys[i])
+			flow = 0;
+		}
+		QTreeWidgetItemIterator it(ui.ProItemTreeWidget);
+		QTreeWidgetItem* root = *it;
+		if (root != nullptr)
+		{
+			QTreeWidgetItem* cur = root->child(flow);
+			if (cur != nullptr && m_pro_value.contains(cur))
 			{
-				//»ñÈ¡Ïß³ÌËù¶ÔÓ¦µÄÁ÷³ÌºÅ
-				flow_index = m_pro_value.values(key).at(0);
+				flow_index = m_pro_value.value(cur);
+			}
+			else
+			{
+				flow_index = flow;
 			}
 		}
 	}
@@ -1543,13 +1565,17 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	{
 		flow_index = mode;
 	}
+	if (flow_index < 0 || flow_index >= QConfig::ToolBase.size() || QConfig::ToolBase[flow_index] == nullptr)
+	{
+		return nullptr;
+	}
 	switch (toolName)
 	{
-#pragma region Í¼Ïñ´¦Àí
+#pragma region ?????
 	case IMAGE_SOURCE: {
-		//»ñÈ¡Í¼Ïñ
-		QLibrary mylib("./Plugins/A_ImageSource.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/A_ImageSource.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getImageSourceState = (GetImageSource)mylib.resolve("ShowFormState");
 			setImageSourceState = (SetImageSource)mylib.resolve("SetFormState");
@@ -1558,15 +1584,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nImageSourceState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}		
 	}break;
 	case CREATE_ROI: {
-		//´´½¨ROI
-		QLibrary mylib("./Plugins/CreateRoi.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//????ROI
+		QLibrary mylib("./Plugins/CreateRoi.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getCreateRoiState = (GetCreateRoi)mylib.resolve("ShowFormState");
 			setCreateRoiState = (SetCreateRoi)mylib.resolve("SetFormState");
@@ -1575,15 +1605,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nCreateRoiState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case CROP_IMAGE: {
-		//²ÃÇĞÍ¼Ïñ
-		QLibrary mylib("./Plugins/CropImage.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/CropImage.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getCropImageState = (GetCropImage)mylib.resolve("ShowFormState");
 			setCropImageState = (SetCropImage)mylib.resolve("SetFormState");
@@ -1592,15 +1626,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nCropImageState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case IMAGE_FLIP: {
-		//Í¼Ïñ·­×ª
-		QLibrary mylib("./Plugins/ImageFlip.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//????
+		QLibrary mylib("./Plugins/ImageFlip.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getImageFlipState = (GetImageFlip)mylib.resolve("ShowFormState");
 			setImageFlipState = (SetImageFlip)mylib.resolve("SetFormState");
@@ -1609,15 +1647,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nImageFlipState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case IMAGE_MORPHOLOGY: {
-		//Ô¤´¦Àí
-		QLibrary mylib("./Plugins/ImageMorphology.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//?????
+		QLibrary mylib("./Plugins/ImageMorphology.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getImageMorphologyState = (GetImageMorphology)mylib.resolve("ShowFormState");
 			setImageMorphologyState = (SetImageMorphology)mylib.resolve("SetFormState");
@@ -1626,15 +1668,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nImageMorphologyState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case IMAGE_REPAIR: {
-		//Í¼ÏñĞŞ¸´
-		QLibrary mylib("./Plugins/ImageRepair.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/ImageRepair.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getImageRepairState = (GetImageRepair)mylib.resolve("ShowFormState");
 			setImageRepairState = (SetImageRepair)mylib.resolve("SetFormState");
@@ -1643,15 +1689,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nImageRepairState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case IMAGE_ROTATE: {
-		//Í¼ÏñĞı×ª
-		QLibrary mylib("./Plugins/ImageRotate.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/ImageRotate.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getImageRotateState = (GetImageRotate)mylib.resolve("ShowFormState");
 			setImageRotateState = (SetImageRotate)mylib.resolve("SetFormState");
@@ -1660,15 +1710,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nImageRotateState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case IMAGE_SPLICE: {
-		//Í¼ÏñÆ´½Ó
-		QLibrary mylib("./Plugins/ImageSplice.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/ImageSplice.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getImageSpliceState = (GetImageSplice)mylib.resolve("ShowFormState");
 			setImageSpliceState = (SetImageSplice)mylib.resolve("SetFormState");
@@ -1677,15 +1731,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nImageSpliceState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case IMAGE_VIEW: {
-		//Í¼ÏñÏÔÊ¾
-		QLibrary mylib("./Plugins/ImageView.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/ImageView.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getImageViewState = (GetImageView)mylib.resolve("ShowFormState");
 			setImageViewState = (SetImageView)mylib.resolve("SetFormState");
@@ -1694,15 +1752,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nImageViewState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case PERSPECTIVE_TRANSFORM: {
-		//Í¸ÊÓ±ä»»
-		QLibrary mylib("./Plugins/PerspectiveTransform.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//?????
+		QLibrary mylib("./Plugins/PerspectiveTransform.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getPerspectiveTransformState = (GetPerspectiveTransform)mylib.resolve("ShowFormState");
 			setPerspectiveTransformState = (SetPerspectiveTransform)mylib.resolve("SetFormState");
@@ -1711,15 +1773,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nPerspectiveTransformState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case SKELETON: {
-		//Í¼ÏñÏ¸»¯
-		QLibrary mylib("./Plugins/Skeleton.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/Skeleton.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getSkeletonState = (GetSkeleton)mylib.resolve("ShowFormState");
 			setSkeletonState = (SetSkeleton)mylib.resolve("SetFormState");
@@ -1728,15 +1794,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nSkeletonState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case EXPORT_IMAGE: {
-		//µ¼³öÍ¼Ïñ
-		QLibrary mylib("./Plugins/Z_ExportImage.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/Z_ExportImage.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getExportImageState = (GetExportImage)mylib.resolve("ShowFormState");
 			setExportImageState = (SetExportImage)mylib.resolve("SetFormState");
@@ -1745,6 +1815,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nExportImageState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -1752,11 +1826,11 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region ¼ì²âÊ¶±ğ
+#pragma region ??????
 	case BARCODE_IDENTIFY: {
-		//ÌõĞÎÂëÊ¶±ğ
-		QLibrary mylib("./Plugins/BarcodeIdentify.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//?????????
+		QLibrary mylib("./Plugins/BarcodeIdentify.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getBarcodeIdentifyState = (GetBarcodeIdentify)mylib.resolve("ShowFormState");
 			setBarcodeIdentifyState = (SetBarcodeIdentify)mylib.resolve("SetFormState");
@@ -1765,15 +1839,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nBarcodeIdentifyState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case BLOB_DETECTOR: {
-		//°ßµã·ÖÎö
-		QLibrary mylib("./Plugins/BlobDetector.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/BlobDetector.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getBlobDetectorState = (GetBlobDetector)mylib.resolve("ShowFormState");
 			setBlobDetectorState = (SetBlobDetector)mylib.resolve("SetFormState");
@@ -1782,15 +1860,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nBlobDetectorState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case BRIGHTNESS: {
-		//ÁÁ¶È¼ì²â
-		QLibrary mylib("./Plugins/Brightness.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/Brightness.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getBrightnessState = (GetBrightness)mylib.resolve("ShowFormState");
 			setBrightnessState = (SetBrightness)mylib.resolve("SetFormState");
@@ -1799,15 +1881,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nBrightnessState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case COLOR_IDENTIFY: {
-		//ÑÕÉ«Ê¶±ğ
-		QLibrary mylib("./Plugins/ColorIdentify.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/ColorIdentify.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getColorIdentifyState = (GetColorIdentify)mylib.resolve("ShowFormState");
 			setColorIdentifyState = (SetColorIdentify)mylib.resolve("SetFormState");
@@ -1816,43 +1902,55 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nColorIdentifyState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case IMAGE_CLARITY: {
-		//Í¼ÏñÇåÎú¶È
-		QLibrary mylib("./Plugins/ImageClarity.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//?????????
+		QLibrary mylib("./Plugins/ImageClarity.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			Funs open = (Funs)mylib.resolve("showDialog");
 			if (open)
 			{
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case OCR_IDENTIFY: {
-		//×Ö·ûÊ¶±ğ
-		QLibrary mylib("./Plugins/OCRIdentify.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/OCRIdentify.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			Funs open = (Funs)mylib.resolve("showDialog");
 			if (open)
 			{
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case QRCODE_IDENTIFY: {
-		//¶şÎ¬ÂëÊ¶±ğ
-		QLibrary mylib("./Plugins/QRcodeIdentify.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//????????
+		QLibrary mylib("./Plugins/QRcodeIdentify.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getQRcodeIdentifyState = (GetQRcodeIdentify)mylib.resolve("ShowFormState");
 			setQRcodeIdentifyState = (SetQRcodeIdentify)mylib.resolve("SetFormState");
@@ -1861,15 +1959,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nQRcodeIdentifyState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case QRCODE_GENERATE: {
-		//¶şÎ¬ÂëÉú³É
-		QLibrary mylib("./Plugins/QRcodeGenerate.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//?????????
+		QLibrary mylib("./Plugins/QRcodeGenerate.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getQRcodeGenerateState = (GetQRcodeGenerate)mylib.resolve("ShowFormState");
 			setQRcodeGenerateState = (SetQRcodeGenerate)mylib.resolve("SetFormState");
@@ -1878,15 +1980,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nQRcodeGenerateState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case IMAGE_PRINT: {
-		//×Ô¶¯´òÓ¡
-		QLibrary mylib("./Plugins/ImagePrint.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/ImagePrint.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getImagePrintState = (GetImagePrint)mylib.resolve("ShowFormState");
 			setImagePrintState = (SetImagePrint)mylib.resolve("SetFormState");
@@ -1895,15 +2001,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nImagePrintState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case SELECT_SHAPE: {
-		//ÂÖÀªÌØÕ÷Ñ¡Ôñ
-		QLibrary mylib("./Plugins/SelectShape.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????????
+		QLibrary mylib("./Plugins/SelectShape.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getSelectShape = (GetSelectShape)mylib.resolve("ShowFormState");
 			setSelectShape = (SetSelectShape)mylib.resolve("SetFormState");
@@ -1912,15 +2022,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nSelectShapeState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case CLASSIFIER: {
-		//·ÖÀàÆ÷
-		QLibrary mylib("./Plugins/Z_Classifier.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/Z_Classifier.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getClassifierState = (GetClassifier)mylib.resolve("ShowFormState");
 			setClassifierState = (SetClassifier)mylib.resolve("SetFormState");
@@ -1929,6 +2043,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nClassifierState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -1936,25 +2054,29 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region ±ê¶¨¹¤¾ß
+#pragma region ??????
 	case DISTORTION_CALIBRATION: {
-		//»û±ä±ê¶¨
-		QLibrary mylib("./Plugins/DistortionCalibration.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//?????
+		QLibrary mylib("./Plugins/DistortionCalibration.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			Funs open = (Funs)mylib.resolve("showDialog");
 			if (open)
 			{
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case ERT_CALIBRATION: {
-		//Nµã±ê¶¨
-		QLibrary mylib("./Plugins/ERTCalibration.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//N???
+		QLibrary mylib("./Plugins/ERTCalibration.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getERTCalibrationState = (GetERTCalibration)mylib.resolve("ShowFormState");
 			setERTCalibrationState = (SetERTCalibration)mylib.resolve("SetFormState");
@@ -1963,15 +2085,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nERTCalibrationState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case MEASURE_CALIBRATION: {
-		//²âÁ¿±ê¶¨
-		QLibrary mylib("./Plugins/MeasureCalibration.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/MeasureCalibration.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getMeasureCalibrationState = (GetMeasureCalibration)mylib.resolve("ShowFormState");
 			setMeasureCalibrationState = (SetMeasureCalibration)mylib.resolve("SetFormState");
@@ -1980,6 +2106,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nMeasureCalibrationState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -1987,11 +2117,11 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region ¶ÔÎ»¹¤¾ß
+#pragma region ????????
 	case CAMSHIFT_TRACK: {
-		//Ä¿±ê¸ú×Ù
-		QLibrary mylib("./Plugins/CamShiftTrack.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/CamShiftTrack.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getCamShiftTrackState = (GetCamShiftTrack)mylib.resolve("ShowFormState");
 			setCamShiftTrackState = (SetCamShiftTrack)mylib.resolve("SetFormState");
@@ -2000,15 +2130,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nCamShiftTrackState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case LINEAR_CALCULATION: {
-		//ÏßĞÔ¼ÆËã
-		QLibrary mylib("./Plugins/LinearCalculation.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/LinearCalculation.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getLinearCalculationState = (GetLinearCalculation)mylib.resolve("ShowFormState");
 			setLinearCalculationState = (SetLinearCalculation)mylib.resolve("SetFormState");
@@ -2017,15 +2151,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nLinearCalculationState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case TEMPLATE_MATCH: {
-		//»Ò¶ÈÆ¥Åä
-		QLibrary mylib("./Plugins/TemplateMatch.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/TemplateMatch.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getTemplateMatchState = (GetTemplateMatch)mylib.resolve("ShowFormState");
 			setTemplateMatchState = (SetTemplateMatch)mylib.resolve("SetFormState");
@@ -2034,15 +2172,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nTemplateMatchState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case SHAPE_MATCH: {
-		//ĞÎ×´Æ¥Åä
-		QLibrary mylib("./Plugins/ShapeMatch.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/ShapeMatch.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getShapeMatchState = (GetShapeMatch)mylib.resolve("ShowFormState");
 			setShapeMatchState = (SetShapeMatch)mylib.resolve("SetFormState");
@@ -2051,6 +2193,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nShapeMatchState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2058,11 +2204,11 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion	
 
-#pragma region ¼¸ºÎ¹¤¾ß
+#pragma region ????????
 	case FIND_CIRCLE: {
-		//Ñ°ÕÒÔ²
-		QLibrary mylib("./Plugins/FindCircle.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//????
+		QLibrary mylib("./Plugins/FindCircle.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getFindCircleState = (GetFindCircle)mylib.resolve("ShowFormState");
 			setFindCircleState = (SetFindCircle)mylib.resolve("SetFormState");
@@ -2071,15 +2217,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nFindCircleState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case FIND_LINE: {
-		//Ñ°ÕÒÖ±Ïß
-		QLibrary mylib("./Plugins/FindLine.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/FindLine.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getFindLineState = (GetFindLine)mylib.resolve("ShowFormState");
 			setFindLineState = (SetFindLine)mylib.resolve("SetFormState");
@@ -2088,15 +2238,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nFindLineState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case FIT_CIRCLE: {
-		//ÄâºÏÔ²
-		QLibrary mylib("./Plugins/FitCircle.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//????
+		QLibrary mylib("./Plugins/FitCircle.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getFitCircleState = (GetFitCircle)mylib.resolve("ShowFormState");
 			setFitCircleState = (SetFitCircle)mylib.resolve("SetFormState");
@@ -2105,15 +2259,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nFitCircleState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case FIT_ELLIPSE: {
-		//ÄâºÏÍÖÔ²
-		QLibrary mylib("./Plugins/FitEllipse.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/FitEllipse.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getFitEllipseState = (GetFitEllipse)mylib.resolve("ShowFormState");
 			setFitEllipseState = (SetFitEllipse)mylib.resolve("SetFormState");
@@ -2122,15 +2280,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nFitEllipseState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case FIT_LINE: {
-		//ÄâºÏÖ±Ïß
-		QLibrary mylib("./Plugins/FitLine.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/FitLine.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getFitLineState = (GetFitLine)mylib.resolve("ShowFormState");
 			setFitLineState = (SetFitLine)mylib.resolve("SetFormState");
@@ -2139,15 +2301,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nFitLineState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case GET_CONTOUR_POINTS: {
-		//»ñÈ¡±ß½çµã
-		QLibrary mylib("./Plugins/GetContourPoints.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/GetContourPoints.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getContourPointsState = (GetContourPoints)mylib.resolve("ShowFormState");
 			setContourPointsState = (SetContourPoints)mylib.resolve("SetFormState");
@@ -2156,6 +2322,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nContourPointsState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2163,11 +2333,11 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region ¼¸ºÎ²âÁ¿
+#pragma region ????????
 	case LINE_CIRCLE: {
-		//ÏßÔ²½»µã
-		QLibrary mylib("./Plugins/LineCircle.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/LineCircle.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getLineCircleState = (GetLineCircle)mylib.resolve("ShowFormState");
 			setLineCircleState = (SetLineCircle)mylib.resolve("SetFormState");
@@ -2176,15 +2346,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nLineCircleState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case LINE_LINE_I: {
-		//ÏßÏß½»µã
-		QLibrary mylib("./Plugins/LineLineI.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/LineLineI.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getLineLineIState = (GetLineLineI)mylib.resolve("ShowFormState");
 			setLineLineIState = (SetLineLineI)mylib.resolve("SetFormState");
@@ -2193,15 +2367,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nLineLineIState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case POINT_LINE: {
-		//µã+Ïß
-		QLibrary mylib("./Plugins/PointLine.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??+??
+		QLibrary mylib("./Plugins/PointLine.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getPointLineState = (GetPointLine)mylib.resolve("ShowFormState");
 			setPointLineState = (SetPointLine)mylib.resolve("SetFormState");
@@ -2210,15 +2388,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nPointLineState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case POINT_POINT: {
-		//µã+µã
-		QLibrary mylib("./Plugins/PointPoint.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??+??
+		QLibrary mylib("./Plugins/PointPoint.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getPointPointState = (GetPointPoint)mylib.resolve("ShowFormState");
 			setPointPointState = (SetPointPoint)mylib.resolve("SetFormState");
@@ -2227,15 +2409,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nPointPointState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case ROUNDED_CORNERS: {
-		//²éÕÒÔ²È±½Ç
-		QLibrary mylib("./Plugins/RoundedCorners.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//????????
+		QLibrary mylib("./Plugins/RoundedCorners.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getRoundedCornersState = (GetRoundedCorners)mylib.resolve("ShowFormState");
 			setRoundedCornersState = (SetRoundedCorners)mylib.resolve("SetFormState");
@@ -2244,15 +2430,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nRoundedCornersState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case EDGE_WIDTH: {
-		//±ßÔµ¿í¶È²âÁ¿
-		QLibrary mylib("./Plugins/Z_EdgeWidthMeasure.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????????
+		QLibrary mylib("./Plugins/Z_EdgeWidthMeasure.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getEdgeWidthMeasureState = (GetEdgeWidthMeasure)mylib.resolve("ShowFormState");
 			setEdgeWidthMeasureState = (SetEdgeWidthMeasure)mylib.resolve("SetFormState");
@@ -2261,6 +2451,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nEdgeWidthMeasureState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2268,11 +2462,11 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region ÈıÎ¬¼ì²â
+#pragma region ??????
 	case FLATNESS: {
-		//ÄâºÏÃæ¶È
-		QLibrary mylib("./Plugins/Flatness.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/Flatness.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getFlatnessState = (GetFlatness)mylib.resolve("ShowFormState");
 			setFlatnessState = (SetFlatness)mylib.resolve("SetFormState");
@@ -2281,6 +2475,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nFlatnessState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2288,11 +2486,11 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region Âß¼­¹¤¾ß
+#pragma region ???????
 	case EXTENSION_LIBRARY: {
-		//À©Õ¹¿â
-		QLibrary mylib("./Plugins/ExtensionLibrary.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//?????
+		QLibrary mylib("./Plugins/ExtensionLibrary.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getExtensionLibraryState = (GetExtensionLibrary)mylib.resolve("ShowFormState");
 			setExtensionLibraryState = (SetExtensionLibrary)mylib.resolve("SetFormState");
@@ -2301,15 +2499,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nExtensionLibraryState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case LOGIC_GOTO: {
-		//Ìø×ªÓï¾ä
-		QLibrary mylib("./Plugins/LogicGoto.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//??????
+		QLibrary mylib("./Plugins/LogicGoto.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getLogicGotoState = (GetLogicGoto)mylib.resolve("ShowFormState");
 			setLogicGotoState = (SetLogicGoto)mylib.resolve("SetFormState");
@@ -2318,15 +2520,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nLogicGotoState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case LOGIC_JUDGE: {
-		//ÅĞ¶ÏÓï¾ä
-		QLibrary mylib("./Plugins/LogicJudge.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/LogicJudge.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getLogicJudgeState = (GetLogicJudge)mylib.resolve("ShowFormState");
 			setLogicJudgeState = (SetLogicJudge)mylib.resolve("SetFormState");
@@ -2335,15 +2541,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nLogicJudgeState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case LOGIC_JUDGE_END: {
-		//½áÊøÓï¾ä
-		QLibrary mylib("./Plugins/LogicJudgeEnd.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/LogicJudgeEnd.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getLogicJudgeEndState = (GetLogicJudgeEnd)mylib.resolve("ShowFormState");
 			setLogicJudgeEndState = (SetLogicJudgeEnd)mylib.resolve("SetFormState");
@@ -2352,20 +2562,28 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nLogicJudgeEndState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case SCRIPT_EDIT: {
-		//½Å±¾±à¼­
-		QLibrary mylib("./Plugins/ScriptEdit.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//?????
+		QLibrary mylib("./Plugins/ScriptEdit.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			Funs open = (Funs)mylib.resolve("showDialog");
 			if (open)
 			{
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2373,25 +2591,29 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region Í¨Ñ¶¹¤¾ß
+#pragma region ??????
 	case GENERAL_IO: {
-		//Í¨ÓÃI/O
-		QLibrary mylib("./Plugins/GeneralIo.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???I/O
+		QLibrary mylib("./Plugins/GeneralIo.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			Funs open = (Funs)mylib.resolve("showDialog");
 			if (open)
 			{
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case PLC_COMMUNICATE: {
-		//PLCÍ¨ĞÅ
-		QLibrary mylib("./Plugins/PlcCommunicate.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//PLC???
+		QLibrary mylib("./Plugins/PlcCommunicate.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getPlcCommunicate = (GetPlcCommunicate)mylib.resolve("ShowFormState");
 			setPlcCommunicate = (SetPlcCommunicate)mylib.resolve("SetFormState");
@@ -2400,15 +2622,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nPlcCommunicateState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case SERIAL_PORT: {
-		//´®¿ÚÍ¨ĞÅ
-		QLibrary mylib("./Plugins/SerialPort.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???????
+		QLibrary mylib("./Plugins/SerialPort.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getSerialPort = (GetSerialPort)mylib.resolve("ShowFormState");
 			setSerialPort = (SetSerialPort)mylib.resolve("SetFormState");
@@ -2417,15 +2643,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nSerialPortState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case SOCKET_TCP_SERVER: {
-		//TCP/IP·şÎñÆ÷
-		QLibrary mylib("./Plugins/SocketTcpServer.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//TCP/IP??????
+		QLibrary mylib("./Plugins/SocketTcpServer.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getSocketTcpServer = (GetSocketTcpServer)mylib.resolve("ShowFormState");
 			setSocketTcpServer = (SetSocketTcpServer)mylib.resolve("SetFormState");
@@ -2434,15 +2664,19 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nSocketTcpServerState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case SOCKET_TCP_CLIENT: {
-		//TCP/IP¿Í»§¶Ë
-		QLibrary mylib("./Plugins/SocketTcpClient.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//TCP/IP?????
+		QLibrary mylib("./Plugins/SocketTcpClient.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getSocketTcpClient = (GetSocketTcpClient)mylib.resolve("ShowFormState");
 			setSocketTcpClient = (SetSocketTcpClient)mylib.resolve("SetFormState");
@@ -2451,6 +2685,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nSocketTcpClientState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2458,25 +2696,29 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region ÏµÍ³¹¤¾ß
+#pragma region ??????
 	case DELAY_TOOL: {
-		//ÑÓÊ±
-		QLibrary mylib("./Plugins/DelayTool.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//???
+		QLibrary mylib("./Plugins/DelayTool.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			Funs open = (Funs)mylib.resolve("showDialog");
 			if (open)
 			{
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
 		}
 	}break;
 	case EXPORT_CSV: {
-		//µ¼³öCSV
-		QLibrary mylib("./Plugins/ExportCsv.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		//????CSV
+		QLibrary mylib("./Plugins/ExportCsv.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getExportCsv = (GetExportCsv)mylib.resolve("ShowFormState");
 			setExportCsv = (SetExportCsv)mylib.resolve("SetFormState");
@@ -2485,6 +2727,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nExportCsvState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2492,11 +2738,11 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	}break;
 #pragma endregion
 
-#pragma region Ä¿±ê¼ì²â
+#pragma region ?????
 	case YOLOV13: {
 		//YoloV13
-		QLibrary mylib("./Plugins/YoloV13.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		QLibrary mylib("./Plugins/YoloV13.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getYoloV13 = (GetYoloV13)mylib.resolve("ShowFormState");
 			setYoloV13 = (SetYoloV13)mylib.resolve("SetFormState");
@@ -2505,6 +2751,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nYoloV13State_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2514,8 +2764,8 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 #pragma region OCR
 	case OCR: {
 		//OCR
-		QLibrary mylib("./Plugins/OCR.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-		if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+		QLibrary mylib("./Plugins/OCR.dll");   //???????????dll???
+		if (mylib.load())    //??????????????
 		{
 			getOCR = (GetOCR)mylib.resolve("ShowFormState");
 			setOCR = (SetOCR)mylib.resolve("SetFormState");
@@ -2524,6 +2774,32 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 			{
 				nOCRState_buf = 1;
 				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
+				frmPage->setObjectName(sToolName);
+				return frmPage;
+			}
+		}
+	}break;
+#pragma endregion
+#pragma region PlateRecognition
+	case PLATE_RECOGNITION: {
+		QLibrary mylib("./Plugins/PlateRecognition.dll");
+		if (mylib.load())
+		{
+			getPlateRecognition = (GetPlateRecognition)mylib.resolve("ShowFormState");
+			setPlateRecognition = (SetPlateRecognition)mylib.resolve("SetFormState");
+			Funs open = (Funs)mylib.resolve("showDialog");
+			if (open)
+			{
+				nPlateRecognitionState_buf = 1;
+				Toolnterface* frmPage = open(sToolName, QConfig::ToolBase[flow_index]);
+				if (frmPage == nullptr)
+				{
+					return nullptr;
+				}
 				frmPage->setObjectName(sToolName);
 				return frmPage;
 			}
@@ -2535,10 +2811,10 @@ Toolnterface* frmProItemTab::GetNewToolDlg(const int mode, const QString sToolNa
 	return new Toolnterface(sToolName, QConfig::ToolBase[flow_index], this);
 }
 
-//ĞŞ¸ÄÁ÷³ÌÃû³Æ
+//???????????
 void frmProItemTab::slot_UpdateQTreeWidget(const QString key_old_name, const QString key_new_name)
 {
-	//TabÁ÷³Ì
+	//Tab????
 	FlowTabMapBuf.clear();
 	QList<QString> keys = FlowTabMap.uniqueKeys();
 	for (int k = 0; k < keys.length(); k++)
@@ -2555,7 +2831,7 @@ void frmProItemTab::slot_UpdateQTreeWidget(const QString key_old_name, const QSt
 		}
 	}
 	FlowTabMap.swap(FlowTabMapBuf);
-	//³ÌĞòÁ÷³Ì
+	//????????
 	FlowProMapBuf.clear();
 	QList<QString> pro_keys = dataVar::FlowProMap.uniqueKeys();
 	for (int k = 0; k < pro_keys.length(); k++)
@@ -2574,10 +2850,10 @@ void frmProItemTab::slot_UpdateQTreeWidget(const QString key_old_name, const QSt
 	dataVar::FlowProMap.swap(FlowProMapBuf);
 }
 
-//·´ĞòÁĞ»¯³õÊ¼»¯Á÷³Ì
+//?????????????????
 void frmProItemTab::DeserializeInitProcess()
 {
-	//Ñ¡ÏîÑùÊ½
+	//??????
 	QString tabStyle(
 		"QWidget{"
 		"background-color:rgb(240, 248, 226);"
@@ -2591,17 +2867,25 @@ void frmProItemTab::DeserializeInitProcess()
 	);
 	ui.ProItemTabWidget->setAttribute(Qt::WA_StyledBackground);
 	ui.ProItemTabWidget->setStyleSheet(tabStyle);		
-	ui.ProItemTreeWidget->setStyle(QStyleFactory::create("windows"));  //ÏÔÊ¾ĞéÏß	
+	ui.ProItemTreeWidget->setStyle(QStyleFactory::create("windows"));  //???????	
 	ui.ProItemTreeWidget->expandAll();	
-	if (itemParent->childCount() != 0)
+	if (itemParent != nullptr && itemParent->childCount() != 0 && treeItem[0] != nullptr)
 	{
 		ui.dockTabWidget->setWindowTitle(treeItem[0]->text(0));
 		ui.ProItemTabWidget->setCurrentIndex(0);
 	}	
-	//Á÷³ÌÍ¼
+	//?????
+	if (itemParent == nullptr)
+	{
+		return;
+	}
 	for (int k = 0; k < itemParent->childCount(); k++)
 	{
-		if (treeItem[k]->text(0).mid(0, 5) == "ĞÂ½¨Á÷³Ì-" && treeItem[k]->text(0).size() == 6)
+		if (treeItem[k] == nullptr)
+		{
+			continue;
+		}
+		if (treeItem[k]->text(0).startsWith(QString::fromUtf8("\xE6\xB5\x81\xE7\xA8\x8B-")))
 		{
 			fNameList.append(treeItem[k]->text(0));
 		}
@@ -2803,7 +3087,7 @@ void frmProItemTab::DeserializeInitProcess()
 	}	
 }
 
-//»ñÈ¡Ëæ»ú×Ö·û
+//?????????
 QString frmProItemTab::getRandomString()
 {
 	qsrand(QDateTime::currentMSecsSinceEpoch());
@@ -2816,19 +3100,19 @@ QString frmProItemTab::getRandomString()
 	return str;
 }
 
-//ĞÂ½¨Á÷³Ì
+//???????
 void frmProItemTab::on_btnAddProFlow_clicked()
 {
 	if (dataVar::projectName == QString())
 	{
 		emit sig_WarnClick();
-		emit sig_Log("ĞÂ½¨Á÷³ÌÊ±£¬ÇëÏÈĞÂ½¨ÏîÄ¿£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "ÇëÏÈĞÂ½¨ÏîÄ¿£¡");
+		emit sig_Log("æœªåˆ›å»ºé¡¹ç›®ï¼Œæ— æ³•æ·»åŠ æµç¨‹ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "è¯·å…ˆåˆ›å»ºæˆ–æ‰“å¼€é¡¹ç›®ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 		msgBox.exec();
 		return;
 	}
-	//ÅĞ¶ÏÓĞÎŞ¿ÕÁ÷³Ì
+	//?????????????
 	bool bolFlowState = false;
 	if (dataVar::FlowProMap.size() == 0)
 	{
@@ -2861,22 +3145,22 @@ void frmProItemTab::on_btnAddProFlow_clicked()
 		if (i >= 20)
 		{
 			emit sig_WarnClick();
-			emit sig_Log("ĞÂ½¨Á÷³ÌÊ±£¬×î¶à´´½¨20¸öÁ÷³Ì£¡");
-			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "×î¶à´´½¨20¸öÁ÷³Ì£¡");
+			emit sig_Log("æµç¨‹æ•°é‡ä¸èƒ½è¶…è¿‡20ä¸ªï¼");
+			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "æœ€å¤šæ·»åŠ 20ä¸ªæµç¨‹ï¼");
 			msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 			msgBox.exec();
 			return;
 		}
-		//É¾³ıÁ÷³ÌºóÖØĞÂ¼ÆËã
+		//???????????????
 		if (m_process_buf.count() != 0)
 		{
-			//°´ÉıĞòÅÅĞò
+			//??????????
 			qSort(m_process_buf.begin(), m_process_buf.end());
-			//×îĞ¡Öµ
+			//?????
 			i = m_process_buf[0];
 			m_process_buf.removeAt(0);
 		}
-		//ÏîÄ¿Á÷³Ì·½°¸
+		//??????????
 	loop:
 		QString fName = getRandomString();
 		for (int n = 0; n < fNameList.count(); n++)
@@ -2887,18 +3171,18 @@ void frmProItemTab::on_btnAddProFlow_clicked()
 			}
 		}
 		fNameList.append(fName);
-		QString flowName = "ĞÂ½¨Á÷³Ì-" + fName;
+		QString flowName = "æµç¨‹-" + fName;
 		emit sig_InfoClick();
-		emit sig_Log(flowName + "´´½¨Íê³É...");
-		ui.ProItemTreeWidget->setStyle(QStyleFactory::create("windows"));  //ÏÔÊ¾ĞéÏß			
+		emit sig_Log(flowName + "åˆ›å»ºå®Œæˆ...");
+		ui.ProItemTreeWidget->setStyle(QStyleFactory::create("windows"));  //???????			
 		treeItem[i] = new QTreeWidgetItem();
 		treeItem[i]->setText(0, flowName);
 		treeItem[i]->setIcon(0, QIcon(":/res/ico/arrow_p.png"));
 		itemParent->insertChild(i, treeItem[i]);
 		ui.ProItemTreeWidget->expandAll();		
-		//¼ÇÂ¼Á÷³Ì¶ÔÓ¦µÄË÷ÒıÖµ
+		//????????????????
 		m_pro_value.insert(treeItem[i], i);
-		//Á÷³ÌÍ¼
+		//?????
 		QToolBase* NewToolBase = new QToolBase;
 		NewToolBase->setObjectName(flowName);
 		FlowTabMap.insert(flowName, NewToolBase);
@@ -2909,7 +3193,7 @@ void frmProItemTab::on_btnAddProFlow_clicked()
 		NewFlowListWidget->setObjectName(flowName);
 		connect(NewFlowListWidget, SIGNAL(sig_ActionProItem(int, QString, bool)),
 			this, SLOT(slot_ActionProItem(int, QString, bool)));
-		//Ñ¡ÏîÑùÊ½
+		//??????
 		QString tabStyle(		
 			"QTabBar::tab{"
 			"background-color:rgb(240, 248, 226);color:rgb(70, 70, 70);"		
@@ -3113,31 +3397,31 @@ void frmProItemTab::on_btnAddProFlow_clicked()
 	else
 	{
 		emit sig_WarnClick();
-		emit sig_Log("ĞÂ½¨Á÷³ÌÊ±£¬Á÷³ÌÎ´½¨Á¢³ÌĞò£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "Á÷³ÌÎ´½¨Á¢³ÌĞò£¡");
+		emit sig_Log("å­˜åœ¨ç©ºæµç¨‹ï¼Œæ— æ³•ç»§ç»­æ·»åŠ ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "è¯·å…ˆç»™å·²æœ‰æµç¨‹æ·»åŠ å·¥å…·ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 		msgBox.exec();
 	}
 }
 
-//É¾³ıÁ÷³Ì
+//???????
 void frmProItemTab::on_btnDelProFlow_clicked()
 {
-	//É¾³ıQTreeWidget
+	//???QTreeWidget
 	QTreeWidgetItem* currentItem = ui.ProItemTreeWidget->currentItem();
 	if (currentItem == NULL || currentItem->parent() == nullptr)
 	{
 		emit sig_ErrorClick();
-		emit sig_Log("Á÷³ÌÎ´Ñ¡¶¨»òÎŞÁ÷³Ì¿ÉÉ¾£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "Á÷³ÌÎ´Ñ¡¶¨»òÎŞÁ÷³Ì¿ÉÉ¾£¡");
+		emit sig_Log("æœªé€‰æ‹©è¦åˆ é™¤çš„æµç¨‹ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "è¯·å…ˆé€‰æ‹©è¦åˆ é™¤çš„æµç¨‹ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/error.png"));
 		msgBox.exec();
 		return;
 	}
-	int flow_index = currentItem->parent()->indexOfChild(currentItem);  //Ë÷ÒıºÅ
+	int flow_index = currentItem->parent()->indexOfChild(currentItem);  //??????
 	int flow = 0;
-	//É¾³ıÁ÷³Ì¶ÔÓ¦µÄË÷ÒıÖµ	
-	QTreeWidgetItemIterator it(ui.ProItemTreeWidget);  //±éÀútreeWidget
+	//????????????????	
+	QTreeWidgetItemIterator it(ui.ProItemTreeWidget);  //????treeWidget
 	QList<QTreeWidgetItem*> pro_keys = m_pro_value.uniqueKeys();
 	for (int i = 0; i < (*it)->childCount(); i++)
 	{
@@ -3148,18 +3432,18 @@ void frmProItemTab::on_btnDelProFlow_clicked()
 			m_pro_value.remove((*it)->child(flow_index));
 		}
 	}
-	//É¾³ı×Ó½Úµã	
+	//???????	
 	delete currentItem->parent()->takeChild(ui.ProItemTreeWidget->currentIndex().row());
 	slotItemExpanded(itemParent);
-	//É¾³ıQTabWidget
+	//???QTabWidget
 	QString flowPageName = ui.ProItemTabWidget->tabText(ui.ProItemTabWidget->currentIndex());
 	emit sig_InfoClick();
-	emit sig_Log(flowPageName + "É¾³ıÍê³É...");
+	emit sig_Log(flowPageName + "åˆ é™¤å®Œæˆ...");
 	dataVar::FlowProMap.remove(flowPageName);
 	FlowTabMap.remove(flowPageName);
-	if (flowPageName.mid(0, 5) == "ĞÂ½¨Á÷³Ì-" && flowPageName.size() == 6)
+	if (flowPageName.startsWith(QString::fromUtf8("æµç¨‹-")) && flowPageName.size() == 4)
 	{
-		fNameList.removeOne(flowPageName.mid(5,1));
+		fNameList.removeOne(flowPageName.mid(3, 1));
 	}
 	ui.ProItemTabWidget->removeTab(ui.ProItemTabWidget->currentIndex());
 	m_process_buf.append(flow);
@@ -3373,7 +3657,7 @@ void frmProItemTab::on_btnDelProFlow_clicked()
 		TempDragListWidget_B20 = nullptr;
 		break;
 	}
-	//ÉèÖÃQDockWidget±êÌâÃû³Æ
+	//????QDockWidget????????
 	currentItem = ui.ProItemTreeWidget->currentItem();
 	if (currentItem == NULL || currentItem->parent() == nullptr)
 	{
@@ -3385,30 +3669,37 @@ void frmProItemTab::on_btnDelProFlow_clicked()
 	ui.dockTabWidget->setWindowTitle(itemParent->child(p_index)->text(0));
 }
 
-//Á÷³ÌÉèÖÃ
+//????????
 void frmProItemTab::on_btnSetProFlow_clicked()
 {
-	//·¢ÉäĞÅºÅ
+	//???????
 	emit sig_CreateList();
 	dataVar::fProcessSetUp->exec();
 }
 
 void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 {
-	int flow = ui.ProItemTabWidget->currentIndex();  //Ë÷ÒıºÅ
+	int flow = ui.ProItemTabWidget->currentIndex();
 	int flow_index = 0;
-	QTreeWidgetItemIterator it(ui.ProItemTreeWidget);  //±éÀútreeWidget
-	QList<QTreeWidgetItem*> pro_keys = m_pro_value.uniqueKeys();
-	for (int i = 0; i < (*it)->childCount(); i++)
+	QTreeWidgetItemIterator it(ui.ProItemTreeWidget);
+	QTreeWidgetItem* root = *it;
+	if (root != nullptr && flow >= 0)
 	{
-		QTreeWidgetItem* key = pro_keys[i];
-		if ((*it)->child(flow) == pro_keys[i])
+		QTreeWidgetItem* cur = root->child(flow);
+		if (cur != nullptr && m_pro_value.contains(cur))
 		{
-			//»ñÈ¡Ïß³ÌËù¶ÔÓ¦µÄÁ÷³ÌºÅ
-			flow_index = m_pro_value.values(key).at(0);
+			flow_index = m_pro_value.value(cur);
+		}
+		else
+		{
+			flow_index = flow;
 		}
 	}
-	// 0: Item±ä»¯   1: É¾³ı¹¤¾ß   2: ÔËĞĞµ½µ±Ç°¹¤¾ß
+	if (flow_index < 0 || flow_index >= QConfig::ToolBase.size() || QConfig::ToolBase[flow_index] == nullptr)
+	{
+		return;
+	}
+	// 0: Item???   1: ???????   2: ?????????????
 	if (nType == 0)
 	{
 		if (true == isAdd)
@@ -3438,7 +3729,7 @@ void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 			}
 			if (false == isFlowExist)
 			{
-				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "Î´ÕÒµ½¸ÃÁ÷³ÌÊı¾İ: " + flowPageName);
+				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "æœªæ‰¾åˆ°æµç¨‹: " + flowPageName);
 				msgBox.setWindowIcon(QIcon(":/res/ico/error.png"));
 				msgBox.exec();
 				return;
@@ -3452,7 +3743,10 @@ void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 		{
 			if (QConfig::ToolBase[flow_index]->m_Tools[i].PublicToolName == itemName)
 			{
-				QConfig::ToolBase[flow_index]->m_Tools[i].PublicToolDlg->deleteLater();
+				if (QConfig::ToolBase[flow_index]->m_Tools[i].PublicToolDlg != nullptr)
+				{
+					QConfig::ToolBase[flow_index]->m_Tools[i].PublicToolDlg->deleteLater();
+				}
 				QConfig::ToolBase[flow_index]->m_Tools.erase(QConfig::ToolBase[flow_index]->m_Tools.begin() + i);
 				break;
 			}
@@ -3485,12 +3779,12 @@ void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 		}
 		if (false == isFlowExist)
 		{
-			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "Î´ÕÒµ½¸ÃÁ÷³ÌÊı¾İ: " + flowPageName);
+			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "æœªæ‰¾åˆ°æµç¨‹: " + flowPageName);
 			msgBox.setWindowIcon(QIcon(":/res/ico/error.png"));
 			msgBox.exec();
 			return;
 		}
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬			
+		//?????????????????/??????			
 		flowNames_A.reserve(100);
 		flowNames_A.clear();
 		QString strCurrentItemText;
@@ -3536,7 +3830,7 @@ void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 				toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 				if (FlowProItemListState_A[i] == toolName)
 				{
-					//×ÓÏß³ÌÖĞÖ´ĞĞÁ÷³Ì				
+					//??????????????				
 					switch (flow_index) {
 					case 0:
 						QConfig::ToolBase[flow_index]->RunToolFlow_B1(toolName);
@@ -3603,7 +3897,7 @@ void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 			}
 		}
 	}
-	//´«µİÁ÷³Ì¹¤¾ßÃûµ½Ìø×ª¹¤¾ß		
+	//??????????????????????		
 	gVariable::goto_variable_link.clear();
 	gVariable::GotoVar.goto_array_name_value.clear();
 	gVariable::GotoVar.goto_array_name_value.resize(QConfig::ToolBase[flow_index]->m_FlowSortList.count());
@@ -3612,11 +3906,11 @@ void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 		gVariable::GotoVar.goto_array_name_value[m] = QConfig::ToolBase[flow_index]->m_FlowSortList[m];
 		gVariable::goto_variable_link.insert(QString::number(flow_index), gVariable::GotoVar);
 	}
-	//¸üĞÂÌø×ª¹¤¾ß
+	//???????????
 	QConfig::ToolBase[flow_index]->RunGotoToolLink();
-	//¸üĞÂÍ¨Ñ¶¹¤¾ß
+	//??????????
 	QConfig::ToolBase[flow_index]->RunCommunicationLink(QString());
-#pragma region ½Å±¾±à¼­Á´½ÓÁĞ±í
+#pragma region ?????????????
 	QVector<QString>  FlowProItemList_S = QVector<QString>(100);
 	QString flowPageName_S = ui.ProItemTabWidget->tabText(ui.ProItemTabWidget->currentIndex());	
 	QMap<QString, QtDragListWidget*>::iterator iter = dataVar::FlowProMap.begin();
@@ -3633,7 +3927,7 @@ void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 	gVariable::ScriptEditVar.flow_pro_item_list = FlowProItemList_S;
 	gVariable::ScriptEditVar.item_id = flow_index;
 	gVariable::scriptedit_variable_link.insert(QConfig::ToolBase[flow_index], gVariable::ScriptEditVar);
-	//¸üĞÂ±äÁ¿
+	//????????
 	QList<int> link_keys = dataVar::all_link_process.uniqueKeys();
 	for (int i = 0; i < link_keys.length(); i++)
 	{
@@ -3650,28 +3944,28 @@ void frmProItemTab::slot_ActionProItem(int nType, QString itemName, bool isAdd)
 #pragma endregion
 }
 
-//Á÷³ÌÖ´ĞĞÒ»´Î
+//??????????
 void frmProItemTab::on_btnRunOnce_clicked()
 {
-	//ÊÖ¶¯³ÌĞòÁ÷³Ì
+	//???????????
 	dataVar::m_a_state = 1;
 	dataVar::manualRunOnce_A = 0;
 	dataVar::stopThread_A = 0;
 	stop_goto_A = false;
 	stop_goto_manual_A = true;
 	emit sig_InfoClick();
-	emit sig_Log("ÏîÄ¿·½°¸µ¥¸öÁ÷³ÌÖ´ĞĞÒ»´Î...");
+	emit sig_Log("å¼€å§‹å•æ¬¡æ‰§è¡Œ...");
 	ProgramManualFlow();
 }
 
-//Á÷³ÌÑ­»·Ö´ĞĞ
+//??????????
 void frmProItemTab::on_btnRunCycle_clicked()
 {
 	dataVar::m_a_state = 1;
 	dataVar::manualRunOnce_A = 0;
 	dataVar::stopThread_A = 0;
 	emit sig_InfoClick();
-	emit sig_Log("ÏîÄ¿·½°¸µ¥¸öÁ÷³Ì¿ªÊ¼Ñ­»·Ö´ĞĞ...");
+	emit sig_Log("å¼€å§‹å¾ªç¯æ‰§è¡Œ...");
 	emit sig_CycleRun();
 	ui.btnRunCycle->setEnabled(false);
 	ui.btnRunOnce->setEnabled(false);
@@ -3688,23 +3982,23 @@ void frmProItemTab::slot_CycleProErr()
 
 void frmProItemTab::slot_CyclePro()
 {
-	//ÊÖ¶¯³ÌĞòÁ÷³Ì	
+	//???????????	
 	ProgramManualFlow();
 }
 
-//Á÷³ÌÍ£Ö¹Ö´ĞĞ
+//?????????
 void frmProItemTab::on_btnStop_clicked()
 {
 	emit sig_InfoClick();
-	emit sig_Log("ÏîÄ¿·½°¸µ¥¸öÁ÷³ÌÍ£Ö¹Ö´ĞĞ...");
+	emit sig_Log("åœæ­¢æ‰§è¡Œ...");
 	dataVar::stopThread_A = 1;
 	emit sig_CycleStop();
 }
 
-//ËùÓĞÁ÷³ÌÖ´ĞĞÒ»´Î
+//??????????????
 void frmProItemTab::slot_AllCycleRunOnce()
 {
-	//×Ô¶¯³ÌĞòÁ÷³Ì
+	//???????????
 	AutoRunOnce_B();
 	AutoRunStop_B();
 	dataVar::m_a_state = 2;
@@ -3712,7 +4006,7 @@ void frmProItemTab::slot_AllCycleRunOnce()
 	bool isFlowExist = false;
 	QVector<QString> FlowProItemList = QVector<QString>(100);
 	FlowProItemList.clear();
-	//»ñÈ¡Á÷³ÌÊı¾İ
+	//???????????
 	QString flowPageName = ui.ProItemTabWidget->tabText(ui.ProItemTabWidget->currentIndex());
 	QMap<QString, QtDragListWidget*>::iterator iter = dataVar::FlowProMap.begin();
 	while (iter != dataVar::FlowProMap.end())
@@ -3730,8 +4024,8 @@ void frmProItemTab::slot_AllCycleRunOnce()
 	if (false == isFlowExist || FlowProItemList.count() == 0)
 	{
 		emit sig_ErrorClick();
-		emit sig_Log("ÏîÄ¿·½°¸ËùÓĞÁ÷³ÌÖ´ĞĞÒ»´ÎÊ±: Î´ÕÒµ½¸ÃÁ÷³ÌÊı¾İ: " + flowPageName);
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "Î´ÕÒµ½¸ÃÁ÷³ÌÊı¾İ: " + flowPageName);
+		emit sig_Log("æ— æ³•æ‰§è¡Œæµç¨‹: å½“å‰æµç¨‹ä¸å­˜åœ¨æˆ–æœªæ·»åŠ å·¥å…·: " + flowPageName);
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "æœªæ‰¾åˆ°æµç¨‹: " + flowPageName);
 		msgBox.setWindowIcon(QIcon(":/res/ico/error.png"));
 		msgBox.exec();
 		return;
@@ -3739,12 +4033,12 @@ void frmProItemTab::slot_AllCycleRunOnce()
 	else
 	{
 		emit sig_InfoClick();
-		emit sig_Log("ÏîÄ¿·½°¸ËùÓĞÁ÷³ÌÖ´ĞĞÒ»´Î...");
+		emit sig_Log("å¼€å§‹è‡ªåŠ¨å•æ¬¡æ‰§è¡Œ...");
 		QList<QTreeWidgetItem*> pro_keys = m_pro_value.uniqueKeys();
 		for (int i = 0; i < pro_keys.count(); i++)
 		{
 			QTreeWidgetItem* key = pro_keys[i];
-			//»ñÈ¡Ïß³ÌËù¶ÔÓ¦µÄÁ÷³ÌºÅ
+			//??????????????????
 			int flow_index = m_pro_value.values(key).at(0);
 			switch (flow_index) {
 			case 0:
@@ -3832,10 +4126,10 @@ void frmProItemTab::slot_AllCycleRunOnce()
 	}
 }
 
-//ËùÓĞÁ÷³ÌÁ¬ĞøÖ´ĞĞ
+//???????????????
 void frmProItemTab::slot_AllCycleRunContinue()
 {
-	//×Ô¶¯³ÌĞòÁ÷³Ì
+	//???????????
 	AutoRunOnce_B();
 	AutoRunStop_B();
 	dataVar::m_a_state = 2;
@@ -3843,7 +4137,7 @@ void frmProItemTab::slot_AllCycleRunContinue()
 	bool isFlowExist = false;
 	QVector<QString> FlowProItemList = QVector<QString>(100);
 	FlowProItemList.clear();
-	//»ñÈ¡Á÷³ÌÊı¾İ
+	//???????????
 	QString flowPageName = ui.ProItemTabWidget->tabText(ui.ProItemTabWidget->currentIndex());
 	QMap<QString, QtDragListWidget*>::iterator iter = dataVar::FlowProMap.begin();
 	while (iter != dataVar::FlowProMap.end())
@@ -3861,8 +4155,8 @@ void frmProItemTab::slot_AllCycleRunContinue()
 	if (false == isFlowExist || FlowProItemList.count() == 0)
 	{
 		emit sig_ErrorClick();
-		emit sig_Log("ÏîÄ¿·½°¸ËùÓĞÁ÷³ÌÁ¬ĞøÖ´ĞĞÊ±: Î´ÕÒµ½¸ÃÁ÷³ÌÊı¾İ: " + flowPageName);
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "Î´ÕÒµ½¸ÃÁ÷³ÌÊı¾İ: " + flowPageName);
+		emit sig_Log("æ— æ³•å¾ªç¯æ‰§è¡Œ: å½“å‰æµç¨‹ä¸å­˜åœ¨æˆ–æœªæ·»åŠ å·¥å…·: " + flowPageName);
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "æœªæ‰¾åˆ°æµç¨‹: " + flowPageName);
 		msgBox.setWindowIcon(QIcon(":/res/ico/error.png"));
 		msgBox.exec();
 		emit sig_AllCycleStop();
@@ -3871,12 +4165,12 @@ void frmProItemTab::slot_AllCycleRunContinue()
 	else
 	{
 		emit sig_InfoClick();
-		emit sig_Log("ÏîÄ¿·½°¸ËùÓĞÁ÷³Ì¿ªÊ¼Ñ­»·Ö´ĞĞ...");
+		emit sig_Log("å¼€å§‹è‡ªåŠ¨å¾ªç¯æ‰§è¡Œ...");
 		QList<QTreeWidgetItem*> pro_keys = m_pro_value.uniqueKeys();
 		for (int i = 0; i < pro_keys.count(); i++)
 		{
 			QTreeWidgetItem* key = pro_keys[i];
-			//»ñÈ¡Ïß³ÌËù¶ÔÓ¦µÄÁ÷³ÌºÅ
+			//??????????????????
 			int flow_index = m_pro_value.values(key).at(0);
 			switch (flow_index) {
 			case 0:
@@ -3986,11 +4280,11 @@ void frmProItemTab::slot_AllCycleRunContinue()
 	}
 }
 
-//ËùÓĞÁ÷³ÌÍ£Ö¹
+//??????????
 void frmProItemTab::slot_AllCycleStop()
 {
 	emit sig_InfoClick();
-	emit sig_Log("ÏîÄ¿·½°¸ËùÓĞÁ÷³ÌÍ£Ö¹Ö´ĞĞ...");
+	emit sig_Log("åœæ­¢å¾ªç¯æ‰§è¡Œ...");
 	Stop_Thread_B();
 	p_autotimer->stop();
 	AutoRunOnce_B();
@@ -4003,7 +4297,7 @@ void frmProItemTab::slot_AllCycleStop()
 	}
 }
 
-//³õÊ¼»¯²ÎÊı
+//?????????
 void frmProItemTab::AutoRunOnce_B()
 {
 	stop_goto_B1 = false;
@@ -4072,7 +4366,7 @@ void frmProItemTab::AutoRunStop_B()
 	dataVar::stopThread_B20 = 0;
 }
 
-//ÇĞ»»Á÷³ÌÏÔÊ¾
+//???????????
 void frmProItemTab::slot_Cutover()
 {
 	int count = ui.ProItemTabWidget->count();
@@ -4088,8 +4382,8 @@ void frmProItemTab::slot_Cutover()
 	}
 }
 
-#pragma region ÊÖ¶¯³ÌĞòÁ÷³Ì
-//ÊÖ¶¯³ÌĞòÁ÷³Ì
+#pragma region ???????????
+//???????????
 void frmProItemTab::ProgramManualFlow()
 {
 	bool isFlowExist = false;
@@ -4098,19 +4392,19 @@ void frmProItemTab::ProgramManualFlow()
 		dataVar::manualRunOnce_A = 1;
 		FlowProItemList_A.clear();
 		FlowProItemListState_A.clear();
-		int flow = ui.ProItemTabWidget->currentIndex();  //Ë÷ÒıºÅ	
-		QTreeWidgetItemIterator it(ui.ProItemTreeWidget);  //±éÀútreeWidget
+		int flow = ui.ProItemTabWidget->currentIndex();  //??????	
+		QTreeWidgetItemIterator it(ui.ProItemTreeWidget);  //????treeWidget
 		QList<QTreeWidgetItem*> pro_keys = m_pro_value.uniqueKeys();
 		for (int i = 0; i < (*it)->childCount(); i++)
 		{
 			QTreeWidgetItem* key = pro_keys[i];
 			if ((*it)->child(flow) == pro_keys[i])
 			{
-				//»ñÈ¡Ïß³ÌËù¶ÔÓ¦µÄÁ÷³ÌºÅ
+				//??????????????????
 				manual_flow_index = m_pro_value.values(key).at(0);
 			}
 		}
-		//»ñÈ¡Á÷³ÌÊı¾İ
+		//???????????
 		flowPageName_A = ui.ProItemTabWidget->tabText(ui.ProItemTabWidget->currentIndex());
 		flowPageName_buf = flowPageName_A;
 		QMap<QString, QtDragListWidget*>::iterator iter = dataVar::FlowProMap.begin();
@@ -4133,7 +4427,7 @@ void frmProItemTab::ProgramManualFlow()
 			emit sig_CycleStop();
 			return;
 		}
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬			
+		//?????????????????/??????			
 		flowNames_A.reserve(100);
 		flowNames_A.clear();
 		QMap<QString, QtDragListWidget*>::iterator iter_icon = GetItemState_A.begin();
@@ -4338,7 +4632,7 @@ void frmProItemTab::ProgramManualFlow()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®				
+				//????????????????				
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -4348,7 +4642,7 @@ void frmProItemTab::ProgramManualFlow()
 					}
 				}
 				QString tool_name_A = toolName.mid(0, str_count);
-				if (tool_name_A == "Ìø×ªÓï¾ä")
+				if (tool_name_A == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_A == true)
 					{
@@ -4694,7 +4988,7 @@ void frmProItemTab::ProgramManualFlow()
 						}
 					}
 				}
-				else if (tool_name_A == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_A == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[manual_flow_index]->m_Tools.size(); q++)
@@ -4839,7 +5133,7 @@ void frmProItemTab::ProgramManualFlow()
 						}
 					}
 				}
-				else if (tool_name_A == "½áÊøÓï¾ä")
+				else if (tool_name_A == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[manual_flow_index]->m_Tools.size(); q++)
@@ -4864,15 +5158,15 @@ void frmProItemTab::ProgramManualFlow()
 void frmProItemTab::slot_ManualCycleStop()
 {
 	emit sig_ErrorClick();
-	emit sig_Log("ÊÖ¶¯³ÌĞòÁ÷³Ì: Î´ÕÒµ½¸ÃÁ÷³ÌÊı¾İ: " + flowPageName_buf);
-	QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "Î´ÕÒµ½¸ÃÁ÷³ÌÊı¾İ: " + flowPageName_buf);
+	emit sig_Log("æµç¨‹æ‰§è¡Œé”™è¯¯: ç¨‹åºè¿è¡Œé”™è¯¯ï¼Œæµç¨‹åç§°ä¸º: " + flowPageName_buf);
+	QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "æµç¨‹æ‰§è¡Œé”™è¯¯: " + flowPageName_buf);
 	msgBox.setWindowIcon(QIcon(":/res/ico/error.png"));
 	msgBox.exec();
 }
 #pragma endregion
 
-#pragma region ×Ô¶¯³ÌĞòÁ÷³Ì
-//×Ô¶¯³ÌĞòÁ÷³Ì1
+#pragma region ???????????
+//???????????1
 void frmProItemTab::ProgramAutoFlow_B1()
 {
 	if (dataVar::autoRunOnce_B1 == 0)
@@ -4882,7 +5176,7 @@ void frmProItemTab::ProgramAutoFlow_B1()
 		QVector<QString> FlowProItemList_B1 = QVector<QString>(100);
 		FlowProItemList_B1.clear();
 		FlowProItemList_B1 = TempDragListWidget_B1->GetAllItemList_B1();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -4928,7 +5222,7 @@ void frmProItemTab::ProgramAutoFlow_B1()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®				
+				//????????????????				
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -4938,7 +5232,7 @@ void frmProItemTab::ProgramAutoFlow_B1()
 					}
 				}
 				QString tool_name_B1 = toolName.mid(0, str_count);
-				if (tool_name_B1 == "Ìø×ªÓï¾ä")
+				if (tool_name_B1 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B1 == true)
 					{
@@ -4976,7 +5270,7 @@ void frmProItemTab::ProgramAutoFlow_B1()
 						}
 					}
 				}
-				else if (tool_name_B1 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B1 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[0]->m_Tools.size(); q++)
@@ -4998,7 +5292,7 @@ void frmProItemTab::ProgramAutoFlow_B1()
 						dataVar::img_view_count_buf_B1 = if_judge_index;
 					}
 				}
-				else if (tool_name_B1 == "½áÊøÓï¾ä")
+				else if (tool_name_B1 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[0]->m_Tools.size(); q++)
@@ -5020,7 +5314,7 @@ void frmProItemTab::ProgramAutoFlow_B1()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì2
+//???????????2
 void frmProItemTab::ProgramAutoFlow_B2()
 {
 	if (dataVar::autoRunOnce_B2 == 0)
@@ -5030,7 +5324,7 @@ void frmProItemTab::ProgramAutoFlow_B2()
 		QVector<QString> FlowProItemList_B2 = QVector<QString>(100);
 		FlowProItemList_B2.clear();
 		FlowProItemList_B2 = TempDragListWidget_B2->GetAllItemList_B2();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -5076,7 +5370,7 @@ void frmProItemTab::ProgramAutoFlow_B2()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®				
+				//????????????????				
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -5086,7 +5380,7 @@ void frmProItemTab::ProgramAutoFlow_B2()
 					}
 				}
 				QString tool_name_B2 = toolName.mid(0, str_count);
-				if (tool_name_B2 == "Ìø×ªÓï¾ä")
+				if (tool_name_B2 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B2 == true)
 					{
@@ -5124,7 +5418,7 @@ void frmProItemTab::ProgramAutoFlow_B2()
 						}
 					}
 				}
-				else if (tool_name_B2 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B2 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[1]->m_Tools.size(); q++)
@@ -5146,7 +5440,7 @@ void frmProItemTab::ProgramAutoFlow_B2()
 						dataVar::img_view_count_buf_B2 = if_judge_index;
 					}
 				}
-				else if (tool_name_B2 == "½áÊøÓï¾ä")
+				else if (tool_name_B2 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[1]->m_Tools.size(); q++)
@@ -5168,7 +5462,7 @@ void frmProItemTab::ProgramAutoFlow_B2()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì3
+//???????????3
 void frmProItemTab::ProgramAutoFlow_B3()
 {
 	if (dataVar::autoRunOnce_B3 == 0)
@@ -5178,7 +5472,7 @@ void frmProItemTab::ProgramAutoFlow_B3()
 		QVector<QString> FlowProItemList_B3 = QVector<QString>(100);
 		FlowProItemList_B3.clear();
 		FlowProItemList_B3 = TempDragListWidget_B3->GetAllItemList_B3();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -5224,7 +5518,7 @@ void frmProItemTab::ProgramAutoFlow_B3()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -5234,7 +5528,7 @@ void frmProItemTab::ProgramAutoFlow_B3()
 					}
 				}
 				QString tool_name_B3 = toolName.mid(0, str_count);
-				if (tool_name_B3 == "Ìø×ªÓï¾ä")
+				if (tool_name_B3 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B3 == true)
 					{
@@ -5272,7 +5566,7 @@ void frmProItemTab::ProgramAutoFlow_B3()
 						}
 					}
 				}
-				else if (tool_name_B3 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B3 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[2]->m_Tools.size(); q++)
@@ -5294,7 +5588,7 @@ void frmProItemTab::ProgramAutoFlow_B3()
 						dataVar::img_view_count_buf_B3 = if_judge_index;
 					}
 				}
-				else if (tool_name_B3 == "½áÊøÓï¾ä")
+				else if (tool_name_B3 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[2]->m_Tools.size(); q++)
@@ -5316,7 +5610,7 @@ void frmProItemTab::ProgramAutoFlow_B3()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì4
+//???????????4
 void frmProItemTab::ProgramAutoFlow_B4()
 {
 	if (dataVar::autoRunOnce_B4 == 0)
@@ -5326,7 +5620,7 @@ void frmProItemTab::ProgramAutoFlow_B4()
 		QVector<QString> FlowProItemList_B4 = QVector<QString>(100);
 		FlowProItemList_B4.clear();
 		FlowProItemList_B4 = TempDragListWidget_B4->GetAllItemList_B4();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -5372,7 +5666,7 @@ void frmProItemTab::ProgramAutoFlow_B4()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -5382,7 +5676,7 @@ void frmProItemTab::ProgramAutoFlow_B4()
 					}
 				}
 				QString tool_name_B4 = toolName.mid(0, str_count);
-				if (tool_name_B4 == "Ìø×ªÓï¾ä")
+				if (tool_name_B4 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B4 == true)
 					{
@@ -5420,7 +5714,7 @@ void frmProItemTab::ProgramAutoFlow_B4()
 						}
 					}
 				}
-				else if (tool_name_B4 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B4 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[3]->m_Tools.size(); q++)
@@ -5442,7 +5736,7 @@ void frmProItemTab::ProgramAutoFlow_B4()
 						dataVar::img_view_count_buf_B4 = if_judge_index;
 					}
 				}
-				else if (tool_name_B4 == "½áÊøÓï¾ä")
+				else if (tool_name_B4 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[3]->m_Tools.size(); q++)
@@ -5464,7 +5758,7 @@ void frmProItemTab::ProgramAutoFlow_B4()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì5
+//???????????5
 void frmProItemTab::ProgramAutoFlow_B5()
 {
 	if (dataVar::autoRunOnce_B5 == 0)
@@ -5474,7 +5768,7 @@ void frmProItemTab::ProgramAutoFlow_B5()
 		QVector<QString> FlowProItemList_B5 = QVector<QString>(100);
 		FlowProItemList_B5.clear();
 		FlowProItemList_B5 = TempDragListWidget_B5->GetAllItemList_B5();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -5520,7 +5814,7 @@ void frmProItemTab::ProgramAutoFlow_B5()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -5530,7 +5824,7 @@ void frmProItemTab::ProgramAutoFlow_B5()
 					}
 				}
 				QString tool_name_B5 = toolName.mid(0, str_count);
-				if (tool_name_B5 == "Ìø×ªÓï¾ä")
+				if (tool_name_B5 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B5 == true)
 					{
@@ -5568,7 +5862,7 @@ void frmProItemTab::ProgramAutoFlow_B5()
 						}
 					}
 				}
-				else if (tool_name_B5 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B5 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[4]->m_Tools.size(); q++)
@@ -5590,7 +5884,7 @@ void frmProItemTab::ProgramAutoFlow_B5()
 						dataVar::img_view_count_buf_B5 = if_judge_index;
 					}
 				}
-				else if (tool_name_B5 == "½áÊøÓï¾ä")
+				else if (tool_name_B5 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[4]->m_Tools.size(); q++)
@@ -5612,7 +5906,7 @@ void frmProItemTab::ProgramAutoFlow_B5()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì6
+//???????????6
 void frmProItemTab::ProgramAutoFlow_B6()
 {
 	if (dataVar::autoRunOnce_B6 == 0)
@@ -5622,7 +5916,7 @@ void frmProItemTab::ProgramAutoFlow_B6()
 		QVector<QString> FlowProItemList_B6 = QVector<QString>(100);
 		FlowProItemList_B6.clear();
 		FlowProItemList_B6 = TempDragListWidget_B6->GetAllItemList_B6();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -5668,7 +5962,7 @@ void frmProItemTab::ProgramAutoFlow_B6()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -5678,7 +5972,7 @@ void frmProItemTab::ProgramAutoFlow_B6()
 					}
 				}
 				QString tool_name_B6 = toolName.mid(0, str_count);
-				if (tool_name_B6 == "Ìø×ªÓï¾ä")
+				if (tool_name_B6 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B6 == true)
 					{
@@ -5716,7 +6010,7 @@ void frmProItemTab::ProgramAutoFlow_B6()
 						}
 					}
 				}
-				else if (tool_name_B6 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B6 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[5]->m_Tools.size(); q++)
@@ -5738,7 +6032,7 @@ void frmProItemTab::ProgramAutoFlow_B6()
 						dataVar::img_view_count_buf_B6 = if_judge_index;
 					}
 				}
-				else if (tool_name_B6 == "½áÊøÓï¾ä")
+				else if (tool_name_B6 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[5]->m_Tools.size(); q++)
@@ -5760,7 +6054,7 @@ void frmProItemTab::ProgramAutoFlow_B6()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì7
+//???????????7
 void frmProItemTab::ProgramAutoFlow_B7()
 {
 	if (dataVar::autoRunOnce_B7 == 0)
@@ -5770,7 +6064,7 @@ void frmProItemTab::ProgramAutoFlow_B7()
 		QVector<QString> FlowProItemList_B7 = QVector<QString>(100);
 		FlowProItemList_B7.clear();
 		FlowProItemList_B7 = TempDragListWidget_B7->GetAllItemList_B7();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -5816,7 +6110,7 @@ void frmProItemTab::ProgramAutoFlow_B7()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -5826,7 +6120,7 @@ void frmProItemTab::ProgramAutoFlow_B7()
 					}
 				}
 				QString tool_name_B7 = toolName.mid(0, str_count);
-				if (tool_name_B7 == "Ìø×ªÓï¾ä")
+				if (tool_name_B7 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B7 == true)
 					{
@@ -5864,7 +6158,7 @@ void frmProItemTab::ProgramAutoFlow_B7()
 						}
 					}
 				}
-				else if (tool_name_B7 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B7 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[6]->m_Tools.size(); q++)
@@ -5886,7 +6180,7 @@ void frmProItemTab::ProgramAutoFlow_B7()
 						dataVar::img_view_count_buf_B7 = if_judge_index;
 					}
 				}
-				else if (tool_name_B7 == "½áÊøÓï¾ä")
+				else if (tool_name_B7 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[6]->m_Tools.size(); q++)
@@ -5908,7 +6202,7 @@ void frmProItemTab::ProgramAutoFlow_B7()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì8
+//???????????8
 void frmProItemTab::ProgramAutoFlow_B8()
 {
 	if (dataVar::autoRunOnce_B8 == 0)
@@ -5918,7 +6212,7 @@ void frmProItemTab::ProgramAutoFlow_B8()
 		QVector<QString> FlowProItemList_B8 = QVector<QString>(100);
 		FlowProItemList_B8.clear();
 		FlowProItemList_B8 = TempDragListWidget_B8->GetAllItemList_B8();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -5964,7 +6258,7 @@ void frmProItemTab::ProgramAutoFlow_B8()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®				
+				//????????????????				
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -5974,7 +6268,7 @@ void frmProItemTab::ProgramAutoFlow_B8()
 					}
 				}
 				QString tool_name_B8 = toolName.mid(0, str_count);
-				if (tool_name_B8 == "Ìø×ªÓï¾ä")
+				if (tool_name_B8 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B8 == true)
 					{
@@ -6012,7 +6306,7 @@ void frmProItemTab::ProgramAutoFlow_B8()
 						}
 					}
 				}
-				else if (tool_name_B8 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B8 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[7]->m_Tools.size(); q++)
@@ -6034,7 +6328,7 @@ void frmProItemTab::ProgramAutoFlow_B8()
 						dataVar::img_view_count_buf_B8 = if_judge_index;
 					}
 				}
-				else if (tool_name_B8 == "½áÊøÓï¾ä")
+				else if (tool_name_B8 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[7]->m_Tools.size(); q++)
@@ -6056,7 +6350,7 @@ void frmProItemTab::ProgramAutoFlow_B8()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì9
+//???????????9
 void frmProItemTab::ProgramAutoFlow_B9()
 {
 	if (dataVar::autoRunOnce_B9 == 0)
@@ -6066,7 +6360,7 @@ void frmProItemTab::ProgramAutoFlow_B9()
 		QVector<QString> FlowProItemList_B9 = QVector<QString>(100);
 		FlowProItemList_B9.clear();
 		FlowProItemList_B9 = TempDragListWidget_B9->GetAllItemList_B9();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -6112,7 +6406,7 @@ void frmProItemTab::ProgramAutoFlow_B9()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -6122,7 +6416,7 @@ void frmProItemTab::ProgramAutoFlow_B9()
 					}
 				}
 				QString tool_name_B9 = toolName.mid(0, str_count);
-				if (tool_name_B9 == "Ìø×ªÓï¾ä")
+				if (tool_name_B9 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B9 == true)
 					{
@@ -6160,7 +6454,7 @@ void frmProItemTab::ProgramAutoFlow_B9()
 						}
 					}
 				}
-				else if (tool_name_B9 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B9 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[8]->m_Tools.size(); q++)
@@ -6182,7 +6476,7 @@ void frmProItemTab::ProgramAutoFlow_B9()
 						dataVar::img_view_count_buf_B9 = if_judge_index;
 					}
 				}
-				else if (tool_name_B9 == "½áÊøÓï¾ä")
+				else if (tool_name_B9 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[8]->m_Tools.size(); q++)
@@ -6204,7 +6498,7 @@ void frmProItemTab::ProgramAutoFlow_B9()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì10
+//???????????10
 void frmProItemTab::ProgramAutoFlow_B10()
 {
 	if (dataVar::autoRunOnce_B10 == 0)
@@ -6214,7 +6508,7 @@ void frmProItemTab::ProgramAutoFlow_B10()
 		QVector<QString> FlowProItemList_B10 = QVector<QString>(100);
 		FlowProItemList_B10.clear();
 		FlowProItemList_B10 = TempDragListWidget_B10->GetAllItemList_B10();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -6260,7 +6554,7 @@ void frmProItemTab::ProgramAutoFlow_B10()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -6270,7 +6564,7 @@ void frmProItemTab::ProgramAutoFlow_B10()
 					}
 				}
 				QString tool_name_B10 = toolName.mid(0, str_count);
-				if (tool_name_B10 == "Ìø×ªÓï¾ä")
+				if (tool_name_B10 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B10 == true)
 					{
@@ -6308,7 +6602,7 @@ void frmProItemTab::ProgramAutoFlow_B10()
 						}
 					}
 				}
-				else if (tool_name_B10 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B10 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[9]->m_Tools.size(); q++)
@@ -6330,7 +6624,7 @@ void frmProItemTab::ProgramAutoFlow_B10()
 						dataVar::img_view_count_buf_B10 = if_judge_index;
 					}
 				}
-				else if (tool_name_B10 == "½áÊøÓï¾ä")
+				else if (tool_name_B10 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[9]->m_Tools.size(); q++)
@@ -6352,7 +6646,7 @@ void frmProItemTab::ProgramAutoFlow_B10()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì11
+//???????????11
 void frmProItemTab::ProgramAutoFlow_B11()
 {
 	if (dataVar::autoRunOnce_B11 == 0)
@@ -6362,7 +6656,7 @@ void frmProItemTab::ProgramAutoFlow_B11()
 		QVector<QString> FlowProItemList_B11 = QVector<QString>(100);
 		FlowProItemList_B11.clear();
 		FlowProItemList_B11 = TempDragListWidget_B11->GetAllItemList_B11();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -6408,7 +6702,7 @@ void frmProItemTab::ProgramAutoFlow_B11()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -6418,7 +6712,7 @@ void frmProItemTab::ProgramAutoFlow_B11()
 					}
 				}
 				QString tool_name_B11 = toolName.mid(0, str_count);
-				if (tool_name_B11 == "Ìø×ªÓï¾ä")
+				if (tool_name_B11 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B11 == true)
 					{
@@ -6456,7 +6750,7 @@ void frmProItemTab::ProgramAutoFlow_B11()
 						}
 					}
 				}
-				else if (tool_name_B11 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B11 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[10]->m_Tools.size(); q++)
@@ -6478,7 +6772,7 @@ void frmProItemTab::ProgramAutoFlow_B11()
 						dataVar::img_view_count_buf_B11 = if_judge_index;
 					}
 				}
-				else if (tool_name_B11 == "½áÊøÓï¾ä")
+				else if (tool_name_B11 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[10]->m_Tools.size(); q++)
@@ -6500,7 +6794,7 @@ void frmProItemTab::ProgramAutoFlow_B11()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì12
+//???????????12
 void frmProItemTab::ProgramAutoFlow_B12()
 {
 	if (dataVar::autoRunOnce_B12 == 0)
@@ -6510,7 +6804,7 @@ void frmProItemTab::ProgramAutoFlow_B12()
 		QVector<QString> FlowProItemList_B12 = QVector<QString>(100);
 		FlowProItemList_B12.clear();
 		FlowProItemList_B12 = TempDragListWidget_B12->GetAllItemList_B12();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -6556,7 +6850,7 @@ void frmProItemTab::ProgramAutoFlow_B12()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -6566,7 +6860,7 @@ void frmProItemTab::ProgramAutoFlow_B12()
 					}
 				}
 				QString tool_name_B12 = toolName.mid(0, str_count);
-				if (tool_name_B12 == "Ìø×ªÓï¾ä")
+				if (tool_name_B12 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B12 == true)
 					{
@@ -6604,7 +6898,7 @@ void frmProItemTab::ProgramAutoFlow_B12()
 						}
 					}
 				}
-				else if (tool_name_B12 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B12 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[11]->m_Tools.size(); q++)
@@ -6626,7 +6920,7 @@ void frmProItemTab::ProgramAutoFlow_B12()
 						dataVar::img_view_count_buf_B12 = if_judge_index;
 					}
 				}
-				else if (tool_name_B12 == "½áÊøÓï¾ä")
+				else if (tool_name_B12 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[11]->m_Tools.size(); q++)
@@ -6648,7 +6942,7 @@ void frmProItemTab::ProgramAutoFlow_B12()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì13
+//???????????13
 void frmProItemTab::ProgramAutoFlow_B13()
 {
 	if (dataVar::autoRunOnce_B13 == 0)
@@ -6658,7 +6952,7 @@ void frmProItemTab::ProgramAutoFlow_B13()
 		QVector<QString> FlowProItemList_B13 = QVector<QString>(100);
 		FlowProItemList_B13.clear();
 		FlowProItemList_B13 = TempDragListWidget_B13->GetAllItemList_B13();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -6704,7 +6998,7 @@ void frmProItemTab::ProgramAutoFlow_B13()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®				
+				//????????????????				
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -6714,7 +7008,7 @@ void frmProItemTab::ProgramAutoFlow_B13()
 					}
 				}
 				QString tool_name_B13 = toolName.mid(0, str_count);
-				if (tool_name_B13 == "Ìø×ªÓï¾ä")
+				if (tool_name_B13 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B13 == true)
 					{
@@ -6752,7 +7046,7 @@ void frmProItemTab::ProgramAutoFlow_B13()
 						}
 					}
 				}
-				else if (tool_name_B13 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B13 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[12]->m_Tools.size(); q++)
@@ -6774,7 +7068,7 @@ void frmProItemTab::ProgramAutoFlow_B13()
 						dataVar::img_view_count_buf_B13 = if_judge_index;
 					}
 				}
-				else if (tool_name_B13 == "½áÊøÓï¾ä")
+				else if (tool_name_B13 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[12]->m_Tools.size(); q++)
@@ -6796,7 +7090,7 @@ void frmProItemTab::ProgramAutoFlow_B13()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì14
+//???????????14
 void frmProItemTab::ProgramAutoFlow_B14()
 {
 	if (dataVar::autoRunOnce_B14 == 0)
@@ -6806,7 +7100,7 @@ void frmProItemTab::ProgramAutoFlow_B14()
 		QVector<QString> FlowProItemList_B14 = QVector<QString>(100);
 		FlowProItemList_B14.clear();
 		FlowProItemList_B14 = TempDragListWidget_B14->GetAllItemList_B14();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -6852,7 +7146,7 @@ void frmProItemTab::ProgramAutoFlow_B14()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -6862,7 +7156,7 @@ void frmProItemTab::ProgramAutoFlow_B14()
 					}
 				}
 				QString tool_name_B14 = toolName.mid(0, str_count);
-				if (tool_name_B14 == "Ìø×ªÓï¾ä")
+				if (tool_name_B14 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B14 == true)
 					{
@@ -6900,7 +7194,7 @@ void frmProItemTab::ProgramAutoFlow_B14()
 						}
 					}
 				}
-				else if (tool_name_B14 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B14 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[13]->m_Tools.size(); q++)
@@ -6922,7 +7216,7 @@ void frmProItemTab::ProgramAutoFlow_B14()
 						dataVar::img_view_count_buf_B14 = if_judge_index;
 					}
 				}
-				else if (tool_name_B14 == "½áÊøÓï¾ä")
+				else if (tool_name_B14 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[13]->m_Tools.size(); q++)
@@ -6944,7 +7238,7 @@ void frmProItemTab::ProgramAutoFlow_B14()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì15
+//???????????15
 void frmProItemTab::ProgramAutoFlow_B15()
 {
 	if (dataVar::autoRunOnce_B15 == 0)
@@ -6954,7 +7248,7 @@ void frmProItemTab::ProgramAutoFlow_B15()
 		QVector<QString> FlowProItemList_B15 = QVector<QString>(100);
 		FlowProItemList_B15.clear();
 		FlowProItemList_B15 = TempDragListWidget_B15->GetAllItemList_B15();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -7000,7 +7294,7 @@ void frmProItemTab::ProgramAutoFlow_B15()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -7010,7 +7304,7 @@ void frmProItemTab::ProgramAutoFlow_B15()
 					}
 				}
 				QString tool_name_B15 = toolName.mid(0, str_count);
-				if (tool_name_B15 == "Ìø×ªÓï¾ä")
+				if (tool_name_B15 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B15 == true)
 					{
@@ -7048,7 +7342,7 @@ void frmProItemTab::ProgramAutoFlow_B15()
 						}
 					}
 				}
-				else if (tool_name_B15 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B15 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[14]->m_Tools.size(); q++)
@@ -7070,7 +7364,7 @@ void frmProItemTab::ProgramAutoFlow_B15()
 						dataVar::img_view_count_buf_B15 = if_judge_index;
 					}
 				}
-				else if (tool_name_B15 == "½áÊøÓï¾ä")
+				else if (tool_name_B15 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[14]->m_Tools.size(); q++)
@@ -7092,7 +7386,7 @@ void frmProItemTab::ProgramAutoFlow_B15()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì16
+//???????????16
 void frmProItemTab::ProgramAutoFlow_B16()
 {
 	if (dataVar::autoRunOnce_B16 == 0)
@@ -7102,7 +7396,7 @@ void frmProItemTab::ProgramAutoFlow_B16()
 		QVector<QString> FlowProItemList_B16 = QVector<QString>(100);
 		FlowProItemList_B16.clear();
 		FlowProItemList_B16 = TempDragListWidget_B16->GetAllItemList_B16();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -7148,7 +7442,7 @@ void frmProItemTab::ProgramAutoFlow_B16()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -7158,7 +7452,7 @@ void frmProItemTab::ProgramAutoFlow_B16()
 					}
 				}
 				QString tool_name_B16 = toolName.mid(0, str_count);
-				if (tool_name_B16 == "Ìø×ªÓï¾ä")
+				if (tool_name_B16 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B16 == true)
 					{
@@ -7196,7 +7490,7 @@ void frmProItemTab::ProgramAutoFlow_B16()
 						}
 					}
 				}
-				else if (tool_name_B16 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B16 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[15]->m_Tools.size(); q++)
@@ -7218,7 +7512,7 @@ void frmProItemTab::ProgramAutoFlow_B16()
 						dataVar::img_view_count_buf_B16 = if_judge_index;
 					}
 				}
-				else if (tool_name_B16 == "½áÊøÓï¾ä")
+				else if (tool_name_B16 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[15]->m_Tools.size(); q++)
@@ -7240,7 +7534,7 @@ void frmProItemTab::ProgramAutoFlow_B16()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì17
+//???????????17
 void frmProItemTab::ProgramAutoFlow_B17()
 {
 	if (dataVar::autoRunOnce_B17 == 0)
@@ -7250,7 +7544,7 @@ void frmProItemTab::ProgramAutoFlow_B17()
 		QVector<QString> FlowProItemList_B17 = QVector<QString>(100);
 		FlowProItemList_B17.clear();
 		FlowProItemList_B17 = TempDragListWidget_B17->GetAllItemList_B17();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -7296,7 +7590,7 @@ void frmProItemTab::ProgramAutoFlow_B17()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -7306,7 +7600,7 @@ void frmProItemTab::ProgramAutoFlow_B17()
 					}
 				}
 				QString tool_name_B17 = toolName.mid(0, str_count);
-				if (tool_name_B17 == "Ìø×ªÓï¾ä")
+				if (tool_name_B17 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B17 == true)
 					{
@@ -7344,7 +7638,7 @@ void frmProItemTab::ProgramAutoFlow_B17()
 						}
 					}
 				}
-				else if (tool_name_B17 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B17 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[16]->m_Tools.size(); q++)
@@ -7366,7 +7660,7 @@ void frmProItemTab::ProgramAutoFlow_B17()
 						dataVar::img_view_count_buf_B17 = if_judge_index;
 					}
 				}
-				else if (tool_name_B17 == "½áÊøÓï¾ä")
+				else if (tool_name_B17 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[16]->m_Tools.size(); q++)
@@ -7388,7 +7682,7 @@ void frmProItemTab::ProgramAutoFlow_B17()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì18
+//???????????18
 void frmProItemTab::ProgramAutoFlow_B18()
 {
 	if (dataVar::autoRunOnce_B18 == 0)
@@ -7398,7 +7692,7 @@ void frmProItemTab::ProgramAutoFlow_B18()
 		QVector<QString> FlowProItemList_B18 = QVector<QString>(100);
 		FlowProItemList_B18.clear();
 		FlowProItemList_B18 = TempDragListWidget_B18->GetAllItemList_B18();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -7444,7 +7738,7 @@ void frmProItemTab::ProgramAutoFlow_B18()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -7454,7 +7748,7 @@ void frmProItemTab::ProgramAutoFlow_B18()
 					}
 				}
 				QString tool_name_B18 = toolName.mid(0, str_count);
-				if (tool_name_B18 == "Ìø×ªÓï¾ä")
+				if (tool_name_B18 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B18 == true)
 					{
@@ -7492,7 +7786,7 @@ void frmProItemTab::ProgramAutoFlow_B18()
 						}
 					}
 				}
-				else if (tool_name_B18 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B18 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[17]->m_Tools.size(); q++)
@@ -7514,7 +7808,7 @@ void frmProItemTab::ProgramAutoFlow_B18()
 						dataVar::img_view_count_buf_B18 = if_judge_index;
 					}
 				}
-				else if (tool_name_B18 == "½áÊøÓï¾ä")
+				else if (tool_name_B18 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[17]->m_Tools.size(); q++)
@@ -7536,7 +7830,7 @@ void frmProItemTab::ProgramAutoFlow_B18()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì19
+//???????????19
 void frmProItemTab::ProgramAutoFlow_B19()
 {
 	if (dataVar::autoRunOnce_B19 == 0)
@@ -7546,7 +7840,7 @@ void frmProItemTab::ProgramAutoFlow_B19()
 		QVector<QString> FlowProItemList_B19 = QVector<QString>(100);
 		FlowProItemList_B19.clear();
 		FlowProItemList_B19 = TempDragListWidget_B19->GetAllItemList_B19();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -7592,7 +7886,7 @@ void frmProItemTab::ProgramAutoFlow_B19()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -7602,7 +7896,7 @@ void frmProItemTab::ProgramAutoFlow_B19()
 					}
 				}
 				QString tool_name_B19 = toolName.mid(0, str_count);
-				if (tool_name_B19 == "Ìø×ªÓï¾ä")
+				if (tool_name_B19 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B19 == true)
 					{
@@ -7640,7 +7934,7 @@ void frmProItemTab::ProgramAutoFlow_B19()
 						}
 					}
 				}
-				else if (tool_name_B19 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B19 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[18]->m_Tools.size(); q++)
@@ -7662,7 +7956,7 @@ void frmProItemTab::ProgramAutoFlow_B19()
 						dataVar::img_view_count_buf_B19 = if_judge_index;
 					}
 				}
-				else if (tool_name_B19 == "½áÊøÓï¾ä")
+				else if (tool_name_B19 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[18]->m_Tools.size(); q++)
@@ -7684,7 +7978,7 @@ void frmProItemTab::ProgramAutoFlow_B19()
 	}
 }
 
-//×Ô¶¯³ÌĞòÁ÷³Ì20
+//???????????20
 void frmProItemTab::ProgramAutoFlow_B20()
 {
 	if (dataVar::autoRunOnce_B20 == 0)
@@ -7694,7 +7988,7 @@ void frmProItemTab::ProgramAutoFlow_B20()
 		QVector<QString> FlowProItemList_B20 = QVector<QString>(100);
 		FlowProItemList_B20.clear();
 		FlowProItemList_B20 = TempDragListWidget_B20->GetAllItemList_B20();
-		//»ñÈ¡Á÷³ÌÖĞ¹¤¾ßµÄ¼¤»î/½ûÓÃ×´Ì¬	
+		//?????????????????/??????	
 		QList<QString> flowNames;
 		flowNames.reserve(100);
 		flowNames.clear();
@@ -7740,7 +8034,7 @@ void frmProItemTab::ProgramAutoFlow_B20()
 				{
 					return;
 				}
-				//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®			
+				//????????????????			
 				int str_count = 0;
 				for (int k = 0; k < toolName.length(); k++)
 				{
@@ -7750,7 +8044,7 @@ void frmProItemTab::ProgramAutoFlow_B20()
 					}
 				}
 				QString tool_name_B20 = toolName.mid(0, str_count);
-				if (tool_name_B20 == "Ìø×ªÓï¾ä")
+				if (tool_name_B20 == "è·³è½¬è¯­å¥")
 				{
 					if (stop_goto_B20 == true)
 					{
@@ -7788,7 +8082,7 @@ void frmProItemTab::ProgramAutoFlow_B20()
 						}
 					}
 				}
-				else if (tool_name_B20 == "ÅĞ¶ÏÓï¾ä")
+				else if (tool_name_B20 == "åˆ¤æ–­è¯­å¥")
 				{
 					int judge_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[19]->m_Tools.size(); q++)
@@ -7810,7 +8104,7 @@ void frmProItemTab::ProgramAutoFlow_B20()
 						dataVar::img_view_count_buf_B20 = if_judge_index;
 					}
 				}
-				else if (tool_name_B20 == "½áÊøÓï¾ä")
+				else if (tool_name_B20 == "ç»“æŸè¯­å¥")
 				{
 					int end_index = 0;
 					for (int q = 0; q < QConfig::ToolBase[19]->m_Tools.size(); q++)
@@ -7833,7 +8127,7 @@ void frmProItemTab::ProgramAutoFlow_B20()
 }
 #pragma endregion
 
-#pragma region Ïß³Ì
+#pragma region ???
 void frmProItemTab::Begin_Thread_A()
 {
 	if (Thread_A->isRunning() == false)
@@ -8366,8 +8660,8 @@ void frmProItemTab::Stop_Thread_B20()
 }
 #pragma endregion
 
-#pragma region Á÷³Ì¹¤¾ß´íÎóĞÅÏ¢
-//Á÷³Ì1¹¤¾ß´íÎóĞÅÏ¢
+#pragma region ?????????????
+//????1??????????
 void frmProItemTab::slot_ToolWrong_B1(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8383,7 +8677,7 @@ void frmProItemTab::slot_ToolWrong_B1(const QString toolName)
 	emit sig_IconShow_B1(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì2¹¤¾ß´íÎóĞÅÏ¢
+//????2??????????
 void frmProItemTab::slot_ToolWrong_B2(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8399,7 +8693,7 @@ void frmProItemTab::slot_ToolWrong_B2(const QString toolName)
 	emit sig_IconShow_B2(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì3¹¤¾ß´íÎóĞÅÏ¢
+//????3??????????
 void frmProItemTab::slot_ToolWrong_B3(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8415,7 +8709,7 @@ void frmProItemTab::slot_ToolWrong_B3(const QString toolName)
 	emit sig_IconShow_B3(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì4¹¤¾ß´íÎóĞÅÏ¢
+//????4??????????
 void frmProItemTab::slot_ToolWrong_B4(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8431,7 +8725,7 @@ void frmProItemTab::slot_ToolWrong_B4(const QString toolName)
 	emit sig_IconShow_B4(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì5¹¤¾ß´íÎóĞÅÏ¢
+//????5??????????
 void frmProItemTab::slot_ToolWrong_B5(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8447,7 +8741,7 @@ void frmProItemTab::slot_ToolWrong_B5(const QString toolName)
 	emit sig_IconShow_B5(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì6¹¤¾ß´íÎóĞÅÏ¢
+//????6??????????
 void frmProItemTab::slot_ToolWrong_B6(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8463,7 +8757,7 @@ void frmProItemTab::slot_ToolWrong_B6(const QString toolName)
 	emit sig_IconShow_B6(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì7¹¤¾ß´íÎóĞÅÏ¢
+//????7??????????
 void frmProItemTab::slot_ToolWrong_B7(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8479,7 +8773,7 @@ void frmProItemTab::slot_ToolWrong_B7(const QString toolName)
 	emit sig_IconShow_B7(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì8¹¤¾ß´íÎóĞÅÏ¢
+//????8??????????
 void frmProItemTab::slot_ToolWrong_B8(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8495,7 +8789,7 @@ void frmProItemTab::slot_ToolWrong_B8(const QString toolName)
 	emit sig_IconShow_B8(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì9¹¤¾ß´íÎóĞÅÏ¢
+//????9??????????
 void frmProItemTab::slot_ToolWrong_B9(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8511,7 +8805,7 @@ void frmProItemTab::slot_ToolWrong_B9(const QString toolName)
 	emit sig_IconShow_B9(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì10¹¤¾ß´íÎóĞÅÏ¢
+//????10??????????
 void frmProItemTab::slot_ToolWrong_B10(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8527,7 +8821,7 @@ void frmProItemTab::slot_ToolWrong_B10(const QString toolName)
 	emit sig_IconShow_B10(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì11¹¤¾ß´íÎóĞÅÏ¢
+//????11??????????
 void frmProItemTab::slot_ToolWrong_B11(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8543,7 +8837,7 @@ void frmProItemTab::slot_ToolWrong_B11(const QString toolName)
 	emit sig_IconShow_B11(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì12¹¤¾ß´íÎóĞÅÏ¢
+//????12??????????
 void frmProItemTab::slot_ToolWrong_B12(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8559,7 +8853,7 @@ void frmProItemTab::slot_ToolWrong_B12(const QString toolName)
 	emit sig_IconShow_B12(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì13¹¤¾ß´íÎóĞÅÏ¢
+//????13??????????
 void frmProItemTab::slot_ToolWrong_B13(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8575,7 +8869,7 @@ void frmProItemTab::slot_ToolWrong_B13(const QString toolName)
 	emit sig_IconShow_B13(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì14¹¤¾ß´íÎóĞÅÏ¢
+//????14??????????
 void frmProItemTab::slot_ToolWrong_B14(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8591,7 +8885,7 @@ void frmProItemTab::slot_ToolWrong_B14(const QString toolName)
 	emit sig_IconShow_B14(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì15¹¤¾ß´íÎóĞÅÏ¢
+//????15??????????
 void frmProItemTab::slot_ToolWrong_B15(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8607,7 +8901,7 @@ void frmProItemTab::slot_ToolWrong_B15(const QString toolName)
 	emit sig_IconShow_B15(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì16¹¤¾ß´íÎóĞÅÏ¢
+//????16??????????
 void frmProItemTab::slot_ToolWrong_B16(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8623,7 +8917,7 @@ void frmProItemTab::slot_ToolWrong_B16(const QString toolName)
 	emit sig_IconShow_B16(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì17¹¤¾ß´íÎóĞÅÏ¢
+//????17??????????
 void frmProItemTab::slot_ToolWrong_B17(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8639,7 +8933,7 @@ void frmProItemTab::slot_ToolWrong_B17(const QString toolName)
 	emit sig_IconShow_B17(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì18¹¤¾ß´íÎóĞÅÏ¢
+//????18??????????
 void frmProItemTab::slot_ToolWrong_B18(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8655,7 +8949,7 @@ void frmProItemTab::slot_ToolWrong_B18(const QString toolName)
 	emit sig_IconShow_B18(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì19¹¤¾ß´íÎóĞÅÏ¢
+//????19??????????
 void frmProItemTab::slot_ToolWrong_B19(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8671,7 +8965,7 @@ void frmProItemTab::slot_ToolWrong_B19(const QString toolName)
 	emit sig_IconShow_B19(toolName, QPixmap(":/res/ico/err.png"));
 }
 
-//Á÷³Ì20¹¤¾ß´íÎóĞÅÏ¢
+//????20??????????
 void frmProItemTab::slot_ToolWrong_B20(const QString toolName)
 {
 	if (dataVar::m_a_state == 1)
@@ -8688,8 +8982,8 @@ void frmProItemTab::slot_ToolWrong_B20(const QString toolName)
 }
 #pragma endregion
 
-#pragma region Á÷³ÌË¢ĞÂ¹¤¾ß´¦Àí½á¹û
-//Á÷³Ì1Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+#pragma region ????????????????
+//????1????????????
 void frmProItemTab::slot_ToolRunFinish_B1(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B1) + "ms";
@@ -8697,7 +8991,7 @@ void frmProItemTab::slot_ToolRunFinish_B1(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê			
+			//??????????????			
 			emit sig_IconShow_B1(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
@@ -8705,14 +8999,14 @@ void frmProItemTab::slot_ToolRunFinish_B1(const QString toolName)
 	{
 		if (dataVar::autoRunOnce_B1 == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê				
+			//??????????????				
 			emit sig_IconShow_B1(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B1(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®		
+	//????????????????		
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -8722,15 +9016,15 @@ void frmProItemTab::slot_ToolRunFinish_B1(const QString toolName)
 		}
 	}
 	QString str_name_B1 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B1 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B1 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[0]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[0]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -8798,7 +9092,7 @@ void frmProItemTab::slot_ToolRunFinish_B1(const QString toolName)
 	}
 }
 
-//Á÷³Ì2Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????2????????????
 void frmProItemTab::slot_ToolRunFinish_B2(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B2) + "ms";
@@ -8806,7 +9100,7 @@ void frmProItemTab::slot_ToolRunFinish_B2(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê			
+			//??????????????			
 			emit sig_IconShow_B2(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
@@ -8814,14 +9108,14 @@ void frmProItemTab::slot_ToolRunFinish_B2(const QString toolName)
 	{
 		if (dataVar::autoRunOnce_B2 == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê				
+			//??????????????				
 			emit sig_IconShow_B2(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B2(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -8831,15 +9125,15 @@ void frmProItemTab::slot_ToolRunFinish_B2(const QString toolName)
 		}
 	}
 	QString str_name_B2 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B2 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B2 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[1]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[1]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -8907,7 +9201,7 @@ void frmProItemTab::slot_ToolRunFinish_B2(const QString toolName)
 	}
 }
 
-//Á÷³Ì3Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????3????????????
 void frmProItemTab::slot_ToolRunFinish_B3(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B3) + "ms";
@@ -8915,7 +9209,7 @@ void frmProItemTab::slot_ToolRunFinish_B3(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B3(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
@@ -8923,14 +9217,14 @@ void frmProItemTab::slot_ToolRunFinish_B3(const QString toolName)
 	{
 		if (dataVar::autoRunOnce_B3 == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê				
+			//??????????????				
 			emit sig_IconShow_B3(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B3(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+	//????????????????
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -8940,15 +9234,15 @@ void frmProItemTab::slot_ToolRunFinish_B3(const QString toolName)
 		}
 	}
 	QString str_name_B3 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B3 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B3 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[2]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[2]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9016,7 +9310,7 @@ void frmProItemTab::slot_ToolRunFinish_B3(const QString toolName)
 	}
 }
 
-//Á÷³Ì4Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????4????????????
 void frmProItemTab::slot_ToolRunFinish_B4(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B4) + "ms";
@@ -9024,22 +9318,22 @@ void frmProItemTab::slot_ToolRunFinish_B4(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B4(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B4 == 1)
 		{
 			emit sig_IconShow_B4(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B4(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9049,15 +9343,15 @@ void frmProItemTab::slot_ToolRunFinish_B4(const QString toolName)
 		}
 	}
 	QString str_name_B4 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B4 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B4 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[3]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[3]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9125,7 +9419,7 @@ void frmProItemTab::slot_ToolRunFinish_B4(const QString toolName)
 	}
 }
 
-//Á÷³Ì5Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????5????????????
 void frmProItemTab::slot_ToolRunFinish_B5(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B5) + "ms";
@@ -9133,22 +9427,22 @@ void frmProItemTab::slot_ToolRunFinish_B5(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê		
+			//??????????????		
 			emit sig_IconShow_B5(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B5 == 1)
 		{
 			emit sig_IconShow_B5(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B5(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9158,15 +9452,15 @@ void frmProItemTab::slot_ToolRunFinish_B5(const QString toolName)
 		}
 	}
 	QString str_name_B5 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B5 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B5 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[4]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[4]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9234,7 +9528,7 @@ void frmProItemTab::slot_ToolRunFinish_B5(const QString toolName)
 	}
 }
 
-//Á÷³Ì6Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????6????????????
 void frmProItemTab::slot_ToolRunFinish_B6(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B6) + "ms";
@@ -9242,22 +9536,22 @@ void frmProItemTab::slot_ToolRunFinish_B6(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B6(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B6 == 1)
 		{
 			emit sig_IconShow_B6(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B6(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9267,15 +9561,15 @@ void frmProItemTab::slot_ToolRunFinish_B6(const QString toolName)
 		}
 	}
 	QString str_name_B6 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B6 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B6 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[5]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[5]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9343,7 +9637,7 @@ void frmProItemTab::slot_ToolRunFinish_B6(const QString toolName)
 	}
 }
 
-//Á÷³Ì7Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????7????????????
 void frmProItemTab::slot_ToolRunFinish_B7(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B7) + "ms";
@@ -9351,22 +9645,22 @@ void frmProItemTab::slot_ToolRunFinish_B7(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B7(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B7 == 1)
 		{
 			emit sig_IconShow_B7(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B7(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9376,15 +9670,15 @@ void frmProItemTab::slot_ToolRunFinish_B7(const QString toolName)
 		}
 	}
 	QString str_name_B7 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B7 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B7 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[6]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[6]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9452,7 +9746,7 @@ void frmProItemTab::slot_ToolRunFinish_B7(const QString toolName)
 	}
 }
 
-//Á÷³Ì8Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????8????????????
 void frmProItemTab::slot_ToolRunFinish_B8(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B8) + "ms";
@@ -9460,22 +9754,22 @@ void frmProItemTab::slot_ToolRunFinish_B8(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B8(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B8 == 1)
 		{
 			emit sig_IconShow_B8(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B8(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+	//????????????????
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9485,15 +9779,15 @@ void frmProItemTab::slot_ToolRunFinish_B8(const QString toolName)
 		}
 	}
 	QString str_name_B8 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B8 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B8 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[7]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[7]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9561,7 +9855,7 @@ void frmProItemTab::slot_ToolRunFinish_B8(const QString toolName)
 	}
 }
 
-//Á÷³Ì9Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????9????????????
 void frmProItemTab::slot_ToolRunFinish_B9(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B9) + "ms";
@@ -9569,22 +9863,22 @@ void frmProItemTab::slot_ToolRunFinish_B9(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B9(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B9 == 1)
 		{
 			emit sig_IconShow_B9(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B9(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+	//????????????????
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9594,15 +9888,15 @@ void frmProItemTab::slot_ToolRunFinish_B9(const QString toolName)
 		}
 	}
 	QString str_name_B9 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ
-	if (str_name_B9 == "Í¼ÏñÏÔÊ¾")
+	//???????????????
+	if (str_name_B9 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[8]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[8]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9670,7 +9964,7 @@ void frmProItemTab::slot_ToolRunFinish_B9(const QString toolName)
 	}
 }
 
-//Á÷³Ì10Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????10????????????
 void frmProItemTab::slot_ToolRunFinish_B10(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B10) + "ms";
@@ -9678,22 +9972,22 @@ void frmProItemTab::slot_ToolRunFinish_B10(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B10(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B10 == 1)
 		{
 			emit sig_IconShow_B10(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B10(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9703,15 +9997,15 @@ void frmProItemTab::slot_ToolRunFinish_B10(const QString toolName)
 		}
 	}
 	QString str_name_B10 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B10 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B10 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[9]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[9]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9779,7 +10073,7 @@ void frmProItemTab::slot_ToolRunFinish_B10(const QString toolName)
 	}
 }
 
-//Á÷³Ì11Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????11????????????
 void frmProItemTab::slot_ToolRunFinish_B11(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B11) + "ms";
@@ -9787,22 +10081,22 @@ void frmProItemTab::slot_ToolRunFinish_B11(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B11(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B11 == 1)
 		{
 			emit sig_IconShow_B11(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B11(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9812,15 +10106,15 @@ void frmProItemTab::slot_ToolRunFinish_B11(const QString toolName)
 		}
 	}
 	QString str_name_B11 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ
-	if (str_name_B11 == "Í¼ÏñÏÔÊ¾")
+	//???????????????
+	if (str_name_B11 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[10]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[10]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9888,7 +10182,7 @@ void frmProItemTab::slot_ToolRunFinish_B11(const QString toolName)
 	}
 }
 
-//Á÷³Ì12Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????12????????????
 void frmProItemTab::slot_ToolRunFinish_B12(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B12) + "ms";
@@ -9896,22 +10190,22 @@ void frmProItemTab::slot_ToolRunFinish_B12(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B12(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B12 == 1)
 		{
 			emit sig_IconShow_B12(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B12(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -9921,15 +10215,15 @@ void frmProItemTab::slot_ToolRunFinish_B12(const QString toolName)
 		}
 	}
 	QString str_name_B12 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ
-	if (str_name_B12 == "Í¼ÏñÏÔÊ¾")
+	//???????????????
+	if (str_name_B12 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[11]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[11]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -9997,7 +10291,7 @@ void frmProItemTab::slot_ToolRunFinish_B12(const QString toolName)
 	}
 }
 
-//Á÷³Ì13Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????13????????????
 void frmProItemTab::slot_ToolRunFinish_B13(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B13) + "ms";
@@ -10005,22 +10299,22 @@ void frmProItemTab::slot_ToolRunFinish_B13(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B13(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B13 == 1)
 		{
 			emit sig_IconShow_B13(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B13(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+	//????????????????
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -10030,15 +10324,15 @@ void frmProItemTab::slot_ToolRunFinish_B13(const QString toolName)
 		}
 	}
 	QString str_name_B13 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ
-	if (str_name_B13 == "Í¼ÏñÏÔÊ¾")
+	//???????????????
+	if (str_name_B13 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[12]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[12]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -10106,7 +10400,7 @@ void frmProItemTab::slot_ToolRunFinish_B13(const QString toolName)
 	}
 }
 
-//Á÷³Ì14Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????14????????????
 void frmProItemTab::slot_ToolRunFinish_B14(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B14) + "ms";
@@ -10114,22 +10408,22 @@ void frmProItemTab::slot_ToolRunFinish_B14(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B14(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B14 == 1)
 		{
 			emit sig_IconShow_B14(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B14(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -10139,15 +10433,15 @@ void frmProItemTab::slot_ToolRunFinish_B14(const QString toolName)
 		}
 	}
 	QString str_name_B14 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B14 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B14 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[13]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[13]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -10215,7 +10509,7 @@ void frmProItemTab::slot_ToolRunFinish_B14(const QString toolName)
 	}
 }
 
-//Á÷³Ì15Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????15????????????
 void frmProItemTab::slot_ToolRunFinish_B15(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B15) + "ms";
@@ -10223,22 +10517,22 @@ void frmProItemTab::slot_ToolRunFinish_B15(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B15(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B15 == 1)
 		{
 			emit sig_IconShow_B15(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B15(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -10248,15 +10542,15 @@ void frmProItemTab::slot_ToolRunFinish_B15(const QString toolName)
 		}
 	}
 	QString str_name_B15 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ
-	if (str_name_B15 == "Í¼ÏñÏÔÊ¾")
+	//???????????????
+	if (str_name_B15 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[14]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[14]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -10324,7 +10618,7 @@ void frmProItemTab::slot_ToolRunFinish_B15(const QString toolName)
 	}
 }
 
-//Á÷³Ì16Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????16????????????
 void frmProItemTab::slot_ToolRunFinish_B16(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B16) + "ms";
@@ -10332,22 +10626,22 @@ void frmProItemTab::slot_ToolRunFinish_B16(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B16(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B16 == 1)
 		{
 			emit sig_IconShow_B16(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B16(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+	//????????????????
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -10357,15 +10651,15 @@ void frmProItemTab::slot_ToolRunFinish_B16(const QString toolName)
 		}
 	}
 	QString str_name_B16 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B16 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B16 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[15]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[15]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -10433,7 +10727,7 @@ void frmProItemTab::slot_ToolRunFinish_B16(const QString toolName)
 	}
 }
 
-//Á÷³Ì17Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????17????????????
 void frmProItemTab::slot_ToolRunFinish_B17(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B17) + "ms";
@@ -10441,22 +10735,22 @@ void frmProItemTab::slot_ToolRunFinish_B17(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B17(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B17 == 1)
 		{
 			emit sig_IconShow_B17(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B17(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+	//????????????????
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -10466,15 +10760,15 @@ void frmProItemTab::slot_ToolRunFinish_B17(const QString toolName)
 		}
 	}
 	QString str_name_B17 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B17 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B17 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[16]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[16]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -10542,7 +10836,7 @@ void frmProItemTab::slot_ToolRunFinish_B17(const QString toolName)
 	}
 }
 
-//Á÷³Ì18Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????18????????????
 void frmProItemTab::slot_ToolRunFinish_B18(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B18) + "ms";
@@ -10550,22 +10844,22 @@ void frmProItemTab::slot_ToolRunFinish_B18(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B18(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B18 == 1)
 		{
 			emit sig_IconShow_B18(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B18(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+	//????????????????
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -10575,15 +10869,15 @@ void frmProItemTab::slot_ToolRunFinish_B18(const QString toolName)
 		}
 	}
 	QString str_name_B18 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B18 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B18 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[17]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[17]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -10651,7 +10945,7 @@ void frmProItemTab::slot_ToolRunFinish_B18(const QString toolName)
 	}
 }
 
-//Á÷³Ì19Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????19????????????
 void frmProItemTab::slot_ToolRunFinish_B19(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B19) + "ms";
@@ -10659,22 +10953,22 @@ void frmProItemTab::slot_ToolRunFinish_B19(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B19(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B19 == 1)
 		{
 			emit sig_IconShow_B19(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B19(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -10684,15 +10978,15 @@ void frmProItemTab::slot_ToolRunFinish_B19(const QString toolName)
 		}
 	}
 	QString str_name_B19 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B19 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B19 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[18]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[18]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}
@@ -10760,7 +11054,7 @@ void frmProItemTab::slot_ToolRunFinish_B19(const QString toolName)
 	}
 }
 
-//Á÷³Ì20Ë¢ĞÂ¹¤¾ß´¦Àí½á¹û
+//????20????????????
 void frmProItemTab::slot_ToolRunFinish_B20(const QString toolName)
 {
 	QString strTime = QString::number(dataVar::nCostTime_B20) + "ms";
@@ -10768,22 +11062,22 @@ void frmProItemTab::slot_ToolRunFinish_B20(const QString toolName)
 	{
 		if (dataVar::manualRunOnce_A == 1)
 		{
-			//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+			//??????????????
 			emit sig_IconShow_B20(toolName, QPixmap(":/res/ico/ok_manual.png"));
 		}
 	}
 	else if (dataVar::m_a_state == 2)
 	{
-		//¹¤¾ßÖ´ĞĞÕı³£Í¼±ê
+		//??????????????
 		if (dataVar::autoRunOnce_B20 == 1)
 		{
 			emit sig_IconShow_B20(toolName, QPixmap(":/res/ico/ok_auto.png"));
 			emit sig_InfoClick();
 		}
 	}
-	//ÏÔÊ¾Á÷³ÌÔËĞĞÊ±¼ä
+	//??????????????
 	emit sig_TextShow_B20(toolName, strTime);
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//????????????????	
 	int str_count = 0;
 	for (int k = 0; k < toolName.length(); k++)
 	{
@@ -10793,15 +11087,15 @@ void frmProItemTab::slot_ToolRunFinish_B20(const QString toolName)
 		}
 	}
 	QString str_name_B20 = toolName.mid(0, str_count);
-	//Á÷³ÌÔËĞĞ¸üĞÂÍ¼Ïñ	
-	if (str_name_B20 == "Í¼ÏñÏÔÊ¾")
+	//???????????????	
+	if (str_name_B20 == "å›¾åƒæ˜¾ç¤º")
 	{
 		int index = 0;
 		for (int i = 0; i < QConfig::ToolBase[19]->m_Tools.size(); i++)
 		{
 			if (QConfig::ToolBase[19]->m_Tools[i].PublicToolName == toolName)
 			{
-				//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+				//?????????????????????
 				index = i;
 			}
 		}

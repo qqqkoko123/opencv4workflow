@@ -1,4 +1,4 @@
-#include "ExtLibraryCase.h"
+﻿#include "ExtLibraryCase.h"
 #include "frmExtLibraryCase.h"
 
 ExtLibraryCase::ExtLibraryCase()

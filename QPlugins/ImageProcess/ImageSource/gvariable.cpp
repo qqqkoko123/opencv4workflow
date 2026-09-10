@@ -1,23 +1,23 @@
-#include "../../../QMainPro/QMacVisual/gvariable.h"
+ï»¿#include "../../../QMainPro/QMacVisual/gvariable.h"
 
-//¶¨ÒåÈ«¾Ö±äÁ¿½á¹¹Ìå
+//å®šä¹‰å…¨å±€å˜é‡ç»“æ„ä½“
 gVariable::Global_Var gVariable::GlobalVar;
 QMap<QString, gVariable::Global_Var> gVariable::global_variable_link = QMap<QString, gVariable::Global_Var>();
-//¶¨ÒåÌø×ª¹¤¾ß½á¹¹Ìå
+//å®šä¹‰è·³è½¬å·¥å…·ç»“æ„ä½“
 gVariable::Goto_Var gVariable::GotoVar;
 QMap<QString, gVariable::Goto_Var> gVariable::goto_variable_link = QMap<QString, gVariable::Goto_Var>();
-//¶¨ÒåÍ¨Ñ¶½á¹¹Ìå
-gVariable::Camera_Var gVariable::CameraVar;  //Ïà»ú
+//å®šä¹‰é€šè®¯ç»“æ„ä½“
+gVariable::Camera_Var gVariable::CameraVar;  //ç›¸æœº
 QMap<QString, gVariable::Camera_Var> gVariable::camera_variable_link = QMap<QString, gVariable::Camera_Var>();
-gVariable::GeneralIo_Var gVariable::GeneralIoVar;  //Í¨ÓÃI/O
+gVariable::GeneralIo_Var gVariable::GeneralIoVar;  //é€šç”¨I/O
 QMap<QString, gVariable::GeneralIo_Var> gVariable::generalio_variable_link = QMap<QString, gVariable::GeneralIo_Var>();
-gVariable::PlcCommunicate_Var gVariable::PlcCommunicateVar;  //PLCÍ¨ĞÅ
+gVariable::PlcCommunicate_Var gVariable::PlcCommunicateVar;  //PLCé€šä¿¡
 QMap<QString, gVariable::PlcCommunicate_Var> gVariable::plccommunicate_variable_link = QMap<QString, gVariable::PlcCommunicate_Var>();
-gVariable::SerialPort_Var gVariable::SerialPortVar;  //´®¿ÚÍ¨ĞÅ
+gVariable::SerialPort_Var gVariable::SerialPortVar;  //ä¸²å£é€šä¿¡
 QMap<QString, gVariable::SerialPort_Var> gVariable::serialport_variable_link = QMap<QString, gVariable::SerialPort_Var>();
-gVariable::SocketTcpServer_Var gVariable::SocketTcpServerVar;  //TCP/IP·şÎñÆ÷
+gVariable::SocketTcpServer_Var gVariable::SocketTcpServerVar;  //TCP/IPæœåŠ¡å™¨
 QMap<QString, gVariable::SocketTcpServer_Var> gVariable::sockettcpserver_variable_link = QMap<QString, gVariable::SocketTcpServer_Var>();
-gVariable::SocketTcpClient_Var gVariable::SocketTcpClientVar;  //TCP/IP¿Í»§¶Ë
+gVariable::SocketTcpClient_Var gVariable::SocketTcpClientVar;  //TCP/IPå®¢æˆ·ç«¯
 QMap<QString, gVariable::SocketTcpClient_Var> gVariable::sockettcpclient_variable_link = QMap<QString, gVariable::SocketTcpClient_Var>();
-gVariable::ScriptEdit_Var gVariable::ScriptEditVar;  //½Å±¾±à¼­
+gVariable::ScriptEdit_Var gVariable::ScriptEditVar;  //è„šæœ¬ç¼–è¾‘
 QMap<QToolBase*, gVariable::ScriptEdit_Var> gVariable::scriptedit_variable_link = QMap<QToolBase*, gVariable::ScriptEdit_Var>();

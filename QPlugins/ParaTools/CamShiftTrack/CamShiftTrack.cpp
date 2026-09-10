@@ -1,4 +1,4 @@
-#include "CamShiftTrack.h"
+ï»¿#include "CamShiftTrack.h"
 #include "frmCamShiftTrack.h"
 
 CamShiftTrack::CamShiftTrack()
@@ -7,12 +7,12 @@ CamShiftTrack::CamShiftTrack()
 
 QString CamShiftTrack::name()
 {
-    return "Ä¿±ê¸ú×Ù";
+    return "ç›®æ ‡è·Ÿè¸ª";
 }
 
 QString CamShiftTrack::information()
 {
-    return "¶ÔÎ»¹¤¾ß";
+    return "å¯¹ä½å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

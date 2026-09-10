@@ -1,4 +1,4 @@
-#include "LineLineI.h"
+Ôªø#include "LineLineI.h"
 #include "frmLineLineI.h"
 
 LineLineI::LineLineI()
@@ -7,12 +7,12 @@ LineLineI::LineLineI()
 
 QString LineLineI::name()
 {
-    return "œﬂœﬂΩªµ„";
+    return "Á∫øÁ∫ø‰∫§ÁÇπ";
 }
 
 QString LineLineI::information()
 {
-    return "º∏∫Œ≤‚¡ø";
+    return "Âá†‰ΩïÊµãÈáè";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

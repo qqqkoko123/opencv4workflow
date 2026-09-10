@@ -1,4 +1,4 @@
-#include "CropImage.h"
+ï»¿#include "CropImage.h"
 #include "frmCropImage.h"
 
 CropImage::CropImage()
@@ -7,12 +7,12 @@ CropImage::CropImage()
 
 QString CropImage::name()
 {
-    return "²ÃÇĞÍ¼Ïñ";
+    return "è£åˆ‡å›¾åƒ";
 }
 
 QString CropImage::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

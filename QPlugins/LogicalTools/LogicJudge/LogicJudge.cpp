@@ -1,4 +1,4 @@
-#include "LogicJudge.h"
+ï»¿#include "LogicJudge.h"
 #include "frmLogicJudge.h"
 
 LogicJudge::LogicJudge()
@@ -7,12 +7,12 @@ LogicJudge::LogicJudge()
 
 QString LogicJudge::name()
 {
-    return "ÅĞ¶ÏÓï¾ä";
+    return "åˆ¤æ–­è¯­å¥";
 }
 
 QString LogicJudge::information()
 {
-    return "Âß¼­¹¤¾ß";
+    return "é€»è¾‘å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

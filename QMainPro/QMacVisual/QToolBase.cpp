@@ -25,6 +25,10 @@ bool QToolBase::RunToolFlow_B1(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -90,6 +94,10 @@ bool QToolBase::RunToolFlow_B2(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -155,6 +163,10 @@ bool QToolBase::RunToolFlow_B3(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -220,6 +232,10 @@ bool QToolBase::RunToolFlow_B4(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -285,6 +301,10 @@ bool QToolBase::RunToolFlow_B5(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -350,6 +370,10 @@ bool QToolBase::RunToolFlow_B6(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -415,6 +439,10 @@ bool QToolBase::RunToolFlow_B7(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -480,6 +508,10 @@ bool QToolBase::RunToolFlow_B8(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -545,6 +577,10 @@ bool QToolBase::RunToolFlow_B9(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -610,6 +646,10 @@ bool QToolBase::RunToolFlow_B10(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -675,6 +715,10 @@ bool QToolBase::RunToolFlow_B11(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -740,6 +784,10 @@ bool QToolBase::RunToolFlow_B12(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -805,6 +853,10 @@ bool QToolBase::RunToolFlow_B13(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -870,6 +922,10 @@ bool QToolBase::RunToolFlow_B14(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -935,6 +991,10 @@ bool QToolBase::RunToolFlow_B15(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -1000,6 +1060,10 @@ bool QToolBase::RunToolFlow_B16(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -1065,6 +1129,10 @@ bool QToolBase::RunToolFlow_B17(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -1130,6 +1198,10 @@ bool QToolBase::RunToolFlow_B18(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -1195,6 +1267,10 @@ bool QToolBase::RunToolFlow_B19(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -1260,6 +1336,10 @@ bool QToolBase::RunToolFlow_B20(const QString toolname)
 			//耗时计算
 			clock_t startTime, endTime;
 			startTime = clock();
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->Execute(toolname);
 			endTime = clock();
 			//流程运行时间
@@ -1322,6 +1402,10 @@ bool QToolBase::RunToolLink(const QString toolname, const int int_link, const QS
 	{		
 		if (m_Tools[i].PublicToolName == toolname)
 		{
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			nResult = m_Tools[i].PublicToolDlg->ExecuteLink(int_link, str_link, gVariable::global_variable_link);
 			if (-1 == nResult)
 			{
@@ -1338,6 +1422,10 @@ bool QToolBase::RunAllToolLink()
 	int nResult = -10000;
 	for (int i = 0; i < m_Tools.size(); i++)
 	{
+		if (m_Tools[i].PublicToolDlg == nullptr)
+		{
+			continue;
+		}
 		nResult = m_Tools[i].PublicToolDlg->ExecuteAllLink(gVariable::global_variable_link);		
 	}
 	return true;
@@ -1348,6 +1436,10 @@ bool QToolBase::RunGotoToolLink()
 	int nResult = -10000;
 	for (int i = 0; i < m_Tools.size(); i++)
 	{
+		if (m_Tools[i].PublicToolDlg == nullptr)
+		{
+			continue;
+		}
 		//提取不含数字字符串
 		int str_count = 0;
 		for (int k = 0; k < m_Tools[i].PublicToolName.length(); k++)
@@ -1371,6 +1463,10 @@ bool QToolBase::RunCommunicationLink(const QString toolname)
 	int nResult = -10000;
 	for (int i = 0; i < m_Tools.size(); i++)
 	{
+		if (m_Tools[i].PublicToolDlg == nullptr)
+		{
+			continue;
+		}
 		//提取不含数字字符串
 		int str_count = 0;
 		for (int k = 0; k < m_Tools[i].PublicToolName.length(); k++)
@@ -1414,6 +1510,10 @@ bool QToolBase::RunScriptEditToolLink()
 	int nResult = -10000;
 	for (int i = 0; i < m_Tools.size(); i++)
 	{
+		if (m_Tools[i].PublicToolDlg == nullptr)
+		{
+			continue;
+		}
 		nResult = m_Tools[i].PublicToolDlg->ExecuteScriptEditLink(gVariable::scriptedit_variable_link);		
 	}
 	return true;
@@ -1430,6 +1530,7 @@ bool QToolBase::AddTool(const QString toolname)
 	}
 	VisionTOOL tool;
 	tool.PublicToolName = toolname;
+	tool.PublicToolDlg = nullptr;
 	m_Tools.push_back(tool);
 	return true;
 }
@@ -1465,6 +1566,10 @@ bool QToolBase::GetToolDlg(const QString toolname)
 	{		
 		if (m_Tools[i].PublicToolName == toolname)
 		{
+			if (m_Tools[i].PublicToolDlg == nullptr)
+			{
+				return false;
+			}
 			m_Tools[i].PublicToolDlg->accept();
 			m_Tools[i].PublicToolDlg->exec();			
 			return true;

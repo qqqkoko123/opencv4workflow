@@ -1,4 +1,4 @@
-#ifndef __OCR_ANGLENET_H__
+﻿#ifndef __OCR_ANGLENET_H__
 #define __OCR_ANGLENET_H__
 
 #include "OcrStruct.h"

@@ -1,4 +1,4 @@
-/*  For iOS video I/O
+﻿/*  For iOS video I/O
  *  by Eduard Feicho on 29/07/12
  *  Copyright 2012. All rights reserved.
  *

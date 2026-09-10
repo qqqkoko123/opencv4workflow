@@ -1,4 +1,4 @@
-#include "clogmodel.h"
+﻿#include "clogmodel.h"
 #include "qmutex.h"
 
 CLogModel::CLogModel(QObject *parent) : QAbstractListModel(parent)

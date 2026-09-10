@@ -1,4 +1,4 @@
-#include "ExportCsv.h"
+ï»¿#include "ExportCsv.h"
 #include "frmExportCsv.h"
 
 ExportCsv::ExportCsv()
@@ -7,12 +7,12 @@ ExportCsv::ExportCsv()
 
 QString ExportCsv::name()
 {
-    return "µ¼³öCSV";
+    return "å¯¼å‡ºCSV";
 }
 
 QString ExportCsv::information()
 {
-    return "ÏµÍ³¹¤¾ß";
+    return "ç³»ç»Ÿå·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

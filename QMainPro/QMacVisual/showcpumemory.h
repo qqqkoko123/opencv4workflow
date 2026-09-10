@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #pragma execution_character_set("utf-8")
 
 #include <QObject>
@@ -22,7 +22,7 @@ private:
     int memoryAll;
     int memoryUse;
     int memoryFree;          
-    QLabel *labMemory;   //ÏÔÊ¾ÄÚ´æĞÅÏ¢µÄ¿Ø¼ş
+    QLabel *labMemory;   //æ˜¾ç¤ºå†…å­˜ä¿¡æ¯çš„æ§ä»¶
     QProcess *process;	
 	int cpu;
 
@@ -31,9 +31,9 @@ public slots:
 
 private slots:     
 	int calCpuUsage();
-	//Ê±¼ä×ª»»
+	//æ—¶é—´è½¬æ¢
 	__int64 Filetime2Int64(const FILETIME* ftime);
-	//Á½¸öÊ±¼äÏà¼õÔËËã
+	//ä¸¤ä¸ªæ—¶é—´ç›¸å‡è¿ç®—
 	__int64 CompareFileTime(FILETIME preTime, FILETIME nowTime);
 };
 

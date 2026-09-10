@@ -1,4 +1,4 @@
-<RCC>
+﻿<RCC>
     <qresource prefix="/">
         <file>resource/close.png</file>
         <file>resource/color_r.png</file>

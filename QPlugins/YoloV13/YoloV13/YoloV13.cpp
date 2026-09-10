@@ -1,4 +1,4 @@
-//#include "YoloV13.h"
+ï»¿//#include "YoloV13.h"
 //
 //
 //// Include necessary headers
@@ -84,24 +84,24 @@
 //{
 //	ui.setupUi(this);
 //	toolTitleName = toolName;
-//	//FramelessWindowHintÊôĞÔÉèÖÃ´°¿ÚÈ¥³ı±ß¿ò
-//	//WindowMinimizeButtonHint ÊôĞÔÉèÖÃÔÚ´°¿Ú×îĞ¡»¯Ê±£¬µã»÷ÈÎÎñÀ¸´°¿Ú¿ÉÒÔÏÔÊ¾³öÔ­´°¿Ú
+//	//FramelessWindowHintå±æ€§è®¾ç½®çª—å£å»é™¤è¾¹æ¡†
+//	//WindowMinimizeButtonHint å±æ€§è®¾ç½®åœ¨çª—å£æœ€å°åŒ–æ—¶ï¼Œç‚¹å‡»ä»»åŠ¡æ çª—å£å¯ä»¥æ˜¾ç¤ºå‡ºåŸçª—å£
 //	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint);
-//	//ÉèÖÃ´°ÌåÔÚÆÁÄ»ÖĞ¼äÎ»ÖÃ
+//	//è®¾ç½®çª—ä½“åœ¨å±å¹•ä¸­é—´ä½ç½®
 //	QDesktopWidget* desktop = QApplication::desktop();
 //	move((desktop->width() - this->width()) / 2, (desktop->height() - this->height()) / 2);
-//	//ÉèÖÃ´°¿Ú±³¾°Í¸Ã÷
+//	//è®¾ç½®çª—å£èƒŒæ™¯é€æ˜
 //	setAttribute(Qt::WA_TranslucentBackground);
 //	this->setWindowIcon(QIcon(":/resource/image_source.png"));
-//	//Á¬½ÓĞÅºÅÓë²Û
+//	//è¿æ¥ä¿¡å·ä¸æ§½
 //	connect(this, SIGNAL(sig_Message()), this, SLOT(slot_Message()));
 //	connect(this, SIGNAL(sig_PathMessage()), this, SLOT(slot_PathMessage()));
-//	//³õÊ¼»¯±êÌâÀ¸
+//	//åˆå§‹åŒ–æ ‡é¢˜æ 
 //	initTitleBar();
-//	//Í¼ÏñÏÔÊ¾
+//	//å›¾åƒæ˜¾ç¤º
 //	view = new QGraphicsViews;
 //	ui.imageLayout->addWidget(view);
-//	//Ñ¡Ïî°´Å¥
+//	//é€‰é¡¹æŒ‰é’®
 //	btnGroupRadio = new QButtonGroup(this);
 //	btnGroupRadio->addButton(ui.radioImage, 0);
 //	connect(ui.radioImage, SIGNAL(toggled(bool)), this, SLOT(onRadioClick(bool)));
@@ -144,7 +144,7 @@
 //
 //void YoloV13::paintEvent(QPaintEvent* event)
 //{
-//	//ÉèÖÃ±³¾°É«
+//	//è®¾ç½®èƒŒæ™¯è‰²
 //	QPainter painter(this);
 //	QPainterPath pathBack;
 //	pathBack.setFillRule(Qt::WindingFill);
@@ -204,7 +204,7 @@
 //	{
 //		if (GetToolBase()->m_Tools[i].PublicToolName == toolname)
 //		{
-//			//¹¤¾ßÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+//			//å·¥å…·åœ¨å·¥å…·æ•°ç»„ä¸­çš„ç´¢å¼•
 //			tool_index = i;
 //		}
 //	}
@@ -250,7 +250,7 @@
 //		srcImage = cv::imread(image_path.toLocal8Bit().data(), cv::IMREAD_UNCHANGED);
 //		if (true == srcImage.empty())
 //		{
-//			//×ÓÏß³ÌÖĞ²Ù×÷GUIÒªÓÃĞÅºÅÓë²Û
+//			//å­çº¿ç¨‹ä¸­æ“ä½œGUIè¦ç”¨ä¿¡å·ä¸æ§½
 //			emit sig_Message();
 //			return -2;
 //		}
@@ -283,7 +283,7 @@
 //				}
 //			}
 //		}
-//		//Ê¹ÓÃ»û±ä±ê¶¨Ğ£ÕıÍ¼Ïñ
+//		//ä½¿ç”¨ç•¸å˜æ ‡å®šæ ¡æ­£å›¾åƒ
 //		if (ui.checkUseCalib->isChecked() == true)
 //		{
 //			if (ui.radioLinkParam->isChecked() == true)
@@ -303,7 +303,7 @@
 //				{
 //					if (GetToolBase()->m_Tools[i].PublicToolName == strs[0])
 //					{
-//						//»ñÈ¡µÄ²ÎÊıÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+//						//è·å–çš„å‚æ•°åœ¨å·¥å…·æ•°ç»„ä¸­çš„ç´¢å¼•
 //						param_index = i;
 //						link_state = true;
 //					}
@@ -340,15 +340,15 @@
 //	case 1:
 //		if (image_path.isEmpty())
 //		{
-//			//×ÓÏß³ÌÖĞ²Ù×÷GUIÒªÓÃĞÅºÅÓë²Û
+//			//å­çº¿ç¨‹ä¸­æ“ä½œGUIè¦ç”¨ä¿¡å·ä¸æ§½
 //			emit sig_PathMessage();
 //			return -2;
 //		}
-//		//»ñÈ¡ËùÓĞÎÄ¼şÃû		
-//		image_path = dir.fromNativeSeparators(image_path);//  "\\"×ªÎª"/" 		
+//		//è·å–æ‰€æœ‰æ–‡ä»¶å		
+//		image_path = dir.fromNativeSeparators(image_path);//  "\\"è½¬ä¸º"/" 		
 //		if (!dir.exists())
 //		{
-//			//×ÓÏß³ÌÖĞ²Ù×÷GUIÒªÓÃĞÅºÅÓë²Û
+//			//å­çº¿ç¨‹ä¸­æ“ä½œGUIè¦ç”¨ä¿¡å·ä¸æ§½
 //			emit sig_PathMessage();
 //			return -1;
 //		}
@@ -358,7 +358,7 @@
 //		mImgNames = dir.entryList();
 //		if (mImgNames.size() == 0)
 //		{
-//			//×ÓÏß³ÌÖĞ²Ù×÷GUIÒªÓÃĞÅºÅÓë²Û
+//			//å­çº¿ç¨‹ä¸­æ“ä½œGUIè¦ç”¨ä¿¡å·ä¸æ§½
 //			emit sig_PathMessage();
 //			return -1;
 //		}
@@ -370,7 +370,7 @@
 //		}
 //		if (true == srcImage.empty())
 //		{
-//			//×ÓÏß³ÌÖĞ²Ù×÷GUIÒªÓÃĞÅºÅÓë²Û
+//			//å­çº¿ç¨‹ä¸­æ“ä½œGUIè¦ç”¨ä¿¡å·ä¸æ§½
 //			emit sig_Message();
 //			return -1;
 //		}
@@ -403,7 +403,7 @@
 //				}
 //			}
 //		}
-//		//Ê¹ÓÃ»û±ä±ê¶¨Ğ£ÕıÍ¼Ïñ
+//		//ä½¿ç”¨ç•¸å˜æ ‡å®šæ ¡æ­£å›¾åƒ
 //		if (ui.checkUseCalib->isChecked() == true)
 //		{
 //			if (ui.radioLinkParam->isChecked() == true)
@@ -422,7 +422,7 @@
 //				{
 //					if (GetToolBase()->m_Tools[i].PublicToolName == strs[0])
 //					{
-//						//»ñÈ¡µÄ²ÎÊıÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+//						//è·å–çš„å‚æ•°åœ¨å·¥å…·æ•°ç»„ä¸­çš„ç´¢å¼•
 //						param_index = i;
 //						link_state = true;
 //					}
@@ -458,7 +458,7 @@
 //		return 0;
 //		break;
 //	case 2:
-//		//Ïà»úÈ¡Ïñ		
+//		//ç›¸æœºå–åƒ		
 //		if (cam_state == 1)
 //		{
 //			keys.reserve(300);
@@ -471,12 +471,12 @@
 //				if (gvariable.camera_variable_link.value(key).camera_type == "MindVision")
 //				{
 //				loop:
-//					CameraSoftTrigger(mindvision_haldle);  //Ö´ĞĞÒ»´ÎÈí´¥·¢					
+//					CameraSoftTrigger(mindvision_haldle);  //æ‰§è¡Œä¸€æ¬¡è½¯è§¦å‘					
 //					if (CameraGetImageBuffer(mindvision_haldle, &sFrameInfo_A, &pbyBuffer_A, time_out) == CAMERA_STATUS_SUCCESS)
 //					{
-//						//½«»ñµÃµÄÏà»úÔ­Ê¼Êä³öÍ¼ÏñÊı¾İ½øĞĞ´¦Àí£¬µş¼Ó±¥ºÍ¶È¡¢ÑÕÉ«ÔöÒæºÍĞ£Õı¡¢½µÔëµÈ´¦ÀíĞ§¹û£¬×îºóµÃµ½RGB888¸ñÊ½µÄÍ¼ÏñÊı¾İ
+//						//å°†è·å¾—çš„ç›¸æœºåŸå§‹è¾“å‡ºå›¾åƒæ•°æ®è¿›è¡Œå¤„ç†ï¼Œå åŠ é¥±å’Œåº¦ã€é¢œè‰²å¢ç›Šå’Œæ ¡æ­£ã€é™å™ªç­‰å¤„ç†æ•ˆæœï¼Œæœ€åå¾—åˆ°RGB888æ ¼å¼çš„å›¾åƒæ•°æ®
 //						status_A = CameraImageProcess(mindvision_haldle, pbyBuffer_A, mindvision_framebuffer, &sFrameInfo_A);
-//						//·Ö±æÂÊ¸Ä±ä£¬ÔòË¢ĞÂ±³¾°
+//						//åˆ†è¾¨ç‡æ”¹å˜ï¼Œåˆ™åˆ·æ–°èƒŒæ™¯
 //						if (m_sFrInfo_A.iWidth != sFrameInfo_A.iWidth || m_sFrInfo_A.iHeight != sFrameInfo_A.iHeight)
 //						{
 //							m_sFrInfo_A.iWidth = sFrameInfo_A.iWidth;
@@ -484,13 +484,13 @@
 //						}
 //						if (status_A == CAMERA_STATUS_SUCCESS)
 //						{
-//							//µ÷ÓÃSDK·â×°ºÃµÄÏÔÊ¾½Ó¿ÚÀ´ÏÔÊ¾Í¼Ïñ
+//							//è°ƒç”¨SDKå°è£…å¥½çš„æ˜¾ç¤ºæ¥å£æ¥æ˜¾ç¤ºå›¾åƒ
 //							CameraImageOverlay(mindvision_haldle, mindvision_framebuffer, &sFrameInfo_A);
-//							//ÓÉÓÚSDKÊä³öµÄÊı¾İÄ¬ÈÏÊÇ´Óµ×µ½¶¥£¬×ª»»ÎªOpenCVÍ¼Æ¬ĞèÒª×öÒ»ÏÂ´¹Ö±¾µÏñ
+//							//ç”±äºSDKè¾“å‡ºçš„æ•°æ®é»˜è®¤æ˜¯ä»åº•åˆ°é¡¶ï¼Œè½¬æ¢ä¸ºOpenCVå›¾ç‰‡éœ€è¦åšä¸€ä¸‹å‚ç›´é•œåƒ
 //							CameraFlipFrameBuffer(mindvision_framebuffer, &sFrameInfo_A, 1);
 //							srcImage = cv::Mat(cv::Size(sFrameInfo_A.iWidth, sFrameInfo_A.iHeight), sFrameInfo_A.uiMediaType == CAMERA_MEDIA_TYPE_MONO8 ? CV_8UC1 : CV_8UC3, mindvision_framebuffer);
 //						}
-//						//ÔÚ³É¹¦µ÷ÓÃCameraGetImageBufferºó£¬±ØĞëµ÷ÓÃCameraReleaseImageBufferÀ´ÊÍ·Å»ñµÃµÄbuffer		
+//						//åœ¨æˆåŠŸè°ƒç”¨CameraGetImageBufferåï¼Œå¿…é¡»è°ƒç”¨CameraReleaseImageBufferæ¥é‡Šæ”¾è·å¾—çš„buffer		
 //						CameraReleaseImageBuffer(mindvision_haldle, pbyBuffer_A);
 //						memcpy(&m_sFrInfo_A, &sFrameInfo_A, sizeof(tSdkFrameHead));
 //						break;
@@ -526,11 +526,11 @@
 //		}
 //		if (true == srcImage.empty())
 //		{
-//			//×ÓÏß³ÌÖĞ²Ù×÷GUIÒªÓÃĞÅºÅÓë²Û
+//			//å­çº¿ç¨‹ä¸­æ“ä½œGUIè¦ç”¨ä¿¡å·ä¸æ§½
 //			emit sig_Message();
 //			return -2;
 //		}
-//		//Ê¹ÓÃ»û±ä±ê¶¨Ğ£ÕıÍ¼Ïñ
+//		//ä½¿ç”¨ç•¸å˜æ ‡å®šæ ¡æ­£å›¾åƒ
 //		if (ui.checkUseCalib->isChecked() == true)
 //		{
 //			if (ui.radioLinkParam->isChecked() == true)
@@ -550,7 +550,7 @@
 //				{
 //					if (GetToolBase()->m_Tools[i].PublicToolName == strs[0])
 //					{
-//						//»ñÈ¡µÄ²ÎÊıÔÚ¹¤¾ßÊı×éÖĞµÄË÷Òı
+//						//è·å–çš„å‚æ•°åœ¨å·¥å…·æ•°ç»„ä¸­çš„ç´¢å¼•
 //						param_index = i;
 //						link_state = true;
 //					}
@@ -590,13 +590,13 @@
 //
 //void YoloV13::slot_Message()
 //{
-//	QMessageBox::warning(this, "ÌáÊ¾", "¼ÓÔØÍ¼ÏñÊ§°Ü£¡", QMessageBox::Ok);
+//	QMessageBox::warning(this, "æç¤º", "åŠ è½½å›¾åƒå¤±è´¥ï¼", QMessageBox::Ok);
 //	return;
 //}
 //
 //void YoloV13::slot_PathMessage()
 //{
-//	QMessageBox::warning(this, "ÌáÊ¾", "¼ÓÔØÍ¼ÏñÎÄ¼ş¼ĞÊ§°Ü£¡", QMessageBox::Ok);
+//	QMessageBox::warning(this, "æç¤º", "åŠ è½½å›¾åƒæ–‡ä»¶å¤¹å¤±è´¥ï¼", QMessageBox::Ok);
 //	return;
 //}
 //
@@ -609,9 +609,9 @@
 //		{
 //			strs.clear();
 //			strs = str_link.split(".");
-//			if (strs.size() == 1 || strs[1] != "ÄÚ²ÎK")
+//			if (strs.size() == 1 || strs[1] != "å†…å‚K")
 //			{
-//				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "ÊäÈëµÄÁ´½Ó´íÎó£¡");
+//				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "è¾“å…¥çš„é“¾æ¥é”™è¯¯ï¼");
 //				msgBox.setWindowIcon(QIcon(":/resource/error.png"));
 //				msgBox.exec();
 //				return -1;
@@ -622,9 +622,9 @@
 //		{
 //			strs.clear();
 //			strs = str_link.split(".");
-//			if (strs.size() == 1 || strs[1] != "»û±äÏµÊı")
+//			if (strs.size() == 1 || strs[1] != "ç•¸å˜ç³»æ•°")
 //			{
-//				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "ÊäÈëµÄÁ´½Ó´íÎó£¡");
+//				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "è¾“å…¥çš„é“¾æ¥é”™è¯¯ï¼");
 //				msgBox.setWindowIcon(QIcon(":/resource/error.png"));
 //				msgBox.exec();
 //				return -1;
@@ -771,7 +771,7 @@
 //void YoloV13::on_btnSelectImage_clicked()
 //{
 //	QString path_C = QDir::currentPath();
-//	QString dirPath = QFileDialog::getOpenFileName(this, tr("´ò¿ªÍ¼Æ¬"), path_C, "*.bmp *png *jpg *.jpeg");
+//	QString dirPath = QFileDialog::getOpenFileName(this, tr("æ‰“å¼€å›¾ç‰‡"), path_C, "*.bmp *png *jpg *.jpeg");
 //	if (false == dirPath.isEmpty())
 //	{
 //		ui.txtImagePath->setText(dirPath);
@@ -781,7 +781,7 @@
 //void YoloV13::on_btnSelectPath_clicked()
 //{
 //	QString path_C = QDir::currentPath();
-//	QString dirPath = QFileDialog::getExistingDirectory(this, tr("´ò¿ªÍ¼Æ¬ÎÄ¼ş¼Ğ"), path_C);
+//	QString dirPath = QFileDialog::getExistingDirectory(this, tr("æ‰“å¼€å›¾ç‰‡æ–‡ä»¶å¤¹"), path_C);
 //	if (false == dirPath.isEmpty())
 //	{
 //		imgIndex = 0;
@@ -792,7 +792,7 @@
 //void YoloV13::on_btnSelectCalibPath_clicked()
 //{
 //	QString path_C = QDir::currentPath();
-//	QString dirPath = QFileDialog::getOpenFileName(this, tr("´ò¿ª±ê¶¨ÎÄ¼ş"), path_C, "*.xml");
+//	QString dirPath = QFileDialog::getOpenFileName(this, tr("æ‰“å¼€æ ‡å®šæ–‡ä»¶"), path_C, "*.xml");
 //	if (false == dirPath.isEmpty())
 //	{
 //		init_param_buf = 0;
@@ -865,7 +865,7 @@
 //	}
 //}
 //
-////È«¾Ö±äÁ¿¿ØÖÆ
+////å…¨å±€å˜é‡æ§åˆ¶
 //int QConfig2::nFormState = 0;
 //
 ////Q_DECL_EXPORT void YoloV13(QString toolName, QToolBase2* toolBase, QWidget* parent)
@@ -883,8 +883,8 @@ YoloV13::YoloV13()
 {
    //YoloV13
 
-	//QLibrary mylib("./Plugins/YoloV13.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-	//if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+	//QLibrary mylib("./Plugins/YoloV13.dll");   //å£°æ˜æ‰€ç”¨åˆ°çš„dllæ–‡ä»¶
+	//if (mylib.load())    //åˆ¤æ–­æ˜¯å¦æ­£ç¡®åŠ è½½
 	//{
 	//	QFunctionPointer getYoloV13 = mylib.resolve("ShowFormState");
 	//	QFunctionPointer setYoloV13 = mylib.resolve("SetFormState");
@@ -896,8 +896,8 @@ YoloV13::YoloV13()
 	//		frmPage->setObjectName("YoloV13");
 	//	}
 	//}
-	//QLibrary mylib("./Plugins/YoloV13.dll");   //ÉùÃ÷ËùÓÃµ½µÄdllÎÄ¼ş
-	//if (mylib.load())    //ÅĞ¶ÏÊÇ·ñÕıÈ·¼ÓÔØ
+	//QLibrary mylib("./Plugins/YoloV13.dll");   //å£°æ˜æ‰€ç”¨åˆ°çš„dllæ–‡ä»¶
+	//if (mylib.load())    //åˆ¤æ–­æ˜¯å¦æ­£ç¡®åŠ è½½
 	//{
 	//	Funs open = (Funs)mylib.resolve("showDialog");
 	//	if (open)
@@ -915,7 +915,7 @@ QString YoloV13::name()
 
 QString YoloV13::information()
 {
-    return "Ä¿±ê¼ì²â";
+    return "ç›®æ ‡æ£€æµ‹";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

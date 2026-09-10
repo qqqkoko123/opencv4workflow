@@ -1,4 +1,4 @@
-#include "headwidget.h"
+ï»¿#include "headwidget.h"
 #include <QLabel>
 #include <QPushButton>
 #include <QPixmap>
@@ -20,7 +20,7 @@ HeadWidget::HeadWidget(QWidget *parent) : QWidget(parent)
     m_pInfo->setObjectName("pInfo");
     m_pInfo->setStyleSheet("color:white; font-size:18px");
     m_pInfo->setAlignment(Qt::AlignCenter);
-    //°´Å¥ÑùÊ½
+    //æŒ‰é’®æ ·å¼
     QString btnStyle(
         "QWidget{"
         "border: none;"
@@ -35,25 +35,25 @@ HeadWidget::HeadWidget(QWidget *parent) : QWidget(parent)
     auto *pBtnXXX = new QPushButton("", this);
     pBtnXXX->setIconSize(QSize(16, 16));
     pBtnXXX->setIcon(QIcon(":/Bitmaps/menu.png"));
-    pBtnXXX->setToolTip("±êÌâÑÕÉ«");
+    pBtnXXX->setToolTip("æ ‡é¢˜é¢œè‰²");
     pBtnXXX->setStyleSheet(btnStyle);
     auto *pBtnMin = new QPushButton("", this);
     pBtnMin->setIconSize(QSize(16, 16));
     pBtnMin->setIcon(QIcon(":/Bitmaps/minimize.png"));
-    pBtnMin->setToolTip("×îĞ¡»¯");
+    pBtnMin->setToolTip("æœ€å°åŒ–");
     pBtnMin->setStyleSheet(btnStyle);
     pBtnMax = new QPushButton("", this);
     pBtnMax->setIconSize(QSize(16, 16));
     pBtnMax->setIcon(QIcon(":/Bitmaps/restore.png"));
-    pBtnMax->setToolTip("ÏòÏÂ»¹Ô­");
+    pBtnMax->setToolTip("å‘ä¸‹è¿˜åŸ");
     pBtnMax->setStyleSheet(btnStyle);
     auto *pBtnCls = new QPushButton("", this);
     pBtnCls->setIconSize(QSize(16, 16));
     pBtnCls->setIcon(QIcon(":/Bitmaps/menu_close.png"));
-    pBtnCls->setToolTip("¹Ø±Õ");
+    pBtnCls->setToolTip("å…³é—­");
     pBtnCls->setStyleSheet(btnStyle);
     QFont font;
-    //×ÖÌå¼Ó´Ö
+    //å­—ä½“åŠ ç²—
     font.setBold(true);
     pBtnXXX->setFixedSize(36, 36);
     pBtnXXX->setFont(font);
@@ -88,7 +88,7 @@ HeadWidget::HeadWidget(QWidget *parent) : QWidget(parent)
 
 void HeadWidget::shot_Quit()
 {   
-    //±£´æ»­Ãæ
+    //ä¿å­˜ç”»é¢
     frmQuit* fQuit = new frmQuit();
     fQuit->showNormal();
 }
@@ -98,13 +98,13 @@ void HeadWidget::min_maxState()
     if (dataVar::form_max_state == false)
     {
         pBtnMax->setIcon(QIcon(":/Bitmaps/restore.png"));
-        pBtnMax->setToolTip("ÏòÏÂ»¹Ô­");        
+        pBtnMax->setToolTip("å‘ä¸‹è¿˜åŸ");        
         dataVar::form_max_state = true;
     }
     else
     {
         pBtnMax->setIcon(QIcon(":/Bitmaps/maximize.png"));
-        pBtnMax->setToolTip("×î´ó»¯");       
+        pBtnMax->setToolTip("æœ€å¤§åŒ–");       
         dataVar::form_max_state = false;
     }
 }
@@ -148,9 +148,9 @@ void HeadWidget::mouseMoveEvent(QMouseEvent *e)
     if(m_bEnabelMove && m_bPressed)
     {
         QPoint pos = m_pressedWidgetPos + e->globalPos() - m_pressedMousePos;
-        //´Ë´¦ÓÃµÄparent widgetÀ´ÒÆ¶¯
-        //Èç¹û½øĞĞÁËÇ¶Ì×, ĞèÒª×Ô¼ºĞ´¸öº¯Êı, °ÑĞèÒªÒÆ¶¯µÄwidget´«µİ½øÀ´Ìæ»»µ½ÕâÀï,
-        //mousePressEventÀïÃæÒ²ĞèÒª½øĞĞ¶ÔÓ¦µÄÌæ»»
+        //æ­¤å¤„ç”¨çš„parent widgetæ¥ç§»åŠ¨
+        //å¦‚æœè¿›è¡Œäº†åµŒå¥—, éœ€è¦è‡ªå·±å†™ä¸ªå‡½æ•°, æŠŠéœ€è¦ç§»åŠ¨çš„widgetä¼ é€’è¿›æ¥æ›¿æ¢åˆ°è¿™é‡Œ,
+        //mousePressEventé‡Œé¢ä¹Ÿéœ€è¦è¿›è¡Œå¯¹åº”çš„æ›¿æ¢
         if (pos.x() != 0 || pos.y() != 0)
         {
             this->parentWidget()->move(pos);
@@ -165,7 +165,7 @@ void HeadWidget::mouseReleaseEvent(QMouseEvent *e)
     m_bPressed = false;    
     if (dataVar::form_max_state == true && m_bMouseIsMove == true)
     {              
-        //·¢ËÍÁ½´ÎĞÅºÅµ½Normal×´Ì¬
+        //å‘é€ä¸¤æ¬¡ä¿¡å·åˆ°NormalçŠ¶æ€
         emit sigToggleMaximized();        
         emit sigToggleMaximized();    
         min_maxState();

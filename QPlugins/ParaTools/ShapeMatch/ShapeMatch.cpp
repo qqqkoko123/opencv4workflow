@@ -1,4 +1,4 @@
-#include "ShapeMatch.h"
+ï»¿#include "ShapeMatch.h"
 #include "frmShapeMatch.h"
 
 ShapeMatch::ShapeMatch()
@@ -7,12 +7,12 @@ ShapeMatch::ShapeMatch()
 
 QString ShapeMatch::name()
 {
-    return "ĞÎ×´Æ¥Åä";
+    return "å½¢çŠ¶åŒ¹é…";
 }
 
 QString ShapeMatch::information()
 {
-    return "¶ÔÎ»¹¤¾ß";
+    return "å¯¹ä½å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

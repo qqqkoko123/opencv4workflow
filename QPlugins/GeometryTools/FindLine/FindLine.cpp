@@ -1,4 +1,4 @@
-#include "FindLine.h"
+ï»¿#include "FindLine.h"
 #include "frmFindLine.h"
 
 FindLine::FindLine()
@@ -7,12 +7,12 @@ FindLine::FindLine()
 
 QString FindLine::name()
 {
-    return "Ñ°ÕÒÖ±Ïß";
+    return "å¯»æ‰¾ç›´çº¿";
 }
 
 QString FindLine::information()
 {
-    return "¼¸ºÎ¹¤¾ß";
+    return "å‡ ä½•å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

@@ -1,8 +1,11 @@
-#include "frmToolsTree.h"
+ï»¿#include "frmToolsTree.h"
 #include <QHeaderView>
 #include <QStyleFactory>
 #include <QDir>
 #include <QPluginLoader>
+#include <QMap>
+#include <QApplication>
+#include <QDebug>
 #include "GlobalVariable.h"
 
 QString ThemeColor = "#20B2AA";
@@ -15,7 +18,7 @@ frmToolsTree::frmToolsTree(QWidget* parent)
 	ToolsTreeWidgetInit();
 }
 
-//¹¤¾ßÁĞ±í³õÊ¼»¯
+//?????????????
 void frmToolsTree::ToolsTreeWidgetInit()
 {
 	ToolTreeWidget = new QtTreeWidget(this);
@@ -24,9 +27,9 @@ void frmToolsTree::ToolsTreeWidgetInit()
 	ToolGLayout->setSpacing(5);
 	ToolGLayout->addWidget(ToolTreeWidget, 0, 0);
 	ToolTreeWidget->setIconSize(QSize(24, 24));
-	//ÏÔÊ¾ĞéÏß
+	//???????
 	ToolTreeWidget->setStyle(QStyleFactory::create("windows"));
-	//¸ü»»ÏµÍ³Ä¬ÈÏÍ¼±ê
+	//????????????
 	ToolTreeWidget->setStyleSheet("QTreeWidget::branch:has-children:!has-siblings:closed,\
 	QWidget{border: 1px;border-style: solid;border-color: #d9d9d9}\
 	QTreeWidget::item{color: #363636}\
@@ -36,105 +39,111 @@ void frmToolsTree::ToolsTreeWidgetInit()
 	QTreeWidget::branch:closed:has-children:has-siblings{border-image: none; image: url(:/res/ico/unfold.png);}\
 	QTreeWidget::branch:open:has-children:!has-siblings{border-image: none; image: url(:/res/ico/fold.png);}\
 	QTreeWidget::branch:open:has-children:has-siblings{border-image: none; image: url(:/res/ico/fold.png);}"
-	"QScrollBar:vertical{" //ÉèÖÃ¹ö¶¯ÌõÑùÊ½
-	"background:#FFFFF2;"  //±³¾°É«  
-	"padding-top:20px;"    //ÉÏÔ¤ÁôÎ»ÖÃ(·ÅÖÃÏòÉÏ¼ıÍ·£©  
-	"padding-bottom:20px;" //ÏÂÔ¤ÁôÎ»ÖÃ(·ÅÖÃÏòÏÂ¼ıÍ·£©  
-	"padding-left:2px;"    //×óÔ¤ÁôÎ»ÖÃ 
-	"padding-right:2px;"   //ÓÒÔ¤ÁôÎ»ÖÃ 
-	"border-left:1px solid #d7d7d7;}" //×ó·Ö¸îÏß  
-	"QScrollBar::handle:vertical{" //»¬¿éÑùÊ½  
-	"background:#dbdbdb;"  //»¬¿éÑÕÉ«  
-	"border-radius:6px;"   //±ß½ÇÔ²
-	"min-height:20px;}"    //»¬¿é×îĞ¡¸ß¶È
-	"QScrollBar::handle:vertical:hover{" //Êó±ê´¥¼°»¬¿éÑùÊ½  
-	"background:#d0d0d0;}" //»¬¿éÑÕÉ«  
-	"QScrollBar::add-line:vertical{" //ÏòÏÂ¼ıÍ·ÑùÊ½  
+	"QScrollBar:vertical{" //?????????????
+	"background:#FFFFF2;"  //?????  
+	"padding-top:20px;"    //?????????(????????????  
+	"padding-bottom:20px;" //?????????(????????????  
+	"padding-left:2px;"    //????????? 
+	"padding-right:2px;"   //????????? 
+	"border-left:1px solid #d7d7d7;}" //??????  
+	"QScrollBar::handle:vertical{" //???????  
+	"background:#dbdbdb;"  //???????  
+	"border-radius:6px;"   //????
+	"min-height:20px;}"    //???????????
+	"QScrollBar::handle:vertical:hover{" //????????????  
+	"background:#d0d0d0;}" //???????  
+	"QScrollBar::add-line:vertical{" //?????????  
 	"background:url(:/res/ico/down.png) center no-repeat;}"
-	"QScrollBar::sub-line:vertical{" //ÏòÉÏ¼ıÍ·ÑùÊ½
+	"QScrollBar::sub-line:vertical{" //?????????
 	"background:url(:/res/ico/up.png) center no-repeat;}");
-	//ÉèÖÃ×ÖÌå¼°×ÖÌå´óĞ¡
+	//????????????????
 	QFont font("Microsoft YaHei");
 	font.setPixelSize(16.5);
 	ToolTreeWidget->setFont(font);
 	ToolTreeWidget->header()->setVisible(false);
 	ToolTreeWidget->clear();
 	this->setAcceptDrops(false);
-	//¹¤¾ßÁĞ±í
+	//????????
 	ToolsPair toolPair;	
-	//Í¼Ïñ´¦Àí
-	LoadPlugins("Í¼Ïñ´¦Àí");  //¼ÓÔØÍ¼Ïñ´¦Àí	
-	toolPair.first = "Í¼Ïñ´¦Àí";
+	//å›¾åƒå¤„ç†
+	LoadPlugins("å›¾åƒå¤„ç†");
+	toolPair.first = "å›¾åƒå¤„ç†";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//¼ì²âÊ¶±ğ
-	LoadPlugins("¼ì²âÊ¶±ğ");  //¼ÓÔØ¼ì²âÊ¶±ğ		
-	toolPair.first = "¼ì²âÊ¶±ğ";
+	//æ£€æµ‹è¯†åˆ«
+	LoadPlugins("æ£€æµ‹è¯†åˆ«");
+	toolPair.first = "æ£€æµ‹è¯†åˆ«";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//±ê¶¨¹¤¾ß
-	LoadPlugins("±ê¶¨¹¤¾ß");  //¼ÓÔØ±ê¶¨¹¤¾ß	
-	toolPair.first = "±ê¶¨¹¤¾ß";
+	//å¯¹ä½å·¥å…·
+	LoadPlugins("å¯¹ä½å·¥å…·");
+	toolPair.first = "å¯¹ä½å·¥å…·";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//¶ÔÎ»¹¤¾ß
-	LoadPlugins("¶ÔÎ»¹¤¾ß");  //¼ÓÔØ¶ÔÎ»¹¤¾ß		
-	toolPair.first = "¶ÔÎ»¹¤¾ß";
+	//æ ‡å®šå·¥å…·
+	LoadPlugins("æ ‡å®šå·¥å…·");
+	toolPair.first = "æ ‡å®šå·¥å…·";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//¼¸ºÎ¹¤¾ß
-	LoadPlugins("¼¸ºÎ¹¤¾ß");  //¼ÓÔØ¼¸ºÎ¹¤¾ß
-	toolPair.first = "¼¸ºÎ¹¤¾ß";
+	//å‡ ä½•å·¥å…·
+	LoadPlugins("å‡ ä½•å·¥å…·");
+	toolPair.first = "å‡ ä½•å·¥å…·";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//¼¸ºÎ²âÁ¿
-	LoadPlugins("¼¸ºÎ²âÁ¿");  //¼ÓÔØ¼¸ºÎ²âÁ¿	
-	toolPair.first = "¼¸ºÎ²âÁ¿";
+	//å‡ ä½•æµ‹é‡
+	LoadPlugins("å‡ ä½•æµ‹é‡");
+	toolPair.first = "å‡ ä½•æµ‹é‡";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//ÈıÎ¬¼ì²â	
-	LoadPlugins("ÈıÎ¬¼ì²â");  //¼ÓÔØÈıÎ¬¼ì²â
-	toolPair.first = "ÈıÎ¬¼ì²â";
+	//é€»è¾‘å·¥å…·
+	LoadPlugins("é€»è¾‘å·¥å…·");
+	toolPair.first = "é€»è¾‘å·¥å…·";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//Âß¼­¹¤¾ß
-	LoadPlugins("Âß¼­¹¤¾ß");  //¼ÓÔØÂß¼­¹¤¾ß	
-	toolPair.first = "Âß¼­¹¤¾ß";
+	//é€šè®¯å·¥å…·
+	LoadPlugins("é€šè®¯å·¥å…·");
+	toolPair.first = "é€šè®¯å·¥å…·";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//Í¨Ñ¶¹¤¾ß
-	LoadPlugins("Í¨Ñ¶¹¤¾ß");  //¼ÓÔØÍ¨Ñ¶¹¤¾ß	
-	toolPair.first = "Í¨Ñ¶¹¤¾ß";
+	//ç³»ç»Ÿå·¥å…·
+	LoadPlugins("ç³»ç»Ÿå·¥å…·");
+	toolPair.first = "ç³»ç»Ÿå·¥å…·";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//ÏµÍ³¹¤¾ß
-	LoadPlugins("ÏµÍ³¹¤¾ß");  //¼ÓÔØÏµÍ³¹¤¾ß	
-	toolPair.first = "ÏµÍ³¹¤¾ß";
+	//ä¸‰ç»´æ£€æµ‹
+	LoadPlugins("ä¸‰ç»´æ£€æµ‹");
+	toolPair.first = "ä¸‰ç»´æ£€æµ‹";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
 	//YoloV13
-	LoadPlugins("Ä¿±ê¼ì²â");  //¼ÓÔØYoloV13Ä¿±ê¼ì²â	
-	toolPair.first = "Ä¿±ê¼ì²â";
+	LoadPlugins("ç›®æ ‡æ£€æµ‹");
+	toolPair.first = "ç›®æ ‡æ£€æµ‹";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
 	//OCR
-	LoadPlugins("OCRÊ¶±ğ");  //¼ÓÔØOCRÊ¶±ğ	
-	toolPair.first = "OCRÊ¶±ğ";
+	LoadPlugins("OCRè¯†åˆ«");
+	toolPair.first = "OCRè¯†åˆ«";
 	toolPair.second = ToolNameList;
 	ToolNamesVec.push_back(toolPair);
 	ToolNameList.clear();
-	//Ñ­»·´¦ÀíÍ¼±ê	
+	//è½¦ç‰Œè¯†åˆ«
+	LoadPlugins("è½¦ç‰Œè¯†åˆ«");
+	toolPair.first = "è½¦ç‰Œè¯†åˆ«";
+	toolPair.second = ToolNameList;
+	ToolNamesVec.push_back(toolPair);
+	ToolNameList.clear();
+	//??????????	
 	for (int i = 0; i < ToolNamesVec.size(); i++)
 	{
 		QString toolBoxName = ToolNamesVec[i].first;
@@ -153,8 +162,8 @@ void frmToolsTree::ToolsTreeWidgetInit()
 }
 
 /*
- * @function PluginsApp::LoadPlugins ¼ÓÔØ²å¼ş¡¢²å¼ş·ÅÔÚPluginsÎÄ¼ş¼ĞÏÂ
- * @return ·µ»Ø²å¼şµÄ¸öÊı
+ * @function PluginsApp::LoadPlugins ???????????????Plugins???????
+ * @return ???????????
  */
 int frmToolsTree::LoadPlugins(QString str)
 {
@@ -162,28 +171,31 @@ int frmToolsTree::LoadPlugins(QString str)
 	QDir pluginsDir = QDir(qApp->applicationDirPath());
 	if (!pluginsDir.cd("Plugins")) return -1;
 	QStringList filters;
-	filters << "*.dll"; //¿ÉÒÔ¶àÖÖ¸ñÊ½»òÕßµ¥¸ö¸ñÊ½
-	pluginsDir.setFilter(QDir::Files | QDir::NoSymLinks); //ÉèÖÃÀàĞÍ¹ıÂËÆ÷£¬Ö»ÎªÎÄ¼ş¸ñÊ½
-	pluginsDir.setNameFilters(filters);  //ÉèÖÃÎÄ¼şÃû³Æ¹ıÂËÆ÷
+	filters << "*.dll";
+	pluginsDir.setFilter(QDir::Files | QDir::NoSymLinks);
+	pluginsDir.setNameFilters(filters);
+	static QMap<QString, QPluginLoader*> s_pluginLoaders;
 	foreach(QString fileName, pluginsDir.entryList())
 	{
-		QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
-		QObject* plugin = pluginLoader.instance();
+		const QString filePath = pluginsDir.absoluteFilePath(fileName);
+		QPluginLoader* pluginLoader = s_pluginLoaders.value(filePath, nullptr);
+		if (pluginLoader == nullptr)
+		{
+			pluginLoader = new QPluginLoader(filePath, qApp);
+			s_pluginLoaders.insert(filePath, pluginLoader);
+		}
+		QObject* plugin = pluginLoader->instance();
 		if (plugin)
 		{
 			auto treeInterface = qobject_cast<MainInterface*>(plugin);
 			if (treeInterface)
 			{
 				++count;
-				//¼ÓÔØ²å¼şºóÉú³ÉTree
 				PopulateTree(str, plugin, treeInterface);
 			}
 		}
 		else {
-			//std::cout << "¼ÓÔØ²å¼şÊ§°Ü:" << pluginLoader.errorString() << "\n" << std::endl; // ¹Ø¼ü£º´òÓ¡´íÎóÏêÇé
-			const QString errorStr = pluginLoader.errorString();
-			/*printf("¼ÓÔØ²å¼şÊ§°Ü:", errorStr);*/
-			qDebug() << "¼ÓÔØ²å¼şÊ§°Ü:" << pluginLoader.errorString();
+			qDebug() << pluginLoader->errorString();
 		}
 
 	}
@@ -191,9 +203,9 @@ int frmToolsTree::LoadPlugins(QString str)
 }
 
 /*
- * @function PluginsApp::PopulateTree ¸ù¾İ²å¼şÉú³ÉTree
- * @param pluginInterface ²å¼ş
- * @param i ²å¼şÊµÏÖµÄ½Ó¿Ú
+ * @function PluginsApp::PopulateTree ??????????Tree
+ * @param pluginInterface ???
+ * @param i ?????????
  */
 void frmToolsTree::PopulateTree(QString str, QObject* pluginInterface, MainInterface* i)
 {
@@ -208,72 +220,73 @@ void frmToolsTree::PopulateTree(QString str, QObject* pluginInterface, MainInter
 	catch(...){}	
 }
 
-// »ñÈ¡Í¼±ê
+// ??????
 QPixmap frmToolsTree::GetIcon(QString fileName)
 {
 	return IconHelper::Instance()->getPixmap(fileName);
 }
 
-// »ñÈ¡Í¼±êÂ·¾¶
+// ??????????
 QString frmToolsTree::GetIconName(QString Name)
 {
 	QString IconName;
-	if (Name.contains("»ñÈ¡Í¼Ïñ")) IconName = ":/res/ico/image_source.png";
-	if (Name.contains("Í¼ÏñÏÔÊ¾")) IconName = ":/res/ico/image_view.ico";
-	if (Name.contains("µ¼³öÍ¼Ïñ")) IconName = ":/res/ico/export_image.png";	
-	if (Name.contains("Ô¤´¦Àí")) IconName = ":/res/ico/morphology.png";
-	if (Name.contains("Í¼ÏñÆ´½Ó")) IconName = ":/res/ico/image_splice.png";	
-	if (Name.contains("Í¼ÏñĞŞ¸´")) IconName = ":/res/ico/repair.png";	
-	if (Name.contains("Í¼ÏñÏ¸»¯")) IconName = ":/res/ico/skeleton.png";
-	if (Name.contains("Í¼Ïñ·­×ª")) IconName = ":/res/ico/flip.png";
-	if (Name.contains("Í¼ÏñĞı×ª")) IconName = ":/res/ico/rotate.png";
-	if (Name.contains("Í¸ÊÓ±ä»»")) IconName = ":/res/ico/perspective.png";	
-	if (Name.contains("²ÃÇĞÍ¼Ïñ")) IconName = ":/res/ico/crop.png";
-	if (Name.contains("´´½¨ROI")) IconName = ":/res/ico/roi.png";
-	if (Name.contains("ÌõĞÎÂëÊ¶±ğ")) IconName = ":/res/ico/barcode.png";
-	if (Name.contains("°ßµã·ÖÎö")) IconName = ":/res/ico/blob.png";
-	if (Name.contains("¶şÎ¬ÂëÊ¶±ğ")) IconName = ":/res/ico/qrcode.png";
-	if (Name.contains("×Ö·ûÊ¶±ğ")) IconName = ":/res/ico/ocr.png";
-	if (Name.contains("·ÖÀàÆ÷")) IconName = ":/res/ico/classifier.png";
-	if (Name.contains("ÑÕÉ«Ê¶±ğ")) IconName = ":/res/ico/color_r.png";	
-	if (Name.contains("ÁÁ¶È¼ì²â")) IconName = ":/res/ico/brightness.png";
-	if (Name.contains("Í¼ÏñÇåÎú¶È")) IconName = ":/res/ico/clarity.png";		
-	if (Name.contains("ÂÖÀªÌØÕ÷Ñ¡Ôñ")) IconName = ":/res/ico/shape.png";
-	if (Name.contains("Nµã±ê¶¨")) IconName = ":/res/ico/ert_calib.png";
-	if (Name.contains("»û±ä±ê¶¨")) IconName = ":/res/ico/distortion_calib.png";
-	if (Name.contains("²âÁ¿±ê¶¨")) IconName = ":/res/ico/measure_calib.png";
-	if (Name.contains("»Ò¶ÈÆ¥Åä")) IconName = ":/res/ico/match.png";	
-	if (Name.contains("ĞÎ×´Æ¥Åä")) IconName = ":/res/ico/shape_match.png";
-	if (Name.contains("Ä¿±ê¸ú×Ù")) IconName = ":/res/ico/track.png";
-	if (Name.contains("ÏßĞÔ¼ÆËã")) IconName = ":/res/ico/affine.png";
-	if (Name.contains("Ñ°ÕÒÔ²")) IconName = ":/res/ico/find_circle.png";
-	if (Name.contains("Ñ°ÕÒÖ±Ïß")) IconName = ":/res/ico/find_line.png";
-	if (Name.contains("ÄâºÏÔ²")) IconName = ":/res/ico/fit_circle.png";
-	if (Name.contains("ÄâºÏÍÖÔ²")) IconName = ":/res/ico/fit_ellipse.png";
-	if (Name.contains("ÄâºÏÖ±Ïß")) IconName = ":/res/ico/fit_line.png";
-	if (Name.contains("»ñÈ¡±ß½çµã")) IconName = ":/res/ico/border_point.png";
-	if (Name.contains("ÏßÔ²½»µã")) IconName = ":/res/ico/line_circle.png";
-	if (Name.contains("µã+µã")) IconName = ":/res/ico/point_point.png";
-	if (Name.contains("µã+Ïß")) IconName = ":/res/ico/point_l.png";
-	if (Name.contains("ÏßÏß½»µã")) IconName = ":/res/ico/intersection.png";
-	if (Name.contains("²éÕÒÔ²È±½Ç")) IconName = ":/res/ico/rounded_c.png";	
-	if (Name.contains("±ßÔµ¿í¶È²âÁ¿")) IconName = ":/res/ico/edge.png";
-	if (Name.contains("ÄâºÏÆ½Ãæ")) IconName = ":/res/ico/flatness.png";	
-	if (Name.contains("À©Õ¹¿â")) IconName = ":/res/ico/extension_library.png";
-	if (Name.contains("Ìø×ªÓï¾ä")) IconName = ":/res/ico/goto.png";
-	if (Name.contains("ÅĞ¶ÏÓï¾ä")) IconName = ":/res/ico/logic_judge.png";
-	if (Name.contains("½áÊøÓï¾ä")) IconName = ":/res/ico/end.png";
-	if (Name.contains("½Å±¾±à¼­")) IconName = ":/res/ico/script_edit.png";
-	if (Name.contains("TCP/IP·şÎñÆ÷")) IconName = ":/res/ico/server.png";	
-	if (Name.contains("TCP/IP¿Í»§¶Ë")) IconName = ":/res/ico/client.png";
-	if (Name.contains("PLCÍ¨ĞÅ")) IconName = ":/res/ico/plc_communicate.png";
-	if (Name.contains("´®¿ÚÍ¨ĞÅ")) IconName = ":/res/ico/serial_port.png";
-	if (Name.contains("Í¨ÓÃI/O")) IconName = ":/res/ico/general_io.png";
-	if (Name.contains("ÑÓÊ±")) IconName = ":/res/ico/delay.png";	
-	if (Name.contains("µ¼³öCSV")) IconName = ":/res/ico/export_csv.png";
+	if (Name.contains("è·å–å›¾åƒ")) IconName = ":/res/ico/image_source.png";
+	if (Name.contains("å›¾åƒæ˜¾ç¤º")) IconName = ":/res/ico/image_view.ico";
+	if (Name.contains("å¯¼å‡ºå›¾åƒ")) IconName = ":/res/ico/export_image.png";
+	if (Name.contains("é¢„å¤„ç†")) IconName = ":/res/ico/morphology.png";
+	if (Name.contains("å›¾åƒæ‹¼æ¥")) IconName = ":/res/ico/image_splice.png";
+	if (Name.contains("å›¾åƒä¿®å¤")) IconName = ":/res/ico/repair.png";
+	if (Name.contains("å›¾åƒç»†åŒ–")) IconName = ":/res/ico/skeleton.png";
+	if (Name.contains("å›¾åƒç¿»è½¬")) IconName = ":/res/ico/flip.png";
+	if (Name.contains("å›¾åƒæ—‹è½¬")) IconName = ":/res/ico/rotate.png";
+	if (Name.contains("é€è§†å˜æ¢")) IconName = ":/res/ico/perspective.png";
+	if (Name.contains("è£åˆ‡å›¾åƒ")) IconName = ":/res/ico/crop.png";
+	if (Name.contains("åˆ›å»ºROI")) IconName = ":/res/ico/roi.png";
+	if (Name.contains("æ¡å½¢ç è¯†åˆ«")) IconName = ":/res/ico/barcode.png";
+	if (Name.contains("æ–‘ç‚¹åˆ†æ")) IconName = ":/res/ico/blob.png";
+	if (Name.contains("äºŒç»´ç è¯†åˆ«")) IconName = ":/res/ico/qrcode.png";
+	if (Name.contains("å­—ç¬¦è¯†åˆ«")) IconName = ":/res/ico/ocr.png";
+	if (Name.contains("åˆ†ç±»å™¨")) IconName = ":/res/ico/classifier.png";
+	if (Name.contains("é¢œè‰²è¯†åˆ«")) IconName = ":/res/ico/color_r.png";
+	if (Name.contains("äº®åº¦æ£€æµ‹")) IconName = ":/res/ico/brightness.png";
+	if (Name.contains("å›¾åƒæ¸…æ™°åº¦")) IconName = ":/res/ico/clarity.png";
+	if (Name.contains("è½®å»“ç‰¹å¾é€‰æ‹©")) IconName = ":/res/ico/shape.png";
+	if (Name.contains("Nç‚¹æ ‡å®š")) IconName = ":/res/ico/ert_calib.png";
+	if (Name.contains("ç•¸å˜æ ‡å®š")) IconName = ":/res/ico/distortion_calib.png";
+	if (Name.contains("æµ‹é‡æ ‡å®š")) IconName = ":/res/ico/measure_calib.png";
+	if (Name.contains("ç°åº¦åŒ¹é…")) IconName = ":/res/ico/match.png";
+	if (Name.contains("å½¢çŠ¶åŒ¹é…")) IconName = ":/res/ico/shape_match.png";
+	if (Name.contains("ç›®æ ‡è·Ÿè¸ª")) IconName = ":/res/ico/track.png";
+	if (Name.contains("çº¿æ€§è®¡ç®—")) IconName = ":/res/ico/affine.png";
+	if (Name.contains("å¯»æ‰¾åœ†")) IconName = ":/res/ico/find_circle.png";
+	if (Name.contains("å¯»æ‰¾ç›´çº¿")) IconName = ":/res/ico/find_line.png";
+	if (Name.contains("æ‹Ÿåˆåœ†")) IconName = ":/res/ico/fit_circle.png";
+	if (Name.contains("æ‹Ÿåˆæ¤­åœ†")) IconName = ":/res/ico/fit_ellipse.png";
+	if (Name.contains("æ‹Ÿåˆç›´çº¿")) IconName = ":/res/ico/fit_line.png";
+	if (Name.contains("è·å–è¾¹ç•Œç‚¹")) IconName = ":/res/ico/border_point.png";
+	if (Name.contains("çº¿åœ†äº¤ç‚¹")) IconName = ":/res/ico/line_circle.png";
+	if (Name.contains("ç‚¹+ç‚¹")) IconName = ":/res/ico/point_point.png";
+	if (Name.contains("ç‚¹+çº¿")) IconName = ":/res/ico/point_l.png";
+	if (Name.contains("çº¿çº¿äº¤ç‚¹")) IconName = ":/res/ico/intersection.png";
+	if (Name.contains("æŸ¥æ‰¾åœ†ç¼ºè§’")) IconName = ":/res/ico/rounded_c.png";
+	if (Name.contains("è¾¹ç¼˜å®½åº¦æµ‹é‡")) IconName = ":/res/ico/edge.png";
+	if (Name.contains("æ‹Ÿåˆå¹³é¢")) IconName = ":/res/ico/flatness.png";
+	if (Name.contains("æ‰©å±•åº“")) IconName = ":/res/ico/extension_library.png";
+	if (Name.contains("è·³è½¬è¯­å¥")) IconName = ":/res/ico/goto.png";
+	if (Name.contains("åˆ¤æ–­è¯­å¥")) IconName = ":/res/ico/logic_judge.png";
+	if (Name.contains("ç»“æŸè¯­å¥")) IconName = ":/res/ico/end.png";
+	if (Name.contains("è„šæœ¬ç¼–è¾‘")) IconName = ":/res/ico/script_edit.png";
+	if (Name.contains("TCP/IPæœåŠ¡å™¨")) IconName = ":/res/ico/server.png";
+	if (Name.contains("TCP/IPå®¢æˆ·ç«¯")) IconName = ":/res/ico/client.png";
+	if (Name.contains("PLCé€šä¿¡")) IconName = ":/res/ico/plc_communicate.png";
+	if (Name.contains("ä¸²å£é€šä¿¡")) IconName = ":/res/ico/serial_port.png";
+	if (Name.contains("é€šç”¨I/O")) IconName = ":/res/ico/general_io.png";
+	if (Name.contains("å»¶æ—¶")) IconName = ":/res/ico/delay.png";
+	if (Name.contains("å¯¼å‡ºCSV")) IconName = ":/res/ico/export_csv.png";
 	if (Name.contains("YoloV13")) IconName = ":/res/ico/classifier.png";
 	if (Name.contains("OCR")) IconName = ":/res/ico/ocr.png";
-	if (Name.contains("¶şÎ¬ÂëÉú³É")) IconName = ":/res/ico/qrcode.png";
-	if (Name.contains("×Ô¶¯´òÓ¡")) IconName = ":/res/ico/print.png";
+	if (Name.contains("è½¦ç‰Œè¯†åˆ«")) IconName = ":/res/ico/plate.png";
+	if (Name.contains("äºŒç»´ç ç”Ÿæˆ")) IconName = ":/res/ico/qrcode.png";
+	if (Name.contains("è‡ªåŠ¨æ‰“å°")) IconName = ":/res/ico/print.png";
 	return IconName;
 }

@@ -1,4 +1,4 @@
-#include "Classifier.h"
+ï»¿#include "Classifier.h"
 #include "frmClassifier.h"
 
 Classifier::Classifier()
@@ -12,7 +12,7 @@ QString Classifier::name()
 
 QString Classifier::information()
 {
-    return "Ä¿±ê¼ì²â";
+    return "ç›®æ ‡æ£€æµ‹";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

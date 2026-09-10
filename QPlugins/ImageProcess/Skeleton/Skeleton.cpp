@@ -1,4 +1,4 @@
-#include "Skeleton.h"
+ï»¿#include "Skeleton.h"
 #include "frmSkeleton.h"
 
 Skeleton::Skeleton()
@@ -7,12 +7,12 @@ Skeleton::Skeleton()
 
 QString Skeleton::name()
 {
-    return "Í¼ÏñÏ¸»¯";
+    return "å›¾åƒç»†åŒ–";
 }
 
 QString Skeleton::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

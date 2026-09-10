@@ -1,4 +1,4 @@
-#include"locate.h"
+ï»¿#include"locate.h"
 #include<vector>
 #include"imageBaseOP.h"
 #define pi 3.14159
@@ -9,17 +9,17 @@
 
 using namespace std;
 
-//¸Ä½øµÄcanny±ßÔµÊ¶±ğËã×Ó
+//æ”¹è¿›çš„cannyè¾¹ç¼˜è¯†åˆ«ç®—å­
 void cannyEdgeDetection(cv::Mat img, cv::Mat& result,int guaSize,
     double hightThres, double lowThres) 
 {
-    // ÖĞÖµÂË²¨
-    cv::Rect rect; // IOUÇøÓò
+    // ä¸­å€¼æ»¤æ³¢
+    cv::Rect rect; // IOUåŒºåŸŸ
     cv::Mat filterImg = cv::Mat::zeros(img.rows, img.cols, CV_64FC1);
     img.convertTo(img, CV_64FC1);
     result = cv::Mat::zeros(img.rows, img.cols, CV_64FC1);
-    int guassCenter = guaSize / 2; // ¸ßË¹ºËµÄÖĞĞÄ // (2* guassKernelSize +1) * (2*guassKernelSize+1)¸ßË¹ºË´óĞ¡
-    double sigma = 1;   // ·½²î´óĞ¡
+    int guassCenter = guaSize / 2; // é«˜æ–¯æ ¸çš„ä¸­å¿ƒ // (2* guassKernelSize +1) * (2*guassKernelSize+1)é«˜æ–¯æ ¸å¤§å°
+    double sigma = 1;   // æ–¹å·®å¤§å°
     cv::Mat guassKernel = cv::Mat::zeros(guaSize, guaSize, CV_64FC1);
     for (int i = 0; i < guaSize; i++) {
         for (int j = 0; j < guaSize; j++) {
@@ -46,37 +46,37 @@ void cannyEdgeDetection(cv::Mat img, cv::Mat& result,int guaSize,
     }
     cv::Mat guassResult;
     filterImg.convertTo(guassResult, CV_8UC1);
-    // ¼ÆËãÌİ¶È,ÓÃsobelËã×Ó
-    cv::Mat gradX = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); // Ë®Æ½Ìİ¶È
-    cv::Mat gradY = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); // ´¹Ö±Ìİ¶È
-    cv::Mat grad = cv::Mat::zeros(img.rows, img.cols, CV_64FC1);  // Ìİ¶È·ùÖµ
-    cv::Mat thead = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); // Ìİ¶È½Ç¶È
-    cv::Mat locateGrad = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); //ÇøÓò
-    // x·½ÏòµÄsobelËã×Ó
+    // è®¡ç®—æ¢¯åº¦,ç”¨sobelç®—å­
+    cv::Mat gradX = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); // æ°´å¹³æ¢¯åº¦
+    cv::Mat gradY = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); // å‚ç›´æ¢¯åº¦
+    cv::Mat grad = cv::Mat::zeros(img.rows, img.cols, CV_64FC1);  // æ¢¯åº¦å¹…å€¼
+    cv::Mat thead = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); // æ¢¯åº¦è§’åº¦
+    cv::Mat locateGrad = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); //åŒºåŸŸ
+    // xæ–¹å‘çš„sobelç®—å­
     cv::Mat Sx = (cv::Mat_<double>(3, 3) << -1, 0, 1,
                                             -2, 0, 2,
                                             -1, 0, 1);
                                             
-    // y·½ÏòsobelËã×Ó
+    // yæ–¹å‘sobelç®—å­
     cv::Mat Sy = (cv::Mat_<double>(3, 3) << 1, 2, 1,
                                             0, 0, 0,
                                             -1, -2, -1);
-    // ¼ÆËãÌİ¶È¸³ÖµºÍ½Ç¶È
+    // è®¡ç®—æ¢¯åº¦èµ‹å€¼å’Œè§’åº¦
     for (int i = 1; i < img.rows - 1; i++) {
         for (int j = 1; j < img.cols - 1; j++) {
-            // ¾í»ıÇøÓò 3*3
+            // å·ç§¯åŒºåŸŸ 3*3
             rect.x = j - 1;
             rect.y = i - 1;
             rect.width = 3;
             rect.height = 3;
             cv::Mat rectImg = cv::Mat::zeros(3, 3, CV_64FC1);
             filterImg(rect).copyTo(rectImg);
-            // Ìİ¶ÈºÍ½Ç¶È
+            // æ¢¯åº¦å’Œè§’åº¦
             gradX.at<double>(i, j) += cv::sum(rectImg.mul(Sx)).val[0];
             gradY.at<double>(i, j) += cv::sum(rectImg.mul(Sy)).val[0];
             grad.at<double>(i, j) = sqrt(pow(gradX.at<double>(i, j), 2) + pow(gradY.at<double>(i, j), 2));
             thead.at<double>(i, j) = atan(gradY.at<double>(i, j) / gradX.at<double>(i, j));
-            // ÉèÖÃËÄ¸öÇøÓò
+            // è®¾ç½®å››ä¸ªåŒºåŸŸ
             if (0 <= thead.at<double>(i, j) <= (pi / 4.0)) {
                 locateGrad.at<double>(i, j) = 0;
             }
@@ -91,9 +91,9 @@ void cannyEdgeDetection(cv::Mat img, cv::Mat& result,int guaSize,
             }
         }
     }
-    // Ìİ¶È¹éÒ»»¯
+    // æ¢¯åº¦å½’ä¸€åŒ–
     double gradMax;
-    cv::minMaxLoc(grad, &gradMax); // Çó×î´óÖµ
+    cv::minMaxLoc(grad, &gradMax); // æ±‚æœ€å¤§å€¼
     if (gradMax != 0) {
         grad = grad / gradMax;
     }
@@ -102,21 +102,21 @@ void cannyEdgeDetection(cv::Mat img, cv::Mat& result,int guaSize,
     grad.convertTo(tempGradN, CV_8UC1);
     imshow("gradN", tempGradN);
 
-    // Ë«ãĞÖµÈ·¶¨
-    cv::Mat caculateValue = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); // grad±ä³ÉÒ»Î¬
+    // åŒé˜ˆå€¼ç¡®å®š
+    cv::Mat caculateValue = cv::Mat::zeros(img.rows, img.cols, CV_64FC1); // gradå˜æˆä¸€ç»´
     cv::resize(grad, caculateValue, cv::Size(1, (grad.rows * grad.cols)));
     // caculateValue.convertTo(caculateValue, CV_64FC1);
-    cv::sort(caculateValue, caculateValue, CV_SORT_EVERY_COLUMN + CV_SORT_ASCENDING); // ÉıĞò
+    cv::sort(caculateValue, caculateValue, CV_SORT_EVERY_COLUMN + CV_SORT_ASCENDING); // å‡åº
     long long highIndex = img.rows * img.cols * hightThres;
-    double highValue = caculateValue.at<double>(highIndex, 0); // ×î´óãĞÖµ
+    double highValue = caculateValue.at<double>(highIndex, 0); // æœ€å¤§é˜ˆå€¼
     // debug
     // std::cout<< "highValue: "<<highValue<<" "<<  caculateValue.cols << " "<<highIndex<< std::endl;
 
-    double lowValue = highValue * lowThres; // ×îĞ¡ãĞÖµ
-    // 3.·Ç¼«´óÖµÒÖÖÆ£¬ ²ÉÓÃÏßĞÔ²åÖµ
+    double lowValue = highValue * lowThres; // æœ€å°é˜ˆå€¼
+    // 3.éæå¤§å€¼æŠ‘åˆ¶ï¼Œ é‡‡ç”¨çº¿æ€§æ’å€¼
     for (int i = 1; i < img.rows - 1; i++) {
         for (int j = 1; j < img.cols - 1; j++) {
-            // °Ë¸ö·½Î»
+            // å…«ä¸ªæ–¹ä½
             double N = grad.at<double>(i - 1, j);
             double NE = grad.at<double>(i - 1, j + 1);
             double E = grad.at<double>(i, j + 1);
@@ -125,11 +125,11 @@ void cannyEdgeDetection(cv::Mat img, cv::Mat& result,int guaSize,
             double SW = grad.at<double>(i - 1, j - 1);
             double W = grad.at<double>(i, j - 1);
             double NW = grad.at<double>(i - 1, j - 1);
-            // ÇøÓòÅĞ¶Ï£¬ÏßĞÔ²åÖµ´¦Àí
-            double tanThead; // tan½Ç¶È
-            double Gp1; // Á½¸ö·½ÏòµÄÌİ¶ÈÇ¿¶È
+            // åŒºåŸŸåˆ¤æ–­ï¼Œçº¿æ€§æ’å€¼å¤„ç†
+            double tanThead; // tanè§’åº¦
+            double Gp1; // ä¸¤ä¸ªæ–¹å‘çš„æ¢¯åº¦å¼ºåº¦
             double Gp2;
-            // Çó½Ç¶È£¬¾ø¶ÔÖµ
+            // æ±‚è§’åº¦ï¼Œç»å¯¹å€¼
             tanThead = abs(tan(thead.at<double>(i, j)));
             switch ((int)locateGrad.at<double>(i, j)) {
             case 0:
@@ -151,9 +151,9 @@ void cannyEdgeDetection(cv::Mat img, cv::Mat& result,int guaSize,
             default:
                 break;
             }
-            // NMS -·Ç¼«´óÖµÒÖÖÆºÍË«ãĞÖµ¼ì²â
+            // NMS -éæå¤§å€¼æŠ‘åˆ¶å’ŒåŒé˜ˆå€¼æ£€æµ‹
             if (grad.at<double>(i, j) >= Gp1 && grad.at<double>(i, j) >= Gp2) {
-                //Ë«ãĞÖµ¼ì²â
+                //åŒé˜ˆå€¼æ£€æµ‹
                 if (grad.at<double>(i, j) >= highValue) {
                     grad.at<double>(i, j) = highValue;
                     result.at<double>(i, j) = 255;
@@ -171,16 +171,16 @@ void cannyEdgeDetection(cv::Mat img, cv::Mat& result,int guaSize,
             }
         }
     }
-    // NMS ºÍËããĞÖµ¼ì²âºóµÄÌİ¶ÈÍ¼
+    // NMS å’Œç®—é˜ˆå€¼æ£€æµ‹åçš„æ¢¯åº¦å›¾
     cv::Mat tempGradNMS;
     grad.convertTo(tempGradNMS, CV_8UC1);
     imshow("gradNMS", tempGradNMS);
 
-    // 4.ÒÖÖÆ¹ÂÁ¢µÍãĞÖµµã 3*3. ÕÒµ½¸ßãĞÖµ¾Í255
+    // 4.æŠ‘åˆ¶å­¤ç«‹ä½é˜ˆå€¼ç‚¹ 3*3. æ‰¾åˆ°é«˜é˜ˆå€¼å°±255
     for (int i = 1; i < img.rows - 1; i++) {
         for (int j = 1; j < img.cols - 1; j++) {
             if (grad.at<double>(i, j) == lowValue) {
-                // 3*3ÇøÓòÕÒÇ¿Ìİ¶È
+                // 3*3åŒºåŸŸæ‰¾å¼ºæ¢¯åº¦
                 rect.x = j - 1;
                 rect.y = i - 1;
                 rect.width = 3;
@@ -197,7 +197,7 @@ void cannyEdgeDetection(cv::Mat img, cv::Mat& result,int guaSize,
             }
         }
     }
-    // ½á¹û
+    // ç»“æœ
     result.convertTo(result, CV_8UC1);
     imshow("result", result);
 

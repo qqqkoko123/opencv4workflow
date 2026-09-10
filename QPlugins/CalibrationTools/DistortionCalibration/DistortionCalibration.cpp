@@ -1,4 +1,4 @@
-#include "DistortionCalibration.h"
+ï»¿#include "DistortionCalibration.h"
 #include "frmDistortionCalibration.h"
 
 DistortionCalibration::DistortionCalibration()
@@ -7,12 +7,12 @@ DistortionCalibration::DistortionCalibration()
 
 QString DistortionCalibration::name()
 {
-    return "»û±ä±ê¶¨";
+    return "ç•¸å˜æ ‡å®š";
 }
 
 QString DistortionCalibration::information()
 {
-    return "±ê¶¨¹¤¾ß";
+    return "æ ‡å®šå·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

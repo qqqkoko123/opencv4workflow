@@ -1,4 +1,4 @@
-#include "RoundedCorners.h"
+ï»¿#include "RoundedCorners.h"
 #include "frmRoundedCorners.h"
 
 RoundedCorners::RoundedCorners()
@@ -7,12 +7,12 @@ RoundedCorners::RoundedCorners()
 
 QString RoundedCorners::name()
 {
-    return "²éÕÒÔ²È±½Ç";
+    return "æŸ¥æ‰¾åœ†ç¼ºè§’";
 }
 
 QString RoundedCorners::information()
 {
-    return "¼¸ºÎ²âÁ¿";
+    return "å‡ ä½•æµ‹é‡";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

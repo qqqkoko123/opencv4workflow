@@ -1,0 +1,43 @@
+﻿   Qt/MSBuild: 3.5.0.0
+  Reading Qt configuration (C:/Qt/Qt5.14.2/5.14.2/msvc2017_64/bin/qmake)
+   Qt: 5.14.2
+  uic frmPlateRecognition.ui
+  rcc sub_res.qrc
+  moc BaseItem.h
+  moc ControlItem.h
+  moc ImageItem.h
+  moc QGraphicsScenes.h
+  moc QGraphicsViews.h
+  moc frmPlateRecognition.h
+  moc Toolnterface.h
+  moc QToolBase.h
+  moc PlateRecognition.h
+  moc mytitlebar.h
+  BaseItem.cpp
+  ControlItem.cpp
+  frmPlateRecognition.cpp
+  ImageItem.cpp
+  mytitlebar.cpp
+  QGraphicsScenes.cpp
+  QGraphicsViews.cpp
+  PlateRecognition.cpp
+  plate_engine.cpp
+  Toolnterface.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\variant(12): warning STL4038: The contents of <variant> are available only with C++17 or later.
+  qrc_sub_res.cpp
+  moc_BaseItem.cpp
+  moc_ControlItem.cpp
+  moc_ImageItem.cpp
+  moc_QGraphicsScenes.cpp
+  moc_QGraphicsViews.cpp
+  moc_frmPlateRecognition.cpp
+  moc_Toolnterface.cpp
+  moc_QToolBase.cpp
+  moc_PlateRecognition.cpp
+  moc_mytitlebar.cpp
+    正在创建库 ../../../QSoftExe/Release/Plugins/PlateRecognition.lib 和对象 ../../../QSoftExe/Release/Plugins/PlateRecognition.exp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 1721 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  PlateRecognition.vcxproj -> G:\QMacVisual(CV3)(25000)\QMacVisual(CV3)2022.9.21(25000)\QMacVisual(CV3)\QSoftExe\Release\Plugins\PlateRecognition.dll

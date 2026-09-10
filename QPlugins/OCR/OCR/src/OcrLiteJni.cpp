@@ -1,4 +1,4 @@
-#ifdef __JNI__
+﻿#ifdef __JNI__
 
 #include "version.h"
 #include <jni.h>

@@ -1,4 +1,4 @@
-#include "ImageView.h"
+ï»¿#include "ImageView.h"
 #include "frmImageView.h"
 
 ImageView::ImageView()
@@ -7,12 +7,12 @@ ImageView::ImageView()
 
 QString ImageView::name()
 {
-    return "Í¼ÏñÏÔÊ¾";
+    return "å›¾åƒæ˜¾ç¤º";
 }
 
 QString ImageView::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

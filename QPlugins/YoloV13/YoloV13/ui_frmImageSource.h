@@ -1,4 +1,4 @@
-/********************************************************************************
+﻿/********************************************************************************
 ** Form generated from reading UI file 'frmImageSource.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.14.2

@@ -1,4 +1,4 @@
-
+Ôªø
 #ifndef _MV_PIXEL_TYPE_H_
 #define _MV_PIXEL_TYPE_H_
 
@@ -121,15 +121,15 @@ enum MvGvspPixelType
     PixelType_Gvsp_RGB12_Planar             =   (MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(48) | 0x0023),
     PixelType_Gvsp_RGB16_Planar             =   (MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(48) | 0x0024),
 
-    // ◊‘∂®“ÂµƒÕº∆¨∏Ò Ω
+    // Ëá™ÂÆö‰πâÁöÑÂõæÁâáÊ†ºÂºè
     PixelType_Gvsp_Jpeg                     =   (MV_GVSP_PIX_CUSTOM | MV_PIXEL_BIT_COUNT(24) | 0x0001),
 
     PixelType_Gvsp_Coord3D_ABC32f           =   (MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(96) | 0x00C0),//0x026000C0
     PixelType_Gvsp_Coord3D_ABC32f_Planar    =   (MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(96) | 0x00C1),//0x026000C1
 
-    // ∏√÷µ±ª∑œ∆˙£¨«Î≤ŒøºPixelType_Gvsp_Coord3D_AC32f_64; the value is discarded
+    // ËØ•ÂÄºË¢´Â∫üÂºÉÔºåËØ∑ÂèÇËÄÉPixelType_Gvsp_Coord3D_AC32f_64; the value is discarded
     PixelType_Gvsp_Coord3D_AC32f            =   (MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(40) | 0x00C2),
-    // ∏√÷µ±ª∑œ∆˙; the value is discarded    (“—∑≈»ÎChunkdata)
+    // ËØ•ÂÄºË¢´Â∫üÂºÉ; the value is discarded    (Â∑≤ÊîæÂÖ•Chunkdata)
     PixelType_Gvsp_COORD3D_DEPTH_PLUS_MASK  =   (MV_GVSP_PIX_CUSTOM | MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(28) | 0x0001),
 
     PixelType_Gvsp_Coord3D_ABC32            =   (MV_GVSP_PIX_CUSTOM | MV_GVSP_PIX_COLOR | MV_PIXEL_BIT_COUNT(96) | 0x3001),//0x82603001
@@ -147,7 +147,7 @@ enum MvGvspPixelType
 
     PixelType_Gvsp_Float32                  =   (MV_GVSP_PIX_CUSTOM | MV_GVSP_PIX_MONO | MV_PIXEL_BIT_COUNT(32) | 0x0001),//0x81200001
 
-    //ŒﬁÀ—πÀıœÒÀÿ∏Ò Ω∂®“Â
+    //Êó†ÊçüÂéãÁº©ÂÉèÁ¥†Ê†ºÂºèÂÆö‰πâ
     PixelType_Gvsp_HB_Mono8                    =   (MV_GVSP_PIX_CUSTOM | MV_GVSP_PIX_MONO | MV_PIXEL_BIT_COUNT(8) | 0x0001),
     PixelType_Gvsp_HB_Mono10                   =   (MV_GVSP_PIX_CUSTOM | MV_GVSP_PIX_MONO | MV_PIXEL_BIT_COUNT(16) | 0x0003),
     PixelType_Gvsp_HB_Mono10_Packed            =   (MV_GVSP_PIX_CUSTOM | MV_GVSP_PIX_MONO | MV_PIXEL_BIT_COUNT(12) | 0x0004),

@@ -1,4 +1,4 @@
-#include "PlcCommunicate.h"
+ï»¿#include "PlcCommunicate.h"
 #include "frmPlcCommunicate.h"
 
 PlcCommunicate::PlcCommunicate()
@@ -7,12 +7,12 @@ PlcCommunicate::PlcCommunicate()
 
 QString PlcCommunicate::name()
 {
-    return "PLCÍ¨ÐÅ";
+    return "PLCé€šä¿¡";
 }
 
 QString PlcCommunicate::information()
 {
-    return "Í¨Ñ¶¹¤¾ß";
+    return "é€šè®¯å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

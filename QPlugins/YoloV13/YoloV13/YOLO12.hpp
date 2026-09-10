@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 // ===================================
 // Single YOLOv12 Detector Header File

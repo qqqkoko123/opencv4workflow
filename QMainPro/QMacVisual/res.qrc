@@ -1,4 +1,4 @@
-<RCC>
+﻿<RCC>
     <qresource prefix="/">
         <file>res/ico/cam.png</file>
         <file>res/ico/network.png</file>
@@ -110,6 +110,7 @@
         <file>res/ico/image_source.png</file>
         <file>res/ico/logic_judge.png</file>
         <file>res/ico/ocr.png</file>
+        <file>res/ico/plate.png</file>
         <file>res/ico/link.png</file>
         <file>res/ico/del.png</file>
         <file>res/ico/disable.png</file>

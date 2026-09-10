@@ -1,4 +1,4 @@
-#include "Flatness.h"
+ï»¿#include "Flatness.h"
 #include "frmFlatness.h"
 
 Flatness::Flatness()
@@ -7,12 +7,12 @@ Flatness::Flatness()
 
 QString Flatness::name()
 {
-    return "ÄâºÏÆ½Ãæ";
+    return "æ‹Ÿåˆå¹³é¢";
 }
 
 QString Flatness::information()
 {
-    return "ÈıÎ¬¼ì²â";
+    return "ä¸‰ç»´æ£€æµ‹";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

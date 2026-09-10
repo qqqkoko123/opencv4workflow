@@ -1,4 +1,4 @@
-#include "QRoundProgressBar.h"
+﻿#include "QRoundProgressBar.h"
 #include <QtGui/QPainter>
 #include <QPointF>
 

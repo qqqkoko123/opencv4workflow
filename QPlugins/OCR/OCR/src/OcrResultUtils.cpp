@@ -1,4 +1,4 @@
-#ifdef __JNI__
+﻿#ifdef __JNI__
 #include <OcrUtils.h>
 #include "OcrResultUtils.h"
 

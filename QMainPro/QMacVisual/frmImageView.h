@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <QtWidgets/QWidget>
 #include "ui_frmImageView.h"
@@ -100,17 +100,17 @@ private slots:
 	void slot_Show_B20(QGraphicsViews* img_view, const QImage img);
 
 private:		
-	//1Í¼Ïñ
+	//1å›¾åƒ
 	QHBoxLayout* hlay = nullptr;
-	//2Í¼Ïñ
+	//2å›¾åƒ
 	QVBoxLayout* vlay2_1 = nullptr;
 	QVBoxLayout* vlay2_2 = nullptr;
-	//3Í¼Ïñ
+	//3å›¾åƒ
 	QVBoxLayout* vlay3_1 = nullptr;
 	QVBoxLayout* vlay3_2 = nullptr;
 	QHBoxLayout* hlay3_2_1 = nullptr;
 	QHBoxLayout* hlay3_2_2 = nullptr;
-	//4Í¼Ïñ
+	//4å›¾åƒ
 	QVBoxLayout* vlay4 = nullptr;
 	QHBoxLayout* hlay4_1 = nullptr;
 	QHBoxLayout* hlay4_1_1 = nullptr;
@@ -118,7 +118,7 @@ private:
 	QHBoxLayout* hlay4_2 = nullptr;
 	QHBoxLayout* hlay4_2_1 = nullptr;
 	QHBoxLayout* hlay4_2_2 = nullptr;
-	//6Í¼ÏñA	
+	//6å›¾åƒA	
 	QVBoxLayout* vlay6_1 = nullptr;
 	QVBoxLayout* vlay6_1_1 = nullptr;
 	QVBoxLayout* vlay6_1_2 = nullptr;
@@ -128,7 +128,7 @@ private:
 	QVBoxLayout* vlay6_3 = nullptr;
 	QVBoxLayout* vlay6_3_1 = nullptr;
 	QVBoxLayout* vlay6_3_2 = nullptr;	
-	//6Í¼ÏñB				
+	//6å›¾åƒB				
 	QVBoxLayout* vlay6B = nullptr;
 	QHBoxLayout* hlay6B_1 = nullptr;
 	QVBoxLayout* vlay6B_1_1 = nullptr;
@@ -139,7 +139,7 @@ private:
 	QVBoxLayout* vlay6B_2_1 = nullptr;
 	QVBoxLayout* vlay6B_2_2 = nullptr;
 	QVBoxLayout* vlay6B_2_3 = nullptr;
-	//9Í¼Ïñ
+	//9å›¾åƒ
 	QVBoxLayout* vlay9 = nullptr;
 	QHBoxLayout* hlay9_1 = nullptr;
 	QVBoxLayout* vlay9_1_1 = nullptr;

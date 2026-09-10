@@ -1,4 +1,4 @@
-#include "BlobDetector.h"
+ï»¿#include "BlobDetector.h"
 #include "frmBlobDetector.h"
 
 BlobDetector::BlobDetector()
@@ -7,12 +7,12 @@ BlobDetector::BlobDetector()
 
 QString BlobDetector::name()
 {
-    return "°ßµã·ÖÎö";
+    return "æ–‘ç‚¹åˆ†æ";
 }
 
 QString BlobDetector::information()
 {
-    return "¼ì²âÊ¶±ğ";
+    return "æ£€æµ‹è¯†åˆ«";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

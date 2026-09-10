@@ -1,4 +1,4 @@
-#include "frmLink.h"
+ï»¿#include "frmLink.h"
 #include <QMessageBox>
 #include <QTableWidgetItem>
 #include <QComboBox>
@@ -11,15 +11,15 @@ frmLink::frmLink(QWidget* parent)
 {
 	ui.setupUi(this);
 	this->setWindowIcon(QIcon(":/res/ico/link.png"));
-	//FramelessWindowHintÊôĞÔÉèÖÃ´°¿ÚÈ¥³ı±ß¿ò
-	//WindowMinimizeButtonHint ÊôĞÔÉèÖÃÔÚ´°¿Ú×îĞ¡»¯Ê±£¬µã»÷ÈÎÎñÀ¸´°¿Ú¿ÉÒÔÏÔÊ¾³öÔ­´°¿Ú
+	//FramelessWindowHintå±æ€§è®¾ç½®çª—å£å»é™¤è¾¹æ¡†
+	//WindowMinimizeButtonHint å±æ€§è®¾ç½®åœ¨çª—å£æœ€å°åŒ–æ—¶ï¼Œç‚¹å‡»ä»»åŠ¡æ çª—å£å¯ä»¥æ˜¾ç¤ºå‡ºåŸçª—å£
 	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint);
-	//ÉèÖÃ´°ÌåÔÚÆÁÄ»ÖĞ¼äÎ»ÖÃ
+	//è®¾ç½®çª—ä½“åœ¨å±å¹•ä¸­é—´ä½ç½®
 	QDesktopWidget* desktop = QApplication::desktop();
 	move((desktop->width() - this->width()) / 2, (desktop->height() - this->height()) / 2);
-	//ÉèÖÃ´°¿Ú±³¾°Í¸Ã÷
+	//è®¾ç½®çª—å£èƒŒæ™¯é€æ˜
 	setAttribute(Qt::WA_TranslucentBackground);
-	//³õÊ¼»¯±êÌâÀ¸
+	//åˆå§‹åŒ–æ ‡é¢˜æ 
 	initTitleBar();
 	form_load();
 	slot_CreateList();
@@ -42,14 +42,14 @@ void frmLink::initTitleBar()
 	m_titleBar->setBackgroundColor(3, 110, 95);
 	m_titleBar->setStyleSheet("background-color: rgba(0, 0, 0, 0);color:white;font-size:16px");
 	m_titleBar->setTitleIcon(":/res/ico/link.png");
-	m_titleBar->setTitleContent("Êı¾İÁ´½Ó");
+	m_titleBar->setTitleContent("æ•°æ®é“¾æ¥");
 	m_titleBar->setButtonType(ONLY_CLOSE_BUTTON);
 	m_titleBar->setTitleWidth(this->width());
 }
 
 void frmLink::paintEvent(QPaintEvent* event)
 {
-	//ÉèÖÃ±³¾°É«
+	//è®¾ç½®èƒŒæ™¯è‰²
 	QPainter painter(this);
 	QPainterPath pathBack;
 	pathBack.setFillRule(Qt::WindingFill);
@@ -61,25 +61,25 @@ void frmLink::paintEvent(QPaintEvent* event)
 
 void frmLink::form_load()
 {
-	//ÉèÖÃ±í¸ñÁĞ¿í	
+	//è®¾ç½®è¡¨æ ¼åˆ—å®½	
 	ui.tableWidget->setColumnWidth(0, 50);
 	ui.tableWidget->setColumnWidth(1, 203);
 	ui.tableWidget->setColumnWidth(2, 300);
 	ui.tableWidget->setColumnWidth(3, 232);
-	//Òş²ØË®Æ½header
+	//éšè—æ°´å¹³header
 	ui.tableWidget->verticalHeader()->setVisible(false);
-	//ÉèÖÃÕûĞĞÑ¡ÖĞ
+	//è®¾ç½®æ•´è¡Œé€‰ä¸­
 	ui.tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
 	ui.tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	ui.tableWidget->horizontalHeader()->setDisabled(true);	
-	//Ìí¼ÓList	 	
+	//æ·»åŠ List	 	
 	ItemModel = new QStandardItemModel(this);
-	ui.listProcess->setEditTriggers(QAbstractItemView::NoEditTriggers);  //½ûÖ¹±à¼­
+	ui.listProcess->setEditTriggers(QAbstractItemView::NoEditTriggers);  //ç¦æ­¢ç¼–è¾‘
 }
 
 void frmLink::onButtonCloseClicked()
 {
-	//ĞÅºÅÓë²Û½â³ıÁ¬½Ó
+	//ä¿¡å·ä¸æ§½è§£é™¤è¿æ¥
 	disconnect(ui.listProcess, SIGNAL(clicked(QModelIndex)), this, SLOT(slot_ListClick(QModelIndex)));
 	disconnect(ui.tableWidget, SIGNAL(cellDoubleClicked(int, int)), this, SLOT(slot_DoubleClicked(int, int)));
 	this->close();
@@ -88,27 +88,35 @@ void frmLink::onButtonCloseClicked()
 
 void frmLink::slot_CreateList()
 {
-	//»ñÈ¡×Ó¿Ø¼ş
+	//è·å–å­æ§ä»¶
 	objTabName = dataVar::fProItemTab->findChild<QTabWidget*>("ProItemTabWidget");
 	objTreeName = dataVar::fProItemTab->findChild<QTreeWidget*>("ProItemTreeWidget");
-	int flow = objTabName->currentIndex();  //Ë÷ÒıºÅ
+	int flow = objTabName->currentIndex();
 	flow_index = 0;
-	QTreeWidgetItemIterator it(objTreeName);  //±éÀútreeWidget
-	QList<QTreeWidgetItem*> pro_keys = dataVar::fProItemTab->m_pro_value.uniqueKeys();
-	for (int i = 0; i < (*it)->childCount(); i++)
+	if (objTreeName != nullptr)
 	{
-		QTreeWidgetItem* key = pro_keys[i];
-		if ((*it)->child(flow) == pro_keys[i])
+		QTreeWidgetItemIterator it(objTreeName);
+		QTreeWidgetItem* root = *it;
+		if (root != nullptr && flow >= 0)
 		{
-			flow_index = dataVar::fProItemTab->m_pro_value.values(key).at(0);
+			QTreeWidgetItem* cur = root->child(flow);
+			if (cur != nullptr && dataVar::fProItemTab->m_pro_value.contains(cur))
+			{
+				flow_index = dataVar::fProItemTab->m_pro_value.value(cur);
+			}
+			else if (flow >= 0)
+			{
+				flow_index = flow;
+			}
 		}
 	}
 	QVector<QString> FlowProItemList;
 	FlowProItemList.reserve(100);
 	FlowProItemList.clear();
-	int item_id;
+	int item_id = 0;
 	QString flowPageName = objTabName->tabText(objTabName->currentIndex());
 	QMap<QString, QtDragListWidget*>::iterator iter = dataVar::FlowProMap.begin();
+	bool foundFlow = false;
 	while (iter != dataVar::FlowProMap.end())
 	{
 		if (iter.key() == flowPageName)
@@ -116,22 +124,26 @@ void frmLink::slot_CreateList()
 			TempDragListWidget = iter.value();
 			FlowProItemList = TempDragListWidget->GetAllItemList();
 			item_id = TempDragListWidget->GetCurrentItemId() - 1;
+			foundFlow = true;
 			break;
 		}
 		iter++;
 	}
-	//Á÷³ÌËùÔÚµÄË÷ÒıÎ»ÖÃ	
+	if (!foundFlow || item_id < 0 || item_id >= FlowProItemList.size())
+	{
+		return;
+	}
 	tool_name_buf = FlowProItemList[item_id];
-	//Ìí¼ÓList	 		
+	//æ·»åŠ List	 		
 	ItemModel->removeRows(0, ItemModel->rowCount());
-	//Ìí¼ÓÈ«¾Ö±äÁ¿
-	QStandardItem* item = new QStandardItem("È«¾Ö±äÁ¿");
-	QPixmap pixmap = GetIcon(GetIconName("È«¾Ö±äÁ¿"));
+	//æ·»åŠ å…¨å±€å˜é‡
+	QStandardItem* item = new QStandardItem("å…¨å±€å˜é‡");
+	QPixmap pixmap = GetIcon(GetIconName("å…¨å±€å˜é‡"));
 	item->setIcon(pixmap);
 	ItemModel->appendRow(item);
 	for (int i = 0; i < item_id; i++)
 	{
-		//Ìí¼ÓÁ÷³Ì
+		//æ·»åŠ æµç¨‹
 		QStandardItem* item = new QStandardItem(FlowProItemList[i]);
 		QPixmap pixmap = GetIcon(GetIconName(FlowProItemList[i]));
 		item->setIcon(pixmap);
@@ -145,7 +157,7 @@ void frmLink::slot_ListClick(QModelIndex index)
 {
 	index_process_modify = index.row();
 	tool_name = index.data().toString();
-	//ÌáÈ¡²»º¬Êı×Ö×Ö·û´®	
+	//æå–ä¸å«æ•°å­—å­—ç¬¦ä¸²	
 	int str_count = 0;
 	for (int k = 0; k < tool_name.length(); k++)
 	{
@@ -158,26 +170,26 @@ void frmLink::slot_ListClick(QModelIndex index)
 	QStringList toolNames;
 	toolNames.reserve(100);
 	toolNames.clear();
-	toolNames << "È«¾Ö±äÁ¿" << "»ñÈ¡Í¼Ïñ" << "Í¼ÏñÏÔÊ¾" << "µ¼³öÍ¼Ïñ" << "Ô¤´¦Àí" << "Í¼ÏñÆ´½Ó" << "Í¼ÏñĞŞ¸´" << "Í¼ÏñÏ¸»¯" << "Í¼Ïñ·­×ª" << "Í¼ÏñĞı×ª" << "Í¸ÊÓ±ä»»" << "²ÃÇĞÍ¼Ïñ" << "´´½¨ROI" << "ÌõĞÎÂëÊ¶±ğ" << "°ßµã·ÖÎö" << "¶şÎ¬ÂëÊ¶±ğ"
-		<< "×Ö·ûÊ¶±ğ" << "·ÖÀàÆ÷" << "ÑÕÉ«Ê¶±ğ" << "ÁÁ¶È¼ì²â" << "Í¼ÏñÇåÎú¶È" << "ÂÖÀªÌØÕ÷Ñ¡Ôñ" << "Nµã±ê¶¨" << "»û±ä±ê¶¨" << "²âÁ¿±ê¶¨" << "»Ò¶ÈÆ¥Åä" << "ĞÎ×´Æ¥Åä" << "Ä¿±ê¸ú×Ù" << "ÏßĞÔ¼ÆËã" << "Ñ°ÕÒÔ²" << "Ñ°ÕÒÖ±Ïß" << "ÄâºÏÔ²" << "ÄâºÏÍÖÔ²" << "ÄâºÏÖ±Ïß" << "»ñÈ¡±ß½çµã"
-	    << "ÏßÔ²½»µã" << "µã+µã" << "µã+Ïß" << "ÏßÏß½»µã" << "²éÕÒÔ²È±½Ç" << "±ßÔµ¿í¶È²âÁ¿"	<< "ÄâºÏÆ½Ãæ" << "À©Õ¹¿â" << "Ìø×ªÓï¾ä" << "ÅĞ¶ÏÓï¾ä" << "½áÊøÓï¾ä" << "½Å±¾±à¼­" << "TCP/IP·şÎñÆ÷" << "TCP/IP¿Í»§¶Ë" << "PLCÍ¨ĞÅ" << "´®¿ÚÍ¨ĞÅ" << "Í¨ÓÃI/O" << "ÑÓÊ±" << "µ¼³öCSV" << "YoloV" << "OCR" << "¶şÎ¬ÂëÉú³É" << "×Ô¶¯´òÓ¡";
-	//Çå¿ÕTable
+	toolNames << "å…¨å±€å˜é‡" << "è·å–å›¾åƒ" << "å›¾åƒæ˜¾ç¤º" << "å¯¼å‡ºå›¾åƒ" << "é¢„å¤„ç†" << "å›¾åƒæ‹¼æ¥" << "å›¾åƒä¿®å¤" << "å›¾åƒç»†åŒ–" << "å›¾åƒç¿»è½¬" << "å›¾åƒæ—‹è½¬" << "é€è§†å˜æ¢" << "è£åˆ‡å›¾åƒ" << "åˆ›å»ºROI" << "æ¡å½¢ç è¯†åˆ«" << "æ–‘ç‚¹åˆ†æ" << "äºŒç»´ç è¯†åˆ«"
+		<< "å­—ç¬¦è¯†åˆ«" << "åˆ†ç±»å™¨" << "é¢œè‰²è¯†åˆ«" << "äº®åº¦æ£€æµ‹" << "å›¾åƒæ¸…æ™°åº¦" << "è½®å»“ç‰¹å¾é€‰æ‹©" << "Nç‚¹æ ‡å®š" << "ç•¸å˜æ ‡å®š" << "æµ‹é‡æ ‡å®š" << "ç°åº¦åŒ¹é…" << "å½¢çŠ¶åŒ¹é…" << "ç›®æ ‡è·Ÿè¸ª" << "çº¿æ€§è®¡ç®—" << "å¯»æ‰¾åœ†" << "å¯»æ‰¾ç›´çº¿" << "æ‹Ÿåˆåœ†" << "æ‹Ÿåˆæ¤­åœ†" << "æ‹Ÿåˆç›´çº¿" << "è·å–è¾¹ç•Œç‚¹"
+	    << "çº¿åœ†äº¤ç‚¹" << "ç‚¹+ç‚¹" << "ç‚¹+çº¿" << "çº¿çº¿äº¤ç‚¹" << "æŸ¥æ‰¾åœ†ç¼ºè§’" << "è¾¹ç¼˜å®½åº¦æµ‹é‡"	<< "æ‹Ÿåˆå¹³é¢" << "æ‰©å±•åº“" << "è·³è½¬è¯­å¥" << "åˆ¤æ–­è¯­å¥" << "ç»“æŸè¯­å¥" << "è„šæœ¬ç¼–è¾‘" << "TCP/IPæœåŠ¡å™¨" << "TCP/IPå®¢æˆ·ç«¯" << "PLCé€šä¿¡" << "ä¸²å£é€šä¿¡" << "é€šç”¨I/O" << "å»¶æ—¶" << "å¯¼å‡ºCSV" << "YoloV" << "OCR" << "äºŒç»´ç ç”Ÿæˆ" << "è‡ªåŠ¨æ‰“å°" << "è½¦ç‰Œè¯†åˆ«";
+	//æ¸…ç©ºTable
 	int rowNum = ui.tableWidget->rowCount();
 	for (int i = rowNum - 1; i >= 0; i--)
 	{
 		ui.tableWidget->removeRow(i);
 	}
 	switch (toolNames.indexOf(str_name_buf)) {
-#pragma region È«¾Ö±äÁ¿
+#pragma region å…¨å±€å˜é‡
 	case 0:
-		//È«¾Ö±äÁ¿		
-		objTableName = dataVar::fGlobalVariable->findChild<QTableWidget*>("tableWidget");  //»ñÈ¡×Ó¿Ø¼ş
+		//å…¨å±€å˜é‡		
+		objTableName = dataVar::fGlobalVariable->findChild<QTableWidget*>("tableWidget");  //è·å–å­æ§ä»¶
 		row_count = objTableName->rowCount();
-		ui.tableWidget->setRowCount(row_count);  //ÉèÖÃĞĞÊı	
+		ui.tableWidget->setRowCount(row_count);  //è®¾ç½®è¡Œæ•°	
 		for (int k = 0; k < row_count; k++)
 		{
 			item_number = new QTableWidgetItem(QString::number(k + 1));
-			item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+			item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 			item_number->setTextAlignment(Qt::AlignCenter);
 			ui.tableWidget->setItem(k, 0, item_number);
 			item_variable_name = new QTableWidgetItem(objTableName->item(k, 1)->text());
@@ -230,54 +242,54 @@ void frmLink::slot_ListClick(QModelIndex index)
 			{
 				item_variable_type = new QTableWidgetItem("Double[]");
 			}
-			item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+			item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 			item_variable_name->setTextAlignment(Qt::AlignCenter);
 			ui.tableWidget->setItem(k, 1, item_variable_name);
-			item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+			item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 			item_variable_value->setTextAlignment(Qt::AlignCenter);
 			ui.tableWidget->setItem(k, 2, item_variable_value);
-			item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+			item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 			item_variable_type->setTextAlignment(Qt::AlignCenter);
 			ui.tableWidget->setItem(k, 3, item_variable_type);
 		}
 		break;
 #pragma endregion
 
-#pragma region Í¼Ïñ´¦Àí
+#pragma region å›¾åƒå¤„ç†
 	case 1:
-		//»ñÈ¡Í¼Ïñ		
+		//è·å–å›¾åƒ		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -285,39 +297,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 2:
-		//Í¼ÏñÏÔÊ¾		
+		//å›¾åƒæ˜¾ç¤º		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputViewImage");
 						item_variable_type = new QTableWidgetItem("QImage");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -325,34 +337,34 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 3:
-		//µ¼³öÍ¼Ïñ		
+		//å¯¼å‡ºå›¾åƒ		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(1);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(1);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 1; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -360,39 +372,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;	
 	case 4:
-		//Ô¤´¦Àí		
+		//é¢„å¤„ç†		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -400,39 +412,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 5:
-		//Í¼ÏñÆ´½Ó		
+		//å›¾åƒæ‹¼æ¥		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -440,39 +452,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 6:
-		//Í¼ÏñĞŞ¸´
+		//å›¾åƒä¿®å¤
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -480,39 +492,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 7:
-		//Í¼ÏñÏ¸»¯
+		//å›¾åƒç»†åŒ–
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -520,39 +532,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 8:
-		//Í¼Ïñ·­×ª
+		//å›¾åƒç¿»è½¬
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -560,39 +572,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 9:
-		//Í¼ÏñĞı×ª
+		//å›¾åƒæ—‹è½¬
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -600,39 +612,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 10:
-		//Í¸ÊÓ±ä»»
+		//é€è§†å˜æ¢
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -640,39 +652,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 11:
-		//²ÃÇĞÍ¼Ïñ
+		//è£åˆ‡å›¾åƒ
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -680,49 +692,49 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 12:
-		//´´½¨ROI
+		//åˆ›å»ºROI
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¾ØĞÎ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŸ©å½¢");
 						item_variable_value = new QTableWidgetItem("PublicImageProcess.CvRect");
 						item_variable_type = new QTableWidgetItem("cv::Rect");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Ğı×ª¾ØĞÎ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ—‹è½¬çŸ©å½¢");
 						item_variable_value = new QTableWidgetItem("PublicImageProcess.CvRotatedRect");
 						item_variable_type = new QTableWidgetItem("cv::RotatedRect");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -731,46 +743,46 @@ void frmLink::slot_ListClick(QModelIndex index)
 		break;
 #pragma endregion
 
-#pragma region ¼ì²âÊ¶±ğ
+#pragma region æ£€æµ‹è¯†åˆ«
 	case 13:
-		//ÌõĞÎÂëÊ¶±ğ
+		//æ¡å½¢ç è¯†åˆ«
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÌõĞÎÂë");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ¡å½¢ç ");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Code");
 						item_variable_type = new QTableWidgetItem("vector<QString>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -778,44 +790,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 14:
-		//°ßµã·ÖÎö		
+		//æ–‘ç‚¹åˆ†æ		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;					
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".°ßµã¸öÊı");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ–‘ç‚¹ä¸ªæ•°");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Quantity");
 						item_variable_type = new QTableWidgetItem("Int");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;					
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -823,44 +835,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 15:
-		//¶şÎ¬ÂëÊ¶±ğ
+		//äºŒç»´ç è¯†åˆ«
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¶şÎ¬Âë");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".äºŒç»´ç ");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Code");
 						item_variable_type = new QTableWidgetItem("vector<QString>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -868,48 +880,48 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 16:
-		//×Ö·ûÊ¶±ğ
+		//å­—ç¬¦è¯†åˆ«
 		
 		break;
 	case 17:
-		//·ÖÀàÆ÷
+		//åˆ†ç±»å™¨
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Àà±ğ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ç±»åˆ«");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Category");
 						item_variable_type = new QTableWidgetItem("QString");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -917,44 +929,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 18:
-		//ÑÕÉ«Ê¶±ğ
+		//é¢œè‰²è¯†åˆ«
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;					
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÏàËÆ¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ç›¸ä¼¼åº¦");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Score");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -962,44 +974,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 19:
-		//ÁÁ¶È¼ì²â
+		//äº®åº¦æ£€æµ‹
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÁÁ¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".äº®åº¦");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Brightness");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1007,44 +1019,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 20:
-		//Í¼ÏñÇåÎú¶È
+		//å›¾åƒæ¸…æ™°åº¦
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÇåÎú¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ¸…æ™°åº¦");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Clarity");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1052,54 +1064,54 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;		
 	case 21:
-		//ÂÖÀªÌØÕ÷Ñ¡Ôñ
+		//è½®å»“ç‰¹å¾é€‰æ‹©
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(5);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(5);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 5; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;					
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÂÖÀª");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è½®å»“");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Contours");
 						item_variable_type = new QTableWidgetItem("vector<vector<cv::Point>>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Ãæ»ı");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".é¢ç§¯");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Areas");
 						item_variable_type = new QTableWidgetItem("vector<Double>");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÖØĞÄ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".é‡å¿ƒ");
 						item_variable_value = new QTableWidgetItem("PublicDetect.CenterPoints");
 						item_variable_type = new QTableWidgetItem("vector<cv::Point2f>");
 						break;
 					case 4:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1108,76 +1120,76 @@ void frmLink::slot_ListClick(QModelIndex index)
 		break;
 #pragma endregion
 
-#pragma region ±ê¶¨¹¤¾ß
+#pragma region æ ‡å®šå·¥å…·
 	case 22:
-		//Nµã±ê¶¨
+		//Nç‚¹æ ‡å®š
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(9);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(9);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 9; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Nµã±ê¶¨²ÎÊı");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Nç‚¹æ ‡å®šå‚æ•°");
 						item_variable_value = new QTableWidgetItem("PublicCalib.EstimateAffine");
 						item_variable_type = new QTableWidgetItem("vector<Double>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Ğı×ªÖĞĞÄ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ—‹è½¬ä¸­å¿ƒ");
 						item_variable_value = new QTableWidgetItem("PublicCalib.RotateCenter");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÏñËØµ±Á¿X");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åƒç´ å½“é‡X");
 						item_variable_value = new QTableWidgetItem("PublicCalib.PixelEquivalentX");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 4:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÏñËØµ±Á¿Y");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åƒç´ å½“é‡Y");
 						item_variable_value = new QTableWidgetItem("PublicCalib.PixelEquivalentY");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 5:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".»ù×¼µã1");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŸºå‡†ç‚¹1");
 						item_variable_value = new QTableWidgetItem("PublicCalib.DatumPoint1");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 6:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".»ù×¼µã2");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŸºå‡†ç‚¹2");
 						item_variable_value = new QTableWidgetItem("PublicCalib.DatumPoint2");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 7:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".»ù×¼½Ç¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŸºå‡†è§’åº¦");
 						item_variable_value = new QTableWidgetItem("PublicCalib.DatumAngle");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 8:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1185,44 +1197,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 23:
-		//»û±ä±ê¶¨
+		//ç•¸å˜æ ‡å®š
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÄÚ²ÎK");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å†…å‚K");
 						item_variable_value = new QTableWidgetItem("PublicCalib.CameraMatrix");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".»û±äÏµÊı");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ç•¸å˜ç³»æ•°");
 						item_variable_value = new QTableWidgetItem("PublicCalib.DistCoeffs");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1230,49 +1242,49 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 24:
-		//²âÁ¿±ê¶¨
+		//æµ‹é‡æ ‡å®š
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÏñËØµ±Á¿X");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åƒç´ å½“é‡X");
 						item_variable_value = new QTableWidgetItem("PublicCalib.PixelEquivalentX");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÏñËØµ±Á¿Y");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åƒç´ å½“é‡Y");
 						item_variable_value = new QTableWidgetItem("PublicCalib.PixelEquivalentY");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1281,61 +1293,61 @@ void frmLink::slot_ListClick(QModelIndex index)
 		break;
 #pragma endregion
 
-#pragma region ¶ÔÎ»¹¤¾ß
+#pragma region å¯¹ä½å·¥å…·
 	case 25:
-		//»Ò¶ÈÆ¥Åä		
+		//ç°åº¦åŒ¹é…		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(6);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(6);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 6; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ¥ÅäÖĞĞÄ×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŒ¹é…ä¸­å¿ƒåæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.Center");
 						item_variable_type = new QTableWidgetItem("vector<cv::Point2f>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ¥Åä½Ç¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŒ¹é…è§’åº¦");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.Angle");
 						item_variable_type = new QTableWidgetItem("vector<Double>");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ¥Åä·ÖÊı");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŒ¹é…åˆ†æ•°");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.OutScore");
 						item_variable_type = new QTableWidgetItem("vector<Double>");
 						break;
 					case 4:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ¥Åä»ù×¼ÖĞĞÄ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŒ¹é…åŸºå‡†ä¸­å¿ƒ");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.DatumCenter");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 5:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1343,59 +1355,59 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;	
 	case 26:
-		//ĞÎ×´Æ¥Åä		
+		//å½¢çŠ¶åŒ¹é…		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(6);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(6);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 6; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ¥ÅäÖĞĞÄ×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŒ¹é…ä¸­å¿ƒåæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.Center");
 						item_variable_type = new QTableWidgetItem("vector<cv::Point2f>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ¥Åä½Ç¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŒ¹é…è§’åº¦");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.Angle");
 						item_variable_type = new QTableWidgetItem("vector<Double>");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ¥Åä·ÖÊı");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŒ¹é…åˆ†æ•°");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.OutScore");
 						item_variable_type = new QTableWidgetItem("vector<Double>");
 						break;
 					case 4:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ¥Åä»ù×¼ÖĞĞÄ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŒ¹é…åŸºå‡†ä¸­å¿ƒ");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.DatumCenter");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 5:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1403,44 +1415,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 27:
-		//Ä¿±ê¸ú×Ù
+		//ç›®æ ‡è·Ÿè¸ª
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Ğı×ª¾ØĞÎ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ—‹è½¬çŸ©å½¢");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.CvRotatedRect");
 						item_variable_type = new QTableWidgetItem("cv::RotatedRect");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1448,49 +1460,49 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 28:
-		//ÏßĞÔ¼ÆËã
+		//çº¿æ€§è®¡ç®—
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {					
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÒÆ¶¯Á¿X");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ç§»åŠ¨é‡X");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.MovingDistanceX");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÒÆ¶¯Á¿Y");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ç§»åŠ¨é‡Y");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.MovingDistanceY");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÊÀ½ç×ø±êµã");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ä¸–ç•Œåæ ‡ç‚¹");
 						item_variable_value = new QTableWidgetItem("PublicTPosition.WorldCoordinatePoint");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;					
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1499,51 +1511,51 @@ void frmLink::slot_ListClick(QModelIndex index)
 		break;
 #pragma endregion
 
-#pragma region ¼¸ºÎ¹¤¾ß/²âÁ¿
+#pragma region å‡ ä½•å·¥å…·/æµ‹é‡
 	case 29:
-		//Ñ°ÕÒÔ²
+		//å¯»æ‰¾åœ†
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÖĞĞÄ×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ä¸­å¿ƒåæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Center");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".°ë¾¶");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŠå¾„");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Radius");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1551,49 +1563,49 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 30:
-		//Ñ°ÕÒÖ±Ïß
+		//å¯»æ‰¾ç›´çº¿
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Ğ±ÂÊ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ–œç‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.k");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½Ø¾à");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æˆªè·");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.b");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1601,49 +1613,49 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 31:
-		//ÄâºÏÔ²
+		//æ‹Ÿåˆåœ†
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÖĞĞÄ×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ä¸­å¿ƒåæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Center");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".°ë¾¶");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åŠå¾„");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Radius");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;					
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1651,59 +1663,59 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 32:
-		//ÄâºÏÍÖÔ²
+		//æ‹Ÿåˆæ¤­åœ†
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(6);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(6);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 6; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÖĞĞÄ×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ä¸­å¿ƒåæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Center");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½Ç¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è§’åº¦");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Angle");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".³¤Öá³¤¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".é•¿è½´é•¿åº¦");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Length1");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 4:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¶ÌÖá³¤¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŸ­è½´é•¿åº¦");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Length2");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;							
 					case 5:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1711,49 +1723,49 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 33:
-		//ÄâºÏÖ±Ïß
+		//æ‹Ÿåˆç›´çº¿
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;					
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Ğ±ÂÊ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ–œç‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.k");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½Ø¾à");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æˆªè·");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.b");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;		
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1761,44 +1773,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 34:
-		//»ñÈ¡±ß½çµã
+		//è·å–è¾¹ç•Œç‚¹
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;					
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".µã¼¯");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ç‚¹é›†");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.BorderPoints");
 						item_variable_type = new QTableWidgetItem("vector<cv::Point2f>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1806,44 +1818,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 35:
-		//ÏßÔ²½»µã
+		//çº¿åœ†äº¤ç‚¹
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½»µã×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".äº¤ç‚¹åæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Intersections");
 						item_variable_type = new QTableWidgetItem("vector<cv::Point2f>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1851,54 +1863,54 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 36:
-		//µã+µã	
+		//ç‚¹+ç‚¹	
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(5);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(5);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 5; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÖĞĞÄ×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ä¸­å¿ƒåæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Center");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½Ç¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è§’åº¦");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Angle");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¾àÀë");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è·ç¦»");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Distance");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 4:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1906,49 +1918,49 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 37:
-		//µã+Ïß
+		//ç‚¹+çº¿
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".´¹×ã×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å‚è¶³åæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Pedal");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¾àÀë");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è·ç¦»");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Distance");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -1956,49 +1968,49 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 38:
-		//ÏßÏß½»µã
+		//çº¿çº¿äº¤ç‚¹
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(4);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(4);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 4; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½»µã×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".äº¤ç‚¹åæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Intersection");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¼Ğ½Ç");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å¤¹è§’");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Angle");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2006,54 +2018,54 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 39:
-		//²éÕÒÔ²È±½Ç
+		//æŸ¥æ‰¾åœ†ç¼ºè§’
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(5);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(5);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 5; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Ô²ĞÄ×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".åœ†å¿ƒåæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Center");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".´¹×ã×ø±ê");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å‚è¶³åæ ‡");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Pedal");
 						item_variable_type = new QTableWidgetItem("cv::Point2f");
 						break;
 					case 3:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½Ç¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è§’åº¦");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Angle");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 4:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2061,44 +2073,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 40:
-		//±ßÔµ¿í¶È²âÁ¿
+		//è¾¹ç¼˜å®½åº¦æµ‹é‡
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;					
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".±ßÔµ¿í¶È");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è¾¹ç¼˜å®½åº¦");
 						item_variable_value = new QTableWidgetItem("PublicGeometry.Distance");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2107,46 +2119,46 @@ void frmLink::slot_ListClick(QModelIndex index)
 		break;
 #pragma endregion
 
-#pragma region ÈıÎ¬¼ì²â
+#pragma region ä¸‰ç»´æ£€æµ‹
 	case 41:
-		//ÄâºÏÆ½Ãæ
+		//æ‹Ÿåˆå¹³é¢
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Æ½Ãæ²ÎÊı");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å¹³é¢å‚æ•°");
 						item_variable_value = new QTableWidgetItem("PublicThreeD.Flatness");
 						item_variable_type = new QTableWidgetItem("vector<Double>");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".µãµ½Æ½Ãæ¾àÀë");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ç‚¹åˆ°å¹³é¢è·ç¦»");
 						item_variable_value = new QTableWidgetItem("PublicThreeD.Distance");
 						item_variable_type = new QTableWidgetItem("Double");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2155,41 +2167,41 @@ void frmLink::slot_ListClick(QModelIndex index)
 		break;	
 #pragma endregion
 
-#pragma region Âß¼­¹¤¾ß
+#pragma region é€»è¾‘å·¥å…·
 	case 42:
-		//À©Õ¹¿â		
+		//æ‰©å±•åº“		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2197,34 +2209,34 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 43:
-		//Ìø×ªÓï¾ä
+		//è·³è½¬è¯­å¥
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(1);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(1);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 1; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2232,34 +2244,34 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 44:
-		//ÅĞ¶ÏÓï¾ä
+		//åˆ¤æ–­è¯­å¥
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(1);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(1);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 1; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2267,34 +2279,34 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 45:
-		//½áÊøÓï¾ä
+		//ç»“æŸè¯­å¥
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(1);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(1);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 1; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:						
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2302,34 +2314,34 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 46:
-		//½Å±¾±à¼­
+		//è„šæœ¬ç¼–è¾‘
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(1);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(1);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 1; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2338,46 +2350,46 @@ void frmLink::slot_ListClick(QModelIndex index)
 		break;
 #pragma endregion
 
-#pragma region Í¨Ñ¶¹¤¾ß
+#pragma region é€šè®¯å·¥å…·
 	case 47:
-		//TCP/IP·şÎñÆ÷
+		//TCP/IPæœåŠ¡å™¨
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½ÓÊÕÊı¾İ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ¥æ”¶æ•°æ®");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.InputData");
 						item_variable_type = new QTableWidgetItem("QString");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".·¢ËÍÊı¾İ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å‘é€æ•°æ®");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.OutputData");
 						item_variable_type = new QTableWidgetItem("QString");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2385,44 +2397,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 48:
-		//TCP/IP¿Í»§¶Ë
+		//TCP/IPå®¢æˆ·ç«¯
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½ÓÊÕÊı¾İ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ¥æ”¶æ•°æ®");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.InputData");
 						item_variable_type = new QTableWidgetItem("QString");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".·¢ËÍÊı¾İ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å‘é€æ•°æ®");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.OutputData");
 						item_variable_type = new QTableWidgetItem("QString");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2430,44 +2442,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 49:
-		//PLCÍ¨ĞÅ
+		//PLCé€šä¿¡
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¼Ä´æÆ÷¶ÁÈ¡Êı¾İ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å¯„å­˜å™¨è¯»å–æ•°æ®");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.RegisterReadData");
 						item_variable_type = new QTableWidgetItem("QVector<int>");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¼Ä´æÆ÷Ğ´ÈëÊı¾İ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å¯„å­˜å™¨å†™å…¥æ•°æ®");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.RegisterWriteData");
 						item_variable_type = new QTableWidgetItem("QVector<int>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2475,44 +2487,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 50:
-		//´®¿ÚÍ¨ĞÅ
+		//ä¸²å£é€šä¿¡
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".½ÓÊÕÊı¾İ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".æ¥æ”¶æ•°æ®");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.InputData");
 						item_variable_type = new QTableWidgetItem("QString");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".·¢ËÍÊı¾İ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å‘é€æ•°æ®");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.OutputData");
 						item_variable_type = new QTableWidgetItem("QString");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2520,39 +2532,39 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 51:
-		//Í¨ÓÃI/O
+		//é€šç”¨I/O
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ÊäÈëµã");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è¾“å…¥ç‚¹");
 						item_variable_value = new QTableWidgetItem("PublicCommunication.InPutIoX");
 						item_variable_type = new QTableWidgetItem("QVector<Bool>");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2561,36 +2573,36 @@ void frmLink::slot_ListClick(QModelIndex index)
 		break;
 #pragma endregion
 
-#pragma region ÏµÍ³¹¤¾ß
+#pragma region ç³»ç»Ÿå·¥å…·
 	case 52:
-		//ÑÓÊ±		
+		//å»¶æ—¶		
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(1);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(1);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 1; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2598,34 +2610,34 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 53:
-		//µ¼³öCSV
+		//å¯¼å‡ºCSV
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(1);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(1);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 1; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {					
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2640,37 +2652,37 @@ void frmLink::slot_ListClick(QModelIndex index)
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Àà±ğ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".ç±»åˆ«");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Category");
 						item_variable_type = new QTableWidgetItem("QString");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2678,44 +2690,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 55:
-		//OCRÊ¶±ğ
+		//OCRè¯†åˆ«
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Ê¶±ğÄÚÈİ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è¯†åˆ«å†…å®¹");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Code");
 						item_variable_type = new QTableWidgetItem("vector<QString>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2723,44 +2735,44 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 56:
-		//¶şÎ¬ÂëÉú³É
+		//äºŒç»´ç ç”Ÿæˆ
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(3);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 3; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¶şÎ¬Âë");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".äºŒç»´ç ");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Code");
 						item_variable_type = new QTableWidgetItem("vector<QString>");
 						break;
 					case 2:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2768,44 +2780,89 @@ void frmLink::slot_ListClick(QModelIndex index)
 		}
 		break;
 	case 57:
-		//×Ô¶¯´òÓ¡
+		//è‡ªåŠ¨æ‰“å°
 		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
 		{
 			QString toolName;
 			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
 			if (tool_name == toolName)
 			{
-				ui.tableWidget->setRowCount(2);  //ÉèÖÃĞĞÊı	
+				ui.tableWidget->setRowCount(2);  //è®¾ç½®è¡Œæ•°	
 				for (int k = 0; k < 2; k++)
 				{
 					item_number = new QTableWidgetItem(QString::number(k + 1));
-					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_number->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 0, item_number);
 					switch (k) {
 					case 0:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".Í¼Ïñ");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
 						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
 						item_variable_type = new QTableWidgetItem("cv::Mat");
 						break;
 					/*case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".¶şÎ¬Âë");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".äºŒç»´ç ");
 						item_variable_value = new QTableWidgetItem("PublicDetect.Code");
 						item_variable_type = new QTableWidgetItem("vector<QString>");
 						break;*/
 					case 1:
-						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".×´Ì¬");
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
 						item_variable_value = new QTableWidgetItem("PublicResult.State");
 						item_variable_type = new QTableWidgetItem("Bool");
 						break;
 					}
-					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_name->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 1, item_variable_name);
-					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_value->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 2, item_variable_value);
-					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //ÉèÖÃÁĞ²»¿É±à¼­	
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
+					item_variable_type->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 3, item_variable_type);
+				}
+			}
+		}
+		break;
+	case 58:
+		//è½¦ç‰Œè¯†åˆ«
+		for (int j = 0; j < QConfig::ToolBase[flow_index]->m_Tools.size(); j++)
+		{
+			QString toolName;
+			toolName = QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName;
+			if (tool_name == toolName)
+			{
+				ui.tableWidget->setRowCount(3);  //è®¾ç½®è¡Œæ•°	
+				for (int k = 0; k < 3; k++)
+				{
+					item_number = new QTableWidgetItem(QString::number(k + 1));
+					item_number->setFlags(item_number->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
+					item_number->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 0, item_number);
+					switch (k) {
+					case 0:
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".å›¾åƒ");
+						item_variable_value = new QTableWidgetItem("PublicImage.OutputImage");
+						item_variable_type = new QTableWidgetItem("cv::Mat");
+						break;
+					case 1:
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".è¯†åˆ«å†…å®¹");
+						item_variable_value = new QTableWidgetItem("PublicDetect.Code");
+						item_variable_type = new QTableWidgetItem("vector<QString>");
+						break;
+					case 2:
+						item_variable_name = new QTableWidgetItem(QConfig::ToolBase[flow_index]->m_Tools[j].PublicToolName + ".çŠ¶æ€");
+						item_variable_value = new QTableWidgetItem("PublicResult.State");
+						item_variable_type = new QTableWidgetItem("Bool");
+						break;
+					}
+					item_variable_name->setFlags(item_variable_name->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
+					item_variable_name->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 1, item_variable_name);
+					item_variable_value->setFlags(item_variable_value->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
+					item_variable_value->setTextAlignment(Qt::AlignCenter);
+					ui.tableWidget->setItem(k, 2, item_variable_value);
+					item_variable_type->setFlags(item_variable_type->flags() & (~Qt::ItemIsEditable));  //è®¾ç½®åˆ—ä¸å¯ç¼–è¾‘	
 					item_variable_type->setTextAlignment(Qt::AlignCenter);
 					ui.tableWidget->setItem(k, 3, item_variable_type);
 				}
@@ -2823,73 +2880,74 @@ void frmLink::slot_DoubleClicked(int row, int column)
 	onButtonCloseClicked();
 }
 
-// »ñÈ¡Í¼±ê
+// è·å–å›¾æ ‡
 QPixmap frmLink::GetIcon(QString fileName)
 {
 	return IconHelper::Instance()->getPixmap(fileName);
 }
 
-// »ñÈ¡Í¼±êÂ·¾¶
+// è·å–å›¾æ ‡è·¯å¾„
 QString frmLink::GetIconName(QString Name)
 {
 	QString IconName;
-	if (Name.contains("È«¾Ö±äÁ¿")) IconName = ":/res/ico/var.ico";
-	if (Name.contains("»ñÈ¡Í¼Ïñ")) IconName = ":/res/ico/image_source.png";
-	if (Name.contains("Í¼ÏñÏÔÊ¾")) IconName = ":/res/ico/image_view.ico";
-	if (Name.contains("µ¼³öÍ¼Ïñ")) IconName = ":/res/ico/export_image.png";
-	if (Name.contains("°ßµã·ÖÎö")) IconName = ":/res/ico/blob.png";
-	if (Name.contains("Ô¤´¦Àí")) IconName = ":/res/ico/morphology.png";
-	if (Name.contains("Í¼ÏñÆ´½Ó")) IconName = ":/res/ico/image_splice.png";
-	if (Name.contains("Í¼ÏñĞŞ¸´")) IconName = ":/res/ico/repair.png";
-	if (Name.contains("Í¼ÏñÏ¸»¯")) IconName = ":/res/ico/skeleton.png";
-	if (Name.contains("Í¼Ïñ·­×ª")) IconName = ":/res/ico/flip.png";
-	if (Name.contains("Í¼ÏñĞı×ª")) IconName = ":/res/ico/rotate.png";
-	if (Name.contains("Í¸ÊÓ±ä»»")) IconName = ":/res/ico/perspective.png";
-	if (Name.contains("²ÃÇĞÍ¼Ïñ")) IconName = ":/res/ico/crop.png";
-	if (Name.contains("´´½¨ROI")) IconName = ":/res/ico/roi.png";
-	if (Name.contains("ÌõĞÎÂëÊ¶±ğ")) IconName = ":/res/ico/barcode.png";
-	if (Name.contains("¶şÎ¬ÂëÊ¶±ğ")) IconName = ":/res/ico/qrcode.png";
-	if (Name.contains("×Ö·ûÊ¶±ğ")) IconName = ":/res/ico/ocr.png";
-	if (Name.contains("·ÖÀàÆ÷")) IconName = ":/res/ico/classifier.png";
-	if (Name.contains("ÑÕÉ«Ê¶±ğ")) IconName = ":/res/ico/color_r.png";
-	if (Name.contains("ÁÁ¶È¼ì²â")) IconName = ":/res/ico/brightness.png";
-	if (Name.contains("Í¼ÏñÇåÎú¶È")) IconName = ":/res/ico/clarity.png";	
-	if (Name.contains("ÂÖÀªÌØÕ÷Ñ¡Ôñ")) IconName = ":/res/ico/shape.png";
-	if (Name.contains("Nµã±ê¶¨")) IconName = ":/res/ico/ert_calib.png";
-	if (Name.contains("»û±ä±ê¶¨")) IconName = ":/res/ico/distortion_calib.png";
-	if (Name.contains("²âÁ¿±ê¶¨")) IconName = ":/res/ico/measure_calib.png";
-	if (Name.contains("»Ò¶ÈÆ¥Åä")) IconName = ":/res/ico/match.png";	
-	if (Name.contains("ĞÎ×´Æ¥Åä")) IconName = ":/res/ico/shape_match.png";
-	if (Name.contains("Ä¿±ê¸ú×Ù")) IconName = ":/res/ico/track.png";
-	if (Name.contains("ÏßĞÔ¼ÆËã")) IconName = ":/res/ico/affine.png";
-	if (Name.contains("ÏßÔ²½»µã")) IconName = ":/res/ico/line_circle.png";
-	if (Name.contains("µã+µã")) IconName = ":/res/ico/point_point.png";
-	if (Name.contains("µã+Ïß")) IconName = ":/res/ico/point_l.png";
-	if (Name.contains("ÏßÏß½»µã")) IconName = ":/res/ico/intersection.png";
-	if (Name.contains("²éÕÒÔ²È±½Ç")) IconName = ":/res/ico/rounded_c.png";
-	if (Name.contains("Ñ°ÕÒÔ²")) IconName = ":/res/ico/find_circle.png";
-	if (Name.contains("Ñ°ÕÒÖ±Ïß")) IconName = ":/res/ico/find_line.png";
-	if (Name.contains("ÄâºÏÔ²")) IconName = ":/res/ico/fit_circle.png";
-	if (Name.contains("ÄâºÏÍÖÔ²")) IconName = ":/res/ico/fit_ellipse.png";
-	if (Name.contains("ÄâºÏÖ±Ïß")) IconName = ":/res/ico/fit_line.png";
-	if (Name.contains("»ñÈ¡±ß½çµã")) IconName = ":/res/ico/border_point.png";
-	if (Name.contains("±ßÔµ¿í¶È²âÁ¿")) IconName = ":/res/ico/edge.png";
-	if (Name.contains("ÄâºÏÆ½Ãæ")) IconName = ":/res/ico/flatness.png";	
-	if (Name.contains("À©Õ¹¿â")) IconName = ":/res/ico/extension_library.png";
-	if (Name.contains("Ìø×ªÓï¾ä")) IconName = ":/res/ico/goto.png";
-	if (Name.contains("ÅĞ¶ÏÓï¾ä")) IconName = ":/res/ico/logic_judge.png";
-	if (Name.contains("½áÊøÓï¾ä")) IconName = ":/res/ico/end.png";
-	if (Name.contains("½Å±¾±à¼­")) IconName = ":/res/ico/script_edit.png";
-	if (Name.contains("TCP/IP·şÎñÆ÷")) IconName = ":/res/ico/server.png";
-	if (Name.contains("TCP/IP¿Í»§¶Ë")) IconName = ":/res/ico/client.png";
-	if (Name.contains("PLCÍ¨ĞÅ")) IconName = ":/res/ico/plc_communicate.png";
-	if (Name.contains("´®¿ÚÍ¨ĞÅ")) IconName = ":/res/ico/serial_port.png";
-	if (Name.contains("Í¨ÓÃI/O")) IconName = ":/res/ico/general_io.png";
-	if (Name.contains("ÑÓÊ±")) IconName = ":/res/ico/delay.png";
-	if (Name.contains("µ¼³öCSV")) IconName = ":/res/ico/export_csv.png";
+	if (Name.contains("å…¨å±€å˜é‡")) IconName = ":/res/ico/var.ico";
+	if (Name.contains("è·å–å›¾åƒ")) IconName = ":/res/ico/image_source.png";
+	if (Name.contains("å›¾åƒæ˜¾ç¤º")) IconName = ":/res/ico/image_view.ico";
+	if (Name.contains("å¯¼å‡ºå›¾åƒ")) IconName = ":/res/ico/export_image.png";
+	if (Name.contains("æ–‘ç‚¹åˆ†æ")) IconName = ":/res/ico/blob.png";
+	if (Name.contains("é¢„å¤„ç†")) IconName = ":/res/ico/morphology.png";
+	if (Name.contains("å›¾åƒæ‹¼æ¥")) IconName = ":/res/ico/image_splice.png";
+	if (Name.contains("å›¾åƒä¿®å¤")) IconName = ":/res/ico/repair.png";
+	if (Name.contains("å›¾åƒç»†åŒ–")) IconName = ":/res/ico/skeleton.png";
+	if (Name.contains("å›¾åƒç¿»è½¬")) IconName = ":/res/ico/flip.png";
+	if (Name.contains("å›¾åƒæ—‹è½¬")) IconName = ":/res/ico/rotate.png";
+	if (Name.contains("é€è§†å˜æ¢")) IconName = ":/res/ico/perspective.png";
+	if (Name.contains("è£åˆ‡å›¾åƒ")) IconName = ":/res/ico/crop.png";
+	if (Name.contains("åˆ›å»ºROI")) IconName = ":/res/ico/roi.png";
+	if (Name.contains("æ¡å½¢ç è¯†åˆ«")) IconName = ":/res/ico/barcode.png";
+	if (Name.contains("äºŒç»´ç è¯†åˆ«")) IconName = ":/res/ico/qrcode.png";
+	if (Name.contains("å­—ç¬¦è¯†åˆ«")) IconName = ":/res/ico/ocr.png";
+	if (Name.contains("åˆ†ç±»å™¨")) IconName = ":/res/ico/classifier.png";
+	if (Name.contains("é¢œè‰²è¯†åˆ«")) IconName = ":/res/ico/color_r.png";
+	if (Name.contains("äº®åº¦æ£€æµ‹")) IconName = ":/res/ico/brightness.png";
+	if (Name.contains("å›¾åƒæ¸…æ™°åº¦")) IconName = ":/res/ico/clarity.png";	
+	if (Name.contains("è½®å»“ç‰¹å¾é€‰æ‹©")) IconName = ":/res/ico/shape.png";
+	if (Name.contains("Nç‚¹æ ‡å®š")) IconName = ":/res/ico/ert_calib.png";
+	if (Name.contains("ç•¸å˜æ ‡å®š")) IconName = ":/res/ico/distortion_calib.png";
+	if (Name.contains("æµ‹é‡æ ‡å®š")) IconName = ":/res/ico/measure_calib.png";
+	if (Name.contains("ç°åº¦åŒ¹é…")) IconName = ":/res/ico/match.png";	
+	if (Name.contains("å½¢çŠ¶åŒ¹é…")) IconName = ":/res/ico/shape_match.png";
+	if (Name.contains("ç›®æ ‡è·Ÿè¸ª")) IconName = ":/res/ico/track.png";
+	if (Name.contains("çº¿æ€§è®¡ç®—")) IconName = ":/res/ico/affine.png";
+	if (Name.contains("çº¿åœ†äº¤ç‚¹")) IconName = ":/res/ico/line_circle.png";
+	if (Name.contains("ç‚¹+ç‚¹")) IconName = ":/res/ico/point_point.png";
+	if (Name.contains("ç‚¹+çº¿")) IconName = ":/res/ico/point_l.png";
+	if (Name.contains("çº¿çº¿äº¤ç‚¹")) IconName = ":/res/ico/intersection.png";
+	if (Name.contains("æŸ¥æ‰¾åœ†ç¼ºè§’")) IconName = ":/res/ico/rounded_c.png";
+	if (Name.contains("å¯»æ‰¾åœ†")) IconName = ":/res/ico/find_circle.png";
+	if (Name.contains("å¯»æ‰¾ç›´çº¿")) IconName = ":/res/ico/find_line.png";
+	if (Name.contains("æ‹Ÿåˆåœ†")) IconName = ":/res/ico/fit_circle.png";
+	if (Name.contains("æ‹Ÿåˆæ¤­åœ†")) IconName = ":/res/ico/fit_ellipse.png";
+	if (Name.contains("æ‹Ÿåˆç›´çº¿")) IconName = ":/res/ico/fit_line.png";
+	if (Name.contains("è·å–è¾¹ç•Œç‚¹")) IconName = ":/res/ico/border_point.png";
+	if (Name.contains("è¾¹ç¼˜å®½åº¦æµ‹é‡")) IconName = ":/res/ico/edge.png";
+	if (Name.contains("æ‹Ÿåˆå¹³é¢")) IconName = ":/res/ico/flatness.png";	
+	if (Name.contains("æ‰©å±•åº“")) IconName = ":/res/ico/extension_library.png";
+	if (Name.contains("è·³è½¬è¯­å¥")) IconName = ":/res/ico/goto.png";
+	if (Name.contains("åˆ¤æ–­è¯­å¥")) IconName = ":/res/ico/logic_judge.png";
+	if (Name.contains("ç»“æŸè¯­å¥")) IconName = ":/res/ico/end.png";
+	if (Name.contains("è„šæœ¬ç¼–è¾‘")) IconName = ":/res/ico/script_edit.png";
+	if (Name.contains("TCP/IPæœåŠ¡å™¨")) IconName = ":/res/ico/server.png";
+	if (Name.contains("TCP/IPå®¢æˆ·ç«¯")) IconName = ":/res/ico/client.png";
+	if (Name.contains("PLCé€šä¿¡")) IconName = ":/res/ico/plc_communicate.png";
+	if (Name.contains("ä¸²å£é€šä¿¡")) IconName = ":/res/ico/serial_port.png";
+	if (Name.contains("é€šç”¨I/O")) IconName = ":/res/ico/general_io.png";
+	if (Name.contains("å»¶æ—¶")) IconName = ":/res/ico/delay.png";
+	if (Name.contains("å¯¼å‡ºCSV")) IconName = ":/res/ico/export_csv.png";
 	if (Name.contains("YoloV13")) IconName = ":/res/ico/classifier.png";
 	if (Name.contains("OCR")) IconName = ":/res/ico/ocr.png";
-	if (Name.contains("¶şÎ¬ÂëÉú³É")) IconName = ":/res/ico/qrcode.png";
-	if (Name.contains("×Ô¶¯´òÓ¡")) IconName = ":/res/ico/print.png";
+	if (Name.contains("è½¦ç‰Œè¯†åˆ«")) IconName = ":/res/ico/plate.png";
+	if (Name.contains("äºŒç»´ç ç”Ÿæˆ")) IconName = ":/res/ico/qrcode.png";
+	if (Name.contains("è‡ªåŠ¨æ‰“å°")) IconName = ":/res/ico/print.png";
 	return IconName;
 }

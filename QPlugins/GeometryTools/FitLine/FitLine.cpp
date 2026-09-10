@@ -1,4 +1,4 @@
-#include "FitLine.h"
+ï»¿#include "FitLine.h"
 #include "frmFitLine.h"
 
 FitLine::FitLine()
@@ -7,12 +7,12 @@ FitLine::FitLine()
 
 QString FitLine::name()
 {
-    return "ÄâºÏÖ±Ïß";
+    return "æ‹Ÿåˆç›´çº¿";
 }
 
 QString FitLine::information()
 {
-    return "¼¸ºÎ¹¤¾ß";
+    return "å‡ ä½•å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

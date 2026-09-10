@@ -1,4 +1,4 @@
-#ifdef __JNI__
+﻿#ifdef __JNI__
 #ifndef __OCR_RESULT_UTILS_H__
 #define __OCR_RESULT_UTILS_H__
 #include <jni.h>

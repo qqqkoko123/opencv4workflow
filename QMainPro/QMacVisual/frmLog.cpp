@@ -1,4 +1,4 @@
-#include "frmLog.h"
+ï»¿#include "frmLog.h"
 #include "ui_frmLog.h"
 #include <QDateTime>
 #include "clogmodel.h"
@@ -10,17 +10,17 @@ FrmLog::FrmLog(QWidget* parent) :
 	QWidget(parent)
 {
 	ui.setupUi(this);
-	//ÉèÖÃÊÇ·ñ¿ªÆôÈÕÖ¾ÉÏÏÂÎÄ´òÓ¡±ÈÈçĞĞºÅ¡¢º¯ÊıµÈ
+	//è®¾ç½®æ˜¯å¦å¼€å¯æ—¥å¿—ä¸Šä¸‹æ–‡æ‰“å°æ¯”å¦‚è¡Œå·ã€å‡½æ•°ç­‰
 	SaveLog::Instance()->setUseContext(false);
 	SaveLog::Instance()->setName(QString());
-	//ÉèÖÃÎÄ¼ş´æ´¢Ä¿Â¼
+	//è®¾ç½®æ–‡ä»¶å­˜å‚¨ç›®å½•
 	SaveLog::Instance()->setPath(dataVar::path_LA);
 	m_pInfoModel = new CLogModel(this);
 	m_pWarnModel = new CLogModel(this);
 	m_pErrorModel = new CLogModel(this);
 	ui.listView->setModel(m_pInfoModel);
 	ui.listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	ui.listView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel); //°´ÏñËØÒÆ¶¯	
+	ui.listView->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel); //æŒ‰åƒç´ ç§»åŠ¨	
 	SaveLog::Instance()->start();
 	connect(ui.btnInfo, &QToolButton::clicked, this, &FrmLog::slot_InfoClick);
 	connect(ui.btnWarn, &QToolButton::clicked, this, &FrmLog::slot_WarnClick);
@@ -46,7 +46,7 @@ QSize FrmLog::sizeHint() const
 
 void FrmLog::slot_InfoClick()
 {
-	//¼ÓËø
+	//åŠ é”
 	static QMutex mutex;
 	QMutexLocker locker(&mutex);
 	ui.listView->setStyleSheet("color: rgb(0, 0, 255);");
@@ -56,7 +56,7 @@ void FrmLog::slot_InfoClick()
 
 void FrmLog::slot_WarnClick()
 {
-	//¼ÓËø
+	//åŠ é”
 	static QMutex mutex;
 	QMutexLocker locker(&mutex);
 	ui.listView->setStyleSheet("color: rgb(172, 100, 50);");
@@ -66,7 +66,7 @@ void FrmLog::slot_WarnClick()
 
 void FrmLog::slot_ErrorClick()
 {
-	//¼ÓËø
+	//åŠ é”
 	static QMutex mutex;
 	QMutexLocker locker(&mutex);
 	ui.listView->setStyleSheet("color: rgb(255, 0, 0);");
@@ -76,14 +76,14 @@ void FrmLog::slot_ErrorClick()
 
 void FrmLog::timerEvent()
 {
-	ui.btnInfo->setText(QString("ÌáÊ¾(%1)").arg(m_pInfoModel->length()));	
-	ui.btnWarn->setText(QString("¾¯¸æ(%1)").arg(m_pWarnModel->length()));
-	ui.btnError->setText(QString("´íÎó(%1)").arg(m_pErrorModel->length()));
+	ui.btnInfo->setText(QString("æç¤º(%1)").arg(m_pInfoModel->length()));	
+	ui.btnWarn->setText(QString("è­¦å‘Š(%1)").arg(m_pWarnModel->length()));
+	ui.btnError->setText(QString("é”™è¯¯(%1)").arg(m_pErrorModel->length()));
 }
 
 void FrmLog::slot_Message(const QString strMsg)
 {
-	//¼ÓËø
+	//åŠ é”
 	static QMutex mutex;
 	QMutexLocker locker(&mutex);
 	if (m_pInfoModel->length() > 500)
@@ -109,7 +109,7 @@ void FrmLog::slot_Message(const QString strMsg)
 		time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz");
 		msg = time + " " + "[" + logTypeMsg + "]" + typeMsg + "  " + strMsg;
 		m_pInfoModel->insert(0, msg);
-		ui.btnInfo->setText(QString("ÌáÊ¾(%1)").arg(m_pInfoModel->length()));
+		ui.btnInfo->setText(QString("æç¤º(%1)").arg(m_pInfoModel->length()));
 		buffer = msg.toUtf8();
 		data = buffer.constData();
 		qInfo(data);
@@ -120,7 +120,7 @@ void FrmLog::slot_Message(const QString strMsg)
 		time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz");
 		msg = time + " " + "[" + logTypeMsg + "]" + typeMsg + "  " + strMsg;
 		m_pWarnModel->insert(0, msg);
-		ui.btnWarn->setText(QString("¾¯¸æ(%1)").arg(m_pWarnModel->length()));
+		ui.btnWarn->setText(QString("è­¦å‘Š(%1)").arg(m_pWarnModel->length()));
 		buffer = msg.toUtf8();
 		data = buffer.constData();
 		qWarning(data);
@@ -131,7 +131,7 @@ void FrmLog::slot_Message(const QString strMsg)
 		time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss.zzz");
 		msg = time + " " + "[" + logTypeMsg + "]" + typeMsg + "  " + strMsg;
 		m_pErrorModel->insert(0, msg);
-		ui.btnError->setText(QString("´íÎó(%1)").arg(m_pErrorModel->length()));
+		ui.btnError->setText(QString("é”™è¯¯(%1)").arg(m_pErrorModel->length()));
 		buffer = msg.toUtf8();
 		data = buffer.constData();
 		qCritical(data);
@@ -143,7 +143,7 @@ void FrmLog::slot_Message(const QString strMsg)
 
 void FrmLog::slot_Message_Info(const QString strMsg)
 {
-	//¼ÓËø
+	//åŠ é”
 	static QMutex mutex;
 	QMutexLocker locker(&mutex);	
 	h_info = QThread::currentThread();
@@ -164,7 +164,7 @@ void FrmLog::slot_Message_Info(const QString strMsg)
 
 void FrmLog::slot_Message_Warn(const QString strMsg)
 {
-	//¼ÓËø
+	//åŠ é”
 	static QMutex mutex;
 	QMutexLocker locker(&mutex);
 	h_warn = QThread::currentThread();
@@ -185,7 +185,7 @@ void FrmLog::slot_Message_Warn(const QString strMsg)
 
 void FrmLog::slot_Message_Error(const QString strMsg)
 {
-	//¼ÓËø
+	//åŠ é”
 	static QMutex mutex;
 	QMutexLocker locker(&mutex);
 	h_error = QThread::currentThread();

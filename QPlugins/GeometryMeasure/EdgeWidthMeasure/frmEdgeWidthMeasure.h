@@ -40,6 +40,20 @@ struct Screw {
 	double circularity;   // 用于调试
 };
 Q_DECLARE_METATYPE(Screw);
+
+// 螺丝外轮廓长宽测量（亚像素 + 物理换算，微米）
+struct ScrewLengthWidthMeasureResult
+{
+	bool valid = false;
+	double length_px = 0.0;   // 长边（像素，亚像素）
+	double width_px = 0.0;     // 短边（像素）
+	double length_um = 0.0;    // 长边（微米）
+	double width_um = 0.0;     // 短边（微米）
+	double angle_deg = 0.0;    // minAreaRect 角度
+	cv::RotatedRect oriented_rect;
+};
+Q_DECLARE_METATYPE(ScrewLengthWidthMeasureResult);
+
 class frmEdgeWidthMeasure : public Toolnterface
 {
 	Q_OBJECT
@@ -99,6 +113,18 @@ private:
 
 	double getLength(cv::Mat srcImage);
 
+	// 基于最大外轮廓的最小外接矩形测量外轮廓长宽；mmPerPixel 为毫米/像素（与 spinActureDistance 一致），内部换算为微米
+	bool measureScrewLengthWidthMicron(const cv::Mat& src, double mmPerPixel, ScrewLengthWidthMeasureResult& out);
+	// 将卡尺 ROI 内测量矩形映射到原图并绘制
+	void drawCalibMeasureRectOnImage(cv::Mat& image, const CaliperP& caliper, const ScrewLengthWidthMeasureResult& mr);
+	// 测量结果已在图像坐标系时直接绘制
+	void drawCalibMeasureRectDirect(cv::Mat& image, const ScrewLengthWidthMeasureResult& mr);
+	// 标定物长宽专用流程（不依赖边缘卡尺找边）
+	int runCalibObjectMeasure();
+	double resolveMmPerPixel();
+	void refreshCalibOutputMsg();
+	void applyLatestCalibResult(const ScrewLengthWidthMeasureResult& mr);
+
 	cv::Mat convertTo3Channel(const CaliperP& caliper);
 
 	cv::Mat convertToMat(const CaliperP& caliper);
@@ -135,6 +161,8 @@ private:
 	double b;  //截距	
 	double Distance;
 	QList<double> DistanceList;
+	ScrewLengthWidthMeasureResult lastCalibMeasure;
+	QString calibMeasureError;
 };
 
 //全局变量控制

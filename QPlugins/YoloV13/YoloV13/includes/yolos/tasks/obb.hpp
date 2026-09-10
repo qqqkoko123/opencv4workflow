@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 // ============================================================================
 // YOLO Oriented Bounding Box Detection (OBB)

@@ -1,4 +1,4 @@
-#include "ImageRotate.h"
+ï»¿#include "ImageRotate.h"
 #include "frmImageRotate.h"
 
 ImageRotate::ImageRotate()
@@ -7,12 +7,12 @@ ImageRotate::ImageRotate()
 
 QString ImageRotate::name()
 {
-    return "Í¼ÏñĞı×ª";
+    return "å›¾åƒæ—‹è½¬";
 }
 
 QString ImageRotate::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

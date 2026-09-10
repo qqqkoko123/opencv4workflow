@@ -1,4 +1,4 @@
-#ifndef _MV_SDK_EXPORT_H__
+﻿#ifndef _MV_SDK_EXPORT_H__
 #define _MV_SDK_EXPORT_H__
 
 #include "MvErrorDefine.h"

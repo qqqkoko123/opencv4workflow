@@ -1,4 +1,4 @@
-<RCC>
+﻿<RCC>
     <qresource prefix="/">
         <file>resource/affine.png</file>
         <file>resource/barcode.png</file>
@@ -45,6 +45,7 @@
         <file>resource/measure_calib.png</file>
         <file>resource/morphology.png</file>
         <file>resource/ocr.png</file>
+        <file>resource/plate.png</file>
         <file>resource/perspective.png</file>
         <file>resource/plc_communicate.png</file>
         <file>resource/point_l.png</file>

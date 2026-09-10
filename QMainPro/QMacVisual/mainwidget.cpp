@@ -1,4 +1,4 @@
-#include "mainwidget.h"
+ï»¿#include "mainwidget.h"
 #include <QVBoxLayout>
 #include <QtDebug>
 #include <QMenu>
@@ -33,11 +33,11 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
     connect(m_pHeadWidget, &HeadWidget::sigMinimized, this, &MainWidget::showMinimized);
     connect(m_pHeadWidget, &HeadWidget::sigClose, this, &MainWidget::doClose, Qt::DirectConnection);
     connect(m_pHeadWidget, &HeadWidget::sigToggleMaximized, this, &MainWidget::doToggleMaximized); 
-    //µÇÂ¼»­ÃæĞÅºÅÓë²Û
+    //ç™»å½•ç”»é¢ä¿¡å·ä¸æ§½
     connect(dataVar::m_pWindow, &MainWindow::sig_LoginSignal, this, &MainWidget::slot_Login);
-    //È¨ÏŞ¹ÜÀí»­ÃæĞÅºÅÓë²Û
+    //æƒé™ç®¡ç†ç”»é¢ä¿¡å·ä¸æ§½
     connect(dataVar::m_pWindow, &MainWindow::sig_PermisSet, this, &MainWidget::slot_Permis);
-    //¹ØÓÚ»­ÃæĞÅºÅÓë²Û
+    //å…³äºç”»é¢ä¿¡å·ä¸æ§½
     connect(dataVar::m_pWindow, &MainWindow::sig_AboutSignal, this, &MainWidget::slot_About);    
 }
 
@@ -46,10 +46,10 @@ void MainWidget::doClose()
 
     QMessageBox *msgBox = new QMessageBox(this);  
     msgBox->setIcon(QMessageBox::Question);
-    msgBox->setWindowTitle("ÌáÊ¾!");
-    msgBox->setText("~~ÄúÈ·¶¨ÒªÀë¿ªÏµÍ³³ÌĞòÂğ?~~");
-    QPushButton *btn_sure = msgBox->addButton("È·¶¨", QMessageBox::ButtonRole::YesRole);
-    QPushButton *bun_cancel = msgBox->addButton("È¡Ïû", QMessageBox::ButtonRole::NoRole);
+    msgBox->setWindowTitle("æç¤º!");
+    msgBox->setText("~~æ‚¨ç¡®å®šè¦ç¦»å¼€ç³»ç»Ÿç¨‹åºå—?~~");
+    QPushButton *btn_sure = msgBox->addButton("ç¡®å®š", QMessageBox::ButtonRole::YesRole);
+    QPushButton *bun_cancel = msgBox->addButton("å–æ¶ˆ", QMessageBox::ButtonRole::NoRole);
     btn_sure->setStyleSheet("QPushButton{background-color:rgb(125,125,125);border:5px solid gray;font-size:15px;color:white;}");
     bun_cancel->setStyleSheet("QPushButton{background-color:rgb(125,125,125);border:5px solid gray;font-size:15px;color:white;}");  
     msgBox->setStyleSheet("color:black;font-size:16px;");   
@@ -67,11 +67,11 @@ void MainWidget::doClose()
             {
                 if (gVariable::CameraVar.m_hDevHandleList->at(i) != NULL)
                 {
-                    //Í£Ö¹Ïà»ú×¥Í¼
+                    //åœæ­¢ç›¸æœºæŠ“å›¾
                     int tempValue = MV_CC_StopGrabbing(gVariable::CameraVar.m_hDevHandleList->at(i));
-                    //ÊÍ·ÅÏà»ú×ÊÔ´
+                    //é‡Šæ”¾ç›¸æœºèµ„æº
                     int nRet = MV_CC_CloseDevice(gVariable::CameraVar.m_hDevHandleList->at(i));
-                    //·´³õÊ¼»¯Ïà»ú
+                    //ååˆå§‹åŒ–ç›¸æœº
                     MV_CC_Finalize();
                 }   
             }
@@ -137,9 +137,9 @@ void MainWidget::doColorMenu(const QPoint &pos)
     if(!m_pColorMenu)
     {
         m_pColorMenu = new QMenu(this);
-        QAction* greenAc = m_pColorMenu->addAction("ÂÌÉ«");
-        QAction *blueAc  = m_pColorMenu->addAction("À¶É«");      
-        QAction *redAc   = m_pColorMenu->addAction("ºìÉ«");
+        QAction* greenAc = m_pColorMenu->addAction("ç»¿è‰²");
+        QAction *blueAc  = m_pColorMenu->addAction("è“è‰²");      
+        QAction *redAc   = m_pColorMenu->addAction("çº¢è‰²");
         greenAc->setData("rgb(33,115,70)");
         blueAc->setData("rgb(43, 87, 154)");      
         redAc->setData("rgb(183, 71, 42)");
@@ -158,21 +158,21 @@ void MainWidget::doColorMenu(const QPoint &pos)
     m_pColorMenu->exec(pos);
 }
 
-//µÇÂ¼»­Ãæ
+//ç™»å½•ç”»é¢
 void MainWidget::slot_Login()
 {    
     frmLogin *fLogin = new frmLogin(this);    
     fLogin->exec();
 }
 
-//È¨ÏŞ¹ÜÀí»­Ãæ
+//æƒé™ç®¡ç†ç”»é¢
 void MainWidget::slot_Permis()
 {
     frmPermis* fPermis = new frmPermis(this);
     fPermis->exec();
 }
 
-//¹ØÓÚ»­Ãæ
+//å…³äºç”»é¢
 void MainWidget::slot_About()
 {
     frmAbout *fAbout = new frmAbout(this);

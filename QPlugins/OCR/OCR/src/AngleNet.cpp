@@ -1,4 +1,4 @@
-#include "AngleNet.h"
+﻿#include "AngleNet.h"
 #include "OcrUtils.h"
 #include <numeric>
 #include <onnxruntime_cxx_api.h>

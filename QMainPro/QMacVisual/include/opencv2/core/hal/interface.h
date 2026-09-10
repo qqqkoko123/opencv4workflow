@@ -1,4 +1,4 @@
-#ifndef OPENCV_CORE_HAL_INTERFACE_H
+﻿#ifndef OPENCV_CORE_HAL_INTERFACE_H
 #define OPENCV_CORE_HAL_INTERFACE_H
 
 //! @addtogroup core_hal_interface

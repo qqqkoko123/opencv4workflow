@@ -1,98 +1,98 @@
-
+ï»¿
 #ifndef _MV_ISP_ERROR_DEFINE_H_
 #define _MV_ISP_ERROR_DEFINE_H_
 
 /************************************************************************
-* À´×ÔISPËã·¨¿âµÄ´íÎóÂë
+* æ¥è‡ªISPç®—æ³•åº“çš„é”™è¯¯ç 
 ************************************************************************/
-// Í¨ÓÃÀàÐÍ
-#define MV_ALG_OK                   0x00000000  //´¦ÀíÕýÈ·
-#define MV_ALG_ERR                  0x10000000  //²»È·¶¨ÀàÐÍ´íÎó
+// é€šç”¨ç±»åž‹
+#define MV_ALG_OK                   0x00000000  //å¤„ç†æ­£ç¡®
+#define MV_ALG_ERR                  0x10000000  //ä¸ç¡®å®šç±»åž‹é”™è¯¯
 
-// ÄÜÁ¦¼ì²é
-#define MV_ALG_E_ABILITY_ARG        0x10000001  //ÄÜÁ¦¼¯ÖÐ´æÔÚÎÞÐ§²ÎÊý
+// èƒ½åŠ›æ£€æŸ¥
+#define MV_ALG_E_ABILITY_ARG        0x10000001  //èƒ½åŠ›é›†ä¸­å­˜åœ¨æ— æ•ˆå‚æ•°
 
-// ÄÚ´æ¼ì²é
-#define MV_ALG_E_MEM_NULL           0x10000002  //ÄÚ´æµØÖ·Îª¿Õ
-#define MV_ALG_E_MEM_ALIGN          0x10000003  //ÄÚ´æ¶ÔÆë²»Âú×ãÒªÇó
-#define MV_ALG_E_MEM_LACK           0x10000004  //ÄÚ´æ¿Õ¼ä´óÐ¡²»¹»
-#define MV_ALG_E_MEM_SIZE_ALIGN     0x10000005  //ÄÚ´æ¿Õ¼ä´óÐ¡²»Âú×ã¶ÔÆëÒªÇó
-#define MV_ALG_E_MEM_ADDR_ALIGN     0x10000006  //ÄÚ´æµØÖ·²»Âú×ã¶ÔÆëÒªÇó
+// å†…å­˜æ£€æŸ¥
+#define MV_ALG_E_MEM_NULL           0x10000002  //å†…å­˜åœ°å€ä¸ºç©º
+#define MV_ALG_E_MEM_ALIGN          0x10000003  //å†…å­˜å¯¹é½ä¸æ»¡è¶³è¦æ±‚
+#define MV_ALG_E_MEM_LACK           0x10000004  //å†…å­˜ç©ºé—´å¤§å°ä¸å¤Ÿ
+#define MV_ALG_E_MEM_SIZE_ALIGN     0x10000005  //å†…å­˜ç©ºé—´å¤§å°ä¸æ»¡è¶³å¯¹é½è¦æ±‚
+#define MV_ALG_E_MEM_ADDR_ALIGN     0x10000006  //å†…å­˜åœ°å€ä¸æ»¡è¶³å¯¹é½è¦æ±‚
 
-// Í¼Ïñ¼ì²é
-#define MV_ALG_E_IMG_FORMAT         0x10000007  //Í¼Ïñ¸ñÊ½²»ÕýÈ·»òÕß²»Ö§³Ö
-#define MV_ALG_E_IMG_SIZE           0x10000008  //Í¼Ïñ¿í¸ß²»ÕýÈ·»òÕß³¬³ö·¶Î§
-#define MV_ALG_E_IMG_STEP           0x10000009  //Í¼Ïñ¿í¸ßÓëstep²ÎÊý²»Æ¥Åä
-#define MV_ALG_E_IMG_DATA_NULL      0x1000000A  //Í¼ÏñÊý¾Ý´æ´¢µØÖ·Îª¿Õ
+// å›¾åƒæ£€æŸ¥
+#define MV_ALG_E_IMG_FORMAT         0x10000007  //å›¾åƒæ ¼å¼ä¸æ­£ç¡®æˆ–è€…ä¸æ”¯æŒ
+#define MV_ALG_E_IMG_SIZE           0x10000008  //å›¾åƒå®½é«˜ä¸æ­£ç¡®æˆ–è€…è¶…å‡ºèŒƒå›´
+#define MV_ALG_E_IMG_STEP           0x10000009  //å›¾åƒå®½é«˜ä¸Žstepå‚æ•°ä¸åŒ¹é…
+#define MV_ALG_E_IMG_DATA_NULL      0x1000000A  //å›¾åƒæ•°æ®å­˜å‚¨åœ°å€ä¸ºç©º
 
-// ÊäÈëÊä³ö²ÎÊý¼ì²é
-#define MV_ALG_E_CFG_TYPE           0x1000000B  //ÉèÖÃ»òÕß»ñÈ¡²ÎÊýÀàÐÍ²»ÕýÈ·
-#define MV_ALG_E_CFG_SIZE           0x1000000C  //ÉèÖÃ»òÕß»ñÈ¡²ÎÊýµÄÊäÈë¡¢Êä³ö½á¹¹Ìå´óÐ¡²»ÕýÈ·
-#define MV_ALG_E_PRC_TYPE           0x1000000D  //´¦ÀíÀàÐÍ²»ÕýÈ·
-#define MV_ALG_E_PRC_SIZE           0x1000000E  //´¦ÀíÊ±ÊäÈë¡¢Êä³ö²ÎÊý´óÐ¡²»ÕýÈ·
-#define MV_ALG_E_FUNC_TYPE          0x1000000F  //×Ó´¦ÀíÀàÐÍ²»ÕýÈ·
-#define MV_ALG_E_FUNC_SIZE          0x10000010  //×Ó´¦ÀíÊ±ÊäÈë¡¢Êä³ö²ÎÊý´óÐ¡²»ÕýÈ·
+// è¾“å…¥è¾“å‡ºå‚æ•°æ£€æŸ¥
+#define MV_ALG_E_CFG_TYPE           0x1000000B  //è®¾ç½®æˆ–è€…èŽ·å–å‚æ•°ç±»åž‹ä¸æ­£ç¡®
+#define MV_ALG_E_CFG_SIZE           0x1000000C  //è®¾ç½®æˆ–è€…èŽ·å–å‚æ•°çš„è¾“å…¥ã€è¾“å‡ºç»“æž„ä½“å¤§å°ä¸æ­£ç¡®
+#define MV_ALG_E_PRC_TYPE           0x1000000D  //å¤„ç†ç±»åž‹ä¸æ­£ç¡®
+#define MV_ALG_E_PRC_SIZE           0x1000000E  //å¤„ç†æ—¶è¾“å…¥ã€è¾“å‡ºå‚æ•°å¤§å°ä¸æ­£ç¡®
+#define MV_ALG_E_FUNC_TYPE          0x1000000F  //å­å¤„ç†ç±»åž‹ä¸æ­£ç¡®
+#define MV_ALG_E_FUNC_SIZE          0x10000010  //å­å¤„ç†æ—¶è¾“å…¥ã€è¾“å‡ºå‚æ•°å¤§å°ä¸æ­£ç¡®
 
-// ÔËÐÐ²ÎÊý¼ì²é
-#define MV_ALG_E_PARAM_INDEX        0x10000011  //index²ÎÊý²»ÕýÈ·
-#define MV_ALG_E_PARAM_VALUE        0x10000012  //value²ÎÊý²»ÕýÈ·»òÕß³¬³ö·¶Î§
-#define MV_ALG_E_PARAM_NUM          0x10000013  //param_num²ÎÊý²»ÕýÈ·
+// è¿è¡Œå‚æ•°æ£€æŸ¥
+#define MV_ALG_E_PARAM_INDEX        0x10000011  //indexå‚æ•°ä¸æ­£ç¡®
+#define MV_ALG_E_PARAM_VALUE        0x10000012  //valueå‚æ•°ä¸æ­£ç¡®æˆ–è€…è¶…å‡ºèŒƒå›´
+#define MV_ALG_E_PARAM_NUM          0x10000013  //param_numå‚æ•°ä¸æ­£ç¡®
 
-// ½Ó¿Úµ÷ÓÃ¼ì²é
-#define MV_ALG_E_NULL_PTR           0x10000014  //º¯Êý²ÎÊýÖ¸ÕëÎª¿Õ
-#define MV_ALG_E_OVER_MAX_MEM       0x10000015  //³¬¹ýÏÞ¶¨µÄ×î´óÄÚ´æ
-#define MV_ALG_E_CALL_BACK          0x10000016  //»Øµ÷º¯Êý³ö´í
+// æŽ¥å£è°ƒç”¨æ£€æŸ¥
+#define MV_ALG_E_NULL_PTR           0x10000014  //å‡½æ•°å‚æ•°æŒ‡é’ˆä¸ºç©º
+#define MV_ALG_E_OVER_MAX_MEM       0x10000015  //è¶…è¿‡é™å®šçš„æœ€å¤§å†…å­˜
+#define MV_ALG_E_CALL_BACK          0x10000016  //å›žè°ƒå‡½æ•°å‡ºé”™
 
-// Ëã·¨¿â¼ÓÃÜÏà¹Ø¼ì²é
-#define MV_ALG_E_ENCRYPT            0x10000017  //¼ÓÃÜ´íÎó
-#define MV_ALG_E_EXPIRE             0x10000018  //Ëã·¨¿âÊ¹ÓÃÆÚÏÞ´íÎó
+// ç®—æ³•åº“åŠ å¯†ç›¸å…³æ£€æŸ¥
+#define MV_ALG_E_ENCRYPT            0x10000017  //åŠ å¯†é”™è¯¯
+#define MV_ALG_E_EXPIRE             0x10000018  //ç®—æ³•åº“ä½¿ç”¨æœŸé™é”™è¯¯
 
-// ÄÚ²¿Ä£¿é·µ»ØµÄ»ù±¾´íÎóÀàÐÍ
-#define MV_ALG_E_BAD_ARG            0x10000019  //²ÎÊý·¶Î§²»ÕýÈ·
-#define MV_ALG_E_DATA_SIZE          0x1000001A  //Êý¾Ý´óÐ¡²»ÕýÈ·
-#define MV_ALG_E_STEP               0x1000001B  //Êý¾Ýstep²»ÕýÈ·
+// å†…éƒ¨æ¨¡å—è¿”å›žçš„åŸºæœ¬é”™è¯¯ç±»åž‹
+#define MV_ALG_E_BAD_ARG            0x10000019  //å‚æ•°èŒƒå›´ä¸æ­£ç¡®
+#define MV_ALG_E_DATA_SIZE          0x1000001A  //æ•°æ®å¤§å°ä¸æ­£ç¡®
+#define MV_ALG_E_STEP               0x1000001B  //æ•°æ®stepä¸æ­£ç¡®
 
-// cpuÖ¸Áî¼¯Ö§³Ö´íÎóÂë
-#define MV_ALG_E_CPUID              0x1000001C  //cpu²»Ö§³ÖÓÅ»¯´úÂëÖÐµÄÖ¸Áî¼¯
+// cpuæŒ‡ä»¤é›†æ”¯æŒé”™è¯¯ç 
+#define MV_ALG_E_CPUID              0x1000001C  //cpuä¸æ”¯æŒä¼˜åŒ–ä»£ç ä¸­çš„æŒ‡ä»¤é›†
 
-#define MV_ALG_WARNING              0x1000001D  //¾¯¸æ
+#define MV_ALG_WARNING              0x1000001D  //è­¦å‘Š
 
-#define MV_ALG_E_TIME_OUT           0x1000001E  //Ëã·¨¿â³¬Ê±
-#define MV_ALG_E_LIB_VERSION        0x1000001F  //Ëã·¨°æ±¾ºÅ³ö´í
-#define MV_ALG_E_MODEL_VERSION      0x10000020  //Ä£ÐÍ°æ±¾ºÅ³ö´í
-#define MV_ALG_E_GPU_MEM_ALLOC      0x10000021  //GPUÄÚ´æ·ÖÅä´íÎó
-#define MV_ALG_E_FILE_NON_EXIST     0x10000022  //ÎÄ¼þ²»´æÔÚ
-#define MV_ALG_E_NONE_STRING        0x10000023  //×Ö·û´®Îª¿Õ
-#define MV_ALG_E_IMAGE_CODEC        0x10000024  //Í¼Ïñ½âÂëÆ÷´íÎó
-#define MV_ALG_E_FILE_OPEN          0x10000025  //´ò¿ªÎÄ¼þ´íÎó
-#define MV_ALG_E_FILE_READ          0x10000026  //ÎÄ¼þ¶ÁÈ¡´íÎó
-#define MV_ALG_E_FILE_WRITE         0x10000027  //ÎÄ¼þÐ´´íÎó
-#define MV_ALG_E_FILE_READ_SIZE     0x10000028  //ÎÄ¼þ¶ÁÈ¡´óÐ¡´íÎó
-#define MV_ALG_E_FILE_TYPE          0x10000029  //ÎÄ¼þÀàÐÍ´íÎó
-#define MV_ALG_E_MODEL_TYPE         0x1000002A  //Ä£ÐÍÀàÐÍ´íÎó
-#define MV_ALG_E_MALLOC_MEM         0x1000002B  //·ÖÅäÄÚ´æ´íÎó
-#define MV_ALG_E_BIND_CORE_FAILED   0x1000002C  //Ïß³Ì°óºËÊ§°Ü
+#define MV_ALG_E_TIME_OUT           0x1000001E  //ç®—æ³•åº“è¶…æ—¶
+#define MV_ALG_E_LIB_VERSION        0x1000001F  //ç®—æ³•ç‰ˆæœ¬å·å‡ºé”™
+#define MV_ALG_E_MODEL_VERSION      0x10000020  //æ¨¡åž‹ç‰ˆæœ¬å·å‡ºé”™
+#define MV_ALG_E_GPU_MEM_ALLOC      0x10000021  //GPUå†…å­˜åˆ†é…é”™è¯¯
+#define MV_ALG_E_FILE_NON_EXIST     0x10000022  //æ–‡ä»¶ä¸å­˜åœ¨
+#define MV_ALG_E_NONE_STRING        0x10000023  //å­—ç¬¦ä¸²ä¸ºç©º
+#define MV_ALG_E_IMAGE_CODEC        0x10000024  //å›¾åƒè§£ç å™¨é”™è¯¯
+#define MV_ALG_E_FILE_OPEN          0x10000025  //æ‰“å¼€æ–‡ä»¶é”™è¯¯
+#define MV_ALG_E_FILE_READ          0x10000026  //æ–‡ä»¶è¯»å–é”™è¯¯
+#define MV_ALG_E_FILE_WRITE         0x10000027  //æ–‡ä»¶å†™é”™è¯¯
+#define MV_ALG_E_FILE_READ_SIZE     0x10000028  //æ–‡ä»¶è¯»å–å¤§å°é”™è¯¯
+#define MV_ALG_E_FILE_TYPE          0x10000029  //æ–‡ä»¶ç±»åž‹é”™è¯¯
+#define MV_ALG_E_MODEL_TYPE         0x1000002A  //æ¨¡åž‹ç±»åž‹é”™è¯¯
+#define MV_ALG_E_MALLOC_MEM         0x1000002B  //åˆ†é…å†…å­˜é”™è¯¯
+#define MV_ALG_E_BIND_CORE_FAILED   0x1000002C  //çº¿ç¨‹ç»‘æ ¸å¤±è´¥
 
-// ½µÔëÌØÓÐ´íÎóÂë
-#define MV_ALG_E_DENOISE_NE_IMG_FORMAT       0x10402001  //ÔëÉùÌØÐÔÍ¼Ïñ¸ñÊ½´íÎó
-#define MV_ALG_E_DENOISE_NE_FEATURE_TYPE     0x10402002  //ÔëÉùÌØÐÔÀàÐÍ´íÎó
-#define MV_ALG_E_DENOISE_NE_PROFILE_NUM      0x10402003  //ÔëÉùÌØÐÔ¸öÊý´íÎó
-#define MV_ALG_E_DENOISE_NE_GAIN_NUM         0x10402004  //ÔëÉùÌØÐÔÔöÒæ¸öÊý´íÎó
-#define MV_ALG_E_DENOISE_NE_GAIN_VAL         0x10402005  //ÔëÉùÇúÏßÔöÒæÖµÊäÈë´íÎó
-#define MV_ALG_E_DENOISE_NE_BIN_NUM          0x10402006  //ÔëÉùÇúÏßÖùÊý´íÎó
-#define MV_ALG_E_DENOISE_NE_INIT_GAIN        0x10402007  //ÔëÉù¹À¼Æ³õÊ¼»¯ÔöÒæÉèÖÃ´íÎó
-#define MV_ALG_E_DENOISE_NE_NOT_INIT         0x10402008  //ÔëÉù¹À¼ÆÎ´³õÊ¼»¯
-#define MV_ALG_E_DENOISE_COLOR_MODE          0x10402009  //ÑÕÉ«¿Õ¼äÄ£Ê½´íÎó
-#define MV_ALG_E_DENOISE_ROI_NUM             0x1040200a  //Í¼ÏñROI¸öÊý´íÎó
-#define MV_ALG_E_DENOISE_ROI_ORI_PT          0x1040200b  //Í¼ÏñROIÔ­µã´íÎó
-#define MV_ALG_E_DENOISE_ROI_SIZE            0x1040200c  //Í¼ÏñROI´óÐ¡´íÎó
-#define MV_ALG_E_DENOISE_GAIN_NOT_EXIST      0x1040200d  //ÊäÈëµÄÏà»úÔöÒæ²»´æÔÚ(ÔöÒæ¸öÊýÒÑ´ïÉÏÏÞ)
-#define MV_ALG_E_DENOISE_GAIN_BEYOND_RANGE   0x1040200e  //ÊäÈëµÄÏà»úÔöÒæ²»ÔÚ·¶Î§ÄÚ
-#define MV_ALG_E_DENOISE_NP_BUF_SIZE         0x1040200f  //ÊäÈëµÄÔëÉùÌØÐÔÄÚ´æ´óÐ¡´íÎó
+// é™å™ªç‰¹æœ‰é”™è¯¯ç 
+#define MV_ALG_E_DENOISE_NE_IMG_FORMAT       0x10402001  //å™ªå£°ç‰¹æ€§å›¾åƒæ ¼å¼é”™è¯¯
+#define MV_ALG_E_DENOISE_NE_FEATURE_TYPE     0x10402002  //å™ªå£°ç‰¹æ€§ç±»åž‹é”™è¯¯
+#define MV_ALG_E_DENOISE_NE_PROFILE_NUM      0x10402003  //å™ªå£°ç‰¹æ€§ä¸ªæ•°é”™è¯¯
+#define MV_ALG_E_DENOISE_NE_GAIN_NUM         0x10402004  //å™ªå£°ç‰¹æ€§å¢žç›Šä¸ªæ•°é”™è¯¯
+#define MV_ALG_E_DENOISE_NE_GAIN_VAL         0x10402005  //å™ªå£°æ›²çº¿å¢žç›Šå€¼è¾“å…¥é”™è¯¯
+#define MV_ALG_E_DENOISE_NE_BIN_NUM          0x10402006  //å™ªå£°æ›²çº¿æŸ±æ•°é”™è¯¯
+#define MV_ALG_E_DENOISE_NE_INIT_GAIN        0x10402007  //å™ªå£°ä¼°è®¡åˆå§‹åŒ–å¢žç›Šè®¾ç½®é”™è¯¯
+#define MV_ALG_E_DENOISE_NE_NOT_INIT         0x10402008  //å™ªå£°ä¼°è®¡æœªåˆå§‹åŒ–
+#define MV_ALG_E_DENOISE_COLOR_MODE          0x10402009  //é¢œè‰²ç©ºé—´æ¨¡å¼é”™è¯¯
+#define MV_ALG_E_DENOISE_ROI_NUM             0x1040200a  //å›¾åƒROIä¸ªæ•°é”™è¯¯
+#define MV_ALG_E_DENOISE_ROI_ORI_PT          0x1040200b  //å›¾åƒROIåŽŸç‚¹é”™è¯¯
+#define MV_ALG_E_DENOISE_ROI_SIZE            0x1040200c  //å›¾åƒROIå¤§å°é”™è¯¯
+#define MV_ALG_E_DENOISE_GAIN_NOT_EXIST      0x1040200d  //è¾“å…¥çš„ç›¸æœºå¢žç›Šä¸å­˜åœ¨(å¢žç›Šä¸ªæ•°å·²è¾¾ä¸Šé™)
+#define MV_ALG_E_DENOISE_GAIN_BEYOND_RANGE   0x1040200e  //è¾“å…¥çš„ç›¸æœºå¢žç›Šä¸åœ¨èŒƒå›´å†…
+#define MV_ALG_E_DENOISE_NP_BUF_SIZE         0x1040200f  //è¾“å…¥çš„å™ªå£°ç‰¹æ€§å†…å­˜å¤§å°é”™è¯¯
 
-// È¥×Ï±ßÌØÓÐ´íÎóÂë
-#define MV_ALG_E_PFC_ROI_PT                 0x10405000  //È¥×Ï±ßËã·¨ROIÔ­µã´íÎó
-#define MV_ALG_E_PFC_ROI_SIZE               0x10405001  //È¥×Ï±ßËã·¨ROI´óÐ¡´íÎó
-#define MV_ALG_E_PFC_KERNEL_SIZE            0x10405002  //È¥×Ï±ßËã·¨ÂË²¨ºË³ß´ç´íÎó
+// åŽ»ç´«è¾¹ç‰¹æœ‰é”™è¯¯ç 
+#define MV_ALG_E_PFC_ROI_PT                 0x10405000  //åŽ»ç´«è¾¹ç®—æ³•ROIåŽŸç‚¹é”™è¯¯
+#define MV_ALG_E_PFC_ROI_SIZE               0x10405001  //åŽ»ç´«è¾¹ç®—æ³•ROIå¤§å°é”™è¯¯
+#define MV_ALG_E_PFC_KERNEL_SIZE            0x10405002  //åŽ»ç´«è¾¹ç®—æ³•æ»¤æ³¢æ ¸å°ºå¯¸é”™è¯¯
 
 #endif //_MV_ISP_ERROR_DEFINE_H_

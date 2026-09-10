@@ -1,4 +1,4 @@
-#include "ObjectListModel.h"
+ï»¿#include "ObjectListModel.h"
 
 #include <QMetaProperty>
 #include <QDebug>
@@ -240,7 +240,7 @@ void ObjectListModel::attachTo(QObject* object)
     auto slot_changed = metaObject()->method(metaObject()->indexOfSlot(QString("propertyChanged()").toUtf8().constData()));
     for (int i = 0; i < meta->propertyCount(); ++i)
     {
-        // ÐÞ¸´ E0711 ºÍ E0018 ´íÎó
+        // ä¿®å¤ E0711 å’Œ E0018 é”™è¯¯
         auto property_changed = meta->property(i).notifySignal();
         if (property_changed.isValid())
         {

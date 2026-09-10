@@ -1,4 +1,4 @@
-#include "ERTCalibration.h"
+ï»¿#include "ERTCalibration.h"
 #include "frmERTCalibration.h"
 
 ERTCalibration::ERTCalibration()
@@ -7,12 +7,12 @@ ERTCalibration::ERTCalibration()
 
 QString ERTCalibration::name()
 {
-    return "Nµã±ê¶¨";
+    return "Nç‚¹æ ‡å®š";
 }
 
 QString ERTCalibration::information()
 {
-    return "±ê¶¨¹¤¾ß";
+    return "æ ‡å®šå·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>frmEdgeWidthMeasureClass</class>
  <widget class="QDialog" name="frmEdgeWidthMeasureClass">
@@ -1146,7 +1146,7 @@ QCheckBox::indicator::checked {
 };</string>
         </property>
         <property name="text">
-         <string>是否测量长度</string>
+         <string>标定物长宽</string>
         </property>
         <property name="checked">
          <bool>false</bool>

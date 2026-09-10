@@ -1,4 +1,4 @@
-#include "MeasureCalibration.h"
+ï»¿#include "MeasureCalibration.h"
 #include "frmMeasureCalibration.h"
 
 MeasureCalibration::MeasureCalibration()
@@ -7,12 +7,12 @@ MeasureCalibration::MeasureCalibration()
 
 QString MeasureCalibration::name()
 {
-    return "²âÁ¿±ê¶¨";
+    return "æµ‹é‡æ ‡å®š";
 }
 
 QString MeasureCalibration::information()
 {
-    return "±ê¶¨¹¤¾ß";
+    return "æ ‡å®šå·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

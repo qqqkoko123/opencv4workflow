@@ -1,4 +1,4 @@
-#ifndef __JNI__
+﻿#ifndef __JNI__
 #ifndef __CLIB__
 #include <cstdio>
 #include "main.h"

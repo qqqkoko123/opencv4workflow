@@ -1,4 +1,4 @@
-#include "GetContourPoints.h"
+ï»¿#include "GetContourPoints.h"
 #include "frmGetContourPoints.h"
 
 GetContourPoints::GetContourPoints()
@@ -7,12 +7,12 @@ GetContourPoints::GetContourPoints()
 
 QString GetContourPoints::name()
 {
-    return "»ñÈ¡±ß½çµã";
+    return "è·å–è¾¹ç•Œç‚¹";
 }
 
 QString GetContourPoints::information()
 {
-    return "¼¸ºÎ¹¤¾ß";
+    return "å‡ ä½•å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

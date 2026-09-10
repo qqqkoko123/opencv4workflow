@@ -1,4 +1,4 @@
-#include "SerialPort.h"
+ï»¿#include "SerialPort.h"
 #include "frmSerialPort.h"
 
 SerialPort::SerialPort()
@@ -7,12 +7,12 @@ SerialPort::SerialPort()
 
 QString SerialPort::name()
 {
-    return "´®¿ÚÍ¨ĞÅ";
+    return "ä¸²å£é€šä¿¡";
 }
 
 QString SerialPort::information()
 {
-    return "Í¨Ñ¶¹¤¾ß";
+    return "é€šè®¯å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

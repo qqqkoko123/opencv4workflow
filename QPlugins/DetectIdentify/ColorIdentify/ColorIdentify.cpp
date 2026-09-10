@@ -1,4 +1,4 @@
-#include "ColorIdentify.h"
+ï»¿#include "ColorIdentify.h"
 #include "frmColorIdentify.h"
 
 ColorIdentify::ColorIdentify()
@@ -7,12 +7,12 @@ ColorIdentify::ColorIdentify()
 
 QString ColorIdentify::name()
 {
-    return "ÑÕÉ«Ê¶±ð";
+    return "é¢œè‰²è¯†åˆ«";
 }
 
 QString ColorIdentify::information()
 {
-    return "¼ì²âÊ¶±ð";
+    return "æ£€æµ‹è¯†åˆ«";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

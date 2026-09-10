@@ -1,4 +1,4 @@
-#include "OcrLite.h"
+﻿#include "OcrLite.h"
 #include "OcrUtils.h"
 #include <stdarg.h> //windows&linux
 

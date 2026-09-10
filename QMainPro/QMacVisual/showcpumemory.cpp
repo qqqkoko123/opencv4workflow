@@ -1,4 +1,4 @@
-#include "showcpumemory.h"
+ï»¿#include "showcpumemory.h"
 #include <QThread>
 #include <QProcess>
 #include <QLabel>
@@ -33,7 +33,7 @@ void ShowCpuMemory::GetCpuMemory()
 		memoryAll = statex.ullTotalPhys / MB;
 		memoryFree = statex.ullAvailPhys / MB;
 		memoryUse = memoryAll - memoryFree;
-		QString msg = QString("CPUÊ¹ÓÃÂÊ: %1% | ÄÚ´æÊ¹ÓÃÂÊ: %2%(ÒÑÓÃ %3 MB/¹² %4 MB) | ")
+		QString msg = QString("CPUä½¿ç”¨ç‡: %1% | å†…å­˜ä½¿ç”¨ç‡: %2%(å·²ç”¨ %3 MB/å…± %4 MB) | ")
 			.arg(cpu).arg(memoryPercent).arg(memoryUse).arg(memoryAll);
 		labMemory->setText(msg);		
 	}	
@@ -54,7 +54,7 @@ int ShowCpuMemory::calCpuUsage()
 	preKernelTime = kernelTime;
 	preUserTime = userTime;
 	hEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
-	WaitForSingleObject(hEvent, 1000);	//µÈ´ı1000ºÁÃë
+	WaitForSingleObject(hEvent, 1000);	//ç­‰å¾…1000æ¯«ç§’
 	res = GetSystemTimes(&idleTime, &kernelTime, &userTime);
 	long long idle = CompareFileTime(preIdleTime, idleTime);
 	long long kernel = CompareFileTime(preKernelTime, kernelTime);
@@ -63,7 +63,7 @@ int ShowCpuMemory::calCpuUsage()
 	return nCpuRate;
 }
 
-//Ê±¼ä×ª»»
+//æ—¶é—´è½¬æ¢
 __int64 ShowCpuMemory::Filetime2Int64(const FILETIME* ftime)
 {
 	LARGE_INTEGER li;
@@ -72,7 +72,7 @@ __int64 ShowCpuMemory::Filetime2Int64(const FILETIME* ftime)
 	return li.QuadPart;
 }
 
-//Á½¸öÊ±¼äÏà¼õÔËËã
+//ä¸¤ä¸ªæ—¶é—´ç›¸å‡è¿ç®—
 __int64 ShowCpuMemory::CompareFileTime(FILETIME preTime, FILETIME nowTime)
 {
 	return Filetime2Int64(&nowTime) - Filetime2Int64(&preTime);

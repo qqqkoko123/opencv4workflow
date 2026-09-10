@@ -1,4 +1,4 @@
-#include "ImageSplice.h"
+ï»¿#include "ImageSplice.h"
 #include "frmImageSplice.h"
 
 ImageSplice::ImageSplice()
@@ -7,12 +7,12 @@ ImageSplice::ImageSplice()
 
 QString ImageSplice::name()
 {
-    return "Í¼ÏñÆ´½Ó";
+    return "å›¾åƒæ‹¼æ¥";
 }
 
 QString ImageSplice::information()
 {
-    return "Í¼Ïñ´¦Àí";
+    return "å›¾åƒå¤„ç†";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

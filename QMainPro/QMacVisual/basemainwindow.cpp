@@ -1,4 +1,4 @@
-#include "basemainwindow.h"
+ï»¿#include "basemainwindow.h"
 #include <QDesktopWidget>
 #include <QApplication>
 #include <QPainter>
@@ -9,12 +9,12 @@
 BaseWindow::BaseWindow(QWidget*parent)
 	: QDialog(parent)
 {
-	//FramelessWindowHintÊôĞÔÉèÖÃ´°¿ÚÈ¥³ı±ß¿ò
-	//WindowMinimizeButtonHint ÊôĞÔÉèÖÃÔÚ´°¿Ú×îĞ¡»¯Ê±£¬µã»÷ÈÎÎñÀ¸´°¿Ú¿ÉÒÔÏÔÊ¾³öÔ­´°¿Ú
+	//FramelessWindowHintå±æ€§è®¾ç½®çª—å£å»é™¤è¾¹æ¡†
+	//WindowMinimizeButtonHint å±æ€§è®¾ç½®åœ¨çª—å£æœ€å°åŒ–æ—¶ï¼Œç‚¹å‡»ä»»åŠ¡æ çª—å£å¯ä»¥æ˜¾ç¤ºå‡ºåŸçª—å£
 	this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint);
-	//ÉèÖÃ´°¿Ú±³¾°Í¸Ã÷
+	//è®¾ç½®çª—å£èƒŒæ™¯é€æ˜
 	setAttribute(Qt::WA_TranslucentBackground);
-	//³õÊ¼»¯±êÌâÀ¸
+	//åˆå§‹åŒ–æ ‡é¢˜æ 
 	initTitleBar();
 }
 
@@ -35,7 +35,7 @@ void BaseWindow::initTitleBar()
 
 void BaseWindow::paintEvent(QPaintEvent* event)
 {	
-	//ÉèÖÃ±³¾°É«
+	//è®¾ç½®èƒŒæ™¯è‰²
 	QPainter painter(this);
 	QPainterPath pathBack;
 	pathBack.setFillRule(Qt::WindingFill);

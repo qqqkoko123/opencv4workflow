@@ -1,4 +1,4 @@
-#include "ImageFlip.h"
+﻿#include "ImageFlip.h"
 #include "frmImageFlip.h"
 
 ImageFlip::ImageFlip()
@@ -7,12 +7,12 @@ ImageFlip::ImageFlip()
 
 QString ImageFlip::name()
 {
-    return "ͼ��ת";
+    return "图像翻转";
 }
 
 QString ImageFlip::information()
 {
-    return "ͼ����";
+    return "图像处理";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

@@ -1,4 +1,4 @@
-#include "LineCircle.h"
+Ôªø#include "LineCircle.h"
 #include "frmLineCircle.h"
 
 LineCircle::LineCircle()
@@ -7,12 +7,12 @@ LineCircle::LineCircle()
 
 QString LineCircle::name()
 {
-    return "œﬂ‘≤Ωªµ„";
+    return "Á∫øÂúÜ‰∫§ÁÇπ";
 }
 
 QString LineCircle::information()
 {
-    return "º∏∫Œ≤‚¡ø";
+    return "Âá†‰ΩïÊµãÈáè";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

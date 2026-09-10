@@ -1,4 +1,4 @@
-#include "TemplateMatch.h"
+ï»¿#include "TemplateMatch.h"
 #include "frmTemplateMatch.h"
 
 TemplateMatch::TemplateMatch()
@@ -7,12 +7,12 @@ TemplateMatch::TemplateMatch()
 
 QString TemplateMatch::name()
 {
-    return "»Ò¶ÈÆ¥Åä";
+    return "ç°åº¦åŒ¹é…";
 }
 
 QString TemplateMatch::information()
 {
-    return "¶ÔÎ»¹¤¾ß";
+    return "å¯¹ä½å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

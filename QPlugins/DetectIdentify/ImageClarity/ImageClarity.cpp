@@ -1,4 +1,4 @@
-#include "ImageClarity.h"
+ï»¿#include "ImageClarity.h"
 #include "frmImageClarity.h"
 
 ImageClarity::ImageClarity()
@@ -7,12 +7,12 @@ ImageClarity::ImageClarity()
 
 QString ImageClarity::name()
 {
-    return "Í¼ÏñÇåÎú¶È";
+    return "å›¾åƒæ¸…æ™°åº¦";
 }
 
 QString ImageClarity::information()
 {
-    return "¼ì²âÊ¶±ğ";
+    return "æ£€æµ‹è¯†åˆ«";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

@@ -3,6 +3,8 @@
 #include <QDesktopWidget>
 #include "QGraphicsScenes.h"
 #include <QGraphicsOpacityEffect>
+#include <algorithm>
+#include <cmath>
 extern "C" {
 #include <dmtx.h>
 }
@@ -35,63 +37,303 @@ frmQRcodeIdentify::~frmQRcodeIdentify()
 {
 	this->deleteLater();
 }
-std::vector<DmCodeResult> frmQRcodeIdentify::decode_all_dm_codes(const cv::Mat& src) 
+void frmQRcodeIdentify::preprocessDmImage(const cv::Mat& src, cv::Mat& gray) const
+{
+	if (src.channels() == 3)
+		cv::cvtColor(src, gray, cv::COLOR_BGR2GRAY);
+	else if (src.channels() == 4)
+		cv::cvtColor(src, gray, cv::COLOR_BGRA2GRAY);
+	else
+		gray = src.clone();
+}
+
+cv::Rect frmQRcodeIdentify::detectContentRoi(const cv::Mat& gray) const
+{
+	cv::Rect full(0, 0, gray.cols, gray.rows);
+	if (gray.empty())
+		return full;
+
+	cv::Mat blur, bin;
+	cv::GaussianBlur(gray, blur, cv::Size(5, 5), 0);
+	cv::threshold(blur, bin, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
+
+	std::vector<std::vector<cv::Point>> contours;
+	cv::findContours(bin, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+
+	cv::Rect best;
+	int bestArea = 0;
+	for (const auto& c : contours)
+	{
+		cv::Rect r = cv::boundingRect(c);
+		const int area = r.area();
+		if (area > bestArea && area > gray.cols * gray.rows / 50)
+		{
+			bestArea = area;
+			best = r;
+		}
+	}
+	if (bestArea <= 0)
+		return full;
+
+	const int padX = std::max(8, best.width / 40);
+	const int padY = std::max(8, best.height / 40);
+	best.x = std::max(0, best.x - padX);
+	best.y = std::max(0, best.y - padY);
+	best.width = std::min(gray.cols - best.x, best.width + padX * 2);
+	best.height = std::min(gray.rows - best.y, best.height + padY * 2);
+	return best;
+}
+
+std::vector<DmCodeResult> frmQRcodeIdentify::decodeDmOnMat(const cv::Mat& gray, int imageUpscale) const
 {
 	std::vector<DmCodeResult> results;
+	if (gray.empty() || gray.cols < 20 || gray.rows < 20)
+		return results;
 
-	// 1. 转灰度图
-	cv::Mat gray;
-	if (src.channels() == 3) {
-		cv::cvtColor(src, gray, cv::COLOR_BGR2GRAY);
+	const int upReq = (std::max)(1, imageUpscale);
+	cv::Mat work;
+	cv::resize(gray, work, cv::Size(), (double)upReq, (double)upReq, cv::INTER_LINEAR);
+
+	// 硬性限制：libdmtx 输入不超过 dmMaxDecodeSide，否则单次要扫几分钟
+	const int maxSide = std::max(work.cols, work.rows);
+	if (maxSide > dmMaxDecodeSide)
+	{
+		const double shrink = (double)dmMaxDecodeSide / maxSide;
+		cv::resize(work, work, cv::Size(), shrink, shrink, cv::INTER_AREA);
 	}
-	else {
-		gray = src.clone();
-	}
-	// 2. 初始化 dmtx
-	DmtxImage* img = dmtxImageCreate(gray.data, gray.cols, gray.rows, DmtxPack8bpp);
-	if (!img) return results;
-	
+
+	const double toGray = (double)gray.cols / work.cols;
+	if (!work.isContinuous())
+		work = work.clone();
+
+	DmtxImage* img = dmtxImageCreate(work.data, work.cols, work.rows, DmtxPack8bppK);
+	if (!img)
+		return results;
+
 	DmtxDecode* dec = dmtxDecodeCreate(img, 1);
-	if (!dec) {
+	if (!dec)
+	{
 		dmtxImageDestroy(&img);
 		return results;
 	}
 
-	DmtxRegion* reg;
-	// 3. 循环查找所有 DM 码区域
-	while ((reg = dmtxRegionFindNext(dec, nullptr)) != nullptr) {
-		// 直接调用 dmtxDecodeMatrixRegion 获取解码消息，避免不必要的 dmtxMessageCreate 调用（可能导致链接问题）
+	const int workSide = std::max(work.cols, work.rows);
+	int scanGap = 2;
+	if (workSide > 900)
+		scanGap = 3;
+	dmtxDecodeSetProp(dec, DmtxPropScanGap, scanGap);
+
+	int foundRegions = 0;
+	DmtxRegion* reg = nullptr;
+	while ((reg = dmtxRegionFindNext(dec, nullptr)) != nullptr)
+	{
 		DmtxMessage* msg = dmtxDecodeMatrixRegion(dec, reg, DmtxUndefined);
-		if (msg) {
-			DmCodeResult res;
-			// 优先使用 msg->outputIdx（libdmtx 用于记录输出长度的字段），否则回退到 C 字符串长度
-			size_t len = 0;
-			if (msg->outputIdx > 0) len = static_cast<size_t>(msg->outputIdx);
-			else if (msg->output) len = std::strlen(reinterpret_cast<char*>(msg->output));
-			res.content = std::string(reinterpret_cast<char*>(msg->output), len);
-			Code.push_back(QString::fromStdString(res.content));
-			strDecoded.push_back(res.content);
-			// 计算 DM 码的 bounding box，使用 region 的四个角点（topLoc/leftLoc/bottomLoc/rightLoc）
-			int min_x = std::min({ reg->topLoc.X, reg->rightLoc.X, reg->bottomLoc.X, reg->leftLoc.X });
-			int max_x = std::max({ reg->topLoc.X, reg->rightLoc.X, reg->bottomLoc.X, reg->leftLoc.X });
-			int min_y = std::min({ reg->topLoc.Y, reg->rightLoc.Y, reg->bottomLoc.Y, reg->leftLoc.Y });
-			int max_y = std::max({ reg->topLoc.Y, reg->rightLoc.Y, reg->bottomLoc.Y, reg->leftLoc.Y });
-			// 保护性校正，防止宽/高为负
-			int w = std::max(0, max_x - min_x);
-			int h = std::max(0, max_y - min_y);
-			res.bbox = cv::Rect(min_x, min_y, w, h);
-
-			results.push_back(res);
-
+		if (msg && msg->output)
+		{
+			const char* text = reinterpret_cast<char*>(msg->output);
+			size_t len = (msg->outputIdx > 0) ? static_cast<size_t>(msg->outputIdx) : std::strlen(text);
+			if (len > 0)
+			{
+				DmCodeResult res;
+				res.content = std::string(text, len);
+				int min_x = std::min({ reg->topLoc.X, reg->rightLoc.X, reg->bottomLoc.X, reg->leftLoc.X });
+				int max_x = std::max({ reg->topLoc.X, reg->rightLoc.X, reg->bottomLoc.X, reg->leftLoc.X });
+				int min_y = std::min({ reg->topLoc.Y, reg->rightLoc.Y, reg->bottomLoc.Y, reg->leftLoc.Y });
+				int max_y = std::max({ reg->topLoc.Y, reg->rightLoc.Y, reg->bottomLoc.Y, reg->leftLoc.Y });
+				res.bbox = cv::Rect(
+					(int)(min_x * toGray), (int)(min_y * toGray),
+					std::max(1, (int)((max_x - min_x) * toGray)),
+					std::max(1, (int)((max_y - min_y) * toGray)));
+				results.push_back(res);
+				++foundRegions;
+			}
 			dmtxMessageDestroy(&msg);
 		}
 		dmtxRegionDestroy(&reg);
+
+		if (foundRegions >= dmMaxRegionsPerPass)
+			break;
 	}
 
-	// 4. 释放资源
 	dmtxDecodeDestroy(&dec);
 	dmtxImageDestroy(&img);
+	return results;
+}
 
+bool frmQRcodeIdentify::appendDmResult(std::vector<DmCodeResult>& results, const DmCodeResult& item, int offsetX, int offsetY) const
+{
+	if (item.content.empty())
+		return false;
+
+	DmCodeResult r = item;
+	r.bbox.x += offsetX;
+	r.bbox.y += offsetY;
+
+	for (const auto& exist : results)
+	{
+		if (exist.content == r.content)
+			return false;
+		cv::Point c1(r.bbox.x + r.bbox.width / 2, r.bbox.y + r.bbox.height / 2);
+		cv::Point c2(exist.bbox.x + exist.bbox.width / 2, exist.bbox.y + exist.bbox.height / 2);
+		int dist2 = (c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y);
+		int minSide = std::min(r.bbox.width + exist.bbox.width, r.bbox.height + exist.bbox.height);
+		if (minSide > 0 && dist2 < minSide * minSide)
+			return false;
+	}
+	results.push_back(r);
+	return true;
+}
+
+void frmQRcodeIdentify::sortDmResultsByLayout(std::vector<DmCodeResult>& results) const
+{
+	std::sort(results.begin(), results.end(), [](const DmCodeResult& a, const DmCodeResult& b)
+	{
+		if (std::abs(a.bbox.y - b.bbox.y) > 40)
+			return a.bbox.y < b.bbox.y;
+		return a.bbox.x < b.bbox.x;
+	});
+}
+
+int frmQRcodeIdentify::tryDecodeDmCellPatch(const cv::Mat& normPatch, double mapBackScale, int offsetX, int offsetY, std::vector<DmCodeResult>& results) const
+{
+	if (normPatch.empty() || mapBackScale <= 0)
+		return 0;
+
+	auto mapAndAppend = [&](const std::vector<DmCodeResult>& part) -> int
+	{
+		int n = 0;
+		for (DmCodeResult one : part)
+		{
+			one.bbox.x = (int)(one.bbox.x / mapBackScale);
+			one.bbox.y = (int)(one.bbox.y / mapBackScale);
+			one.bbox.width = std::max(1, (int)(one.bbox.width / mapBackScale));
+			one.bbox.height = std::max(1, (int)(one.bbox.height / mapBackScale));
+			if (appendDmResult(results, one, offsetX, offsetY))
+				++n;
+		}
+		return n;
+	};
+
+	if (mapAndAppend(decodeDmOnMat(normPatch, 1)) > 0)
+		return 1;
+
+	cv::Mat enhanced;
+	cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE(2.5, cv::Size(8, 8));
+	clahe->apply(normPatch, enhanced);
+	if (mapAndAppend(decodeDmOnMat(enhanced, 1)) > 0)
+		return 1;
+
+	const int block = (std::max)(15, ((std::min)(normPatch.cols, normPatch.rows) / 16) | 1);
+	cv::Mat bin;
+	cv::adaptiveThreshold(enhanced, bin, 255, cv::ADAPTIVE_THRESH_GAUSSIAN_C, cv::THRESH_BINARY, block, 5);
+	if (mapAndAppend(decodeDmOnMat(bin, 1)) > 0)
+		return 1;
+	cv::bitwise_not(bin, bin);
+	if (mapAndAppend(decodeDmOnMat(bin, 1)) > 0)
+		return 1;
+
+	if (mapAndAppend(decodeDmOnMat(normPatch, 2)) > 0)
+		return 1;
+
+	return 0;
+}
+
+int frmQRcodeIdentify::decodeDmTrayGrid(const cv::Mat& gray, int rows, int cols, std::vector<DmCodeResult>& results) const
+{
+	if (rows <= 0 || cols <= 0 || gray.empty())
+		return 0;
+
+	int added = 0;
+	for (int r = 0; r < rows; ++r)
+	{
+		for (int c = 0; c < cols; ++c)
+		{
+			int x0 = c * gray.cols / cols;
+			int x1 = (c + 1) * gray.cols / cols;
+			int y0 = r * gray.rows / rows;
+			int y1 = (r + 1) * gray.rows / rows;
+			const int padX = (x1 - x0) / 5;
+			const int padY = (y1 - y0) / 5;
+			x0 = std::max(0, x0 - padX);
+			y0 = std::max(0, y0 - padY);
+			x1 = std::min(gray.cols, x1 + padX);
+			y1 = std::min(gray.rows, y1 + padY);
+			if (x1 - x0 < 32 || y1 - y0 < 32)
+				continue;
+
+			cv::Mat patch = gray(cv::Rect(x0, y0, x1 - x0, y1 - y0)).clone();
+			const int ms = std::max(patch.cols, patch.rows);
+			const double normScale = (double)dmCellNormSide / (double)ms;
+			cv::Mat norm;
+			cv::resize(patch, norm, cv::Size(), normScale, normScale, cv::INTER_CUBIC);
+
+			added += tryDecodeDmCellPatch(norm, normScale, x0, y0, results);
+			if ((int)results.size() >= expectedDmCount)
+				return added;
+		}
+	}
+	return added;
+}
+
+void frmQRcodeIdentify::decodeDmFallbackLimited(const cv::Mat& gray, std::vector<DmCodeResult>& results) const
+{
+	if ((int)results.size() >= expectedDmCount)
+		return;
+
+	const int maxSide = 1100;
+	const int side = std::max(gray.cols, gray.rows);
+	double scale = 1.0;
+	cv::Mat small = gray;
+	if (side > maxSide)
+	{
+		scale = (double)maxSide / side;
+		cv::resize(gray, small, cv::Size(), scale, scale, cv::INTER_AREA);
+	}
+
+	std::vector<DmCodeResult> part = decodeDmOnMat(small, 2);
+	const double inv = 1.0 / scale;
+	for (DmCodeResult one : part)
+	{
+		one.bbox.x = (int)(one.bbox.x * inv);
+		one.bbox.y = (int)(one.bbox.y * inv);
+		one.bbox.width = std::max(1, (int)(one.bbox.width * inv));
+		one.bbox.height = std::max(1, (int)(one.bbox.height * inv));
+		appendDmResult(results, one, 0, 0);
+	}
+}
+
+std::vector<DmCodeResult> frmQRcodeIdentify::decode_all_dm_codes(const cv::Mat& src)
+{
+	std::vector<DmCodeResult> results;
+	cv::Mat gray;
+	preprocessDmImage(src, gray);
+	if (gray.empty())
+		return results;
+
+	// 只在有效内容区（托盘）上分格，避免黑边/背景把格子切歪
+	const cv::Rect content = detectContentRoi(gray);
+	cv::Mat roiGray = gray(content);
+
+	decodeDmTrayGrid(roiGray, 5, 2, results);
+	if ((int)results.size() < expectedDmCount)
+		decodeDmTrayGrid(roiGray, 2, 4, results);
+	if ((int)results.size() < 4)
+		decodeDmTrayGrid(roiGray, 2, 5, results);
+
+	// 坐标从 content 局部映射回全图
+	if (content.x != 0 || content.y != 0)
+	{
+		for (auto& item : results)
+		{
+			item.bbox.x += content.x;
+			item.bbox.y += content.y;
+		}
+	}
+
+	if ((int)results.size() < 3)
+		decodeDmFallbackLimited(gray, results);
+
+	sortDmResultsByLayout(results);
 	return results;
 }
 void frmQRcodeIdentify::initTitleBar()
@@ -286,21 +528,12 @@ int frmQRcodeIdentify::RunToolProDM()
 {
 	try
 	{
-		DmtxRegion* reg;
 		srcImage = GetToolBase()->m_Tools[image_index].PublicImage.OutputImage;
 		vPoints.clear();
 		strDecoded.clear();
 		Code.clear();
 		dstImage = cv::Mat();
 		srcImage.copyTo(dstImage);
-		if (dstImage.channels() == 3)
-		{
-			cv::cvtColor(dstImage, dstImage, cv::COLOR_BGR2GRAY);
-		}
-		else if (dstImage.channels() == 4)
-		{
-			cv::cvtColor(dstImage, dstImage, cv::COLOR_RGBA2GRAY);
-		}
 		//DmtxImage* image;
 		//image = dmtxImageCreate(dstImage.data, dstImage.cols, dstImage.rows, DmtxPack8bppK);//注意图片类型
 		//DmtxDecode* dec = dmtxDecodeCreate(image, 1);//解码
@@ -360,21 +593,39 @@ int frmQRcodeIdentify::RunToolProDM()
 		//	GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
 		//	return 0;
 		//}
-		 // 解码所有 DM 码
-		std::vector<DmCodeResult> results = decode_all_dm_codes(dstImage);
+		std::vector<DmCodeResult> results = decode_all_dm_codes(srcImage);
 
-		// 可视化结果
-		for (DmCodeResult res : results) {
-			cv::rectangle(dstImage, res.bbox, cv::Scalar(0, 255, 0), 2);
-			cv::putText(dstImage, res.content, cv::Point(res.bbox.x, res.bbox.y - 5),
-				cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(0, 0, 255), 2);
+		strDecoded.clear();
+		Code.clear();
+		for (size_t i = 0; i < results.size(); ++i)
+		{
+			strDecoded.push_back(results[i].content);
+			Code.push_back(QString::fromStdString(results[i].content));
 		}
+
+		if (dstImage.channels() == 1)
+			cv::cvtColor(dstImage, dstImage, cv::COLOR_GRAY2BGR);
+		else if (dstImage.channels() == 4)
+			cv::cvtColor(dstImage, dstImage, cv::COLOR_RGBA2BGR);
+
+		for (size_t i = 0; i < results.size(); ++i)
+		{
+			const DmCodeResult& res = results[i];
+			cv::rectangle(dstImage, res.bbox, cv::Scalar(0, 255, 0), 2);
+			QString label = QString("[%1] %2").arg(i + 1).arg(QString::fromStdString(res.content));
+			int textY = std::max(15, res.bbox.y - 5);
+			std::string labelUtf8 = label.toStdString();
+			cv::putText(dstImage, labelUtf8, cv::Point(res.bbox.x, textY),
+				cv::FONT_HERSHEY_SIMPLEX, 0.55, cv::Scalar(0, 0, 255), 2);
+		}
+
 		if (results.size() > 0)
 		{
 			GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
 			GetToolBase()->m_Tools[tool_index].PublicDetect.Code = Code;
-			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
-			return 0;
+			GetToolBase()->m_Tools[tool_index].PublicDetect.Quantity = static_cast<int>(results.size());
+			GetToolBase()->m_Tools[tool_index].PublicResult.State = (results.size() > 0);
+			return (results.size() > 0) ? 0 : -1;
 		}
 		else
 		{
@@ -448,13 +699,21 @@ void frmQRcodeIdentify::on_btnExecute_clicked()
 	}
 	Execute(GetToolName());
 	ui.txtMsg->clear();
-	for (int i = 0; i < strDecoded.size(); i++)
+	if (ui.comboMode->currentIndex() == 1)
 	{
-		if (i == 0)
+		ui.txtMsg->append(QString::fromUtf8("-> 识别到 %1 个 DM 码（目标 %2 个）")
+			.arg(strDecoded.size()).arg(expectedDmCount));
+		for (int i = 0; i < (int)strDecoded.size(); ++i)
+			ui.txtMsg->append(QString("[%1] %2").arg(i + 1).arg(QString::fromStdString(strDecoded[i])));
+	}
+	else
+	{
+		for (int i = 0; i < (int)strDecoded.size(); i++)
 		{
-			ui.txtMsg->append("-> 二维码内容为：");
+			if (i == 0)
+				ui.txtMsg->append("-> 二维码内容为：");
+			ui.txtMsg->append(QString::fromStdString(strDecoded[i]));
 		}
-		ui.txtMsg->append(QString::fromStdString(strDecoded[i]));
 	}
 	
 	QImage img(Mat2QImage(dstImage));

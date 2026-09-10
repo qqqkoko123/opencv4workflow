@@ -1,4 +1,4 @@
-#include "OCR.h"
+﻿#include "OCR.h"
 
 OCR::OCR(QWidget *parent)
     : QMainWindow(parent)

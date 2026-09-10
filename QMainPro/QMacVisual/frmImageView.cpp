@@ -1,4 +1,4 @@
-#include "frmImageView.h"
+ï»¿#include "frmImageView.h"
 #include "datavar.h"
 #include "qmutex.h"
 
@@ -6,7 +6,7 @@ FrmImageView::FrmImageView(QWidget *parent)
     : QWidget(parent)
 {	
     ui.setupUi(this);		
-	//Á¬½ÓÐÅºÅÓë²Ûº¯Êý
+	//è¿žæŽ¥ä¿¡å·ä¸Žæ§½å‡½æ•°
 	connect(dataVar::fImageLayout, &frmImageLayout::sig_Image1, this, &FrmImageView::slot_Image1);
 	connect(dataVar::fImageLayout, &frmImageLayout::sig_Image2, this, &FrmImageView::slot_Image2);
 	connect(dataVar::fImageLayout, &frmImageLayout::sig_Image3, this, &FrmImageView::slot_Image3);
@@ -23,17 +23,17 @@ FrmImageView::FrmImageView(QWidget *parent)
 	dataVar::img_view7 = new QGraphicsViews();
 	dataVar::img_view8 = new QGraphicsViews();
 	dataVar::img_view9 = new QGraphicsViews();
-	//1Í¼Ïñ
+	//1å›¾åƒ
 	hlay = new QHBoxLayout(this);
-	//2Í¼Ïñ	
+	//2å›¾åƒ	
 	vlay2_1 = new QVBoxLayout();
 	vlay2_2 = new QVBoxLayout();
-	//3Í¼Ïñ
+	//3å›¾åƒ
 	vlay3_1 = new QVBoxLayout();
 	vlay3_2 = new QVBoxLayout();
 	hlay3_2_1 = new QHBoxLayout();
 	hlay3_2_2 = new QHBoxLayout();
-	//4Í¼Ïñ	
+	//4å›¾åƒ	
 	vlay4 = new QVBoxLayout();
 	hlay4_1 = new QHBoxLayout();
 	hlay4_1_1 = new QHBoxLayout();
@@ -41,7 +41,7 @@ FrmImageView::FrmImageView(QWidget *parent)
 	hlay4_2 = new QHBoxLayout();
 	hlay4_2_1 = new QHBoxLayout();
 	hlay4_2_2 = new QHBoxLayout();
-	//6Í¼ÏñA	
+	//6å›¾åƒA	
 	vlay6_1 = new QVBoxLayout();
 	vlay6_1_1 = new QVBoxLayout();
 	vlay6_1_2 = new QVBoxLayout();
@@ -51,7 +51,7 @@ FrmImageView::FrmImageView(QWidget *parent)
 	vlay6_3 = new QVBoxLayout();
 	vlay6_3_1 = new QVBoxLayout();
 	vlay6_3_2 = new QVBoxLayout();
-	//6Í¼ÏñB			
+	//6å›¾åƒB			
 	vlay6B = new QVBoxLayout();
 	hlay6B_1 = new QHBoxLayout();
 	vlay6B_1_1 = new QVBoxLayout();
@@ -62,7 +62,7 @@ FrmImageView::FrmImageView(QWidget *parent)
 	vlay6B_2_1 = new QVBoxLayout();
 	vlay6B_2_2 = new QVBoxLayout();
 	vlay6B_2_3 = new QVBoxLayout();
-	//9Í¼Ïñ
+	//9å›¾åƒ
 	vlay9 = new QVBoxLayout();
 	hlay9_1 = new QHBoxLayout();
 	vlay9_1_1 = new QVBoxLayout();
@@ -680,14 +680,14 @@ void FrmImageView::slot_Image9()
 
 const void FrmImageView::removeLayout()
 {
-	//1Í¼Ïñ
+	//1å›¾åƒ
 	hlay->removeWidget(dataVar::img_view1);
-	//2Í¼Ïñ
+	//2å›¾åƒ
 	vlay2_1->removeWidget(dataVar::img_view1);
 	hlay->removeItem(vlay2_1);
 	vlay2_2->removeWidget(dataVar::img_view2);
 	hlay->removeItem(vlay2_2);
-	//3Í¼Ïñ
+	//3å›¾åƒ
 	vlay3_1->removeWidget(dataVar::img_view1);
 	hlay->removeItem(vlay3_1);
 	hlay3_2_1->removeWidget(dataVar::img_view2);
@@ -695,7 +695,7 @@ const void FrmImageView::removeLayout()
 	hlay3_2_2->removeWidget(dataVar::img_view3);
 	vlay3_2->removeItem(hlay3_2_2);	
 	hlay->removeItem(vlay3_2);
-	//4Í¼Ïñ
+	//4å›¾åƒ
 	hlay4_1_1->removeWidget(dataVar::img_view1);
 	hlay4_1->removeItem(hlay4_1_1);
 	hlay4_1_2->removeWidget(dataVar::img_view2);
@@ -707,7 +707,7 @@ const void FrmImageView::removeLayout()
 	hlay4_2->removeItem(hlay4_2_2);	
 	vlay4->removeItem(hlay4_2);
 	hlay->removeItem(vlay4);	
-	//6Í¼ÏñA
+	//6å›¾åƒA
 	vlay6_1_2->removeWidget(dataVar::img_view1);
 	vlay6_2_1->removeWidget(dataVar::img_view2);
 	vlay6_3_1->removeWidget(dataVar::img_view3);
@@ -723,7 +723,7 @@ const void FrmImageView::removeLayout()
 	hlay->removeItem(vlay6_1);
 	hlay->removeItem(vlay6_2);
 	hlay->removeItem(vlay6_3);	
-	//6Í¼ÏñB
+	//6å›¾åƒB
 	vlay6B_1_1->removeWidget(dataVar::img_view1);
 	hlay6B_1->removeItem(vlay6B_1_1);
 	hlay6B_1_2_1->removeWidget(dataVar::img_view2);
@@ -740,7 +740,7 @@ const void FrmImageView::removeLayout()
 	hlay6B_2->removeItem(vlay6B_2_3);
 	vlay6B->removeItem(hlay6B_2);
 	hlay->removeItem(vlay6B);
-	//9Í¼Ïñ
+	//9å›¾åƒ
 	vlay9_1_1->removeWidget(dataVar::img_view1);
 	hlay9_1->removeItem(vlay9_1_1);
 	vlay9_1_2->removeWidget(dataVar::img_view2);

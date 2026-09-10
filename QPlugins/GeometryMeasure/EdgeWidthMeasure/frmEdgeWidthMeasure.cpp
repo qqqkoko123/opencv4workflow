@@ -11,6 +11,7 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #define M_PI 3.14159265358979323846
 
 frmEdgeWidthMeasure::frmEdgeWidthMeasure(QString toolName, QToolBase* toolBase, QWidget* parent)
@@ -366,6 +367,8 @@ int frmEdgeWidthMeasure::RunToolPro()
 		k = 0;
 		b = 0;
 		Distance = 0;
+		lastCalibMeasure = ScrewLengthWidthMeasureResult();
+		calibMeasureError.clear();
 		dstImage = cv::Mat();
 		dstRoiImage = cv::Mat();
 		srcImage.copyTo(dstImage);
@@ -514,6 +517,28 @@ int frmEdgeWidthMeasure::RunToolPro()
 			// 绘制结果
 			//cv::Mat result = img.clone();
 			dstImage = img.clone();
+
+			//// 螺丝长宽测量（微米）：使用「实际距离」作为毫米/像素标定
+			//if (ui.spinActureDistance->value() > 1e-12)
+			//{
+			//	ScrewLengthWidthMeasureResult mr;
+			//	if (measureScrewLengthWidthMicron(dstImage, ui.spinActureDistance->value(), mr) && mr.valid)
+			//	{
+			//		cv::Point2f vtx[4];
+			//		mr.oriented_rect.points(vtx);
+			//		for (int j = 0; j < 4; j++)
+			//			cv::line(dstImage, vtx[j], vtx[(j + 1) % 4], cv::Scalar(0, 255, 0), 2);
+
+			//		cv::putText(dstImage,
+			//			cv::format("L=%.1fum W=%.1fum", mr.length_um, mr.width_um),
+			//			cv::Point(15, 35), cv::FONT_HERSHEY_SIMPLEX, 0.7, cv::Scalar(0, 0, 255), 2);
+
+			//		GetToolBase()->m_Tools[tool_index].PublicGeometry.Length1 = mr.length_um;
+			//		GetToolBase()->m_Tools[tool_index].PublicGeometry.Length2 = mr.width_um;
+			//		GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = mr.length_um;
+			//	}
+			//}
+
 			for (const auto& s : finalScrews) {
 				// 绘制头部圆圈（绿色）
 				circle(dstImage, s.center, cvRound(s.radius), cv::Scalar(0, 255, 0), 2);
@@ -610,6 +635,11 @@ int frmEdgeWidthMeasure::RunToolPro()
 			//GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = Distance;
 			GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
 			return 0;
+		}
+		// 标定物长宽（微米）独立测量，不依赖边缘找边
+		if (ui.isActureDistance_6->isChecked())
+		{
+			return runCalibObjectMeasure();
 		}
 		//多个卡尺同时计算宽度
 		int break_flag = 0;
@@ -819,27 +849,8 @@ int frmEdgeWidthMeasure::RunToolPro()
 				break_flag++;
 				break;
 			}
-			if (ui.isActureDistance_6->isChecked())
-			{
-				//计算长度
-				try 
-				{
-					// 1. 获取卡尺图像
-					cv::Mat src = extractCaliperRegion(srcImage,caliper_p);
-					// 2. 计算长度
-					Distance = getLength(src);
-				}
-				catch (const cv::Exception& e)
-				{
-					std:string error = e.what();
-					std::cerr << "OpenCV异常: " << error << std::endl;
-				}				
-			}
-			else
-			{
-				//去除最大最小值求平均值
-				Distance = Average(out_distances, out_distances.size());
-			}
+			//去除最大最小值求平均值
+			Distance = Average(out_distances, out_distances.size());
 			if (ui.checkViewROI->isChecked() == true)
 			{
 				if(i == 0)
@@ -954,7 +965,6 @@ int frmEdgeWidthMeasure::RunToolPro()
 				}
 				GetToolBase()->m_Tools[tool_index].PublicImage.Name = "图像";
 			}
-			// 是否使用实际距离系数
 			if (ui.isActureDistance->isChecked())
 			{
 				Distance = Distance * ui.spinActureDistance->value();
@@ -1165,12 +1175,18 @@ void frmEdgeWidthMeasure::on_btnExecute_clicked()
 	ui.btnExecute->setEnabled(false);
 	QApplication::processEvents();
 	Execute(GetToolName());
-	ui.txtMsg->clear();
-	//显示所有卡尺结果
-	for (int i = 0; i < DistanceList.count(); i++)
+	if (ui.isActureDistance_6->isChecked())
 	{
-		ui.txtMsg->append("-> 边缘宽度为：" + QString::number(DistanceList[i]) + "\n");
-	}	
+		refreshCalibOutputMsg();
+	}
+	else
+	{
+		ui.txtMsg->clear();
+		for (int i = 0; i < DistanceList.count(); i++)
+		{
+			ui.txtMsg->append("-> 边缘宽度为：" + QString::number(DistanceList[i]) + "\n");
+		}
+	}
 	QImage img(Mat2QImage(dstImage));
 	view->DispImage(img);
 	ui.btnExecute->setEnabled(true);
@@ -1576,6 +1592,379 @@ QImage frmEdgeWidthMeasure::Mat2QImage(const cv::Mat& mat)
 	{
 		return QImage();
 	}
+}
+
+double frmEdgeWidthMeasure::resolveMmPerPixel()
+{
+	double mmpp = ui.spinActureDistance->value();
+	if (mmpp > 1e-12)
+		return mmpp;
+	// 回退：使用流程中其它工具的像素当量（通常为 mm/像素）
+	for (int i = 0; i < GetToolBase()->m_Tools.size(); ++i)
+	{
+		const double pxEq = GetToolBase()->m_Tools[i].PublicCalib.PixelEquivalentX;
+		if (pxEq > 1e-12)
+			return pxEq;
+	}
+	return 0.0;
+}
+
+void frmEdgeWidthMeasure::applyLatestCalibResult(const ScrewLengthWidthMeasureResult& mr)
+{
+	lastCalibMeasure = mr;
+	Distance = mr.length_um;
+	DistanceList.clear();
+	DistanceList.append(mr.length_um);
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.Length1 = mr.length_um;
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.Length2 = mr.width_um;
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = mr.length_um;
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.DistanceList.clear();
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.DistanceList.append(mr.length_um);
+}
+
+void frmEdgeWidthMeasure::refreshCalibOutputMsg()
+{
+	ui.txtMsg->clear();
+	if (!calibMeasureError.isEmpty())
+		ui.txtMsg->append(calibMeasureError + "\n");
+	if (lastCalibMeasure.valid)
+	{
+		ui.txtMsg->append(QString::fromUtf8("-> 标定物长: %1 μm, 宽: %2 μm\n")
+			.arg(lastCalibMeasure.length_um, 0, 'f', 2)
+			.arg(lastCalibMeasure.width_um, 0, 'f', 2));
+	}
+}
+
+int frmEdgeWidthMeasure::runCalibObjectMeasure()
+{
+	calibMeasureError.clear();
+	lastCalibMeasure = ScrewLengthWidthMeasureResult();
+	DistanceList.clear();
+	Distance = 0.0;
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.Length1 = 0.0;
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.Length2 = 0.0;
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.Distance = 0.0;
+	GetToolBase()->m_Tools[tool_index].PublicGeometry.DistanceList.clear();
+
+	const double mmpp = resolveMmPerPixel();
+	if (mmpp <= 1e-12)
+	{
+		calibMeasureError = QString::fromUtf8("测量失败：请设置「像素距离系数」(mm/像素)，或先完成相机标定。");
+		GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+		refreshCalibOutputMsg();
+		return -1;
+	}
+
+	if (srcImage.empty())
+	{
+		calibMeasureError = QString::fromUtf8("测量失败：未获取到输入图像。");
+		GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+		refreshCalibOutputMsg();
+		return -1;
+	}
+
+	ScrewLengthWidthMeasureResult latestMr;
+	bool measured = false;
+	bool drawOnFullImage = false;
+	CaliperP latestCaliper;
+
+	if (caliper_itemList.isEmpty())
+	{
+		if (measureScrewLengthWidthMicron(srcImage, mmpp, latestMr) && latestMr.valid)
+			measured = true;
+	}
+	else
+	{
+		// 多个卡尺时只保留最后一次成功测量（最新数据）
+		for (int idx = 0; idx < caliper_itemList.count(); ++idx)
+		{
+			caliper_item = caliper_itemList.at(idx);
+			if (!caliper_item->caliper_init_state)
+			{
+				calibMeasureError = QString::fromUtf8("测量失败：卡尺 ROI 未初始化，请添加并调整卡尺。");
+				GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+				refreshCalibOutputMsg();
+				return -1;
+			}
+			caliper_item->GetCaliper(caliper_p);
+
+			cv::Mat roiImg = extractCaliperRegion(srcImage, caliper_p);
+			ScrewLengthWidthMeasureResult mr;
+			bool ok = !roiImg.empty() && measureScrewLengthWidthMicron(roiImg, mmpp, mr) && mr.valid;
+			bool useDirect = false;
+			if (!ok)
+			{
+				cv::RotatedRect rr(cv::Point2f(caliper_p.col, caliper_p.row),
+					cv::Size2f(caliper_p.len1, caliper_p.len2),
+					-(float)(caliper_p.angle * 180.0 / M_PI));
+				cv::Rect bound = rr.boundingRect();
+				bound &= cv::Rect(0, 0, srcImage.cols, srcImage.rows);
+				if (bound.width > 4 && bound.height > 4)
+				{
+					cv::Mat crop = srcImage(bound);
+					ok = measureScrewLengthWidthMicron(crop, mmpp, mr) && mr.valid;
+					if (ok)
+					{
+						mr.oriented_rect.center.x += (float)bound.x;
+						mr.oriented_rect.center.y += (float)bound.y;
+						useDirect = true;
+					}
+				}
+			}
+			if (!ok)
+				continue;
+
+			latestMr = mr;
+			latestCaliper = caliper_p;
+			drawOnFullImage = useDirect;
+			measured = true;
+		}
+	}
+
+	if (!measured)
+	{
+		if (calibMeasureError.isEmpty())
+			calibMeasureError = QString::fromUtf8("测量失败：未识别到标定物，请确认 ROI 与图像对比度。");
+		GetToolBase()->m_Tools[tool_index].PublicResult.State = false;
+		refreshCalibOutputMsg();
+		return -1;
+	}
+
+	applyLatestCalibResult(latestMr);
+
+	srcImage.copyTo(dstImage);
+	if (dstImage.channels() == 1)
+		cv::cvtColor(dstImage, dstImage, cv::COLOR_GRAY2BGR);
+	else if (dstImage.channels() == 4)
+		cv::cvtColor(dstImage, dstImage, cv::COLOR_RGBA2BGR);
+
+	if (caliper_itemList.isEmpty() || drawOnFullImage)
+		drawCalibMeasureRectDirect(dstImage, latestMr);
+	else
+		drawCalibMeasureRectOnImage(dstImage, latestCaliper, latestMr);
+
+	if (ui.checkViewROI->isChecked())
+		dstRoiImage = dstImage.clone();
+
+	GetToolBase()->m_Tools[tool_index].PublicImage.OutputImage = dstImage;
+	GetToolBase()->m_Tools[tool_index].PublicImage.OutputRoiImage = dstRoiImage;
+	GetToolBase()->m_Tools[tool_index].PublicResult.State = true;
+	refreshCalibOutputMsg();
+	return 0;
+}
+
+void frmEdgeWidthMeasure::drawCalibMeasureRectDirect(cv::Mat& image, const ScrewLengthWidthMeasureResult& mr)
+{
+	if (image.empty() || !mr.valid)
+		return;
+	if (image.channels() == 1)
+		cv::cvtColor(image, image, cv::COLOR_GRAY2BGR);
+	else if (image.channels() == 4)
+		cv::cvtColor(image, image, cv::COLOR_RGBA2BGR);
+
+	cv::Point2f vtx[4];
+	mr.oriented_rect.points(vtx);
+	for (int j = 0; j < 4; j++)
+		cv::line(image, vtx[j], vtx[(j + 1) % 4], cv::Scalar(0, 255, 0), 2);
+	cv::putText(image,
+		cv::format("L=%.1fum W=%.1fum", mr.length_um, mr.width_um),
+		cv::Point((int)vtx[0].x, (int)(std::max)(0.f, vtx[0].y - 8.f)),
+		cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(0, 0, 255), 2);
+}
+
+void frmEdgeWidthMeasure::drawCalibMeasureRectOnImage(cv::Mat& image, const CaliperP& caliper, const ScrewLengthWidthMeasureResult& mr)
+{
+	if (image.empty() || !mr.valid)
+		return;
+
+	float dx = caliper.pp2.x() - caliper.pp1.x();
+	float dy = caliper.pp2.y() - caliper.pp1.y();
+	float length = std::sqrt(dx * dx + dy * dy);
+	float height = caliper.height;
+	if (length < 1e-5f)
+		return;
+
+	float ux = dx / length;
+	float uy = dy / length;
+	float vx = uy;
+	float vy = -ux;
+
+	std::vector<cv::Point2f> srcPoints(4);
+	srcPoints[0] = cv::Point2f(caliper.pp1.x() + vx * height / 2, caliper.pp1.y() + vy * height / 2);
+	srcPoints[1] = cv::Point2f(caliper.pp2.x() + vx * height / 2, caliper.pp2.y() + vy * height / 2);
+	srcPoints[2] = cv::Point2f(caliper.pp2.x() - vx * height / 2, caliper.pp2.y() - vy * height / 2);
+	srcPoints[3] = cv::Point2f(caliper.pp1.x() - vx * height / 2, caliper.pp1.y() - vy * height / 2);
+
+	std::vector<cv::Point2f> dstPoints;
+	dstPoints.emplace_back(0, 0);
+	dstPoints.emplace_back(length, 0);
+	dstPoints.emplace_back(length, height);
+	dstPoints.emplace_back(0, height);
+
+	cv::Mat invMat = cv::getPerspectiveTransform(dstPoints, srcPoints);
+
+	cv::Point2f vtx[4];
+	mr.oriented_rect.points(vtx);
+	std::vector<cv::Point2f> roiVtx(vtx, vtx + 4);
+	std::vector<cv::Point2f> imgVtx;
+	cv::perspectiveTransform(roiVtx, imgVtx, invMat);
+
+	if (image.channels() == 1)
+		cv::cvtColor(image, image, cv::COLOR_GRAY2BGR);
+	else if (image.channels() == 4)
+		cv::cvtColor(image, image, cv::COLOR_RGBA2BGR);
+
+	for (int j = 0; j < 4; j++)
+		cv::line(image, imgVtx[j], imgVtx[(j + 1) % 4], cv::Scalar(0, 255, 0), 2);
+
+	cv::putText(image,
+		cv::format("L=%.1fum W=%.1fum", mr.length_um, mr.width_um),
+		cv::Point((int)imgVtx[0].x, (int)(std::max)(0.f, imgVtx[0].y - 8.f)),
+		cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(0, 0, 255), 2);
+}
+
+bool frmEdgeWidthMeasure::measureScrewLengthWidthMicron(const cv::Mat& src, double mmPerPixel, ScrewLengthWidthMeasureResult& out)
+{
+	out = ScrewLengthWidthMeasureResult();
+	if (src.empty() || mmPerPixel <= 1e-15)
+		return false;
+
+	const double umPerPixel = mmPerPixel * 1000.0;
+	// 2× 放大后提取轮廓，边长再折回原始像素坐标，减轻像素量化误差（配合浮点 minAreaRect）
+	const double invScale = 0.5;
+
+	cv::Mat gray;
+	if (src.channels() == 3)
+		cv::cvtColor(src, gray, cv::COLOR_BGR2GRAY);
+	else if (src.channels() == 4)
+		cv::cvtColor(src, gray, cv::COLOR_BGRA2GRAY);
+	else
+		gray = src.clone();
+
+	cv::Mat grayUp;
+	cv::resize(gray, grayUp, cv::Size(), 2.0, 2.0, cv::INTER_LINEAR);
+	cv::GaussianBlur(grayUp, grayUp, cv::Size(3, 3), 0.6, 0.6);
+
+	const double minAreaThresh = (std::max)(20.0, grayUp.total() * 0.002);
+	cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
+
+	auto pickLargestContour = [&](const cv::Mat& bin, std::vector<cv::Point>& bestContour) -> bool
+	{
+		cv::Mat morph = bin.clone();
+		cv::morphologyEx(morph, morph, cv::MORPH_CLOSE, kernel);
+		std::vector<std::vector<cv::Point>> contours;
+		cv::findContours(morph, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_NONE);
+		double maxArea = 0.0;
+		int bestIdx = -1;
+		for (size_t i = 0; i < contours.size(); ++i)
+		{
+			double a = cv::contourArea(contours[i]);
+			if (a > maxArea)
+			{
+				maxArea = a;
+				bestIdx = (int)i;
+			}
+		}
+		if (bestIdx < 0 || maxArea < minAreaThresh)
+			return false;
+		bestContour = contours[(size_t)bestIdx];
+		return true;
+	};
+
+	std::vector<cv::Point> bestContour;
+	bool found = false;
+	for (int thType : { cv::THRESH_BINARY_INV, cv::THRESH_BINARY })
+	{
+		cv::Mat binary;
+		cv::threshold(grayUp, binary, 0, 255, thType | cv::THRESH_OTSU);
+		std::vector<cv::Point> c;
+		if (pickLargestContour(binary, c))
+		{
+			bestContour = c;
+			found = true;
+			break;
+		}
+	}
+	if (!found)
+	{
+		cv::Mat edges;
+		cv::Canny(grayUp, edges, 30, 100);
+		cv::dilate(edges, edges, kernel);
+		std::vector<cv::Point> c;
+		if (pickLargestContour(edges, c))
+		{
+			bestContour = c;
+			found = true;
+		}
+	}
+	if (!found)
+		return false;
+
+	const std::vector<cv::Point>& c = bestContour;
+	std::vector<cv::Point2f> pts(c.size());
+	for (size_t i = 0; i < c.size(); ++i)
+		pts[i] = cv::Point2f((float)((c[i].x + 0.5f) * invScale), (float)((c[i].y + 0.5f) * invScale));
+
+	cv::RotatedRect rr = cv::minAreaRect(pts);
+
+	// 使用最小外接矩形的边向量做投影，避免仅依赖 rr.size 的离散误差
+	cv::Point2f vertices[4];
+	rr.points(vertices);
+
+	cv::Point2f e01 = vertices[1] - vertices[0];
+	cv::Point2f e12 = vertices[2] - vertices[1];
+	float len01 = std::sqrt(e01.x * e01.x + e01.y * e01.y);
+	float len12 = std::sqrt(e12.x * e12.x + e12.y * e12.y);
+	if (len01 < 1e-6f && len12 < 1e-6f)
+		return false;
+
+	cv::Point2f u = (len01 >= len12) ? e01 : e12; // 取更长的边作为“长度”方向
+	float uLen = std::sqrt(u.x * u.x + u.y * u.y);
+	if (uLen < 1e-6f)
+		return false;
+	u.x /= uLen;
+	u.y /= uLen;
+
+	// v 为与 u 垂直的单位向量
+	cv::Point2f v(-u.y, u.x);
+
+	bool first = true;
+	double minU = 0.0, maxU = 0.0, minV = 0.0, maxV = 0.0;
+	for (const auto& p : pts)
+	{
+		cv::Point2f d = p - rr.center;
+		double pu = (double)(d.x * u.x + d.y * u.y);
+		double pv = (double)(d.x * v.x + d.y * v.y);
+		if (first)
+		{
+			minU = maxU = pu;
+			minV = maxV = pv;
+			first = false;
+		}
+		else
+		{
+			minU = std::min(minU, pu);
+			maxU = std::max(maxU, pu);
+			minV = std::min(minV, pv);
+			maxV = std::max(maxV, pv);
+		}
+	}
+
+	out.length_px = maxU - minU;
+	out.width_px = maxV - minV;
+	if (out.length_px < 1e-6 || out.width_px < 1e-6)
+		return false;
+
+	// 统一输出：length_px 始终为长边
+	if (out.length_px < out.width_px)
+		std::swap(out.length_px, out.width_px);
+
+	out.angle_deg = (double)rr.angle;
+	out.oriented_rect = rr;
+	out.length_um = out.length_px * umPerPixel;
+	out.width_um = out.width_px * umPerPixel;
+	out.valid = true;
+	return true;
 }
 
 double frmEdgeWidthMeasure::getLength(cv::Mat srcImage)

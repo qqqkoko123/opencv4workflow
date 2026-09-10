@@ -1,4 +1,4 @@
-#ifndef __OCR_LITE_H__
+﻿#ifndef __OCR_LITE_H__
 #define __OCR_LITE_H__
 
 #include "opencv2/core.hpp"

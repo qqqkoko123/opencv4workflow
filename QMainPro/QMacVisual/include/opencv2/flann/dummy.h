@@ -1,4 +1,4 @@
-
+﻿
 #ifndef OPENCV_FLANN_DUMMY_H_
 #define OPENCV_FLANN_DUMMY_H_
 

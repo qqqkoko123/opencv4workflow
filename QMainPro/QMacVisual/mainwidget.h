@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #pragma execution_character_set("utf-8")
 
 #include <QWidget>
@@ -19,13 +19,13 @@ public:
     //head's function
     void setLogo(const QString &imgFile = "", const QString &name = "");
     void setTitle(const QString &info = "");
-    void setEnabelHeadMove(bool can_move = true); //ÊÇ·ñÆô¶¯ÒÆ¶¯
+    void setEnabelHeadMove(bool can_move = true); //æ˜¯å¦å¯åŠ¨ç§»åŠ¨
     //mainwindow's function
     void setToolDockWidget(QWidget *w);
     void setFlowDockWidget(QWidget *w);
     void setLogDockWidget(QWidget *w);
-    void setCenterWidget(QWidget *w); //ÉèÖÃÖĞĞÄ½çÃæ
-    void setStatusInfo(const QString &info); //ÉèÖÃ¶ÔÓ¦µÄ×´Ì¬ĞÅÏ¢
+    void setCenterWidget(QWidget *w); //è®¾ç½®ä¸­å¿ƒç•Œé¢
+    void setStatusInfo(const QString &info); //è®¾ç½®å¯¹åº”çš„çŠ¶æ€ä¿¡æ¯
 
 private slots:
     void doClose();

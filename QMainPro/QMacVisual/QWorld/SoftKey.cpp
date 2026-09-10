@@ -1,9 +1,9 @@
-#include "QWorld.h"
+ï»¿#include "QWorld.h"
 #include <QCryptographicHash>
 #include <QString>
 
-#pragma region Èí¼şËø
-//Èí¼şËø
+#pragma region è½¯ä»¶é”
+//è½¯ä»¶é”
 QString SoftKey::GetKey(QString key)
 {	
 	try

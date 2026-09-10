@@ -66,6 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);../../../QPluginsYoloV13/YoloV13/x64/Release/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13/include;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QMainPro/QMacVisual/include;../../../QPlugins/YoloV13/YoloV13/includes</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -75,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>../../../QMainPro/QMacVisual/include;../../../QPlugins/YoloV13/YoloV13/x64/Debug/uic;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;../../../QPlugins/YoloV13/YoloV13;../../../QPlugins/YoloV13/YoloV13/tools;../../../QPlugins/YoloV13/YoloV13/include;../../../QPlugins/YoloV13/YoloV13/includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -84,6 +86,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -98,6 +101,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ClCompile>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DebugInformationFormat>None</DebugInformationFormat>

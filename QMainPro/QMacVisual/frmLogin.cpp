@@ -1,4 +1,4 @@
-#include "frmLogin.h"
+ï»¿#include "frmLogin.h"
 #include <QMessageBox>
 #include <QTime>
 #include "datavar.h"
@@ -11,9 +11,9 @@ frmLogin::frmLogin(QWidget*parent)
 	this->setWindowIcon(QIcon(":/res/ico/user.png"));	
 	connect(this, &frmLogin::sendInStateSignal, dataVar::m_pWindow, &MainWindow::slot_LoginBtnState);
 	connect(this, &frmLogin::sendOutStateSignal, dataVar::m_pWindow, &MainWindow::slot_LogoutBtnState);
-	//³õÊ¼»¯±êÌâÀ¸
+	//åˆå§‹åŒ–æ ‡é¢˜æ 
 	initTitleBar();	
-	//ÉèÖÃTabË³Ğò
+	//è®¾ç½®Tabé¡ºåº
 	ui.txtUserName->setFocus();
 	setTabOrder(ui.txtUserName, ui.txtUserPW);
 	setTabOrder(ui.txtUserPW, ui.btnLogout);
@@ -32,14 +32,14 @@ void frmLogin::initTitleBar()
 	m_titleBar->setBackgroundColor(3, 110, 95);
 	m_titleBar->setStyleSheet("background-color: rgba(0, 0, 0,0);color:white;font-size:16px");
 	m_titleBar->setTitleIcon(":/res/ico/user.png");
-	m_titleBar->setTitleContent("ÓÃ»§µÇÂ¼");
+	m_titleBar->setTitleContent("ç”¨æˆ·ç™»å½•");
 	m_titleBar->setButtonType(ONLY_CLOSE_BUTTON);
 	m_titleBar->setTitleWidth(this->width());
 }
 
 void frmLogin::paintEvent(QPaintEvent* event)
 {
-	//ÉèÖÃ±³¾°É«
+	//è®¾ç½®èƒŒæ™¯è‰²
 	QPainter painter(this);
 	QPainterPath pathBack;
 	pathBack.setFillRule(Qt::WindingFill);
@@ -51,7 +51,7 @@ void frmLogin::paintEvent(QPaintEvent* event)
 
 void frmLogin::form_load()
 {	
-	//SQLiteÊı¾İ¿â²Ù×÷	
+	//SQLiteæ•°æ®åº“æ“ä½œ	
 	QFileInfo file(dataVar::path_DB + "MyDataBase.db");
 	if (!file.exists())
 	{		
@@ -77,17 +77,17 @@ void frmLogin::on_btnLogout_clicked()
 		dataVar::login_state = 0;		
 		dataVar::admin_login_state = 0;
 		emit dataVar::fProItemTab->sig_InfoClick();
-		emit dataVar::fProItemTab->sig_Log("ÓÃ»§Ãû: " + dataVar::user_name + "ÒÑ×¢Ïú£¡");
+		emit dataVar::fProItemTab->sig_Log("ç”¨æˆ·å: " + dataVar::user_name + "å·²æ³¨é”€ï¼");
 		dataVar::user_name = QString();
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "ÌáÊ¾", "ÒÑ×¢Ïú£¡");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "æç¤º", "å·²æ³¨é”€ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
 		msgBox.exec();				
 	}
 	else
 	{
 		emit dataVar::fProItemTab->sig_WarnClick();
-		emit dataVar::fProItemTab->sig_Log("ÇëµÇÂ¼ºóÔÙ×¢Ïú£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "ÇëµÇÂ¼ºóÔÙ×¢Ïú£¡");
+		emit dataVar::fProItemTab->sig_Log("è¯·ç™»å½•åå†æ³¨é”€ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "è¯·ç™»å½•åå†æ³¨é”€ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));		
 		msgBox.exec();		
 	}
@@ -108,8 +108,8 @@ void frmLogin::on_btnLogin_clicked()
 	if (dataVar::login_state == 1)
 	{
 		emit dataVar::fProItemTab->sig_WarnClick();
-		emit dataVar::fProItemTab->sig_Log("ÓÃ»§Ãû: " + dataVar::user_name + "ÒÑµÇÂ¼£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "ÓÃ»§Ãû: " + dataVar::user_name + "ÒÑµÇÂ¼£¡");
+		emit dataVar::fProItemTab->sig_Log("ç”¨æˆ·å: " + dataVar::user_name + "å·²ç™»å½•ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "ç”¨æˆ·å: " + dataVar::user_name + "å·²ç™»å½•ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 		msgBox.exec();
 		return;
@@ -123,8 +123,8 @@ void frmLogin::on_btnLogin_clicked()
 		if (ui.txtUserName->text() == "" || ui.txtUserPW->text() == "")
 		{
 			emit dataVar::fProItemTab->sig_WarnClick();
-			emit dataVar::fProItemTab->sig_Log("ÓÃ»§Ãû»òÓÃ»§ÃÜÂë²»ÄÜÎª¿Õ£¡");
-			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "ÓÃ»§Ãû»òÓÃ»§ÃÜÂë²»ÄÜÎª¿Õ£¡");
+			emit dataVar::fProItemTab->sig_Log("ç”¨æˆ·åæˆ–ç”¨æˆ·å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
+			QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "ç”¨æˆ·åæˆ–ç”¨æˆ·å¯†ç ä¸èƒ½ä¸ºç©ºï¼");
 			msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));			
 			msgBox.exec();		
 			return;
@@ -145,16 +145,16 @@ void frmLogin::on_btnLogin_clicked()
 				dataVar::user_name = ui.txtUserName->text();	
 				dataVar::startTime = QDateTime::currentDateTime();
 				emit dataVar::fProItemTab->sig_InfoClick();
-				emit dataVar::fProItemTab->sig_Log("ÓÃ»§Ãû: " + dataVar::user_name + "µÇÂ¼³É¹¦£¡");
-				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "ÌáÊ¾", "µÇÂ¼³É¹¦£¡");
+				emit dataVar::fProItemTab->sig_Log("ç”¨æˆ·å: " + dataVar::user_name + "ç™»å½•æˆåŠŸï¼");
+				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "æç¤º", "ç™»å½•æˆåŠŸï¼");
 				msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));				
 				msgBox.exec();			
 			}
 			else
 			{
 				emit dataVar::fProItemTab->sig_ErrorClick();
-				emit dataVar::fProItemTab->sig_Log("ÓÃ»§Ãû»òÓÃ»§ÃÜÂë´íÎó£¡");
-				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "ÓÃ»§Ãû»òÓÃ»§ÃÜÂë´íÎó£¡");
+				emit dataVar::fProItemTab->sig_Log("ç”¨æˆ·åæˆ–ç”¨æˆ·å¯†ç é”™è¯¯ï¼");
+				QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "ç”¨æˆ·åæˆ–ç”¨æˆ·å¯†ç é”™è¯¯ï¼");
 				msgBox.setWindowIcon(QIcon(":/res/ico/error.png"));				
 				msgBox.exec();				
 			}
@@ -163,8 +163,8 @@ void frmLogin::on_btnLogin_clicked()
 	else
 	{
 		emit dataVar::fProItemTab->sig_ErrorClick();
-		emit dataVar::fProItemTab->sig_Log("Êı¾İ¿âÁ¬½ÓÊ§°Ü£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "´íÎó", "Êı¾İ¿âÁ¬½ÓÊ§°Ü£¡");
+		emit dataVar::fProItemTab->sig_Log("æ•°æ®åº“è¿æ¥å¤±è´¥ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "é”™è¯¯", "æ•°æ®åº“è¿æ¥å¤±è´¥ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/error.png"));		
 		msgBox.exec();		
 	}

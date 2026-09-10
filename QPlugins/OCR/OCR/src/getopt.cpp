@@ -1,4 +1,4 @@
-/*
+﻿/*
  * getopt - POSIX like getopt for Windows console Application
  *
  * win-c - Windows Console Library

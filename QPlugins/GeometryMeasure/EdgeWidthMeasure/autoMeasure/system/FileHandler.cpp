@@ -1,4 +1,4 @@
-#include "FileHandler.h"
+﻿#include "FileHandler.h"
 
 #include <QFile>
 #include <QDebug>

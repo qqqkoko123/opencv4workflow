@@ -1,4 +1,4 @@
-// ScopedTimer.hpp
+﻿// ScopedTimer.hpp
 #ifndef SCOPEDTIMER_HPP
 #define SCOPEDTIMER_HPP
 

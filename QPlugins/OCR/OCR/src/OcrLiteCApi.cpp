@@ -1,4 +1,4 @@
-#ifdef __CLIB__
+﻿#ifdef __CLIB__
 
 #include "OcrLiteCApi.h"
 #include "OcrLite.h"

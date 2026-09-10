@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by Jiajun Chen on 2022/1/9.
  */
 #ifndef QT_OBJECT_MEASURE_CVPOINTUTIL_H

@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * libdmtx - Data Matrix Encoding/Decoding Library
  * Copyright 2008, 2009 Mike Laughton. All rights reserved.
  *
@@ -62,10 +62,7 @@ extern "C" {
 #define DmtxModuleData              0x40
 
 #define DMTX_CHECK_BOUNDS(l,i) (assert((i) >= 0 && (i) < (l)->length && (l)->length <= (l)->capacity))
-// Ìí¼Ó8Î»»Ò¶ÈÏñËØ´ò°ü¸ñÊ½µÄ¶¨Òå£¬¼æÈİ¾É´úÂë
-#ifndef DmtxPack8bpp
-#define DmtxPack8bpp DmtxPack8bppK
-#endif
+
 typedef enum {
    DmtxStatusEncoding, /* Encoding is currently underway */
    DmtxStatusComplete, /* Encoding is done and everything went well */

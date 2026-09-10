@@ -1,4 +1,4 @@
-#ifndef OPENCV_FEATURE2D_HAL_INTERFACE_H
+﻿#ifndef OPENCV_FEATURE2D_HAL_INTERFACE_H
 #define OPENCV_FEATURE2D_HAL_INTERFACE_H
 
 #include "opencv2/core/cvdef.h"

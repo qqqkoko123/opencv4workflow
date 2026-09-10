@@ -1,23 +1,23 @@
-#pragma once
+ï»¿#pragma once
 #include<opencv2/opencv.hpp>
 //#include <opencv2/highgui/highgui.hpp>
 //#include <opencv2/imgproc/imgproc.hpp>
 //using namespace cv;
-//ÕÒ±ß
+//æ‰¾è¾¹
 void fitLineRansac(const std::vector<cv::Point2f>& points,
 	cv::Vec4f& line, int iterations, double sigma,
 	double k_min, double k_max);
-//RANSAC ÄâºÏ2D Ö±Ïß
-//ÊäÈë²ÎÊı£ºpoints--ÊäÈëµã¼¯
-//        iterations--µü´ú´ÎÊı
-//        sigma--Êı¾İºÍÄ£ĞÍÖ®¼ä¿É½ÓÊÜµÄ²îÖµ,³µµÀÏßÏñËØ¿í´øÒ»°ãÎª10×óÓÒ
-//              £¨Parameter use to compute the fitting score£©
-//        k_min/k_max--ÄâºÏµÄÖ±ÏßĞ±ÂÊµÄÈ¡Öµ·¶Î§.
-//                     ¿¼ÂÇµ½×óÓÒ³µµÀÏßÔÚÍ¼ÏñÖĞµÄĞ±ÂÊÎ»ÓÚÒ»¶¨·¶Î§ÄÚ£¬
-//                      Ìí¼Ó´Ë²ÎÊı£¬Í¬Ê±¿ÉÒÔ±ÜÃâ¼ì²â´¹ÏßºÍË®Æ½Ïß
-//Êä³ö²ÎÊı:line--ÄâºÏµÄÖ±Ïß²ÎÊı,(vx, vy, x0, y0) 
-// (vx, vy) Ö±Ïß·½Ïò,(x0, y0)Ö±Ïßµã¼¯
+//RANSAC æ‹Ÿåˆ2D ç›´çº¿
+//è¾“å…¥å‚æ•°ï¼špoints--è¾“å…¥ç‚¹é›†
+//        iterations--è¿­ä»£æ¬¡æ•°
+//        sigma--æ•°æ®å’Œæ¨¡å‹ä¹‹é—´å¯æ¥å—çš„å·®å€¼,è½¦é“çº¿åƒç´ å®½å¸¦ä¸€èˆ¬ä¸º10å·¦å³
+//              ï¼ˆParameter use to compute the fitting scoreï¼‰
+//        k_min/k_max--æ‹Ÿåˆçš„ç›´çº¿æ–œç‡çš„å–å€¼èŒƒå›´.
+//                     è€ƒè™‘åˆ°å·¦å³è½¦é“çº¿åœ¨å›¾åƒä¸­çš„æ–œç‡ä½äºä¸€å®šèŒƒå›´å†…ï¼Œ
+//                      æ·»åŠ æ­¤å‚æ•°ï¼ŒåŒæ—¶å¯ä»¥é¿å…æ£€æµ‹å‚çº¿å’Œæ°´å¹³çº¿
+//è¾“å‡ºå‚æ•°:line--æ‹Ÿåˆçš„ç›´çº¿å‚æ•°,(vx, vy, x0, y0) 
+// (vx, vy) ç›´çº¿æ–¹å‘,(x0, y0)ç›´çº¿ç‚¹é›†
 
-//¸Ä½øµÄcanny±ßÔµÊ¶±ğËã×Ó
+//æ”¹è¿›çš„cannyè¾¹ç¼˜è¯†åˆ«ç®—å­
 void cannyEdgeDetection(cv::Mat img, cv::Mat& result, int guaSize, 
 	double hightThres, double lowThres);

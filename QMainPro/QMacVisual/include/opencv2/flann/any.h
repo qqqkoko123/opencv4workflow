@@ -1,4 +1,4 @@
-#ifndef OPENCV_FLANN_ANY_H_
+﻿#ifndef OPENCV_FLANN_ANY_H_
 #define OPENCV_FLANN_ANY_H_
 /*
  * (C) Copyright Christopher Diggins 2005-2011

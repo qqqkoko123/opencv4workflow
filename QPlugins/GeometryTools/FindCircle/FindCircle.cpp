@@ -1,4 +1,4 @@
-#include "FindCircle.h"
+ï»¿#include "FindCircle.h"
 #include "frmFindCircle.h"
 
 FindCircle::FindCircle()
@@ -7,12 +7,12 @@ FindCircle::FindCircle()
 
 QString FindCircle::name()
 {
-    return "Ñ°ÕÒÔ²";
+    return "å¯»æ‰¾åœ†";
 }
 
 QString FindCircle::information()
 {
-    return "¼¸ºÎ¹¤¾ß";
+    return "å‡ ä½•å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

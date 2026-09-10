@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+ï»¿#include "mainwindow.h"
 #include <QMenuBar>
 #include <QToolBar>
 #include <QMenu>
@@ -19,10 +19,10 @@ MainWindow::MainWindow(QWidget* parent)
 {
 	this->setContextMenuPolicy(Qt::NoContextMenu);
 	this->setWindowFlags(Qt::Widget);
-	//Á¬½ÓµÇÈëµÇ³öĞÅºÅÓë²Ûº¯Êı
+	//è¿æ¥ç™»å…¥ç™»å‡ºä¿¡å·ä¸æ§½å‡½æ•°
 	connect(this, &MainWindow::sig_Login, dataVar::fProItemTab, &frmProItemTab::slot_Login);
 	connect(this, &MainWindow::sig_Logout, dataVar::fProItemTab, &frmProItemTab::slot_Logout);
-	//Á¬½ÓÑ­»·ÔËĞĞ»òÍ£Ö¹ĞÅºÅÓë²Ûº¯Êı
+	//è¿æ¥å¾ªç¯è¿è¡Œæˆ–åœæ­¢ä¿¡å·ä¸æ§½å‡½æ•°
 	connect(dataVar::fProItemTab, &frmProItemTab::sig_CycleRun, this, &MainWindow::slot_CycleRun);
 	connect(dataVar::fProItemTab, &frmProItemTab::sig_CycleStop, this, &MainWindow::slot_CycleStop);
 	connect(this, &MainWindow::sig_ManualRun, dataVar::fProItemTab, &frmProItemTab::slot_ManualRun);
@@ -33,11 +33,11 @@ MainWindow::MainWindow(QWidget* parent)
 	initStatusBar();
 	slot_LogoutBtnState();
 	slot_InitLayout();
-	//³¤Ê±¼ä´¦ÀíÊÂ¼ş
+	//é•¿æ—¶é—´å¤„ç†äº‹ä»¶
 	pFolderOperation = new FolderOperation();
 	QTimer* p_timer = new QTimer(this);
 	connect(p_timer, SIGNAL(timeout()), this, SLOT(timerEvent()));
-	p_timer->start(10 * 60 * 1000);  //10·ÖÖÓ
+	p_timer->start(10 * 60 * 1000);  //10åˆ†é’Ÿ
 }
 
 MainWindow::~MainWindow()
@@ -65,7 +65,7 @@ void MainWindow::timerEvent()
 	pFolderOperation->FindFileForDelete(dataVar::soft_key, dataVar::path_LA, day);
 }
 
-//×Ô¶¨Òå²Ëµ¥À¸Í¼±ê´óĞ¡
+//è‡ªå®šä¹‰èœå•æ å›¾æ ‡å¤§å°
 DFMenuIconStyle::DFMenuIconStyle()
 	: QProxyStyle()
 {
@@ -142,11 +142,11 @@ void MainWindow::initMenu()
 {
 	QMenuBar* menuBar = new QMenuBar(this);
 	this->setMenuBar(menuBar);
-	//×Ô¶¨Òå²Ëµ¥À¸Í¼±ê´óĞ¡
+	//è‡ªå®šä¹‰èœå•æ å›¾æ ‡å¤§å°
 	DFMenuIconStyle* m_pMenuStyle = new DFMenuIconStyle();
 	menuBar->setStyle(m_pMenuStyle);
 	menuBar->setStyleSheet("background-color: rgb(240, 248, 226);font-size:16px;");
-	//²Ëµ¥ÑùÊ½
+	//èœå•æ ·å¼
 	QString menuStyle(
 		"QMenu::item{"				
 		"color: rgb(20, 20, 20);"
@@ -158,39 +158,39 @@ void MainWindow::initMenu()
 		"background-color: rgb(152, 170, 216);"
 		"}"
 	);
-	fileMenu = menuBar->addMenu("ÎÄ¼ş");
+	fileMenu = menuBar->addMenu("æ–‡ä»¶");
 	fileMenu->setStyleSheet(menuStyle);
-	QAction* pToolCreateProAc = fileMenu->addAction("ĞÂ½¨ÏîÄ¿");
+	QAction* pToolCreateProAc = fileMenu->addAction("æ–°å»ºé¡¹ç›®");
 	pToolCreateProAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolCreateProAc->setIcon(QIcon(":/res/ico/NewProducts.png"));
 	connect(pToolCreateProAc, &QAction::triggered, this, &MainWindow::slot_DoCreateProject);
-	QAction* pToolOpenProAc = fileMenu->addAction("´ò¿ªÏîÄ¿");
+	QAction* pToolOpenProAc = fileMenu->addAction("æ‰“å¼€é¡¹ç›®");
 	pToolOpenProAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolOpenProAc->setIcon(QIcon(":/res/ico/Open.png"));
 	connect(pToolOpenProAc, &QAction::triggered, this, &MainWindow::slot_DoOpenProject);
-	QAction* pToolSaveProAc = fileMenu->addAction("±£´æÏîÄ¿");
+	QAction* pToolSaveProAc = fileMenu->addAction("ä¿å­˜é¡¹ç›®");
 	pToolSaveProAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolSaveProAc->setIcon(QIcon(":/res/ico/Save.png"));
 	connect(pToolSaveProAc, &QAction::triggered, this, &MainWindow::slot_DoSaveProject);
-	QAction* pToolSaveAsProAc = fileMenu->addAction("ÏîÄ¿Áí´æÎª");
+	QAction* pToolSaveAsProAc = fileMenu->addAction("é¡¹ç›®å¦å­˜ä¸º");
 	pToolSaveAsProAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolSaveAsProAc->setIcon(QIcon(":/res/ico/Save as.png"));
 	connect(pToolSaveAsProAc, &QAction::triggered, this, &MainWindow::slot_DoSaveAsProject);
-	viewMenu = menuBar->addMenu("ÊÓÍ¼");
+	viewMenu = menuBar->addMenu("è§†å›¾");
 	viewMenu->setStyleSheet(menuStyle);
-	QAction* pToolAc = viewMenu->addAction("¹¤¾ßÏä");
+	QAction* pToolAc = viewMenu->addAction("å·¥å…·ç®±");
 	pToolAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolAc->setIcon(QIcon(":/Bitmaps/set.png"));
-	QAction* pFlowAc = viewMenu->addAction("Á÷³ÌÍ¼");
+	QAction* pFlowAc = viewMenu->addAction("æµç¨‹å›¾");
 	pFlowAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pFlowAc->setIcon(QIcon(":/Bitmaps/pros.png"));
-	QAction* pLogAc = viewMenu->addAction("ÔËĞĞÈÕÖ¾");
+	QAction* pLogAc = viewMenu->addAction("è¿è¡Œæ—¥å¿—");
 	pLogAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pLogAc->setIcon(QIcon(":/Bitmaps/log.png"));
-	QAction* pDefaultLayoutAc = viewMenu->addAction("Ä¬ÈÏ²¼¾Ö");
+	QAction* pDefaultLayoutAc = viewMenu->addAction("é»˜è®¤å¸ƒå±€");
 	pDefaultLayoutAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pDefaultLayoutAc->setIcon(QIcon(":/Bitmaps/default_layout.png"));
-	QAction* pSaveLayoutAc = viewMenu->addAction("±£´æ²¼¾Ö");
+	QAction* pSaveLayoutAc = viewMenu->addAction("ä¿å­˜å¸ƒå±€");
 	pSaveLayoutAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pSaveLayoutAc->setIcon(QIcon(":/Bitmaps/save_layout.png"));
 	connect(pToolAc, &QAction::triggered, this, [this]() {
@@ -207,41 +207,41 @@ void MainWindow::initMenu()
 		});
 	connect(pDefaultLayoutAc, &QAction::triggered, this, &MainWindow::slot_DefaultLayout);
 	connect(pSaveLayoutAc, &QAction::triggered, this, &MainWindow::slot_SaveLayout);
-	setMenu = menuBar->addMenu("ÉèÖÃ");
+	setMenu = menuBar->addMenu("è®¾ç½®");
 	setMenu->setStyleSheet(menuStyle);
-	QAction* pToolAcqAc = setMenu->addAction("Ïà»úÉèÖÃ");
+	QAction* pToolAcqAc = setMenu->addAction("ç›¸æœºè®¾ç½®");
 	pToolAcqAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolAcqAc->setIcon(QIcon(":/res/ico/cam.png"));
 	connect(pToolAcqAc, &QAction::triggered, this, &MainWindow::slot_DoCameraSetUp);
-	QAction* pToolNetworkAc = setMenu->addAction("ÒÇÆ÷Í¨Ñ¶");
+	QAction* pToolNetworkAc = setMenu->addAction("ä»ªå™¨é€šè®¯");
 	pToolNetworkAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolNetworkAc->setIcon(QIcon(":/res/ico/network.png"));
 	connect(pToolNetworkAc, &QAction::triggered, this, &MainWindow::slot_Instrumentation);
-	QAction* pToolVarAc = setMenu->addAction("È«¾Ö±äÁ¿");
+	QAction* pToolVarAc = setMenu->addAction("å…¨å±€å˜é‡");
 	pToolVarAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolVarAc->setIcon(QIcon(":/res/ico/var.ico"));
 	connect(pToolVarAc, &QAction::triggered, this, &MainWindow::slot_DoGlobalVariable);
-	QAction* pToolFormSetAc = setMenu->addAction("Í¼Ïñ²¼¾Ö");
+	QAction* pToolFormSetAc = setMenu->addAction("å›¾åƒå¸ƒå±€");
 	pToolFormSetAc->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolFormSetAc->setIcon(QIcon(":/res/ico/osd.png"));
 	connect(pToolFormSetAc, &QAction::triggered, this, &MainWindow::slot_DoImageLayout);
-	QAction* argMenu = setMenu->addAction("ÏµÍ³²ÎÊı");
+	QAction* argMenu = setMenu->addAction("ç³»ç»Ÿå‚æ•°");
 	argMenu->setFont(QFont("Microsoft YaHei,13.5"));
 	argMenu->setIcon(QIcon(":/res/ico/set.png"));
 	connect(argMenu, &QAction::triggered, this, &MainWindow::slot_DoSystemSetUp);
-	permisMenu = menuBar->addMenu("È¨ÏŞ");
+	permisMenu = menuBar->addMenu("æƒé™");
 	permisMenu->setStyleSheet(menuStyle);
-	pToolLogin = permisMenu->addAction("ÓÃ»§µÇÂ¼");
+	pToolLogin = permisMenu->addAction("ç”¨æˆ·ç™»å½•");
 	pToolLogin->setFont(QFont("Microsoft YaHei,13.5"));
 	pToolLogin->setIcon(QIcon(":/res/ico/user.png"));
 	connect(pToolLogin, &QAction::triggered, this, &MainWindow::slot_DoLogin);
-	QAction* pPermisSet = permisMenu->addAction("È¨ÏŞ¹ÜÀí");
+	QAction* pPermisSet = permisMenu->addAction("æƒé™ç®¡ç†");
 	pPermisSet->setFont(QFont("Microsoft YaHei,13.5"));
 	pPermisSet->setIcon(QIcon(":/Bitmaps/permis.png"));
 	connect(pPermisSet, &QAction::triggered, this, &MainWindow::slot_PermisSet);
-	auto* helpMenu = menuBar->addMenu("°ïÖú");
+	auto* helpMenu = menuBar->addMenu("å¸®åŠ©");
 	helpMenu->setStyleSheet(menuStyle);
-	QAction* btnAbout = helpMenu->addAction("¹ØÓÚ±¾Èí¼ş...");
+	QAction* btnAbout = helpMenu->addAction("å…³äºæœ¬è½¯ä»¶...");
 	btnAbout->setFont(QFont("Microsoft YaHei,13.5"));
 	btnAbout->setIcon(QIcon(":/res/ico/about.png"));
 	connect(btnAbout, &QAction::triggered, this, &MainWindow::slot_DoAbout);
@@ -249,15 +249,15 @@ void MainWindow::initMenu()
 
 void MainWindow::initToolBar()
 {
-	//¹¤¾ßÏä
-	QToolBar* toolBar = new QToolBar("toolbar", this); //´´½¨¹¤¾ßÏä
+	//å·¥å…·ç®±
+	QToolBar* toolBar = new QToolBar("toolbar", this); //åˆ›å»ºå·¥å…·ç®±
 	addToolBar(Qt::TopToolBarArea, toolBar);
 	toolBar->setMovable(false);
 	toolBar->setIconSize(QSize(36, 36));
 	toolBar->layout()->setSpacing(8);
 	toolBar->layout()->setContentsMargins(2, 2, 2, 2);
 	toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
-	//°´Å¥ÑùÊ½  
+	//æŒ‰é’®æ ·å¼  
 	QString btnStyle(
 		"QWidget{"
 		"background-color: rgb(240, 248, 226);"
@@ -270,29 +270,29 @@ void MainWindow::initToolBar()
 		"}"
 	);
 	toolBar->setStyleSheet(btnStyle);
-	m_pCreateProAc = toolBar->addAction(QIcon(":/res/ico/NewProducts.png"), "ĞÂ½¨ÏîÄ¿");
+	m_pCreateProAc = toolBar->addAction(QIcon(":/res/ico/NewProducts.png"), "æ–°å»ºé¡¹ç›®");
 	connect(m_pCreateProAc, &QAction::triggered, this, &MainWindow::slot_DoCreateProject);	
-	m_pOpenProAc = toolBar->addAction(QIcon(":/res/ico/Open.png"), "´ò¿ªÏîÄ¿");
+	m_pOpenProAc = toolBar->addAction(QIcon(":/res/ico/Open.png"), "æ‰“å¼€é¡¹ç›®");
 	connect(m_pOpenProAc, &QAction::triggered, this, &MainWindow::slot_DoOpenProject);
-	m_pSaveProAc = toolBar->addAction(QIcon(":/res/ico/Save.png"), "±£´æÏîÄ¿");
+	m_pSaveProAc = toolBar->addAction(QIcon(":/res/ico/Save.png"), "ä¿å­˜é¡¹ç›®");
 	connect(m_pSaveProAc, &QAction::triggered, this, &MainWindow::slot_DoSaveProject);
 	toolBar->addSeparator();
-	m_pVarAc = toolBar->addAction(QIcon(":/res/ico/var.ico"), "È«¾Ö±äÁ¿");
+	m_pVarAc = toolBar->addAction(QIcon(":/res/ico/var.ico"), "å…¨å±€å˜é‡");
 	connect(m_pVarAc, &QAction::triggered, this, &MainWindow::slot_DoGlobalVariable);
-	m_pNetworkAc = toolBar->addAction(QIcon(":/res/ico/network.png"), "ÒÇÆ÷Í¨Ñ¶");
+	m_pNetworkAc = toolBar->addAction(QIcon(":/res/ico/network.png"), "ä»ªå™¨é€šè®¯");
 	connect(m_pNetworkAc, &QAction::triggered, this, &MainWindow::slot_Instrumentation);
-	m_pAcqAc = toolBar->addAction(QIcon(":/res/ico/cam.png"), "Ïà»úÉèÖÃ");
+	m_pAcqAc = toolBar->addAction(QIcon(":/res/ico/cam.png"), "ç›¸æœºè®¾ç½®");
 	connect(m_pAcqAc, &QAction::triggered, this, &MainWindow::slot_DoCameraSetUp);
-	m_pLoginAc = toolBar->addAction(QIcon(":/res/ico/user.png"), "ÓÃ»§µÇÂ¼");
+	m_pLoginAc = toolBar->addAction(QIcon(":/res/ico/user.png"), "ç”¨æˆ·ç™»å½•");
 	connect(m_pLoginAc, &QAction::triggered, this, &MainWindow::slot_DoLogin);
 	toolBar->addSeparator();
-	m_pRunOnceAc = toolBar->addAction(QIcon(":/res/ico/run.png"), "µ¥´ÎÖ´ĞĞ");
+	m_pRunOnceAc = toolBar->addAction(QIcon(":/res/ico/run.png"), "å•æ¬¡æ‰§è¡Œ");
 	connect(m_pRunOnceAc, &QAction::triggered, dataVar::fProItemTab, &frmProItemTab::slot_AllCycleRunOnce);
-	m_pRunContinueAc = toolBar->addAction(QIcon(":/res/ico/cycle.png"), "Á¬ĞøÖ´ĞĞ");
-	m_pRunContinueAc->setObjectName("m_pRunContinueAc"); //¹ØÁªon_m_pRunContinueAc²Ûº¯Êı
+	m_pRunContinueAc = toolBar->addAction(QIcon(":/res/ico/cycle.png"), "è¿ç»­æ‰§è¡Œ");
+	m_pRunContinueAc->setObjectName("m_pRunContinueAc"); //å…³è”on_m_pRunContinueAcæ§½å‡½æ•°
 	QMetaObject::connectSlotsByName(this);
 	connect(m_pRunContinueAc, &QAction::triggered, dataVar::fProItemTab, &frmProItemTab::slot_AllCycleRunContinue);	
-	m_pStopAc = toolBar->addAction(QIcon(":/res/ico/stop.png"), "Í£Ö¹");
+	m_pStopAc = toolBar->addAction(QIcon(":/res/ico/stop.png"), "åœæ­¢");
 	connect(m_pStopAc, &QAction::triggered, this, &MainWindow::slot_AllCycleStop);
 	connect(m_pStopAc, &QAction::triggered, dataVar::fProItemTab, &frmProItemTab::slot_AllCycleStop);
 	m_leftToolbar = new QToolBar("left_bar", this);
@@ -309,9 +309,9 @@ void MainWindow::initToolBar()
 	addToolBar(Qt::BottomToolBarArea, m_bottomToolbar);
 	m_leftToolbar->setVisible(false);
 	m_bottomToolbar->setVisible(false);
-	m_pToolAc = new QAction(QIcon(":/Bitmaps/set.png"), "¹¤\n¾ß\nÏä", this);
-	m_pFlowAc = new QAction(QIcon(":/Bitmaps/pros.png"), "Á÷\n³Ì\nÍ¼", this);
-	m_pLogAc = new QAction(QIcon(":/Bitmaps/log.png"), "ÔËĞĞÈÕÖ¾", this);
+	m_pToolAc = new QAction(QIcon(":/Bitmaps/set.png"), "å·¥\nå…·\nç®±", this);
+	m_pFlowAc = new QAction(QIcon(":/Bitmaps/pros.png"), "æµ\nç¨‹\nå›¾", this);
+	m_pLogAc = new QAction(QIcon(":/Bitmaps/log.png"), "è¿è¡Œæ—¥å¿—", this);
 	connect(m_pToolAc, &QAction::triggered, this, [this]() {
 		auto point = this->mapToGlobal(m_leftToolbar->pos());
 		int w = m_pToolDock->width();
@@ -347,19 +347,19 @@ void MainWindow::initToolBar()
 void MainWindow::initDock()
 {
 	this->setDockOptions(QMainWindow::AnimatedDocks | QMainWindow::AllowNestedDocks);
-	m_pToolDock = new DockWidget("¹¤¾ßÏä", this);
+	m_pToolDock = new DockWidget("å·¥å…·ç®±", this);
 	m_pToolDock->setFont(QFont("Microsoft YaHei,23.5"));
-	m_pFlowDock = new DockWidget("Á÷³ÌÍ¼", this);
-	m_pLogDock = new DockWidget("ÔËĞĞÈÕÖ¾", this);
+	m_pFlowDock = new DockWidget("æµç¨‹å›¾", this);
+	m_pLogDock = new DockWidget("è¿è¡Œæ—¥å¿—", this);
 	connect(m_pToolDock, &DockWidget::topLevelChanged, this, &MainWindow::slot_DoTopLevelChanged);
 	connect(m_pFlowDock, &DockWidget::topLevelChanged, this, &MainWindow::slot_DoTopLevelChanged);
 	connect(m_pLogDock, &DockWidget::topLevelChanged, this, &MainWindow::slot_DoTopLevelChanged);
 	connect(m_pToolDock, &DockWidget::sigClose, this, &MainWindow::slot_DoDockClosed);
 	connect(m_pFlowDock, &DockWidget::sigClose, this, &MainWindow::slot_DoDockClosed);
 	connect(m_pLogDock, &DockWidget::sigClose, this, &MainWindow::slot_DoDockClosed);
-	m_pToolDock->setMinimumWidth(205); //ÉèÖÃ×îĞ¡¿í¶È
-	m_pFlowDock->setMinimumWidth(269); //ÉèÖÃ×îĞ¡¿í¶È    
-	m_pLogDock->setMinimumHeight(150); //ÉèÖÃ×îĞ¡¸ß¶È 	
+	m_pToolDock->setMinimumWidth(205); //è®¾ç½®æœ€å°å®½åº¦
+	m_pFlowDock->setMinimumWidth(269); //è®¾ç½®æœ€å°å®½åº¦    
+	m_pLogDock->setMinimumHeight(150); //è®¾ç½®æœ€å°é«˜åº¦ 	
 	m_pToolDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	m_pFlowDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	m_pLogDock->setAllowedAreas(Qt::BottomDockWidgetArea);
@@ -370,7 +370,7 @@ void MainWindow::initDock()
 	this->addDockWidget(Qt::LeftDockWidgetArea, m_pFlowDock);
 	this->addDockWidget(Qt::BottomDockWidgetArea, m_pLogDock);
 	this->splitDockWidget(m_pToolDock, m_pFlowDock, Qt::Horizontal);
-	//ÉèÖÃDockWidgetµÄ³õÊ¼»¯¿í¶È
+	//è®¾ç½®DockWidgetçš„åˆå§‹åŒ–å®½åº¦
 	resizeDocks({ m_pToolDock ,m_pFlowDock }, { 205, 269 }, Qt::Horizontal);
 	QWidget* pCenterWidget = new QWidget(this);
 	pCenterWidget->setProperty("type", "xblack");
@@ -382,12 +382,12 @@ void MainWindow::initDock()
 
 void MainWindow::initStatusBar()
 {
-	//×´Ì¬À¸
-	QStatusBar* pStatusBar = statusBar(); //´´½¨×´Ì¬À¸
+	//çŠ¶æ€æ 
+	QStatusBar* pStatusBar = statusBar(); //åˆ›å»ºçŠ¶æ€æ 
 	pStatusBar->setStyleSheet("background-color: rgb(240, 248, 226);");
-	//CPUÔËĞĞ×´Ì¬
+	//CPUè¿è¡ŒçŠ¶æ€
 	ShowCpuMemory* showCpuMemory = new ShowCpuMemory();
-	//Ïß³Ì
+	//çº¿ç¨‹
 	m_pthreadCpu = new QThread(this);
 	showCpuMemory->moveToThread(m_pthreadCpu);
 	QObject::connect(this, &MainWindow::sig_ToThreadCpu, showCpuMemory, &ShowCpuMemory::GetCpuMemory, Qt::AutoConnection);
@@ -400,7 +400,7 @@ void MainWindow::initStatusBar()
 	pStatusBar->addWidget(m_pStatusInfoLabel);
 	m_pthreadCpu->start();
 	emit sig_ToThreadCpu();
-	//ÏÔÊ¾Ê±¼ä
+	//æ˜¾ç¤ºæ—¶é—´
 	QTimer* timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(timerUpdate()));
 	timer->start(1000);
@@ -413,9 +413,9 @@ void MainWindow::initStatusBar()
 
 void MainWindow::timerUpdate()
 {
-	m_pStatusTimeLabel->setText("Ê±¼ä: " + QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+	m_pStatusTimeLabel->setText("æ—¶é—´: " + QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
 	m_pStatusTimeLabel->update();
-	//×Ô¶¯µÇ³ö
+	//è‡ªåŠ¨ç™»å‡º
 	if (dataVar::auto_login_out == true)
 	{
 		QDateTime stopTime = QDateTime::currentDateTime();
@@ -441,7 +441,7 @@ void MainWindow::slot_DoTopLevelChanged(bool topLevel)
 	if (topLevel)//floating
 	{
 		dock->setVisible(false);
-		//Ìí¼Ó¶ÔÓ¦µÄac
+		//æ·»åŠ å¯¹åº”çš„ac
 		if (dock == m_pToolDock)
 		{
 			m_leftToolbar->addAction(m_pToolAc);
@@ -460,7 +460,7 @@ void MainWindow::slot_DoTopLevelChanged(bool topLevel)
 	}
 	else
 	{
-		//ÒÆ³ı¶ÔÓ¦µÄac
+		//ç§»é™¤å¯¹åº”çš„ac
 		if (dock == m_pToolDock)
 		{
 			m_leftToolbar->removeAction(m_pToolAc);
@@ -486,7 +486,7 @@ void MainWindow::slot_DoDockClosed()
 {
 	QObject* obj = this->sender();
 	DockWidget* pDock = qobject_cast<DockWidget*>(obj);
-	//ÒÆ³ı¶ÔÓ¦µÄac
+	//ç§»é™¤å¯¹åº”çš„ac
 	if (pDock == m_pToolDock)
 	{
 		m_leftToolbar->removeAction(m_pToolAc);
@@ -506,29 +506,29 @@ void MainWindow::slot_DoDockClosed()
 	m_bottomToolbar->setVisible(m_bottomAcList.length() > 0);
 }
 
-//ĞÂ½¨ÏîÄ¿
+//æ–°å»ºé¡¹ç›®
 void MainWindow::slot_DoCreateProject()
 {
 	if (dataVar::projectName == QString())
 	{
-		dataVar::projectName = "ĞÂ½¨ÏîÄ¿";
+		dataVar::projectName = "æ–°å»ºé¡¹ç›®";
 		emit dataVar::fProItemTab->sig_InfoClick();
-		emit dataVar::fProItemTab->sig_Log("ĞÂ½¨ÏîÄ¿Íê³É£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "ÌáÊ¾", "ĞÂ½¨ÏîÄ¿Íê³É£¡");
+		emit dataVar::fProItemTab->sig_Log("æ–°å»ºé¡¹ç›®å®Œæˆï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "æç¤º", "æ–°å»ºé¡¹ç›®å®Œæˆï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
 		msgBox.exec();
 	}
 	else
 	{
 		emit dataVar::fProItemTab->sig_WarnClick();
-		emit dataVar::fProItemTab->sig_Log("ÒÑ´æÔÚÏîÄ¿£¬ÊÇ·ñÖØĞÂ´´½¨ÏîÄ¿£¿");
+		emit dataVar::fProItemTab->sig_Log("å·²å­˜åœ¨é¡¹ç›®ï¼Œæ˜¯å¦é‡æ–°åˆ›å»ºé¡¹ç›®ï¼Ÿ");
 		QMessageBox* msgBox = new QMessageBox(this);
 		msgBox->setIcon(QMessageBox::Question);
 		msgBox->setWindowIcon(QIcon(":/res/ico/warn.png"));
-		msgBox->setWindowTitle("¾¯¸æ");
-		msgBox->setText("~~ ÒÑ´æÔÚÏîÄ¿£¬ÊÇ·ñÖØĞÂ´´½¨ÏîÄ¿£¿ ~~");
-		QPushButton* btn_sure = msgBox->addButton("È·¶¨", QMessageBox::ButtonRole::YesRole);	
-		QPushButton* btn_cancel = msgBox->addButton("È¡Ïû", QMessageBox::ButtonRole::NoRole);
+		msgBox->setWindowTitle("è­¦å‘Š");
+		msgBox->setText("~~ å·²å­˜åœ¨é¡¹ç›®ï¼Œæ˜¯å¦é‡æ–°åˆ›å»ºé¡¹ç›®ï¼Ÿ ~~");
+		QPushButton* btn_sure = msgBox->addButton("ç¡®å®š", QMessageBox::ButtonRole::YesRole);	
+		QPushButton* btn_cancel = msgBox->addButton("å–æ¶ˆ", QMessageBox::ButtonRole::NoRole);
 		btn_sure->setStyleSheet("QPushButton{background-color:rgb(125,125,125);border:5px solid gray;font-size:15px;color:white;}");	
 		btn_cancel->setStyleSheet("QPushButton{background-color:rgb(125,125,125);border:5px solid gray;font-size:15px;color:white;}");
 		msgBox->setStyleSheet("color:black;font-size:16px;");
@@ -539,7 +539,7 @@ void MainWindow::slot_DoCreateProject()
 			objDockName->setWindowTitle(QString());
 			QTreeWidget* objTName = dataVar::fProItemTab->findChild<QTreeWidget*>("ProItemTreeWidget");
 			objTName->setFixedHeight(28);
-			dataVar::projectName = "ĞÂ½¨ÏîÄ¿";			
+			dataVar::projectName = "æ–°å»ºé¡¹ç›®";			
 			msgBox->deleteLater();
 			btn_sure->deleteLater();
 			btn_cancel->deleteLater();
@@ -556,7 +556,7 @@ void MainWindow::slot_DoCreateProject()
 void MainWindow::slot_DelParam()
 {
 	QList<QString> comm_keys;
-	//Ïà»ú
+	//ç›¸æœº
 	comm_keys.clear();
 	comm_keys = gVariable::camera_variable_link.uniqueKeys();
 	for (int k = 0; k < comm_keys.length(); k++)
@@ -565,12 +565,12 @@ void MainWindow::slot_DelParam()
 		if (gVariable::camera_variable_link.value(key).mindvision_framebuffer_value != nullptr)
 		{
 			CameraStop(gVariable::camera_variable_link.value(key).mindvision_haldle_value);
-			//Ïà»ú·´³õÊ¼»¯£¬ÊÍ·Å×ÊÔ´
+			//ç›¸æœºååˆå§‹åŒ–ï¼Œé‡Šæ”¾èµ„æº
 			CameraUnInit(gVariable::camera_variable_link.value(key).mindvision_haldle_value);
 			CameraAlignFree(gVariable::camera_variable_link.value(key).mindvision_framebuffer_value);
 		}
 	}
-	//Í¨ÓÃI/O
+	//é€šç”¨I/O
 	comm_keys.clear();
 	comm_keys = gVariable::generalio_variable_link.uniqueKeys();
 	for (int k = 0; k < comm_keys.length(); k++)
@@ -585,7 +585,7 @@ void MainWindow::slot_DelParam()
 			gVariable::generalio_variable_link.insert(key, gVariable::GeneralIoVar);
 		}
 	}
-	//PLCÍ¨ĞÅ
+	//PLCé€šä¿¡
 	comm_keys.clear();
 	comm_keys = gVariable::plccommunicate_variable_link.uniqueKeys();
 	for (int k = 0; k < comm_keys.length(); k++)
@@ -600,7 +600,7 @@ void MainWindow::slot_DelParam()
 			gVariable::plccommunicate_variable_link.insert(key, gVariable::PlcCommunicateVar);
 		}
 	}
-	//´®¿ÚÍ¨ĞÅ
+	//ä¸²å£é€šä¿¡
 	comm_keys.clear();
 	comm_keys = gVariable::serialport_variable_link.uniqueKeys();
 	for (int k = 0; k < comm_keys.length(); k++)
@@ -612,7 +612,7 @@ void MainWindow::slot_DelParam()
 			gVariable::serialport_variable_link.value(key).serialport_value->deleteLater();
 		}
 	}
-	//TCP/IPÍ¨ĞÅ
+	//TCP/IPé€šä¿¡
 	comm_keys.clear();
 	comm_keys = gVariable::sockettcpserver_variable_link.uniqueKeys();
 	for (int k = 0; k < comm_keys.length(); k++)
@@ -652,7 +652,7 @@ void MainWindow::slot_DelParam()
 	gVariable::goto_variable_link.clear();
 	gVariable::scriptedit_variable_link.clear();
 	gVariable::global_variable_link.clear();
-	//¸üĞÂ±äÁ¿
+	//æ›´æ–°å˜é‡
 	QList<int> link_keys = dataVar::all_link_process.uniqueKeys();
 	for (int i = 0; i < link_keys.length(); i++)
 	{
@@ -661,8 +661,8 @@ void MainWindow::slot_DelParam()
 		{
 			if (j == key)
 			{
-				QConfig::ToolBase[key]->RunCommunicationLink("»ñÈ¡Í¼Ïñ");
-				QConfig::ToolBase[key]->RunCommunicationLink("Í¨Ñ¶¹¤¾ß");
+				QConfig::ToolBase[key]->RunCommunicationLink("è·å–å›¾åƒ");
+				QConfig::ToolBase[key]->RunCommunicationLink("é€šè®¯å·¥å…·");
 				QConfig::ToolBase[key]->RunGotoToolLink();
 				QConfig::ToolBase[key]->RunAllToolLink();
 				QConfig::ToolBase[key]->RunScriptEditToolLink();
@@ -836,7 +836,7 @@ void MainWindow::slot_DelParam()
 	dataVar::FlowProMap.clear();
 	dataVar::all_link_process.clear();
 	QTreeWidget* objTreeName = dataVar::fProItemTab->findChild<QTreeWidget*>("ProItemTreeWidget");
-	QTreeWidgetItemIterator it(objTreeName);  //±éÀútreeWidget		
+	QTreeWidgetItemIterator it(objTreeName);  //éå†treeWidget		
 	for (int i = 0; i < (*it)->childCount(); i++)
 	{
 		qDeleteAll((*it)->takeChildren());
@@ -860,18 +860,18 @@ void MainWindow::slot_DelParam()
 	}
 }
 
-//´ò¿ªÏîÄ¿
+//æ‰“å¼€é¡¹ç›®
 void MainWindow::slot_DoOpenProject()
 {
 	QString file_name = QFileDialog::getOpenFileName(this,
-		tr("´ò¿ªÏîÄ¿"), dataVar::path_PF, "*.cfg");
+		tr("æ‰“å¼€é¡¹ç›®"), dataVar::path_PF, "*.cfg");
 	if (!file_name.isNull())
 	{
 		emit dataVar::fProItemTab->sig_InfoClick();
-		emit dataVar::fProItemTab->sig_Log("ÕıÔÚ´ò¿ªÏîÄ¿£¬ÇëÉÔºó...");
+		emit dataVar::fProItemTab->sig_Log("æ­£åœ¨æ‰“å¼€é¡¹ç›®ï¼Œè¯·ç¨å...");
 		QApplication::processEvents();
 		slot_DelParam();
-		//´ò¿ªÏîÄ¿
+		//æ‰“å¼€é¡¹ç›®
 		QFileInfo flieInfo(file_name);
 		dataVar::projectName = flieInfo.baseName();
 		dataVar::qtWidgetsSaveLoad->setFilenameWithPath(file_name);		
@@ -896,14 +896,14 @@ void MainWindow::slot_DoOpenProject()
 		}
 		dataVar::qtWidgetsSaveLoad->loadFromFile(parents);
 		emit dataVar::fProItemTab->sig_InfoClick();
-		emit dataVar::fProItemTab->sig_Log("´ò¿ªÏîÄ¿Íê³É£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "ÌáÊ¾", "´ò¿ªÏîÄ¿Íê³É£¡");
+		emit dataVar::fProItemTab->sig_Log("æ‰“å¼€é¡¹ç›®å®Œæˆï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "æç¤º", "æ‰“å¼€é¡¹ç›®å®Œæˆï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
 		msgBox.exec();
 	}
 }
 
-//³õÊ¼»¯Ê±´ò¿ªÏîÄ¿
+//åˆå§‹åŒ–æ—¶æ‰“å¼€é¡¹ç›®
 void MainWindow::slot_OpenProjectParam()
 {
 	QFileInfo file(dataVar::path_PF + "init.xml");
@@ -950,28 +950,28 @@ void MainWindow::slot_OpenProjectParam()
 	}
 }
 
-//±£´æÏîÄ¿
+//ä¿å­˜é¡¹ç›®
 void MainWindow::slot_DoSaveProject()
 {
 	if (dataVar::projectName == QString())
 	{
 		emit dataVar::fProItemTab->sig_InfoClick();
-		emit dataVar::fProItemTab->sig_Log("±£´æÏîÄ¿Ê±£¬ÇëÏÈĞÂ½¨ÏîÄ¿£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "ÇëÏÈĞÂ½¨ÏîÄ¿£¡");
+		emit dataVar::fProItemTab->sig_Log("ä¿å­˜é¡¹ç›®æ—¶ï¼Œè¯·å…ˆæ–°å»ºé¡¹ç›®ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "è¯·å…ˆæ–°å»ºé¡¹ç›®ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 		msgBox.exec();
 		return;
 	}
-	//±£´æÏîÄ¿
+	//ä¿å­˜é¡¹ç›®
 	slot_SaveProjectParam(1);
 	emit dataVar::fProItemTab->sig_InfoClick();
-	emit dataVar::fProItemTab->sig_Log("ÏîÄ¿±£´æÍê³É£¡");
-	QMessageBox msgBox(QMessageBox::Icon::NoIcon, "ÌáÊ¾", "ÏîÄ¿±£´æÍê³É£¡");
+	emit dataVar::fProItemTab->sig_Log("é¡¹ç›®ä¿å­˜å®Œæˆï¼");
+	QMessageBox msgBox(QMessageBox::Icon::NoIcon, "æç¤º", "é¡¹ç›®ä¿å­˜å®Œæˆï¼");
 	msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
 	msgBox.exec();
 }
 
-//¹Ø±ÕÊ±±£´æÏîÄ¿
+//å…³é—­æ—¶ä¿å­˜é¡¹ç›®
 void MainWindow::slot_SaveProjectParam(int mode)
 {
 	if (dataVar::projectName == QString())
@@ -1119,8 +1119,8 @@ void MainWindow::slot_SaveProjectParam(int mode)
 					if (flowProItemList[p] == QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->objectName())
 					{
 						parents.append(QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg);
-						//ĞòÁĞ»¯¸÷¹¤¾ßµÄÌØ¶¨²ÎÊı						
-						int str_count = 0;  //ÌáÈ¡²»º¬Êı×Ö×Ö·û´®
+						//åºåˆ—åŒ–å„å·¥å…·çš„ç‰¹å®šå‚æ•°						
+						int str_count = 0;  //æå–ä¸å«æ•°å­—å­—ç¬¦ä¸²
 						for (int k = 0; k < QConfig::ToolBase[m]->m_Tools[n].PublicToolName.length(); k++)
 						{
 							if (!(QConfig::ToolBase[m]->m_Tools[n].PublicToolName[k] > '0' && QConfig::ToolBase[m]->m_Tools[n].PublicToolName[k] < '9'))
@@ -1129,132 +1129,132 @@ void MainWindow::slot_SaveProjectParam(int mode)
 							}
 						}
 						QString str_name_buf = QConfig::ToolBase[m]->m_Tools[n].PublicToolName.mid(0, str_count);
-						if (str_name_buf == "»ñÈ¡Í¼Ïñ")
+						if (str_name_buf == "è·å–å›¾åƒ")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "²ÃÇĞÍ¼Ïñ")
+						else if (str_name_buf == "è£åˆ‡å›¾åƒ")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "Ô¤´¦Àí")
+						else if (str_name_buf == "é¢„å¤„ç†")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "Í¼ÏñÏ¸»¯")
+						else if (str_name_buf == "å›¾åƒç»†åŒ–")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "°ßµã·ÖÎö")
+						else if (str_name_buf == "æ–‘ç‚¹åˆ†æ")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "ÂÖÀªÌØÕ÷Ñ¡Ôñ")
+						else if (str_name_buf == "è½®å»“ç‰¹å¾é€‰æ‹©")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "Í¼ÏñÏÔÊ¾")
+						else if (str_name_buf == "å›¾åƒæ˜¾ç¤º")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "ÑÕÉ«Ê¶±ğ")
+						else if (str_name_buf == "é¢œè‰²è¯†åˆ«")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "·ÖÀàÆ÷")
+						else if (str_name_buf == "åˆ†ç±»å™¨")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "Ä¿±ê¸ú×Ù")
+						else if (str_name_buf == "ç›®æ ‡è·Ÿè¸ª")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "»Ò¶ÈÆ¥Åä")
+						else if (str_name_buf == "ç°åº¦åŒ¹é…")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "ĞÎ×´Æ¥Åä")
+						else if (str_name_buf == "å½¢çŠ¶åŒ¹é…")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "²âÁ¿±ê¶¨")
+						else if (str_name_buf == "æµ‹é‡æ ‡å®š")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "»ñÈ¡±ß½çµã")
+						else if (str_name_buf == "è·å–è¾¹ç•Œç‚¹")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "Ñ°ÕÒÔ²")
+						else if (str_name_buf == "å¯»æ‰¾åœ†")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "²éÕÒÔ²È±½Ç")
+						else if (str_name_buf == "æŸ¥æ‰¾åœ†ç¼ºè§’")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "Ñ°ÕÒÖ±Ïß")
+						else if (str_name_buf == "å¯»æ‰¾ç›´çº¿")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "±ßÔµ¿í¶È²âÁ¿")
+						else if (str_name_buf == "è¾¹ç¼˜å®½åº¦æµ‹é‡")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "µ¼³öCSV")
+						else if (str_name_buf == "å¯¼å‡ºCSV")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "À©Õ¹¿â")
+						else if (str_name_buf == "æ‰©å±•åº“")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "Ìø×ªÓï¾ä")
+						else if (str_name_buf == "è·³è½¬è¯­å¥")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam2(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "Í¨ÓÃI/O")
+						else if (str_name_buf == "é€šç”¨I/O")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam3(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "PLCÍ¨ĞÅ")
+						else if (str_name_buf == "PLCé€šä¿¡")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam3(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "´®¿ÚÍ¨ĞÅ")
+						else if (str_name_buf == "ä¸²å£é€šä¿¡")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam3(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "TCP/IP¿Í»§¶Ë")
+						else if (str_name_buf == "TCP/IPå®¢æˆ·ç«¯")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam3(tool_count_buf, str_name_buf, var);
 						}
-						else if (str_name_buf == "TCP/IP·şÎñÆ÷")
+						else if (str_name_buf == "TCP/IPæœåŠ¡å™¨")
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam3(tool_count_buf, str_name_buf, var);
@@ -1268,7 +1268,12 @@ void MainWindow::slot_SaveProjectParam(int mode)
 						{
 							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
 							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
-							}
+						}
+						else if (str_name_buf == QString::fromUtf8("\xE8\xBD\xA6\xE7\x89\x8C\xE8\xAF\x86\xE5\x88\xAB"))
+						{
+							QVariant var = QConfig::ToolBase[m]->m_Tools[n].PublicToolDlg->InitGetToolData();
+							dataVar::qtWidgetsSaveLoad->saveToolParam(tool_count_buf, str_name_buf, var);
+						}
 						break;
 					}
 				}
@@ -1276,7 +1281,7 @@ void MainWindow::slot_SaveProjectParam(int mode)
 		}
 	}
 	dataVar::qtWidgetsSaveLoad->saveToFile(parents);
-	//±£´æÎÄ¼şÂ·¾¶Ãû³Æ
+	//ä¿å­˜æ–‡ä»¶è·¯å¾„åç§°
 	QString init_file_name;
 	if (mode == 1)
 	{
@@ -1301,28 +1306,28 @@ void MainWindow::slot_SaveProjectParam(int mode)
 	}	
 }
 
-//ÏîÄ¿Áí´æÎª
+//é¡¹ç›®å¦å­˜ä¸º
 void MainWindow::slot_DoSaveAsProject()
 {
 	if (dataVar::projectName == QString())
 	{
 		emit dataVar::fProItemTab->sig_WarnClick();
-		emit dataVar::fProItemTab->sig_Log("ÏîÄ¿Áí´æÎªÊ±£¬ÇëÏÈĞÂ½¨ÏîÄ¿£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "¾¯¸æ", "ÇëÏÈĞÂ½¨ÏîÄ¿£¡");
+		emit dataVar::fProItemTab->sig_Log("é¡¹ç›®å¦å­˜ä¸ºæ—¶ï¼Œè¯·å…ˆæ–°å»ºé¡¹ç›®ï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "è­¦å‘Š", "è¯·å…ˆæ–°å»ºé¡¹ç›®ï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/warn.png"));
 		msgBox.exec();
 		return;
 	}
 	QString fileName = QFileDialog::getSaveFileName(this,
-		tr("ÏîÄ¿Áí´æÎª"), dataVar::path_PF, tr("Config Files (*.cfg)"));
+		tr("é¡¹ç›®å¦å­˜ä¸º"), dataVar::path_PF, tr("Config Files (*.cfg)"));
 	if (!fileName.isNull())
 	{
 		dataVar::qtWidgetsSaveLoad->setFilenameWithPath(fileName);
-		//±£´æÏîÄ¿		
+		//ä¿å­˜é¡¹ç›®		
 		slot_SaveProjectParam(2);
 		emit dataVar::fProItemTab->sig_InfoClick();
-		emit dataVar::fProItemTab->sig_Log("ÏîÄ¿±£´æÍê³É£¡");
-		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "ÌáÊ¾", "ÏîÄ¿±£´æÍê³É£¡");
+		emit dataVar::fProItemTab->sig_Log("é¡¹ç›®ä¿å­˜å®Œæˆï¼");
+		QMessageBox msgBox(QMessageBox::Icon::NoIcon, "æç¤º", "é¡¹ç›®ä¿å­˜å®Œæˆï¼");
 		msgBox.setWindowIcon(QIcon(":/res/ico/info.png"));
 		msgBox.exec();
 	}
@@ -1409,7 +1414,7 @@ void MainWindow::slot_RestoreLogDock()
 	m_pLogDock->setMinimumSize(QSize(150, 150));
 }
 
-//³õÊ¼»¯²¼¾Ö
+//åˆå§‹åŒ–å¸ƒå±€
 void MainWindow::slot_InitLayout()
 {
 	try
@@ -1428,19 +1433,19 @@ void MainWindow::slot_InitLayout()
 		dataVar::xml.ReadXml(dataVar::soft_key, dataVar::path_P + "layout.xml", "Parameter7", log_height);
 		dataVar::xml.ReadXml(dataVar::soft_key, dataVar::path_P + "layout.xml", "Parameter8", log_visible);
 		dataVar::xml.ReadXml(dataVar::soft_key, dataVar::path_P + "layout.xml", "Parameter9", log_float);
-		//¹¤¾ßÏä				
+		//å·¥å…·ç®±				
 		SetToolDockSize(m_pToolDock, QSize(tool_width.toInt(), m_pToolDock->height()));
 		QVariant tool_visible_buf = tool_visible;
 		m_pToolDock->setVisible(tool_visible_buf.toBool());
 		QVariant tool_float_buf = tool_float;
 		m_pToolDock->setFloating(tool_float_buf.toBool());
-		//Á÷³ÌÍ¼				
+		//æµç¨‹å›¾				
 		SetFlowDockSize(m_pFlowDock, QSize(flow_width.toInt(), m_pFlowDock->height()));
 		QVariant flow_visible_buf = flow_visible;
 		m_pFlowDock->setVisible(flow_visible_buf.toBool());
 		QVariant flow_float_buf = flow_float;
 		m_pFlowDock->setFloating(flow_float_buf.toBool());
-		//ÔËĞĞÈÕÖ¾		
+		//è¿è¡Œæ—¥å¿—		
 		SetLogDockSize(m_pLogDock, QSize(m_pLogDock->width(), log_height.toInt()));
 		QVariant log_visible_buf = log_visible;
 		m_pLogDock->setVisible(log_visible_buf.toBool());
@@ -1450,7 +1455,7 @@ void MainWindow::slot_InitLayout()
 	catch (...) {}
 }
 
-//Ä¬ÈÏ²¼¾Ö
+//é»˜è®¤å¸ƒå±€
 void MainWindow::slot_DefaultLayout()
 {
 	try
@@ -1483,15 +1488,15 @@ void MainWindow::slot_DefaultLayout()
 			value.push_back("false");
 			dataVar::xml.ModifyXml(dataVar::soft_key, dataVar::path_P + "layout.xml", parameter, value);
 		}
-		//¹¤¾ßÏä
+		//å·¥å…·ç®±
 		SetToolDockSize(m_pToolDock, QSize(205, m_pToolDock->height()));
 		m_pToolDock->setVisible(true);
 		m_pToolDock->setFloating(false);
-		//Á÷³ÌÍ¼
+		//æµç¨‹å›¾
 		SetFlowDockSize(m_pFlowDock, QSize(269, m_pFlowDock->height()));
 		m_pFlowDock->setVisible(true);
 		m_pFlowDock->setFloating(false);
-		//ÔËĞĞÈÕÖ¾
+		//è¿è¡Œæ—¥å¿—
 		SetLogDockSize(m_pLogDock, QSize(m_pLogDock->width(), 150));
 		m_pLogDock->setVisible(true);
 		m_pLogDock->setFloating(false);
@@ -1499,7 +1504,7 @@ void MainWindow::slot_DefaultLayout()
 	catch (...) {}
 }
 
-//±£´æ²¼¾Ö
+//ä¿å­˜å¸ƒå±€
 void MainWindow::slot_SaveLayout()
 {
 	try
@@ -1539,7 +1544,7 @@ void MainWindow::slot_SaveLayout()
 	catch (...) {}
 }
 
-//ËùÓĞÁ¬ĞøÖ´ĞĞ×´Ì¬
+//æ‰€æœ‰è¿ç»­æ‰§è¡ŒçŠ¶æ€
 void MainWindow::on_m_pRunContinueAc_triggered()
 {
 	permisMenu->setEnabled(false);
@@ -1557,7 +1562,7 @@ void MainWindow::on_m_pRunContinueAc_triggered()
 	emit sig_Logout();
 }
 
-//ËùÓĞÍ£Ö¹×´Ì¬
+//æ‰€æœ‰åœæ­¢çŠ¶æ€
 void MainWindow::slot_AllCycleStop()
 {
 	permisMenu->setEnabled(true);
@@ -1578,55 +1583,55 @@ void MainWindow::slot_AllCycleStop()
 	}
 }
 
-//ÒÇÆ÷Í¨Ñ¶»­Ãæ
+//ä»ªå™¨é€šè®¯ç”»é¢
 void MainWindow::slot_Instrumentation()
 {
 	dataVar::fInstrumentation->exec();
 }
 
-//Ïà»úÉèÖÃ»­Ãæ
+//ç›¸æœºè®¾ç½®ç”»é¢
 void MainWindow::slot_DoCameraSetUp()
 {
 	dataVar::fCameraSetUp->exec();
 }
 
-//È«¾Ö±äÁ¿»­Ãæ
+//å…¨å±€å˜é‡ç”»é¢
 void MainWindow::slot_DoGlobalVariable()
 {
 	dataVar::fGlobalVariable->exec();
 }
 
-//ÏµÍ³²ÎÊı»­Ãæ
+//ç³»ç»Ÿå‚æ•°ç”»é¢
 void MainWindow::slot_DoSystemSetUp()
 {
 	dataVar::fSystemSetUp->exec();
 }
 
-//Í¼Ïñ²¼¾Ö»­Ãæ
+//å›¾åƒå¸ƒå±€ç”»é¢
 void MainWindow::slot_DoImageLayout()
 {
 	dataVar::fImageLayout->exec();
 }
 
-//µÇÂ¼»­Ãæ
+//ç™»å½•ç”»é¢
 void MainWindow::slot_DoLogin()
 {
 	emit sig_LoginSignal();
 }
 
-//È¨ÏŞ¹ÜÀí»­Ãæ
+//æƒé™ç®¡ç†ç”»é¢
 void MainWindow::slot_PermisSet()
 {
 	emit sig_PermisSet();
 }
 
-//¹ØÓÚ»­Ãæ
+//å…³äºç”»é¢
 void MainWindow::slot_DoAbout()
 {
 	emit sig_AboutSignal();
 }
 
-//µÇÈë°´Å¥×´Ì¬
+//ç™»å…¥æŒ‰é’®çŠ¶æ€
 void MainWindow::slot_LoginBtnState()
 {
 	fileMenu->setEnabled(true);
@@ -1639,7 +1644,7 @@ void MainWindow::slot_LoginBtnState()
 	emit sig_Login();
 }
 
-//µÇ³ö°´Å¥×´Ì¬
+//ç™»å‡ºæŒ‰é’®çŠ¶æ€
 void MainWindow::slot_LogoutBtnState()
 {
 	fileMenu->setEnabled(false);
@@ -1652,7 +1657,7 @@ void MainWindow::slot_LogoutBtnState()
 	emit sig_Logout();
 }
 
-//Á¬ĞøÖ´ĞĞ×´Ì¬
+//è¿ç»­æ‰§è¡ŒçŠ¶æ€
 void MainWindow::slot_CycleRun()
 {
 	permisMenu->setEnabled(false);
@@ -1672,7 +1677,7 @@ void MainWindow::slot_CycleRun()
 	emit sig_ManualRun();
 }
 
-//Í£Ö¹×´Ì¬
+//åœæ­¢çŠ¶æ€
 void MainWindow::slot_CycleStop()
 {
 	permisMenu->setEnabled(true);

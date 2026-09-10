@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)
+﻿cmake_minimum_required(VERSION 3.22)
 
 option(WITH_LIBTORCH "build _YOLO_LIBTORCH" ON)
 option(WITH_ONNXRUNTIME "build _YOLO_ONNXRUNTIME" ON)

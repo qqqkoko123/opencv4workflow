@@ -1,4 +1,4 @@
-#include "LogicJudgeEnd.h"
+ï»¿#include "LogicJudgeEnd.h"
 #include "frmLogicJudgeEnd.h"
 
 LogicJudgeEnd::LogicJudgeEnd()
@@ -7,12 +7,12 @@ LogicJudgeEnd::LogicJudgeEnd()
 
 QString LogicJudgeEnd::name()
 {
-    return "½áÊøÓï¾ä";
+    return "ç»“æŸè¯­å¥";
 }
 
 QString LogicJudgeEnd::information()
 {
-    return "Âß¼­¹¤¾ß";
+    return "é€»è¾‘å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

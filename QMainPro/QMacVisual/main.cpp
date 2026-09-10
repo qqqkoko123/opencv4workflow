@@ -1,4 +1,4 @@
-#include "frmRegister.h"
+ï»¿#include "frmRegister.h"
 #include <QtWidgets/QApplication>
 #include <QTextCodec>
 #include <QSharedMemory>
@@ -8,17 +8,17 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	//³ÌĞòÖ»ÔÊĞíÔËĞĞÒ»´Î
+	//ç¨‹åºåªå…è®¸è¿è¡Œä¸€æ¬¡
 	QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
 	QSharedMemory memory("QMacVisual");
 	if (!memory.create(1))
 	{
 		return 0;
 	}	
-	//¸ü¸Ä³ÌĞòÆô¶¯ºóÈÎÎñÀ¸Í¼±ê
+	//æ›´æ”¹ç¨‹åºå¯åŠ¨åä»»åŠ¡æ å›¾æ ‡
 	a.setWindowIcon(QIcon(":/Bitmaps/app.ico"));
 	QApplication::setAttribute(Qt::AA_Use96Dpi);
-	//OpengläÖÈ¾·½Ê½
+	//Openglæ¸²æŸ“æ–¹å¼
 	QApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
 	QApplication::setAttribute(Qt::AA_UseOpenGLES);
 	QApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);

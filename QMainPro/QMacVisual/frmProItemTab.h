@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #pragma execution_character_set("utf-8")
 
 #include <QtWidgets/QWidget>
@@ -10,194 +10,199 @@
 #include "QGraphicsViews.h"
 #include <QThread>
 
-#pragma region Í¼Ïñ´¦Àí
-//¶¯Ì¬¿â--»ñÈ¡Í¼Ïñ
+#pragma region ?????
+//?????--??????
 typedef int (*GetImageSource)();
 typedef void (*SetImageSource)();
-//¶¯Ì¬¿â--´´½¨ROI
+//?????--????ROI
 typedef int (*GetCreateRoi)();
 typedef void (*SetCreateRoi)();
-//¶¯Ì¬¿â--²ÃÇÐÍ¼Ïñ
+//?????--???????
 typedef int (*GetCropImage)();
 typedef void (*SetCropImage)();
-//¶¯Ì¬¿â--Í¼Ïñ·­×ª
+//?????--????
 typedef int (*GetImageFlip)();
 typedef void (*SetImageFlip)();
-//¶¯Ì¬¿â--Ô¤´¦Àí
+//?????--?????
 typedef int (*GetImageMorphology)();
 typedef void (*SetImageMorphology)();
-//¶¯Ì¬¿â--Í¼ÏñÐÞ¸´
+//?????--??????
 typedef int (*GetImageRepair)();
 typedef void (*SetImageRepair)();
-//¶¯Ì¬¿â--Í¼ÏñÐý×ª
+//?????--??????
 typedef int (*GetImageRotate)();
 typedef void (*SetImageRotate)();
-//¶¯Ì¬¿â--Í¼ÏñÆ´½Ó
+//?????--??????
 typedef int (*GetImageSplice)();
 typedef void (*SetImageSplice)();
-//¶¯Ì¬¿â--Í¼ÏñÏÔÊ¾
+//?????--??????
 typedef int (*GetImageView)();
 typedef void (*SetImageView)();
-//¶¯Ì¬¿â--Í¸ÊÓ±ä»»
+//?????--?????
 typedef int (*GetPerspectiveTransform)();
 typedef void (*SetPerspectiveTransform)();
-//¶¯Ì¬¿â--Í¼ÏñÏ¸»¯
+//?????--??????
 typedef int (*GetSkeleton)();
 typedef void (*SetSkeleton)();
-//¶¯Ì¬¿â--µ¼³öÍ¼Ïñ
+//?????--???????
 typedef int (*GetExportImage)();
 typedef void (*SetExportImage)();
-//¶¯Ì¬¿â--×Ô¶¯´òÓ¡
+//?????--??????
 typedef int (*GetImagePrint)();
 typedef void (*SetImagePrint)();
 #pragma endregion
 
-#pragma region ¼ì²âÊ¶±ð
-//¶¯Ì¬¿â--ÌõÐÎÂëÊ¶±ð
+#pragma region ??????
+//?????--?????????
 typedef int (*GetBarcodeIdentify)();
 typedef void (*SetBarcodeIdentify)();
-//¶¯Ì¬¿â--°ßµã·ÖÎö
+//?????--??????
 typedef int (*GetBlobDetector)();
 typedef void (*SetBlobDetector)();
-//¶¯Ì¬¿â--ÁÁ¶È¼ì²â
+//?????--??????
 typedef int (*GetBrightness)();
 typedef void (*SetBrightness)();
-//¶¯Ì¬¿â--ÑÕÉ«Ê¶±ð
+//?????--??????
 typedef int (*GetColorIdentify)();
 typedef void (*SetColorIdentify)();
-//¶¯Ì¬¿â--¶þÎ¬ÂëÊ¶±ð
+//?????--????????
 typedef int (*GetQRcodeIdentify)();
 typedef void (*SetQRcodeIdentify)();
-//¶¯Ì¬¿â--¶þÎ¬ÂëÉú³É
+//?????--?????????
 typedef int (*GetQRcodeGenerate)();
 typedef void (*SetQRcodeGenerate)();
-//¶¯Ì¬¿â--ÂÖÀªÌØÕ÷Ñ¡Ôñ
+//?????--???????????
 typedef int (*GetSelectShape)();
 typedef void (*SetSelectShape)();
-//¶¯Ì¬¿â--·ÖÀàÆ÷
+//?????--??????
 typedef int (*GetClassifier)();
 typedef void (*SetClassifier)();
 #pragma endregion
 
-#pragma region ±ê¶¨¹¤¾ß
-//¶¯Ì¬¿â--Nµã±ê¶¨
+#pragma region ??????
+//?????--N???
 typedef int (*GetERTCalibration)();
 typedef void (*SetERTCalibration)();
-//¶¯Ì¬¿â--²âÁ¿±ê¶¨
+//?????--??????
 typedef int (*GetMeasureCalibration)();
 typedef void (*SetMeasureCalibration)();
 #pragma endregion
 
-#pragma region ¶ÔÎ»¹¤¾ß
-//¶¯Ì¬¿â--Ä¿±ê¸ú×Ù
+#pragma region ????????
+//?????--??????
 typedef int (*GetCamShiftTrack)();
 typedef void (*SetCamShiftTrack)();
-//¶¯Ì¬¿â--ÏßÐÔ¼ÆËã
+//?????--???????
 typedef int (*GetLinearCalculation)();
 typedef void (*SetLinearCalculation)();
-//¶¯Ì¬¿â--»Ò¶ÈÆ¥Åä
+//?????--??????
 typedef int (*GetTemplateMatch)();
 typedef void (*SetTemplateMatch)();
-//¶¯Ì¬¿â--ÐÎ×´Æ¥Åä
+//?????--??????
 typedef int (*GetShapeMatch)();
 typedef void (*SetShapeMatch)();
 #pragma endregion
 
-#pragma region ¼¸ºÎ¹¤¾ß
-//¶¯Ì¬¿â--Ñ°ÕÒÔ²
+#pragma region ????????
+//?????--????
 typedef int (*GetFindCircle)();
 typedef void (*SetFindCircle)();
-//¶¯Ì¬¿â--Ñ°ÕÒÖ±Ïß
+//?????--??????
 typedef int (*GetFindLine)();
 typedef void (*SetFindLine)();
-//¶¯Ì¬¿â--ÄâºÏÔ²
+//?????--????
 typedef int (*GetFitCircle)();
 typedef void (*SetFitCircle)();
-//¶¯Ì¬¿â--ÄâºÏÍÖÔ²
+//?????--??????
 typedef int (*GetFitEllipse)();
 typedef void (*SetFitEllipse)();
-//¶¯Ì¬¿â--ÄâºÏÖ±Ïß
+//?????--??????
 typedef int (*GetFitLine)();
 typedef void (*SetFitLine)();
-//¶¯Ì¬¿â--»ñÈ¡±ß½çµã
+//?????--???????
 typedef int (*GetContourPoints)();
 typedef void (*SetContourPoints)();
 #pragma endregion
 
-#pragma region ¼¸ºÎ²âÁ¿
-//¶¯Ì¬¿â--ÏßÔ²½»µã
+#pragma region ????????
+//?????--???????
 typedef int (*GetLineCircle)();
 typedef void (*SetLineCircle)();
-//¶¯Ì¬¿â--ÏßÏß½»µã
+//?????--???????
 typedef int (*GetLineLineI)();
 typedef void (*SetLineLineI)();
-//¶¯Ì¬¿â--µã+Ïß
+//?????--??+??
 typedef int (*GetPointLine)();
 typedef void (*SetPointLine)();
-//¶¯Ì¬¿â--µã+µã
+//?????--??+??
 typedef int (*GetPointPoint)();
 typedef void (*SetPointPoint)();
-//¶¯Ì¬¿â--Ô²È±¿Ú½Ç¶È
+//?????--??????
 typedef int (*GetRoundedCorners)();
 typedef void (*SetRoundedCorners)();
-//¶¯Ì¬¿â--±ßÔµ¿í¶È²âÁ¿
+//?????--??????????
 typedef int (*GetEdgeWidthMeasure)();
 typedef void (*SetEdgeWidthMeasure)();
 #pragma endregion
 
-#pragma region ÈýÎ¬¼ì²â
-//¶¯Ì¬¿â--ÄâºÏÆ½Ãæ
+#pragma region ??????
+//?????--??????
 typedef int (*GetFlatness)();
 typedef void (*SetFlatness)();
 #pragma endregion
 
-#pragma region Âß¼­¹¤¾ß
-//¶¯Ì¬¿â--À©Õ¹¿â
+#pragma region ???????
+//?????--?????
 typedef int (*GetExtensionLibrary)();
 typedef void (*SetExtensionLibrary)();
-//¶¯Ì¬¿â--Ìø×ªÓï¾ä
+//?????--??????
 typedef int (*GetLogicGoto)();
 typedef void (*SetLogicGoto)();
-//¶¯Ì¬¿â--ÅÐ¶ÏÓï¾ä
+//?????--???????
 typedef int (*GetLogicJudge)();
 typedef void (*SetLogicJudge)();
-//¶¯Ì¬¿â--½áÊøÓï¾ä
+//?????--???????
 typedef int (*GetLogicJudgeEnd)();
 typedef void (*SetLogicJudgeEnd)();
 #pragma endregion
 
-#pragma region Í¨Ñ¶¹¤¾ß
-//¶¯Ì¬¿â--PLCÍ¨ÐÅ
+#pragma region ??????
+//?????--PLC???
 typedef int (*GetPlcCommunicate)();
 typedef void (*SetPlcCommunicate)();
-//¶¯Ì¬¿â--´®¿ÚÍ¨ÐÅ
+//?????--???????
 typedef int (*GetSerialPort)();
 typedef void (*SetSerialPort)();
-//¶¯Ì¬¿â--TCP/IP·þÎñÆ÷
+//?????--TCP/IP??????
 typedef int (*GetSocketTcpServer)();
 typedef void (*SetSocketTcpServer)();
-//¶¯Ì¬¿â--TCP/IP¿Í»§¶Ë
+//?????--TCP/IP?????
 typedef int (*GetSocketTcpClient)();
 typedef void (*SetSocketTcpClient)();
 #pragma endregion
 
-#pragma region ÏµÍ³¹¤¾ß
-//¶¯Ì¬¿â--µ¼³öCSV
+#pragma region ??????
+//?????--????CSV
 typedef int (*GetExportCsv)();
 typedef void (*SetExportCsv)();
 #pragma endregion
 
 
-#pragma region Ä¿±ê¼ì²â
-//¶¯Ì¬¿â--Yolov13
+#pragma region ?????
+//?????--Yolov13
 typedef int (*GetYoloV13)();
 typedef void (*SetYoloV13)();
 #pragma endregion
 
 #pragma region OCR
-//¶¯Ì¬¿â--OCR
+//?????--OCR
 typedef int (*GetOCR)();
 typedef void (*SetOCR)();
+#pragma endregion
+
+#pragma region ???????
+typedef int (*GetPlateRecognition)();
+typedef void (*SetPlateRecognition)();
 #pragma endregion
 class frmProItemTab : public QWidget
 {
@@ -408,7 +413,7 @@ signals:
 	void sig_ErrorClick();
 
 private:	
-	//Á÷³ÌÁÐ±í³õÊ¼»¯
+	//?????????????
 	void ProcessTreeInit();
 	QList<QString> treeList;
 	int press_index;
@@ -418,17 +423,17 @@ private:
 	QVector<QString> fNameList;
 
 public:
-	QTreeWidgetItem* itemParent;
+	QTreeWidgetItem* itemParent = nullptr;
 	QMap<QString, QToolBase*> FlowTabMap;
 	QVector<QTreeWidgetItem*> treeItem = QVector<QTreeWidgetItem*>(20);
-	QMap<QTreeWidgetItem*, int> m_pro_value;  //¼ÇÂ¼Á÷³Ì¶ÔÓ¦µÄË÷ÒýÖµ	
-	void DeserializeInitProcess();  //·´ÐòÁÐ»¯³õÊ¼»¯Á÷³Ì	
+	QMap<QTreeWidgetItem*, int> m_pro_value;  //????????????????	
+	void DeserializeInitProcess();  //?????????????????	
 	QtDragListWidget* TempDragListWidget = nullptr;
 	QtDragListWidget* TempDragListWidget_B1 = nullptr, * TempDragListWidget_B2 = nullptr, * TempDragListWidget_B3 = nullptr, * TempDragListWidget_B4 = nullptr, * TempDragListWidget_B5 = nullptr, * TempDragListWidget_B6 = nullptr, * TempDragListWidget_B7 = nullptr, * TempDragListWidget_B8 = nullptr, * TempDragListWidget_B9 = nullptr, * TempDragListWidget_B10 = nullptr;
 	QtDragListWidget* TempDragListWidget_B11 = nullptr, * TempDragListWidget_B12 = nullptr, * TempDragListWidget_B13 = nullptr, * TempDragListWidget_B14 = nullptr, * TempDragListWidget_B15 = nullptr, * TempDragListWidget_B16 = nullptr, * TempDragListWidget_B17 = nullptr, * TempDragListWidget_B18 = nullptr, * TempDragListWidget_B19 = nullptr, * TempDragListWidget_B20 = nullptr;
 	
 private:
-	//¶àÏß³Ì	
+	//?????	
 	QThread* Thread_A;
 	QThread* Thread_B1, * Thread_B2, * Thread_B3, * Thread_B4, * Thread_B5, * Thread_B6, * Thread_B7, * Thread_B8, * Thread_B9, * Thread_B10;
 	QThread* Thread_B11, * Thread_B12, * Thread_B13, * Thread_B14, * Thread_B15, * Thread_B16, * Thread_B17, * Thread_B18, * Thread_B19, * Thread_B20;
@@ -465,48 +470,48 @@ public:
 	void Stop_Thread_B11(), Stop_Thread_B12(), Stop_Thread_B13(), Stop_Thread_B14(), Stop_Thread_B15(), Stop_Thread_B16(), Stop_Thread_B17(), Stop_Thread_B18(), Stop_Thread_B19(), Stop_Thread_B20();
 
 private:
-#pragma region Í¼Ïñ´¦Àí
-	//»ñÈ¡Í¼ÏñÁ´½Ó
+#pragma region ?????
+	//??????????
 	GetImageSource getImageSourceState;
 	SetImageSource setImageSourceState;
 	int nImageSourceState;
 	int nImageSourceState_buf;
-	//´´½¨ROIÁ´½Ó
+	//????ROI????
 	GetCreateRoi getCreateRoiState;
 	SetCreateRoi setCreateRoiState;
 	int nCreateRoiState;
 	int nCreateRoiState_buf;
-	//²ÃÇÐÍ¼ÏñÁ´½Ó
+	//???????????
 	GetCropImage getCropImageState;
 	SetCropImage setCropImageState;
 	int nCropImageState;
 	int nCropImageState_buf;
-	//Í¼Ïñ·­×ªÁ´½Ó
+	//????????
 	GetImageFlip getImageFlipState;
 	SetImageFlip setImageFlipState;
 	int nImageFlipState;
 	int nImageFlipState_buf;
-	//Ô¤´¦ÀíÁ´½Ó
+	//?????????
 	GetImageMorphology getImageMorphologyState;
 	SetImageMorphology setImageMorphologyState;
 	int nImageMorphologyState;
 	int nImageMorphologyState_buf;
-	//Í¼ÏñÐÞ¸´Á´½Ó
+	//??????????
 	GetImageRepair getImageRepairState;
 	SetImageRepair setImageRepairState;
 	int nImageRepairState;
 	int nImageRepairState_buf;
-	//Í¼ÏñÐý×ªÁ´½Ó
+	//??????????
 	GetImageRotate getImageRotateState;
 	SetImageRotate setImageRotateState;
 	int nImageRotateState;
 	int nImageRotateState_buf;
-	//Í¼ÏñÆ´½ÓÁ´½Ó
+	//??????????
 	GetImageSplice getImageSpliceState;
 	SetImageSplice setImageSpliceState;
 	int nImageSpliceState;
 	int nImageSpliceState_buf;
-	//Í¼ÏñÏÔÊ¾Á´½Ó
+	//??????????
 	GetImageView getImageViewState;
 	SetImageView setImageViewState;
 	int nImageViewState;
@@ -533,236 +538,236 @@ private:
 	QVector<QString> nViewMsgState_B20 = QVector<QString>(100);	
 	bool state_B1 = false, state_B2 = false, state_B3 = false, state_B4 = false, state_B5 = false, state_B6 = false, state_B7 = false, state_B8 = false, state_B9 = false, state_B10 = false;
 	bool state_B11 = false, state_B12 = false, state_B13 = false, state_B14 = false, state_B15 = false, state_B16 = false, state_B17 = false, state_B18 = false, state_B19 = false, state_B20 = false;
-	//Í¸ÊÓ±ä»»Á´½Ó
+	//?????????
 	GetPerspectiveTransform getPerspectiveTransformState;
 	SetPerspectiveTransform setPerspectiveTransformState;
 	int nPerspectiveTransformState;
 	int nPerspectiveTransformState_buf;
-	//Í¼ÏñÏ¸»¯Á´½Ó
+	//??????????
 	GetSkeleton getSkeletonState;
 	SetSkeleton setSkeletonState;
 	int nSkeletonState;
 	int nSkeletonState_buf;
-	//µ¼³öÍ¼ÏñÁ´½Ó
+	//???????????
 	GetExportImage getExportImageState;
 	SetExportImage setExportImageState;
 	int nExportImageState;
 	int nExportImageState_buf;
-	//×Ô¶¯´òÓ¡
+	//??????
 	GetImagePrint getImagePrintState;
 	SetImagePrint setImagePrintState;
 	int nImagePrintState;
 	int nImagePrintState_buf;
 #pragma endregion
 
-#pragma region ¼ì²âÊ¶±ð
-	//ÌõÐÎÂëÊ¶±ðÁ´½Ó
+#pragma region ??????
+	//?????????????
 	GetBarcodeIdentify getBarcodeIdentifyState;
 	SetBarcodeIdentify setBarcodeIdentifyState;
 	int nBarcodeIdentifyState;
 	int nBarcodeIdentifyState_buf;
-	//°ßµã·ÖÎöÁ´½Ó
+	//??????????
 	GetBlobDetector getBlobDetectorState;
 	SetBlobDetector setBlobDetectorState;
 	int nBlobDetectorState;
 	int nBlobDetectorState_buf;
-	//ÁÁ¶È¼ì²âÁ´½Ó
+	//??????????
 	GetBrightness getBrightnessState;
 	SetBrightness setBrightnessState;
 	int nBrightnessState;
 	int nBrightnessState_buf;
-	//ÑÕÉ«Ê¶±ðÁ´½Ó
+	//??????????
 	GetColorIdentify getColorIdentifyState;
 	SetColorIdentify setColorIdentifyState;
 	int nColorIdentifyState;
 	int nColorIdentifyState_buf;
-	//¶þÎ¬ÂëÊ¶±ðÁ´½Ó
+	//????????????
 	GetQRcodeIdentify getQRcodeIdentifyState;
 	SetQRcodeIdentify setQRcodeIdentifyState;
 	int nQRcodeIdentifyState;
 	int nQRcodeIdentifyState_buf;
-	//¶þÎ¬ÂëÉú³ÉÁ´½Ó
+	//?????????????
 	GetQRcodeGenerate getQRcodeGenerateState;
 	SetQRcodeGenerate setQRcodeGenerateState;
 	int nQRcodeGenerateState;
 	int nQRcodeGenerateState_buf;
-	//ÂÖÀªÌØÕ÷Ñ¡ÔñÁ´½Ó
+	//???????????????
 	GetSelectShape getSelectShape;
 	SetSelectShape setSelectShape;
 	int nSelectShapeState;
 	int nSelectShapeState_buf;
-	//·ÖÀàÆ÷Á´½Ó
+	//??????????
 	GetClassifier getClassifierState;
 	SetClassifier setClassifierState;
 	int nClassifierState;
 	int nClassifierState_buf;
 #pragma endregion
 
-#pragma region ±ê¶¨¹¤¾ß
-	//Nµã±ê¶¨Á´½Ó
+#pragma region ??????
+	//N???????
 	GetERTCalibration getERTCalibrationState;
 	SetERTCalibration setERTCalibrationState;
 	int nERTCalibrationState;
 	int nERTCalibrationState_buf;
-	//²âÁ¿±ê¶¨Á´½Ó
+	//??????????
 	GetMeasureCalibration getMeasureCalibrationState;
 	SetMeasureCalibration setMeasureCalibrationState;
 	int nMeasureCalibrationState;
 	int nMeasureCalibrationState_buf;
 #pragma endregion
 
-#pragma region ¶ÔÎ»¹¤¾ß
-	//Ä¿±ê¸ú×ÙÁ´½Ó
+#pragma region ????????
+	//??????????
 	GetCamShiftTrack getCamShiftTrackState;
 	SetCamShiftTrack setCamShiftTrackState;
 	int nCamShiftTrackState;
 	int nCamShiftTrackState_buf;
-	//ÏßÐÔ¼ÆËãÁ´½Ó
+	//???????????
 	GetLinearCalculation getLinearCalculationState;
 	SetLinearCalculation setLinearCalculationState;
 	int nLinearCalculationState;
 	int nLinearCalculationState_buf;
-	//»Ò¶ÈÆ¥ÅäÁ´½Ó
+	//??????????
 	GetTemplateMatch getTemplateMatchState;
 	SetTemplateMatch setTemplateMatchState;
 	int nTemplateMatchState;
 	int nTemplateMatchState_buf;
-	//ÐÎ×´Æ¥ÅäÁ´½Ó
+	//??????????
 	GetShapeMatch getShapeMatchState;
 	SetShapeMatch setShapeMatchState;
 	int nShapeMatchState;
 	int nShapeMatchState_buf;
 #pragma endregion
 
-#pragma region ¼¸ºÎ¹¤¾ß
-	//Ñ°ÕÒÔ²Á´½Ó
+#pragma region ????????
+	//????????
 	GetFindCircle getFindCircleState;
 	SetFindCircle setFindCircleState;
 	int nFindCircleState;
 	int nFindCircleState_buf;
-	//Ñ°ÕÒÖ±ÏßÁ´½Ó
+	//??????????
 	GetFindLine getFindLineState;
 	SetFindLine setFindLineState;
 	int nFindLineState;
 	int nFindLineState_buf;
-	//ÄâºÏÔ²Á´½Ó
+	//????????
 	GetFitCircle getFitCircleState;
 	SetFitCircle setFitCircleState;
 	int nFitCircleState;
 	int nFitCircleState_buf;
-	//ÄâºÏÍÖÔ²Á´½Ó
+	//??????????
 	GetFitEllipse getFitEllipseState;
 	SetFitEllipse setFitEllipseState;
 	int nFitEllipseState;
 	int nFitEllipseState_buf;
-	//ÄâºÏÖ±ÏßÁ´½Ó
+	//??????????
 	GetFitLine getFitLineState;
 	SetFitLine setFitLineState;
 	int nFitLineState;
 	int nFitLineState_buf;
-	//»ñÈ¡±ß½çµãÁ´½Ó
+	//???????????
 	GetContourPoints getContourPointsState;
 	SetContourPoints setContourPointsState;
 	int nContourPointsState;
 	int nContourPointsState_buf;
 #pragma endregion
 
-#pragma region ¼¸ºÎ²âÁ¿
-	//ÏßÔ²½»µãÁ´½Ó
+#pragma region ????????
+	//???????????
 	GetLineCircle getLineCircleState;
 	SetLineCircle setLineCircleState;
 	int nLineCircleState;
 	int nLineCircleState_buf;
-	//ÏßÏß½»µãÁ´½Ó
+	//???????????
 	GetLineLineI getLineLineIState;
 	SetLineLineI setLineLineIState;
 	int nLineLineIState;
 	int nLineLineIState_buf;
-	//µã+ÏßÁ´½Ó
+	//??+??????
 	GetPointLine getPointLineState;
 	SetPointLine setPointLineState;
 	int nPointLineState;
 	int nPointLineState_buf;
-	//µã+µãÁ´½Ó
+	//??+??????
 	GetPointPoint getPointPointState;
 	SetPointPoint setPointPointState;
 	int nPointPointState;
 	int nPointPointState_buf;
-	//Ô²È±¿Ú½Ç¶ÈÁ´½Ó
+	//??????????
 	GetRoundedCorners getRoundedCornersState;
 	SetRoundedCorners setRoundedCornersState;
 	int nRoundedCornersState;
 	int nRoundedCornersState_buf;
-	//±ßÔµ¿í¶È²âÁ¿Á´½Ó
+	//??????????????
 	GetEdgeWidthMeasure getEdgeWidthMeasureState;
 	SetEdgeWidthMeasure setEdgeWidthMeasureState;
 	int nEdgeWidthMeasureState;
 	int nEdgeWidthMeasureState_buf;
 #pragma endregion	
 
-#pragma region ÈýÎ¬¼ì²â
-	//ÄâºÏÆ½ÃæÁ´½Ó
+#pragma region ??????
+	//??????????
 	GetFlatness getFlatnessState;
 	SetFlatness setFlatnessState;
 	int nFlatnessState;
 	int nFlatnessState_buf;
 #pragma endregion
 
-#pragma region Âß¼­¹¤¾ß
-	//À©Õ¹¿âÁ´½Ó
+#pragma region ???????
+	//?????????
 	GetExtensionLibrary getExtensionLibraryState;
 	SetExtensionLibrary setExtensionLibraryState;
 	int nExtensionLibraryState;
 	int nExtensionLibraryState_buf;
-	//Ìø×ªÓï¾äÁ´½Ó
+	//??????????
 	GetLogicGoto getLogicGotoState;
 	SetLogicGoto setLogicGotoState;
 	int nLogicGotoState;
 	int nLogicGotoState_buf;
-	//ÅÐ¶ÏÓï¾äÁ´½Ó
+	//???????????
 	GetLogicJudge getLogicJudgeState;
 	SetLogicJudge setLogicJudgeState;
 	int nLogicJudgeState;
 	int nLogicJudgeState_buf;
-	//½áÊøÓï¾äÁ´½Ó
+	//???????????
 	GetLogicJudgeEnd getLogicJudgeEndState;
 	SetLogicJudgeEnd setLogicJudgeEndState;
 	int nLogicJudgeEndState;
 	int nLogicJudgeEndState_buf;
 #pragma endregion
 
-#pragma region Í¨Ñ¶¹¤¾ß
-	//PLCÍ¨ÐÅ
+#pragma region ??????
+	//PLC???
 	GetPlcCommunicate getPlcCommunicate;
 	SetPlcCommunicate setPlcCommunicate;
 	int nPlcCommunicateState;
 	int nPlcCommunicateState_buf;
-	//´®¿ÚÍ¨ÐÅ
+	//???????
 	GetSerialPort getSerialPort;
 	SetSerialPort setSerialPort;
 	int nSerialPortState;
 	int nSerialPortState_buf;
-	//TCP/IP·þÎñÆ÷
+	//TCP/IP??????
 	GetSocketTcpServer getSocketTcpServer;
 	SetSocketTcpServer setSocketTcpServer;
 	int nSocketTcpServerState;
 	int nSocketTcpServerState_buf;
-	//TCP/IP¿Í»§¶Ë
+	//TCP/IP?????
 	GetSocketTcpClient getSocketTcpClient;
 	SetSocketTcpClient setSocketTcpClient;
 	int nSocketTcpClientState;
 	int nSocketTcpClientState_buf;
 #pragma endregion
 
-#pragma region ÏµÍ³¹¤¾ß
-	//µ¼³öCSVÁ´½Ó
+#pragma region ??????
+	//????CSV????
 	GetExportCsv getExportCsv;
 	SetExportCsv setExportCsv;
 	int nExportCsvState;
 	int nExportCsvState_buf;
 #pragma endregion
 
-#pragma region Ä¿±ê¼ì²â
+#pragma region ?????
 	//YoloV13
 	GetYoloV13 getYoloV13;
 	SetYoloV13 setYoloV13;
@@ -776,5 +781,12 @@ private:
 	SetOCR setOCR;
 	int nOCRState;
 	int nOCRState_buf;
+#pragma endregion
+
+#pragma region ???????
+	GetPlateRecognition getPlateRecognition = nullptr;
+	SetPlateRecognition setPlateRecognition = nullptr;
+	int nPlateRecognitionState = 0;
+	int nPlateRecognitionState_buf = 0;
 #pragma endregion
 };

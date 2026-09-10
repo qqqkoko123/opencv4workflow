@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <QtUiPlugin/QDesignerCustomWidgetInterface>
 #include "./QToolBase.h"

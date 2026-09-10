@@ -1,4 +1,4 @@
-#include "PerspectiveTransform.h"
+﻿#include "PerspectiveTransform.h"
 #include "frmPerspectiveTransform.h"
 
 PerspectiveTransform::PerspectiveTransform()
@@ -7,12 +7,12 @@ PerspectiveTransform::PerspectiveTransform()
 
 QString PerspectiveTransform::name()
 {
-    return "͸�ӱ任";
+    return "透视变换";
 }
 
 QString PerspectiveTransform::information()
 {
-    return "ͼ����";
+    return "图像处理";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

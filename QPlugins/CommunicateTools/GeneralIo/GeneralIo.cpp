@@ -1,4 +1,4 @@
-#include "GeneralIo.h"
+ï»¿#include "GeneralIo.h"
 #include "frmGeneralIo.h"
 
 GeneralIo::GeneralIo()
@@ -7,12 +7,12 @@ GeneralIo::GeneralIo()
 
 QString GeneralIo::name()
 {
-    return "Í¨ÓÃI/O";
+    return "é€šç”¨I/O";
 }
 
 QString GeneralIo::information()
 {
-    return "Í¨Ñ¶¹¤¾ß";
+    return "é€šè®¯å·¥å…·";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

@@ -1,4 +1,4 @@
-#include "rice.h"
+﻿#include "rice.h"
 #include <vector>
 #include <QMessageBox>
 #include <QtCore/qglobal.h>

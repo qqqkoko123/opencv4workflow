@@ -1,4 +1,4 @@
-#include "PointPoint.h"
+Ôªø#include "PointPoint.h"
 #include "frmPointPoint.h"
 
 PointPoint::PointPoint()
@@ -7,12 +7,12 @@ PointPoint::PointPoint()
 
 QString PointPoint::name()
 {
-    return "µ„+µ„";
+    return "ÁÇπ+ÁÇπ";
 }
 
 QString PointPoint::information()
 {
-    return "º∏∫Œ≤‚¡ø";
+    return "Âá†‰ΩïÊµãÈáè";
 }
 
 QDialog* showDialog(QString toolName, QToolBase* toolBase)

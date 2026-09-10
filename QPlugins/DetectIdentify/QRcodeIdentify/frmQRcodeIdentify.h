@@ -22,6 +22,16 @@ public:
 	std::vector<DmCodeResult> decode_all_dm_codes(const cv::Mat& src);
 
 private:
+	void preprocessDmImage(const cv::Mat& src, cv::Mat& gray) const;
+	cv::Rect detectContentRoi(const cv::Mat& gray) const;
+	// imageUpscale: OpenCV 放大倍数；坐标会映射回原图。libdmtx 固定用 shrinkScale=1
+	std::vector<DmCodeResult> decodeDmOnMat(const cv::Mat& gray, int imageUpscale = 1) const;
+	bool appendDmResult(std::vector<DmCodeResult>& results, const DmCodeResult& item, int offsetX = 0, int offsetY = 0) const;
+	void sortDmResultsByLayout(std::vector<DmCodeResult>& results) const;
+	int decodeDmTrayGrid(const cv::Mat& gray, int rows, int cols, std::vector<DmCodeResult>& results) const;
+	int tryDecodeDmCellPatch(const cv::Mat& normPatch, double mapBackScale, int offsetX, int offsetY, std::vector<DmCodeResult>& results) const;
+	void decodeDmFallbackLimited(const cv::Mat& gray, std::vector<DmCodeResult>& results) const;
+
 	Ui::frmQRcodeIdentifyClass ui;
 
 public:
@@ -67,6 +77,11 @@ private:
 	vector<cv::Mat> vPoints = vector<cv::Mat>(100);
 	vector<string> strDecoded = vector<string>(100);
 	vector<QString> Code = vector<QString>(100);
+	int expectedDmCount = 8;
+	int dmCellNormSide = 896;      // 每格归一化到该边长再解码（保证码模块像素够大）
+	int dmMaxDecodeSide = 960;     // 单次 libdmtx 输入最大边长
+	int dmDecodeTimeoutMs = 2800;  // 单次解码超时(ms)
+	int dmMaxRegionsPerPass = 2;   // 每格最多解 2 个（防粘连）
 };
 
 //全局变量控制

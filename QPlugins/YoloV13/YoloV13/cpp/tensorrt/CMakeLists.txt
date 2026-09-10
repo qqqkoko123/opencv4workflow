@@ -1,4 +1,4 @@
-file(GLOB TENSORRT_SRCS *.h *.cpp)
+﻿file(GLOB TENSORRT_SRCS *.h *.cpp)
 if(WITH_CUDA_PREPROCESS)
     list(APPEND TENSORRT_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/cuda/preprocess.cuh ${CMAKE_CURRENT_SOURCE_DIR}/cuda/preprocess.cu)
     if(WITH_CUDA_POSTPROCESS)  

@@ -1,4 +1,4 @@
-// Debug.hpp
+﻿// Debug.hpp
 #ifndef DEBUG_HPP
 #define DEBUG_HPP
 
