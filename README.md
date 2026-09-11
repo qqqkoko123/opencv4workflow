@@ -8,6 +8,9 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 # 新增OCR识别
 下载ONNX Runtime v1.22，将lib放至.\QPlugins\OCR\OCR\onnxruntime目录下，并将lib目录里的所有文件放至.\QSoftExe\Debug或者\QSoftExe\Release下
 
+# 新增车牌识别
+基于 ONNX Runtime 的车牌检测与识别（CPU），模型放至.\QSoftExe\Release\models\plate 或.\QSoftExe\Debug\models\plate
+
 # 新增海康工业摄像头
 对接海康工业摄像头MVS4.5.1.2，请从海康开放平台下载对应sdk
 
@@ -35,6 +38,8 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 [![OCR](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/OCR.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/OCR.png)
 # YOLOV13
 [![YOLOV13](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/YOLOV13.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/YOLOV13.png)
+# 车牌识别
+[![车牌识别](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB.png)
 # 二维码（DataMatrix、QRCode）生成
 [![二维码（DataMatrix、QRCode）生成](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E4%BA%8C%E7%BB%B4%E7%A0%81%EF%BC%88DataMatrix%E3%80%81QRCode%EF%BC%89%E7%94%9F%E6%88%90.png)](https://github.com/qqqkoko123/opencv4workflow/blob/master/Images/%E4%BA%8C%E7%BB%B4%E7%A0%81%EF%BC%88DataMatrix%E3%80%81QRCode%EF%BC%89%E7%94%9F%E6%88%90.png)
 # 米粒计数和检测
@@ -51,7 +56,3 @@ Qt5.14.2 + Visual Studio 2022，C++语言标准 C++ 14 （旧版）
 # 觉得好，请打赏我~
 
 ![支付宝打赏](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E8%A7%89%E5%BE%97%E5%A5%BD%E8%AF%B7%E6%89%93%E8%B5%8F%E6%88%91alipay.jpg)     ![微信打赏](https://raw.githubusercontent.com/qqqkoko123/opencv4workflow/master/Images/%E8%A7%89%E5%BE%97%E5%A5%BD%E8%AF%B7%E6%89%93%E8%B5%8F%E6%88%91wechat_reward.jpg)
-
-
-
-
